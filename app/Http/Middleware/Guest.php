@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Guest
 {
@@ -16,10 +17,11 @@ class Guest
     public function handle($request, Closure $next)
     {
         $sCheck = session('area');
-        if(!isset($sCheck) && $request->url() != url('/choose-country')){
+        if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login')])){
             return redirect()
                 ->to('/choose-country');
+        }else{
+            return $next($request);
         }
-        return $next($request);
     }
 }

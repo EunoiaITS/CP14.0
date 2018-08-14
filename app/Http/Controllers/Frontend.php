@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
+use App\UsersExtendedData;
 use App\VehiclesData;
 use Illuminate\Http\Request;
 use App\User;
@@ -70,7 +71,7 @@ class Frontend extends Controller
 
     public function chooseCountry(Request $request){
         $countries = array();
-        if(Auth::check() || $request->session()->has('area')){
+        if($request->session()->has('area')){
             return redirect()
                 ->to('/')
                 ->with('error', 'You can\'t access this page!');
@@ -88,9 +89,41 @@ class Frontend extends Controller
         $countries = json_decode($result);
         if($request->isMethod('post')){
             $countries = explode(',', $request->country);
-            session(['area' => $countries[0]]);
-            session(['lat' => $countries[1]]);
-            session(['lan' => $countries[2]]);
+            if(Auth::check()){
+                for($i = 0; $i < sizeof($countries); $i++){
+                    $c_data = new UsersExtendedData();
+                    $c_data->user_id = Auth::id();
+                    if($i == 0){
+                        $c_data->key = 'country';
+                    }elseif($i == 1){
+                        $c_data->key = 'lat';
+                    }elseif($i == 2){
+                        $c_data->key = 'lan';
+                    }else{
+                        $c_data->key = 'key'.$i;
+                    }
+                    $c_data->value = $countries[$i];
+                    $c_data->save();
+                }
+                $cd = UsersExtendedData::where(['user_id' => Auth::id()])->get();
+                if(!empty($cd)){
+                    foreach($cd as $c){
+                        if($c->key == 'country'){
+                            session(['area' => $c->value]);
+                        }
+                        if($c->key == 'lat'){
+                            session(['lat' => $c->value]);
+                        }
+                        if($c->key == 'lan'){
+                            session(['lan' => $c->value]);
+                        }
+                    }
+                }
+            }else{
+                session(['area' => $countries[0]]);
+                session(['lat' => $countries[1]]);
+                session(['lan' => $countries[2]]);
+            }
             return redirect()
                 ->to('/');
         }

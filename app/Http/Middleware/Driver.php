@@ -17,7 +17,13 @@ class Driver
     public function handle($request, Closure $next)
     {
         if(Auth::check() && Auth::user()->role == 'driver'){
-            return $next($request);
+            $sCheck = session('area');
+            if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login')])){
+                return redirect()
+                    ->to('/choose-country');
+            }else{
+                return $next($request);
+            }
         }elseif(Auth::check() && Auth::user()->role == 'customer'){
             return redirect('/d');
         }elseif(Auth::check() && Auth::user()->role == 'super-admin'){

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\UsersExtendedData;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -36,4 +39,34 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticated(Request $request, $user){
+        $request->session()->forget('area');
+        $request->session()->forget('lat');
+        $request->session()->forget('lan');
+        $c_data = UsersExtendedData::where(['user_id' => $user->id])->get();
+        if(!empty($c_data)){
+            foreach($c_data as $c){
+                if($c->key == 'country'){
+                    session(['area' => $c->value]);
+                }
+            }
+            foreach($c_data as $c){
+                if($c->key == 'lat'){
+                    session(['lat' => $c->value]);
+                }
+            }
+            foreach($c_data as $c){
+                if($c->key == 'lan'){
+                    session(['lan' => $c->value]);
+                }
+            }
+        }
+        $check_area = session('area');
+        if(!isset($check_area)){
+            return redirect()
+                ->to('/choose-country');
+        }
+    }
+
 }
