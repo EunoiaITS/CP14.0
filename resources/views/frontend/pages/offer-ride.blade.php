@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <div class="modal-footer login-modal-footer">
-                        <button type="submit" class="btn btn-info btn-offer">Save</button>
+                        <button type="submit" id="add-desc" class="btn btn-info btn-offer">Save</button>
                         <button type="button" class="btn btn-info btn-offer" data-dismiss="modal" aria-label="Close">Cancel</button>
                     </div>
                 </form>
