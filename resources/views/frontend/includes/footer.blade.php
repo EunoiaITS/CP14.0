@@ -37,6 +37,9 @@
 <script src="{{ asset('public/assets/frontend/js/zabuto_calendar.js') }}"></script>
 <!-- bootstrap selcet js -->
 <script src="{{ asset('public/assets/frontend/js/bootstrap-select.js') }}"></script>
+<!-- weekly picker js -->
+<script src="{{ asset('public/assets/frontend/js/jquery-ui-1.10.4.js') }}"></script>
+<script src="{{ asset('public/assets/frontend/js/jquery-weekpicker.js') }}"></script>
 <!-- main js file -->
 <script src="{{ asset('public/assets/frontend/js/custom.js') }}"></script>
     <script>
