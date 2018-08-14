@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/bootstrap-select.css') }}">
     <!-- datepicker css -->
     <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/bootstrap-datetimepicker.css') }}">
+    <!-- weekly datepicker css -->
+    <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/jquery-ui-1.10.4.smoothness.css') }}">
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/style.css') }}">
     <!-- mordernizr css -->
