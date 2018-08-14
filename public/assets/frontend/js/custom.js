@@ -7,15 +7,15 @@
   /*--==================
   Radio button callback
   ======================--*/
-  //$('.check-input').on('click', function() {
-  //   $('.green-color').addClass('add-green-color');
-  //   $('.red-color').removeClass('add-radio-color');
-  //});
-  //
-  // $('.check-input-2').on('click', function() {
-  //   $('.red-color').addClass('add-radio-color');
-  //    $('.green-color').removeClass('add-green-color');
-  //});
+  $('.check-input').on('click', function() {
+     $('.green-color').addClass('add-green-color');
+     $('.red-color').removeClass('add-radio-color');
+  });
+
+   $('.check-input-2').on('click', function() {
+     $('.red-color').addClass('add-radio-color');
+      $('.green-color').removeClass('add-green-color');
+  });
 
 	/*--========================
 	slidebar call js
@@ -31,7 +31,7 @@
     return $(".navi-trigger").removeClass("cross");
 	});
 
-  // menu icon toggle
+  // menu icon toggole
 
   $(".get-humber-icon").click(function() {
     return $(".navi-trigger").toggleClass("cross");
@@ -73,21 +73,15 @@
 	==========================--*/
 	$('.click-performance .fas').click(function() {
 	    $(this).toggleClass('active-color');
-	});
+	})
 
   /*--=========================
  available seats call
   ==========================--*/
   $('.first-ride .fas').click(function() {
       $(this).toggleClass('active-class');
-  });
+  })
 
-  // clander js call
-
-  $("#my-calendar").zabuto_calendar({
-    language: "en",
-    today:true
-  });
 
   /*===================
   image add class
@@ -105,20 +99,15 @@ Datepicker init
 =========================================*/
 
   $('.datepicker-f').datetimepicker({
-    format: "YYYY-MM-DD",
+    format: "DD/MM/YYYY",
     icons: {
       up: 'fa fa-angle-up',
       down: 'fa fa-angle-down',
       previous: 'fa fa-angle-left',
       next: 'fa fa-angle-right',
-    },
-      minDate: moment()
+    }
   });
-$('#datetimepicker12').datepicker({
-    todayHighlight: true,
-    inline: true,
-    sideBySide: true,
-});
+
 /*=======================================
 Timepicker init 
 =========================================*/
@@ -134,7 +123,7 @@ Timepicker init
   });
   
   $('.timepicker-mm').datetimepicker({
-    format: "mm",
+    format: "mm A",
     icons: {
       up: 'fa fa-angle-up',
       down: 'fa fa-angle-down',
@@ -143,15 +132,13 @@ Timepicker init
     }
   });
 
-$('#datetimepicker4').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
+  $('#datetimepicker4').datetimepicker({
     icons:{
       time:'fas fa-clock',
     }
   });
   
   $('#datetimepicker5').datetimepicker({
-      format: "YYYY-MM-DD HH:mm",
     icons:{
       time:'fas fa-clock',
     }
@@ -159,12 +146,47 @@ $('#datetimepicker4').datetimepicker({
   });
 
    $('#datetimepicker6').datetimepicker({
-       format: "YYYY-MM-DD HH:mm",
     icons:{
       time:'fas fa-clock',
     }
-
    });
+
+
+   // daily datepicker
+  $('#dailypicker01').datetimepicker({
+      inline: true,
+      format: 'DD',
+      viewMode: 'days'
+  });
+
+
+  // weekly datepicker
+  var dateText = '05/26/2018',
+    display = $('#week-start');
+  display.text(dateText);
+  $('#dailypicker02').weekpicker({
+    currentText: dateText,
+    onSelect: function(dateText, startDateText, startDate, endDate, inst) {
+      display.text(startDateText);
+    }
+  });
+
+//monthly datepicker
+
+  $('#dailypicker03').datetimepicker({
+      inline: true,
+      format: 'MM',
+      viewMode: 'months'
+  });
+
+
+// yearly datepicker
+  $('#dailypicker04').datetimepicker({
+      inline: true,
+      format: 'MM/YYYY',
+      viewMode: 'years'
+  });
+ 
 
 
 
@@ -172,58 +194,58 @@ $('#datetimepicker4').datetimepicker({
 image upload js call
 ======================--*/
   // vars
-  // var result = document.querySelector('.result'),
-  //     img_result = document.querySelector('.img-result'),
-  //     img_w = document.querySelector('.img-w'),
-  //     img_h = document.querySelector('.img-h'),
-  //     options = document.querySelector('.options'),
-  //     save = document.querySelector('.save'),
-  //     cropped = document.querySelector('.cropped'),
-  //     dwn = document.querySelector('.download'),
-  //     upload = document.querySelector('#file-input'),
-  //     cropper = '';
+  var result = document.querySelector('.result'),
+      img_result = document.querySelector('.img-result'),
+      img_w = document.querySelector('.img-w'),
+      img_h = document.querySelector('.img-h'),
+      options = document.querySelector('.options'),
+      save = document.querySelector('.save'),
+      cropped = document.querySelector('.cropped'),
+      dwn = document.querySelector('.download'),
+      upload = document.querySelector('#file-input'),
+      cropper = '';
 
 
-  // // on change show image with crop options
-  //   upload.addEventListener('change', function (e) {
-  //     aspectRatio: 16 / 9;
-  //     if (e.target.files.length) {
-  //       // start file reader
-  //       var reader = new FileReader();
-  //       reader.onload = function (e) {
-  //         if (e.target.result) {
-  //           // create new image
-  //           var img = document.createElement('img');
-  //           img.id = 'image';
-  //           img.src = e.target.result;
-  //           // clean result before
-  //           result.innerHTML = '';
-  //           // append new image
-  //           result.appendChild(img);
-  //           // show save btn and options
-  //           save.classList.remove('hide-x');
-  //           options.classList.remove('hide-x');
-  //           // init cropper
-  //           cropper = new Cropper(img);
-  //
-  //         }
-  //       };
-  //       reader.readAsDataURL(e.target.files[0]);
-  //   }
-  // });
+  // on change show image with crop options
+    upload.addEventListener('change', function (e) {
+      aspectRatio: 16 / 9;
+      if (e.target.files.length) {
+        // start file reader
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          if (e.target.result) {
+            // create new image
+            var img = document.createElement('img');
+            img.id = 'image';
+            img.src = e.target.result;
+            // clean result before
+            result.innerHTML = '';
+            // append new image
+            result.appendChild(img);
+            // show save btn and options
+            save.classList.remove('hide-x');
+            options.classList.remove('hide-x');
+            // init cropper
+            cropper = new Cropper(img);
+
+          }
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    }
+  });
 
   // save on click
-  // save.addEventListener('click', function (e) {
-  //   e.preventDefault();
-  //   // get result to data uri
-  //   var imgSrc = cropper.getCroppedCanvas({
-  //     width: img_w.value // input value
-  //   }).toDataURL();
-  //   // remove hide class of img
-  //   cropped.classList.remove('hide-x');
-  //   img_result.classList.remove('hide-x');
-  //   // show image cropped
-  //   cropped.src = imgSrc;
-  //   dwn.download = 'imagename.png';
-  //   dwn.setAttribute('href', imgSrc);
-  // });
+  save.addEventListener('click', function (e) {
+    e.preventDefault();
+    // get result to data uri
+    var imgSrc = cropper.getCroppedCanvas({
+      width: img_w.value // input value
+    }).toDataURL();
+    // remove hide class of img
+    cropped.classList.remove('hide-x');
+    img_result.classList.remove('hide-x');
+    // show image cropped
+    cropped.src = imgSrc;
+    dwn.download = 'imagename.png';
+    dwn.setAttribute('href', imgSrc);
+  });
