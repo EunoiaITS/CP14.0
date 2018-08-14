@@ -221,7 +221,15 @@
                                     <option value="Kualalampur">Yearly</option>
                                 </select>
                                 <!-- live calender -->
-                                <div id="datetimepicker12"></div>
+                                <!-- daily calender -->
+                                <div class="view-ridemate-profile-popup" id="dailypicker01"></div>
+                                <!-- weekly calender -->
+                                <div class="view-ridemate-profile-popup" id="dailypicker02"></div>
+                                <div id="week-start"></div>
+                                <!-- monthly calender -->
+                                <div class="view-ridemate-profile-popup" id="dailypicker03"></div>
+                                <!-- yearly calender -->
+                                <div class="view-ridemate-profile-popup" id="dailypicker04"></div>
                                 <button class="btn btn-info btn-offer">Generate</button>
                             </div>
                         </div>
