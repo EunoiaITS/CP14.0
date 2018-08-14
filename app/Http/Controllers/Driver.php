@@ -632,4 +632,20 @@ class Driver extends Controller
         ]);
     }
 
+    /**
+     * Ride Request  - shows all the active ride requested by a customer
+     */
+    public function rideRequests(){
+        $rr = Ride_request::where('status','requested')->paginate(3);
+        foreach ($rr as $r){
+            $user = User::where('id',$r->user_id)->first();
+            $r->user = $user;
+            $usd = User_data::where('user_id',$r->user_id)->first();
+            $r->usd = $usd;
+        }
+        return view('frontend.pages.ride-requests',[
+            'data' => $rr
+        ]);
+    }
+
 }

@@ -19,6 +19,7 @@
                 <li><a href="{{ url('/d/offer-ride') }}">Offer a Ride</a></li>
                 <li><a href="{{ url('/d/active-offers') }}">My Active Offers</a></li>
                 <li><a href="{{ url('/d/profile') }}">My Profile</a></li>
+                <li><a href="{{ url('/d/ride-requests') }}">Ride Requests</a></li>
             @endif
             @if(Auth::check() && Auth::user()->role == 'customer')
                 <li><a href="{{ url('/c/requests') }}">My Requests</a></li>

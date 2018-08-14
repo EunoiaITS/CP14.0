@@ -30,6 +30,10 @@
 <!-- datepicker js -->
 <script src="{{ asset('public/assets/frontend/js/moment.js') }}"></script>
 <script src="{{ asset('public/assets/frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
 <script src="{{ asset('public/assets/frontend/js/zabuto_calendar.js') }}"></script>
 <!-- bootstrap selcet js -->
 <script src="{{ asset('public/assets/frontend/js/bootstrap-select.js') }}"></script>

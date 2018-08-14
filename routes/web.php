@@ -106,6 +106,7 @@ Route::prefix('d')->group(function(){
     Route::post('/cancel-bookings', 'Driver@cancelBookings');
     Route::post('/start-ride', 'Driver@startRide');
     Route::post('/end-ride', 'Driver@endRide');
+    Route::get('/ride-requests', 'Driver@rideRequests');
 });
 
 /**

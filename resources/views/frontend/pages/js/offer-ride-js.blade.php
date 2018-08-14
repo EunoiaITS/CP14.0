@@ -2,16 +2,14 @@
     // This example requires the Places library. Include the libraries=places
     // parameter when you first load the API. For example:
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-@if(isset($data->from))
+    @if(isset($data->from))
     function initMap(){
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
-
         var myOptions = {
             zoom:7,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-
         var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
         directionsDisplay.setMap(map);
         var request = {
@@ -19,10 +17,8 @@
             destination: document.getElementById('destination-input').value,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };
-
         directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-
                 directionsDisplay.setDirections(response);
             }
         });
@@ -34,13 +30,11 @@
             center: {lat: {{ session()->get('lat') }}, lng: {{ session()->get('lan') }}},
             zoom: 7
         });
-
         new AutocompleteDirectionsHandler(map);
     }
-
     /**
      * @constructor
-       */
+     */
     function AutocompleteDirectionsHandler(map) {
         this.map = map;
         this.originPlaceId = null;
@@ -51,16 +45,13 @@
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
-
         var originAutocomplete = new google.maps.places.Autocomplete(
-                originInput, {placeIdOnly: true});
+            originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(
-                destinationInput, {placeIdOnly: true});
-
+            destinationInput, {placeIdOnly: true});
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
     }
-
     // Sets a listener on a radio button to change the filter type on Places
     // Autocomplete.
     AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
@@ -71,7 +62,6 @@
             me.route();
         });
     };
-
     AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
@@ -88,15 +78,12 @@
             }
             me.route();
         });
-
     };
-
     AutocompleteDirectionsHandler.prototype.route = function() {
         if (!this.originPlaceId || !this.destinationPlaceId) {
             return;
         }
         var me = this;
-
         this.directionsService.route({
             origin: {'placeId': this.originPlaceId},
             destination: {'placeId': this.destinationPlaceId},
@@ -109,24 +96,24 @@
             }
         });
     };
-@endif
-var car_type = car_reg = luggage_limit = '';
-@if(isset($vd))
-    car_type = '{{ $vd->car_type }}';
+            @endif
+    var car_type = car_reg = luggage_limit = '';
+    @if(isset($vd))
+        car_type = '{{ $vd->car_type }}';
     car_reg = '{{ $vd->car_plate_no }}';
     luggage_limit = '{{ $vd->luggage_limit }}';
     @endif
     $('#checkbox1').on('click',function (e) {
-            e.preventDefault();
-            $('#own-vehicle-green').addClass('add-green-color');
-            $('#own-vehicle-red').removeClass('add-radio-color');
-            $('#own-vehicle').val('yes');
-                $('#car-type').val(car_type);
-                $('#car-plate').val(car_reg);
-                $('#car-plate').attr('readonly', true);
-                $('#car-luggage').val(luggage_limit);
-                $('#vd_action').val('edit');
-        });
+        e.preventDefault();
+        $('#own-vehicle-green').addClass('add-green-color');
+        $('#own-vehicle-red').removeClass('add-radio-color');
+        $('#own-vehicle').val('yes');
+        $('#car-type').val(car_type);
+        $('#car-plate').val(car_reg);
+        $('#car-plate').attr('readonly', true);
+        $('#car-luggage').val(luggage_limit);
+        $('#vd_action').val('edit');
+    });
     $('#checkbox2').on('click',function (e) {
         e.preventDefault();
         $('#own-vehicle-red').addClass('add-radio-color');
@@ -162,7 +149,6 @@ var car_type = car_reg = luggage_limit = '';
         $('#music-red').removeClass('add-radio-color');
         $('#music').val('yes');
     });
-
     $('#checkbox7').on('click',function (e) {
         e.preventDefault();
         $('#smoking-red').addClass('add-radio-color');
@@ -175,7 +161,6 @@ var car_type = car_reg = luggage_limit = '';
         $('#smoking-red').removeClass('add-radio-color');
         $('#smoking').val('yes');
     });
-
     $('#checkbox9').on('click',function (e) {
         e.preventDefault();
         $('#back-red').addClass('add-radio-color');
@@ -188,40 +173,46 @@ var car_type = car_reg = luggage_limit = '';
         $('#back-red').removeClass('add-radio-color');
         $('#back').val('yes');
     });
-    var count = 0;
-    var html = '';
-    var itemName = '';
-    $('#add-more').on('click',function (e) {
-       e.preventDefault();
-        $('#item-save').on('submit',function (e) {
-            count++;
+    $(document).ready(function () {
+        var count = 0;
+        var html = '';
+        var itemName = '';
+        var rel = '';
+        $('#add-more').on('click',function (e) {
             e.preventDefault();
-            itemName = $('#item-name').val();
-            html = '<li>' +
-                '<span class="left-ride-feature">'+itemName+'</span>' +
-                '<span class="right-ride-feature">' +
-                '<input class="check-input-2" type="checkbox" id="'+itemName+count+'">' +
-                '<label class="red-color" id="'+itemName+'-red"></label>' +
-                '<input class="check-input" type="checkbox" id="'+itemName+count+'">' +
-                '<label class="green-color" id="'+itemName+'-green"></label>' +
-                '</span>'+
-                '</li>';
-            $('.get-ride-feature').append(html);
-            $('#total').val(count);
-            alert($('#'+itemName+count).attr('id'));
-            $('#'+itemName+count).on('click',function (ev) {
-                alert(count);
-                ev.preventDefault();
-                $('#'+itemName+'-red').addClass('add-radio-color');
-                $('#'+itemName+'-green').removeClass('add-green-color');
-                //$('#added-items').html('<input type="hidden" name="'+itemName+'" value="no">');
-            });
-            $('#'+itemName+count).on('click',function (ex) {
-                alert(count);
-                ex.preventDefault();
-                $('#'+itemName+'-green').addClass('add-green-color');
-                $('#'+itemName+'-red').removeClass('add-radio-color');
-                //$('#added-items').html('<input type="hidden" name="'+itemName+'" value="yes">');
+            $('#item-save').on('submit',function (e) {
+                e.preventDefault();
+                itemName = $('#item-name').val();
+                count++;
+                html = '<li>' +
+                    '<span class="left-ride-feature">'+itemName+'</span>' +
+                    '<span class="right-ride-feature">' +
+                    '<input class="check-input-2 common" type="checkbox" rel="'+count+'" id="'+itemName+count+'">' +
+                    '<label class="red-color" id="'+itemName+'-red" for="'+itemName+count+'"></label>' +
+                    '<input class="check-input common" type="checkbox" rel="'+(count+1)+'" id="'+itemName+(count+1)+'">' +
+                    '<label class="green-color" id="'+itemName+'-green" for="'+itemName+(count+1)+'"></label>' +
+                    '</span>'+
+                    '</li>';
+                $('.get-ride-feature').append(html);
+                $('#total').val(count);
+                var target1 = $('#'+itemName+count).attr('rel');
+                var target2 = $('#'+itemName+(count+1)).attr('rel');
+                $(document).on('click','#'+itemName+target1,function (ev) {
+                    ev.preventDefault();
+                    //alert(count);
+                    $('#'+itemName+'-red').addClass('add-radio-color');
+                    $('#'+itemName+'-green').removeClass('add-green-color');
+                    $('#added-items').html('<input type="hidden" name="'+itemName+'" value="no">');
+                });
+                $(document).on('click','#'+itemName+target2,function (ex) {
+                    //alert(count);
+                    ex.preventDefault();
+                    $('#'+itemName+'-green').addClass('add-green-color');
+                    $('#'+itemName+'-red').removeClass('add-radio-color');
+                    $('#added-items').html('<input type="hidden" name="'+itemName+'" value="yes">');
+                });
+                $('#myModalx').modal('toggle');
+                return false;
             });
         });
     });
