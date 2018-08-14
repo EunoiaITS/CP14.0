@@ -114,7 +114,11 @@ Datepicker init
     },
       minDate: moment()
   });
-
+$('#datetimepicker12').datepicker({
+    todayHighlight: true,
+    inline: true,
+    sideBySide: true,
+});
 /*=======================================
 Timepicker init 
 =========================================*/

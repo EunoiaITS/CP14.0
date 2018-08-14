@@ -221,7 +221,7 @@
                                     <option value="Kualalampur">Yearly</option>
                                 </select>
                                 <!-- live calender -->
-                                <div id="my-calendar"></div>
+                                <div id="datetimepicker12"></div>
                                 <button class="btn btn-info btn-offer">Generate</button>
                             </div>
                         </div>
