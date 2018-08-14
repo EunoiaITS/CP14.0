@@ -197,7 +197,6 @@
     $(document.body).on('click', '.red-check', function (ev) {
         ev.preventDefault();
         var rel = $(this).attr('rel');
-        alert(count);
         $('#red-label-'+rel).addClass('add-radio-color');
         $('#green-label-'+rel).removeClass('add-green-color');
         $('#value-'+rel).val('no');
@@ -205,52 +204,9 @@
     $(document.body).on('click', '.green-check', function (ev) {
         ev.preventDefault();
         var rel = $(this).attr('rel');
-        alert(count);
         $('#red-label-'+rel).removeClass('add-radio-color');
         $('#green-label-'+rel).addClass('add-green-color');
         $('#value-'+rel).val('yes');
-    $(document).ready(function () {
-        var count = 0;
-        var html = '';
-        var itemName = '';
-        var rel = '';
-        $('#add-more').on('click',function (e) {
-            e.preventDefault();
-            $('#item-save').on('submit',function (e) {
-                e.preventDefault();
-                itemName = $('#item-name').val();
-                count++;
-                html = '<li>' +
-                    '<span class="left-ride-feature">'+itemName+'</span>' +
-                    '<span class="right-ride-feature">' +
-                    '<input class="check-input-2 common" type="checkbox" rel="'+count+'" id="'+itemName+count+'">' +
-                    '<label class="red-color" id="'+itemName+'-red" for="'+itemName+count+'"></label>' +
-                    '<input class="check-input common" type="checkbox" rel="'+(count+1)+'" id="'+itemName+(count+1)+'">' +
-                    '<label class="green-color" id="'+itemName+'-green" for="'+itemName+(count+1)+'"></label>' +
-                    '</span>'+
-                    '</li>';
-                $('.get-ride-feature').append(html);
-                $('#total').val(count);
-                var target1 = $('#'+itemName+count).attr('rel');
-                var target2 = $('#'+itemName+(count+1)).attr('rel');
-                $(document).on('click','#'+itemName+target1,function (ev) {
-                    ev.preventDefault();
-                    //alert(count);
-                    $('#'+itemName+'-red').addClass('add-radio-color');
-                    $('#'+itemName+'-green').removeClass('add-green-color');
-                    $('#added-items').html('<input type="hidden" name="'+itemName+'" value="no">');
-                });
-                $(document).on('click','#'+itemName+target2,function (ex) {
-                    //alert(count);
-                    ex.preventDefault();
-                    $('#'+itemName+'-green').addClass('add-green-color');
-                    $('#'+itemName+'-red').removeClass('add-radio-color');
-                    $('#added-items').html('<input type="hidden" name="'+itemName+'" value="yes">');
-                });
-                $('#myModalx').modal('toggle');
-                return false;
-            });
-        });
     });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDYEWgbPh1YBGNEZoMye44-F9ugukmRo&libraries=places&callback=initMap"
