@@ -284,6 +284,16 @@ class Driver extends Controller
                     $ride_desc->save();
                 }
 
+                if($request->total != ''){
+                    for($i = 1; $i <= $request->total; $i++){
+                        $ride_desc = new RideDescriptions();
+                        $ride_desc->ride_offer_id = $ride_offer_id;
+                        $ride_desc->key = $request->{'key-'.$i};
+                        $ride_desc->value = $request->{'value-'.$i};
+                        $ride_desc->save();
+                    }
+                }
+
                 if($request->req_id != ''){
                     $ride_book = new RideBookings();
                     $ride_book->user_id = $request->req_user_id;
@@ -320,7 +330,7 @@ class Driver extends Controller
         $offers = RideOffers::where(['offer_by' => Auth::id()])
             ->where('departure_time', '>=', date('Y-m-d H:s'))
             ->where(['status' => 'active'])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('departure_time', 'asc')
             ->get();
         foreach($offers as $of){
             $bookings = RideBookings::where(['ride_id' => $of->id])
@@ -619,6 +629,23 @@ class Driver extends Controller
                     ->first();
                 $ride_desc->value = $request->back_seat;
                 $ride_desc->save();
+            }
+            if($request->total_edit != 0){
+                for($i = 1; $i <= $request->total_edit; $i++){
+                    $ride_desc = RideDescriptions::find($request->{'edit-id-'.$i});
+                    $ride_desc->value = $request->{'edit-value-'.$i};
+                    $ride_desc->save();
+                }
+            }
+
+            if($request->total != ''){
+                for($i = 1; $i <= $request->total; $i++){
+                    $ride_desc = new RideDescriptions();
+                    $ride_desc->ride_offer_id = $ride_offer_id;
+                    $ride_desc->key = $request->{'key-'.$i};
+                    $ride_desc->value = $request->{'value-'.$i};
+                    $ride_desc->save();
+                }
             }
 
             return redirect()

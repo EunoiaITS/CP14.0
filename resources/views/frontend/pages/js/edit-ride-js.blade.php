@@ -180,6 +180,63 @@
         $('#back-red').removeClass('add-radio-color');
         $('#back').val('yes');
     });
+
+    var count = 0;
+    var html = '';
+    var itemName = '';
+    $('#add-desc').on('click',function (e) {
+        count++;
+        e.preventDefault();
+        itemName = $('#item-name').val();
+        html = '<li>' +
+        '<span class="left-ride-feature">'+itemName+'</span>' +
+        '<span class="right-ride-feature">' +
+        '<input class="check-input-2" type="checkbox" id="'+itemName+count+'">' +
+        '<label class="red-color red-check" rel="'+count+'" id="red-label-'+count+'"></label>' +
+        '<input class="check-input" type="checkbox" id="'+itemName+count+'">' +
+        '<label class="green-color green-check" rel="'+count+'" id="green-label-'+count+'"></label>' +
+        '</span>'+
+        '</li>';
+        $('.get-ride-feature').append(html);
+        $('#total').val(count);
+        $('#added-items').append('<input type="hidden" name="key-'+count+'" value="'+itemName+'"><input type="hidden" name="value-'+count+'" id="value-'+count+'" value="">');
+    });
+    $(document.body).on('click', '.red-check', function (ev) {
+        ev.preventDefault();
+        var rel = $(this).attr('rel');
+        alert(count);
+        $('#red-label-'+rel).addClass('add-radio-color');
+        $('#green-label-'+rel).removeClass('add-green-color');
+        $('#value-'+rel).val('no');
+    });
+    $(document.body).on('click', '.green-check', function (ev) {
+        ev.preventDefault();
+        var rel = $(this).attr('rel');
+        alert(count);
+        $('#red-label-'+rel).removeClass('add-radio-color');
+        $('#green-label-'+rel).addClass('add-green-color');
+        $('#value-'+rel).val('yes');
+    });
+
+    <?php $edit_count = 0; ?>
+    @foreach($data->rd as $rd)
+    @if(!in_array($rd->key, ['vehicle_id', 'pets', 'music', 'smoking', 'back_seat']))
+    <?php $edit_count++; ?>
+    $('#check-red-{{ $edit_count }}').on('click',function (e) {
+        e.preventDefault();
+        $('#edit-red-{{ $edit_count }}').addClass('add-radio-color');
+        $('#edit-green-{{ $edit_count }}').removeClass('add-green-color');
+        $('#edit-value-{{ $edit_count }}').val('no');
+    });
+    $('#check-green-{{ $edit_count }}').on('click',function (e) {
+        e.preventDefault();
+        $('#edit-red-{{ $edit_count }}').removeClass('add-radio-color');
+        $('#edit-green-{{ $edit_count }}').addClass('add-green-color');
+        $('#edit-value-{{ $edit_count }}').val('yes');
+    });
+    @endif
+    @endforeach
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDYEWgbPh1YBGNEZoMye44-F9ugukmRo&libraries=places&callback=initMap"
         async defer></script>

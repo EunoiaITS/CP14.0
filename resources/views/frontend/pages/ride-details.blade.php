@@ -187,6 +187,14 @@
                                 <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'back_seat')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
                                 <span class="left-ride-feature">Max.2 in back Seat</span>
                             </li>
+                            @foreach($data->rd as $r)
+                                @if(!in_array($r->key, ['vehicle_id', 'pets', 'music', 'smoking', 'back_seat']))
+                                    <li>
+                                        <span class="right-ride-feature @if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif"></span>
+                                        <span class="left-ride-feature">{{ $r->key }}</span>
+                                    </li>
+                                    @endif
+                                @endforeach
                         </ul>
                     </div>
                     @if(Auth::check() && Auth::user()->role != 'driver')

@@ -166,13 +166,33 @@
 			        						<label class="green-color @foreach($data->rd as $rd)@if($rd->key == 'back_seat' && $rd->value == 'yes') add-green-color @endif @endforeach" id="back-green" for="checkbox10"></label>
 									</span>
                                 </li>
+                                <?php $edit_count = 0; ?>
+                                @foreach($data->rd as $rd)
+                                    @if(!in_array($rd->key, ['vehicle_id', 'pets', 'music', 'smoking', 'back_seat']))
+                                        <?php $edit_count++; ?>
+                                        <li>
+                                            <span class="left-ride-feature">{{ $rd->key }} </span>
+                                    <span class="right-ride-feature">
+											<input class="check-input-2" type="checkbox" id="check-red-{{ $edit_count }}" name="checkbox01" @if($rd->value == 'no') checked @endif>
+			        						<label class="red-color @if($rd->value == 'no') add-radio-color @endif" id="edit-red-{{ $edit_count }}" for="check-red-{{ $edit_count }}"></label>
+											<input class="check-input" type="checkbox" id="check-green-{{ $edit_count }}" name="checkbox01" @if($rd->value == 'yes') checked @endif>
+			        						<label class="green-color @if($rd->value == 'yes') add-green-color @endif" id="edit-green-{{ $edit_count }}" for="check-green-{{ $edit_count }}"></label>
+									</span>
+                                        </li>
+                                            <input type="hidden" name="edit-id-{{ $edit_count }}" id="edit-id-{{ $edit_count }}" value="{{ $rd->id }}">
+                                            <input type="hidden" name="edit-value-{{ $edit_count }}" id="edit-value-{{ $edit_count }}" value="{{ $rd->value }}">
+                                    @endif
+                                @endforeach
                             </ul>
+                            <input type="hidden" name="total_edit" value="{{ $edit_count }}">
                             <input type="hidden" name="pets" id="pets" value="@foreach($data->rd as $rd)@if($rd->key == 'pets') {{ $rd->value }} @endif @endforeach">
                             <input type="hidden" name="music" id="music" value="@foreach($data->rd as $rd)@if($rd->key == 'music') {{ $rd->value }} @endif @endforeach">
                             <input type="hidden" name="smoking" id="smoking" value="@foreach($data->rd as $rd)@if($rd->key == 'smoking') {{ $rd->value }} @endif @endforeach">
                             <input type="hidden" name="back_seat" id="back" value="@foreach($data->rd as $rd)@if($rd->key == 'back_seat') {{ $rd->value }} @endif @endforeach">
                             <input type="hidden" name="ride_id" value="{{ $data->id }}">
-                            <button type="button" class="btn btn-info btn-offer">Add More <i class="fas fa-plus"></i></button>
+                            <p id="added-items"></p>
+                            <input type="hidden" name="total" id="total">
+                            <button type="button" class="btn btn-info btn-offer" data-toggle="modal" data-target="#add-more">Add More <i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                     <div class="get-ride-offer-button text-center clearfix">
@@ -185,5 +205,30 @@
         </div>
     </form>
     <!-- end offer a ride -->
+
+    <!-- add more -->
+    <div class="modal fade" id="add-more" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add More</h4>
+                </div>
+                <form id="item-save">
+                    <div class="modal-body">
+                        <div class="col-sm-12 padding-left-o padding-right-0">
+                            <div class="form-group">
+                                <input type="text" id="item-name" class="form-control" placeholder="Enter Name" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer login-modal-footer">
+                        <button type="submit" id="add-desc" class="btn btn-info btn-offer">Save</button>
+                        <button type="button" class="btn btn-info btn-offer" data-dismiss="modal" aria-label="Close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     @endsection
