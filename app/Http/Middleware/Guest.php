@@ -18,8 +18,12 @@ class Guest
     {
         $sCheck = session('area');
         if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login')])){
-            return redirect()
-                ->to('/choose-country');
+            if(Auth::check() && Auth::user()->role == 'super-admin'){
+                return $next($request);
+            }else{
+                return redirect()
+                    ->to('/choose-country');
+            }
         }else{
             return $next($request);
         }
