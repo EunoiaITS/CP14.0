@@ -125,7 +125,7 @@
                         <span>{{ $b->ud->gender }}</span>
                     </div>
                 </div>
-                @if(Auth::id() == $b->user_id)
+                @if(Auth::id() == $b->user_id && $data->status == 'active')
                     <div class="ridemate-name-area">
                         <div class="ridemate-popup">
                             Ride Add/Cancel Information<span class="ridemate-right">:</span>
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 @endif
-                @if(Auth::check() && Auth::user()->role == 'driver')
+                @if(Auth::check() && Auth::user()->role == 'driver' && $data->status == 'active' && $data->offer_by == Auth::id())
                 <div class="ridemate-name-area">
                     <div class="ridemate-popup">
                         Rider Add/Cancel Information<span class="ridemate-right">:</span>

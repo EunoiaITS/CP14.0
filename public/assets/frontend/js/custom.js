@@ -1,6 +1,46 @@
 
 
 (function($) {
+	"use strict";
+
+
+  /*--==================
+  Radio button callback
+  ======================--*/
+  //$('.check-input').on('click', function() {
+  //   $('.green-color').addClass('add-green-color');
+  //   $('.red-color').removeClass('add-radio-color');
+  //});
+  //
+  // $('.check-input-2').on('click', function() {
+  //   $('.red-color').addClass('add-radio-color');
+  //    $('.green-color').removeClass('add-green-color');
+  //});
+
+	/*--========================
+	slidebar call js
+	========================--*/
+	$('#toggle-class').on('click', function(e) {
+		e.preventDefault();
+		$('body').toggleClass('nav-open');
+	});
+
+	$('#toggle-remove').on('click', function(e) {
+		e.preventDefault();
+		$('body').removeClass('nav-open');
+    return $(".navi-trigger").removeClass("cross");
+	});
+
+  // menu icon toggole
+
+  $(".get-humber-icon").click(function() {
+    return $(".navi-trigger").toggleClass("cross");
+  });
+
+
+	 /*=======================================================
+    // Vertical Center Welcome
+    ======================================================*/
     "use strict";
 
     /*--========================
@@ -117,7 +157,7 @@ $('.timepicker-hh').datetimepicker({
         previous: 'fa fa-angle-left',
         next: 'fa fa-angle-right',
     }
-});
+  });
 
 $('.timepicker-mm').datetimepicker({
     format: "mm",

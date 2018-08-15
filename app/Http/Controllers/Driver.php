@@ -329,8 +329,11 @@ class Driver extends Controller
     */
     public function myOffers(Request $request){
         $offers = RideOffers::where(['offer_by' => Auth::id()])
-            ->where('departure_time', '>=', date('Y-m-d H:s'))
-            ->where(['status' => 'active'])
+            ->whereDate('departure_time', '>=', date('Y-m-d'))
+            ->where(function($q){
+                $q->where(['status' => 'active'])
+                    ->orWhere(['status' => 'in-progress']);
+            })
             ->orderBy('departure_time', 'asc')
             ->get();
         foreach($offers as $of){
@@ -466,6 +469,9 @@ class Driver extends Controller
                 $start->ride_id = $request->ride_id;
                 $start->start_time = $request->start_time;
                 if($start->save()){
+                    $offer = RideOffers::find($request->ride_id);
+                    $offer->status = 'in-progress';
+                    $offer->save();
                     return redirect()
                         ->to($request->ride_url)
                         ->with('success', 'Your ride was started successfully!');
