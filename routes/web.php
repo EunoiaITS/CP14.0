@@ -107,6 +107,7 @@ Route::prefix('d')->group(function(){
     Route::post('/start-ride', 'Driver@startRide');
     Route::post('/end-ride', 'Driver@endRide');
     Route::get('/ride-requests', 'Driver@rideRequests');
+    Route::post('/income-statement/', 'Driver@incomeStatement');
 });
 
 /**

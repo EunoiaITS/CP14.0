@@ -214,23 +214,16 @@
                     <div class="col-sm-12 padding-left-o padding-right-0">
                         <div class="col-sm-12 col-md-4">
                             <div class="statement-ridemate">
-                                <select name="" id="" class="get-select-picker" title="Select">
-                                    <option value="dhaka">Daily Income</option>
-                                    <option value="Kualalampur">Weekly Income</option>
-                                    <option value="Kualalampur">Monthly</option>
-                                    <option value="Kualalampur">Yearly</option>
+                                <select name="" id="format-selector" class="get-select-picker" title="Select">
+                                    <option value="Daily">Daily Income</option>
+                                    <option value="Weekly">Weekly Income</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Yearly">Yearly</option>
                                 </select>
                                 <!-- live calender -->
                                 <!-- daily calender -->
-                                <div class="view-ridemate-profile-popup" id="dailypicker01"></div>
-                                <!-- weekly calender -->
-                                <div class="view-ridemate-profile-popup" id="dailypicker02"></div>
-                                <div id="week-start"></div>
-                                <!-- monthly calender -->
-                                <div class="view-ridemate-profile-popup" id="dailypicker03"></div>
-                                <!-- yearly calender -->
-                                <div class="view-ridemate-profile-popup" id="dailypicker04"></div>
-                                <button class="btn btn-info btn-offer">Generate</button>
+                                <div id="picker"></div>
+                                <button id="generate" class="btn btn-info btn-offer">Generate</button>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-8 ">
@@ -242,27 +235,7 @@
                                     <th>Amount (including GST 6%)</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                </tr>
+                                <tbody id="income-data">
                                 </tbody>
                             </table>
                             <form action="" method="POST" role="form">

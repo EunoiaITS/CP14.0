@@ -38,7 +38,8 @@ class Driver extends Controller
             }
             return view('frontend.pages.driver-profile',[
                 'usd' => $usd,
-                'user' => $user
+                'user' => $user,
+                'js' => 'frontend.pages.js.driver-profile-js'
             ]);
         }
     }
@@ -680,5 +681,51 @@ class Driver extends Controller
             'data' => $rr
         ]);
     }
-
+    /**
+     * Income Statement  - shows Income Statement of a driver
+     * In Basis of Daily,weekly,monthly,yearly
+     */
+    public function incomeStatement(Request $request){
+        if($request->ajax()){
+            $id = Auth::id();
+            $ro = RideOffers::where('offer_by',$id)->get();
+            foreach ($ro as $r){
+                $rc = RideComp::where('ride_id',$r->id)->get();
+                foreach ($rc as $c){
+                    if($request->section == 'daily'){
+                        if(date('d',strtotime($c->start_time)) == date('d',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                            $r->time = date('H:i A',strtotime($c->start_time));
+                            $r->amount = $c->total_fair;
+                        }
+                    }elseif ($request->section == 'weekly'){
+                        for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
+                            if($i == date('d',strtotime($c->start_time))){
+                                $r->checked = 'yes';
+                                $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                                $r->time = date('H:i A',strtotime($c->start_time));
+                                $r->amount = $c->total_fair;
+                            }
+                        }
+                    }elseif ($request->section == 'monthly'){
+                        if(date('m',strtotime($c->start_time)) == date('m',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                            $r->time = date('H:i A',strtotime($c->start_time));
+                            $r->amount = $c->total_fair;
+                        }
+                    }elseif($request->section == 'yearly'){
+                        if(date('Y',strtotime($c->start_time)) == date('Y',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                            $r->time = date('H:i A',strtotime($c->start_time));
+                            $r->amount = $c->total_fair;
+                        }
+                    }
+                }
+            }
+            return json_encode($ro);
+        }
+    }
 }
