@@ -74,8 +74,6 @@
                     </div>
                     <!-- end single ridemate area -->
                     @endforeach
-
-
                 </div>
                 <!-- end ridemate details -->
             </div>
