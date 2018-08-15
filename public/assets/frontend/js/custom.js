@@ -4,23 +4,11 @@
 	"use strict";
 
 
-  /*--==================
-  Radio button callback
-  ======================--*/
-  //$('.check-input').on('click', function() {
-  //   $('.green-color').addClass('add-green-color');
-  //   $('.red-color').removeClass('add-radio-color');
-  //});
-  //
-  // $('.check-input-2').on('click', function() {
-  //   $('.red-color').addClass('add-radio-color');
-  //    $('.green-color').removeClass('add-green-color');
-  //});
 
 	/*--========================
 	slidebar call js
 	========================--*/
-	$('#toggle-class').on('click', function(e) {
+	$('#toggle-remove-class').on('click', function(e) {
 		e.preventDefault();
 		$('body').toggleClass('nav-open');
 	});
@@ -31,7 +19,7 @@
     return $(".navi-trigger").removeClass("cross");
 	});
 
-  // menu icon toggole
+  // menu icon toggle
 
   $(".get-humber-icon").click(function() {
     return $(".navi-trigger").toggleClass("cross");
@@ -85,11 +73,11 @@
     /*--==================
     click notification bar
     ======================--*/
-    $(".notification-badge").click(function() {
+    $(".notification-badge").on('click',function() {
         $(".get-notification-popupbar").toggleClass("add-popupbar");
     });
 
-    $(".edit-badge-area").click(function() {
+    $(".edit-badge-area").on('click',function() {
         $(".get-edit-profile").toggleClass("add-profile");
     });
 
@@ -106,13 +94,6 @@
     ==========================--*/
     $('.first-ride .fas').click(function() {
         $(this).toggleClass('active-class');
-    });
-
-    // clander js call
-
-    $("#my-calendar").zabuto_calendar({
-        language: "en",
-        today:true
     });
 
     /*===================
@@ -181,7 +162,6 @@ $('#datetimepicker5').datetimepicker({
     icons:{
         time:'fas fa-clock',
     }
-
 });
 
 $('#datetimepicker6').datetimepicker({

@@ -37,6 +37,10 @@ class Customer extends Controller
         foreach($bookings as $book){
             $ride_details = RideOffers::find($book->ride_id);
             $book->ride_details = $ride_details;
+            $user = User::find($ride_details->offer_by);
+            $book->user = $user;
+            $ud = User_data::where(['user_id' => $user->id])->first();
+            $book->ud = $ud;
             $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
                 ->where(['key' => 'vehicle_id'])
                 ->first();
@@ -48,7 +52,7 @@ class Customer extends Controller
             'usd' => $usd,
             'user' => $user,
             'data' => $bookings,
-            'modals' => 'frontend.pages.modals.customer-profile-modals'
+            'modals' => 'frontend.pages.modals.customer-profile-modals',
         ]);
     }
 
@@ -280,7 +284,8 @@ class Customer extends Controller
             ->get();
         return view('frontend.pages.requests', [
             'data' => $reqs,
-            'ex_data' => $ex_reqs
+            'ex_data' => $ex_reqs,
+            'js'=> 'frontend.pages.js.home-js'
         ]);
     }
 
