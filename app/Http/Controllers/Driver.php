@@ -688,13 +688,15 @@ class Driver extends Controller
                 foreach ($rc as $c){
                     if($request->section == 'daily'){
                         if(date('d',strtotime($c->start_time)) == date('d',strtotime($request->date))){
+                            $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($c->start_time));
                             $r->time = date('H:i A',strtotime($c->start_time));
                             $r->amount = $c->total_fair;
                         }
                     }elseif ($request->section == 'weekly'){
-                        for($i = date('d',strtotime($request->start_date)); $i <= date('d',strtotime($request->end_date)); $i++){
+                        for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
                             if($i == date('d',strtotime($c->start_time))){
+                                $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($c->start_time));
                                 $r->time = date('H:i A',strtotime($c->start_time));
                                 $r->amount = $c->total_fair;
@@ -702,12 +704,14 @@ class Driver extends Controller
                         }
                     }elseif ($request->section == 'monthly'){
                         if(date('m',strtotime($c->start_time)) == date('m',strtotime($request->date))){
+                            $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($c->start_time));
                             $r->time = date('H:i A',strtotime($c->start_time));
                             $r->amount = $c->total_fair;
                         }
                     }elseif($request->section == 'yearly'){
                         if(date('Y',strtotime($c->start_time)) == date('Y',strtotime($request->date))){
+                            $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($c->start_time));
                             $r->time = date('H:i A',strtotime($c->start_time));
                             $r->amount = $c->total_fair;

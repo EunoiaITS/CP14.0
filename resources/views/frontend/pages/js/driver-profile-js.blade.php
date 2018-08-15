@@ -27,9 +27,7 @@
                        success: function(data, textStatus, xhr){
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
-                                if(!e.start_time){
-                                    html = '';
-                                }else{
+                                if(e.checked === 'yes') {
                                     html += '<tr>' +
                                         '<td>'+e.start_time+'</td>' +
                                         ' <td>'+e.time+'</td>' +
@@ -54,6 +52,8 @@
                    currentText: dateText,
                    onSelect: function(dateText, startDateText, startDate, endDate, inst) {
                        display.text(startDateText);
+                       alert(startDate.toISOString().split('T')[0]);
+                       alert(endDate.toISOString().split('T')[0]);
                        $(document).on('click','#generate',function (e) {
                            e.preventDefault();
                            let link = '<?php echo url('/d/income-statement');?>';
@@ -66,9 +66,7 @@
                                success: function(data, textStatus, xhr){
                                    console.log(data);
                                    $.each(JSON.parse(data),function (i,e) {
-                                       if(!e.start_time){
-                                           html = '';
-                                       }else{
+                                       if(e.checked === 'yes') {
                                            html += '<tr>' +
                                                '<td>'+e.start_time+'</td>' +
                                                ' <td>'+e.time+'</td>' +
@@ -107,9 +105,7 @@
                        success: function(data, textStatus, xhr){
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
-                               if(!e.start_time){
-                                   html = '';
-                               }else{
+                               if(e.checked === 'yes') {
                                    html += '<tr>' +
                                        '<td>'+e.start_time+'</td>' +
                                        ' <td>'+e.time+'</td>' +
@@ -146,9 +142,7 @@
                        success: function(data, textStatus, xhr){
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
-                               if(!e.start_time){
-                                   html = '';
-                               }else{
+                               if(e.checked === 'yes') {
                                    html += '<tr>' +
                                        '<td>'+e.start_time+'</td>' +
                                        ' <td>'+e.time+'</td>' +
