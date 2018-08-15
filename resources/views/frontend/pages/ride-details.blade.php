@@ -21,7 +21,7 @@
 
                 @if(Auth::check() && Auth::user()->role == 'driver' && Auth::id() == $data->offer_by)
                     @if(empty($ride_start))
-                    @if(date('Y-m-d H:i', strtotime($data->departure_time)) <= date('Y-m-d H:i', strtotime('+1 Hour')) && date('Y-m-d H:i', strtotime($data->departure_time)) >= date('Y-m-d H:i'))
+                    @if(date('Y-m-d H:i') >= date('Y-m-d H:i', strtotime($data->departure_time)) && date('Y-m-d H:i') <= date('Y-m-d H:i', strtotime($data->departure_time)+3600))
                 <div class="get-form-control-button">
                     <button type="button" class="btn btn-info btn-offer" data-toggle="modal" data-target="#startRidePop">Start the Ride</button>
                 </div>
@@ -119,7 +119,7 @@
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')
-                            @if($total_books != $data->total_seats)
+                            @if($total_books != $data->total_seats && $data->status == 'active')
                                 <div class="col-sm-5 col-sm-offset-3 col-xs-12">
                                     <button class="btn btn-info btn-offer" data-toggle="modal" data-target="#book-ride">Request To Book</button>
                                 </div>
@@ -197,7 +197,7 @@
                                 @endforeach
                         </ul>
                     </div>
-                    @if(Auth::check() && Auth::user()->role != 'driver')
+                    @if(Auth::id() != $data->offer_by)
                     <button class="btn btn-info btn-offer ride-final-ride-button" type="button" data-toggle="modal" data-target="#myModalx">Ridemate Details</button>
                         @endif
                     @if(Auth::check() && Auth::user()->role == 'driver' && !isset($ride_start->start_time) && Auth::id() == $data->offer_by)

@@ -7,15 +7,15 @@
   /*--==================
   Radio button callback
   ======================--*/
-  $('.check-input').on('click', function() {
-     $('.green-color').addClass('add-green-color');
-     $('.red-color').removeClass('add-radio-color');
-  });
-
-   $('.check-input-2').on('click', function() {
-     $('.red-color').addClass('add-radio-color');
-      $('.green-color').removeClass('add-green-color');
-  });
+  //$('.check-input').on('click', function() {
+  //   $('.green-color').addClass('add-green-color');
+  //   $('.red-color').removeClass('add-radio-color');
+  //});
+  //
+  // $('.check-input-2').on('click', function() {
+  //   $('.red-color').addClass('add-radio-color');
+  //    $('.green-color').removeClass('add-green-color');
+  //});
 
 	/*--========================
 	slidebar call js
@@ -99,7 +99,7 @@ Datepicker init
 =========================================*/
 
   $('.datepicker-f').datetimepicker({
-    format: "DD/MM/YYYY",
+    format: "YYYY-MM-DD",
     icons: {
       up: 'fa fa-angle-up',
       down: 'fa fa-angle-down',
@@ -123,7 +123,7 @@ Timepicker init
   });
   
   $('.timepicker-mm').datetimepicker({
-    format: "mm A",
+    format: "mm",
     icons: {
       up: 'fa fa-angle-up',
       down: 'fa fa-angle-down',
