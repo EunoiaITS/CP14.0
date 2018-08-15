@@ -38,7 +38,7 @@
                            $('#income-data').html(html);
                        },
                        error: function(xhr, textStatus, error){
-                           alert(textStatus);
+                           //alert(textStatus);
                        }
                    });
                    return false;
@@ -77,7 +77,7 @@
                                    $('#income-data').html(html);
                                },
                                error: function(xhr, textStatus, error){
-                                   alert(textStatus);
+                                   //alert(textStatus);
                                }
                            });
                            return false;
@@ -116,7 +116,7 @@
                            $('#income-data').html(html);
                        },
                        error: function(xhr, textStatus, error){
-                           alert(textStatus);
+                           //alert(textStatus);
                        }
                    });
                    return false;
@@ -153,7 +153,7 @@
                            $('#income-data').html(html);
                        },
                        error: function(xhr, textStatus, error){
-                           alert(textStatus);
+                           //alert(textStatus);
                        }
                    });
                    return false;
