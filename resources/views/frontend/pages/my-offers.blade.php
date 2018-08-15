@@ -66,7 +66,7 @@
                                     <span class="ride-label">Date <span class="right-into">:</span></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="ride-label-badge">{{ $offer->departure_time }}</span>
+                                    <span class="ride-label-badge">{{ date('d-m-Y H:i A',strtotime($offer->departure_time)) }}</span>
                                 </div>
                             </div>
                             <button class="btn btn-info btn-offer offer-ride-ridemate-home"><a style="color: purple" href="{{ url('/d/edit-ride/'.$offer->link) }}">Edit Ride</a></button>
