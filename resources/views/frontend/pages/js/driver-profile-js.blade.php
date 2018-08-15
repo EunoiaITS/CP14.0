@@ -52,8 +52,8 @@
                    currentText: dateText,
                    onSelect: function(dateText, startDateText, startDate, endDate, inst) {
                        display.text(startDateText);
-                       alert(startDate.toISOString().split('T')[0]);
-                       alert(endDate.toISOString().split('T')[0]);
+                       //alert(startDate.toISOString().split('T')[0]);
+                       //alert(endDate.toISOString().split('T')[0]);
                        $(document).on('click','#generate',function (e) {
                            e.preventDefault();
                            let link = '<?php echo url('/d/income-statement');?>';
