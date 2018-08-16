@@ -191,6 +191,11 @@
     Header css
     ======================================--*/
 
+    /*-- auto suggetion popup css --*/
+    .pac-container{
+       z-index:10000;
+      }
+
     .get-header-top {
         background: #62118d;
         color: #fff;
