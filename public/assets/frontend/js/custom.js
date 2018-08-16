@@ -158,14 +158,14 @@ $('#datetimepicker4').datetimepicker({
 });
 
 $('#datetimepicker5').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
+    format: "DD-MM-YYYY HH:mm",
     icons:{
         time:'fas fa-clock',
     }
 });
 
 $('#datetimepicker6').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
+    format: "DD-MM-YYYY HH:mm",
     icons:{
         time:'fas fa-clock',
     }
