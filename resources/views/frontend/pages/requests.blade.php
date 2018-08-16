@@ -17,9 +17,10 @@
                     @endif
                 </div>
                 <div class="clearfix"></div>
+                <h3>Active Requests</h3>
                 <form method="post" id="delete-req" action="{{ url('/c/delete-request') }}">
                     {{ csrf_field() }}
-                <h3>Active Requests</h3>
+
                 <div class="table-responsive">
                     <table class="table table-hover ">
                         <tbody>
@@ -35,11 +36,12 @@
                                 <label for="checkbox{{ $d->id }}"></label>
                             </td>
                         </tr>
-                        @endif
+                            @endif
                         @endforeach
                         </tbody>
                     </table>
                 </div>
+                    <div class="clearfix"></div>
                     <h3>Expired Requests</h3>
                     <p>Your expired requests will be removed automatically within one week.</p>
                     <div class="table-responsive">
@@ -81,10 +83,10 @@
                         {{ csrf_field() }}
                         <div class="get-a-ride">
                             <div class="get-form-control">
-                                <input type="text" name="from" id="" class="get-select-picker placepicker form-control" placeholder="From" required value="{{ old('from') }}">
+                                <input type="text" name="from" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="From" required value="{{ old('from') }}">
                             </div>
                             <div class="get-form-control">
-                                <input type="text" name="to" id="" class="get-select-picker placepicker form-control" placeholder="To" required value="{{ old('to') }}">
+                                <input type="text" name="to" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="To" required value="{{ old('to') }}">
                             </div>
                             <div class="get-form-control">
                                 <input type="text" name="departure_date" placeholder="When" class="form-control" id="datetimepicker4" required value="{{ old('departure_date') }}">

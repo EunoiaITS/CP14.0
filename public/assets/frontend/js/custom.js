@@ -151,7 +151,7 @@ $('.timepicker-mm').datetimepicker({
 });
 
 $('#datetimepicker4').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
+    format: "DD-MM-YYYY HH:mm",
     icons:{
         time:'fas fa-clock',
     }

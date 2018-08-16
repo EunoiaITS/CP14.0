@@ -6,13 +6,7 @@
             <div class="row">
                 <div class="col-sm-2 col-sm-offset-10 col-xs-12 col-xs-offset-0 padding-right-0">
                     <div class="col-lg-12 col-sm-12">
-                        <button class="btn btn-info btn-offer edit-badge-area">Edit Info <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
-                        <!-- notification popupbar -->
-                        <div class="get-edit-profile">
-                            <ul class="edit-profile-option">
-                                <li><a href="{{ url('d/profile/edit/'.$user->id) }}">Edit Profile</a></li>
-                            </ul>
-                        </div>
+                        <a href="{{ url('d/profile/edit/'.$user->id) }}"><button class="btn btn-info btn-offer edit-badge-area">Edit Profile <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -55,7 +49,7 @@
                                 <span class="ride-label">Car Type <span class="right-into">:</span></span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="ride-label-badge">Toyota Axio 2012</span>
+                                <span class="ride-label-badge">{{ $vd->car_type }}</span>
                             </div>
                         </div>
                         <div class="get-car-details-area clearfix">
@@ -63,7 +57,7 @@
                                 <span class="ride-label">Car Plate No <span class="right-into">:</span></span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="ride-label-badge">LA-558745 48</span>
+                                <span class="ride-label-badge">{{ $vd->car_plate_no }}</span>
                             </div>
                         </div>
                         <div class="get-car-details-area clearfix">
@@ -71,7 +65,7 @@
                                 <span class="ride-label">Maximum Luggage <span class="right-into">:</span></span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="ride-label-badge">3 Bags</span>
+                                <span class="ride-label-badge">{{ $vd->luggage_limit }}</span>
                             </div>
                         </div>
                         <div class="get-car-details-area clearfix">
@@ -79,29 +73,9 @@
                                 <span class="ride-label">Language Proficiency <span class="right-into">:</span></span>
                             </div>
                             <div class="col-sm-6">
-                                <span class="ride-label-badge">English</span>
+                                <span class="ride-label-badge">{{ $vd->language }}</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3 col-sm-offset-3 col-xs-12 ride-details-feature">
-                        <ul class="get-ride-feature">
-                            <li>
-                                <span class="right-ride-feature icon-feature-details"></span>
-                                <span class="left-ride-feature">Pets</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature icon-feature-details"></span>
-                                <span class="left-ride-feature">Music</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature icon-feature-details"></span>
-                                <span class="left-ride-feature">Smoking</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature icon-cross-details"></span>
-                                <span class="left-ride-feature">Max.2 in back Seat</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <!--Ride description  -->

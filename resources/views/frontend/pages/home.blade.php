@@ -69,9 +69,7 @@
 
                                 @endif
                             @endforeach
-                                    @endif
-
-
+                        @endif
                     </div>
                     <!-- end ridemate details -->
                 </div>
