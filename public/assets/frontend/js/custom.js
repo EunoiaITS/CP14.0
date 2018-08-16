@@ -151,21 +151,21 @@ $('.timepicker-mm').datetimepicker({
 });
 
 $('#datetimepicker4').datetimepicker({
-    format: "DD-MM-YYYY HH:mm",
+    format: "YYYY-MM-DD HH:mm",
     icons:{
         time:'fas fa-clock',
     }
 });
 
 $('#datetimepicker5').datetimepicker({
-    format: "DD-MM-YYYY HH:mm",
+    format: "YYYY-MM-DD HH:mm",
     icons:{
         time:'fas fa-clock',
     }
 });
 
 $('#datetimepicker6').datetimepicker({
-    format: "DD-MM-YYYY HH:mm",
+    format: "YYYY-MM-DD HH:mm",
     icons:{
         time:'fas fa-clock',
     }
