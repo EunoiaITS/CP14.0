@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Countries;
 use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
@@ -70,23 +71,12 @@ class Frontend extends Controller
     }
 
     public function chooseCountry(Request $request){
-        $countries = array();
+        $countries = Countries::all()->sortBy('name');
         if($request->session()->has('area')){
             return redirect()
                 ->to('/')
                 ->with('error', 'You can\'t access this page!');
         }
-        $url = 'http://www.geognos.com/api/en/countries/info/all.json';
-
-        $options = [
-            'http' => [
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'GET'
-            ]
-        ];
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        $countries = json_decode($result);
         if($request->isMethod('post')){
             $countries = explode(',', $request->country);
             if(Auth::check()){
