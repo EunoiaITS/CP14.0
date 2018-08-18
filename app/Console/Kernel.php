@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Ride_request;
+use App\RideBookings;
+use App\RideOffers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +27,38 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function(){
+            $active_offers = RideOffers::where(['status' => 'active'])
+                ->get();
+            foreach($active_offers as $ac){
+                if(date('Y-m-d H:i') >= date('Y-m-d H:i', strtotime($ac->departure_time)+3600)){
+                    $ac->status = 'expired';
+                    $ac->save();
+                }
+            }
+            $expired_offers = RideOffers::where(['status' => 'expired'])->get();
+            foreach($expired_offers as $ex){
+                RideOffers::destroy($ex->id);
+            }
+            $active_req = Ride_request::where(['status' => 'requested'])->get();
+            foreach($active_req as $req){
+                if(date('Y-m-d H:i') >= date('Y-m-d H:i', strtotime($req->departure_date))){
+                    $req->status = 'expired';
+                    $req->save();
+                }
+            }
+            $ex_req = Ride_request::where(function($q){
+                $q->where(['status' => 'expired'])
+                    ->orWhere(['status' => 'canceled']);
+            })->get();
+            foreach($ex_req as $er){
+                Ride_request::destroy($er->id);
+            }
+            $bookings = RideBookings::where(['status' => 'canceled'])->get();
+            foreach($bookings as $b){
+                RideBookings::destroy($b->id);
+            }
+        })->everyMinute();
     }
 
     /**

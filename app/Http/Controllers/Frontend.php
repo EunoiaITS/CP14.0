@@ -45,7 +45,8 @@ class Frontend extends Controller
                 }
             }
         }
-        $offers_today = RideOffers::whereDate('departure_time', '=', date('Y-m-d'))
+        $offers_today = RideOffers::whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+            ->whereDate('departure_time', '=', date('Y-m-d'))
             ->where(['status' => 'active'])
             ->get();
         foreach($offers_today as $of){
@@ -140,6 +141,9 @@ class Frontend extends Controller
 
     public function rideDetails(Request $request,$link){
         $ro = RideOffers::where('link', $link)->first();
+        if(empty($ro)){
+            abort(404);
+        }
         if($ro->status == 'expired' || $ro->status == 'canceled'){
             return redirect()
                 ->to('/')
