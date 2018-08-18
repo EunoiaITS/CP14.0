@@ -207,7 +207,7 @@ class Frontend extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
             if(!$search_data->first()){
-                $search_data->error = "Your Desired Search Result Not Found !!";
+                $search_data->error = "Whooops, your desired ride is not available at the moment. Please try again.";
                 return view('frontend.pages.search',[
                     'data' => $search_data,
                     'time' => $request->when,

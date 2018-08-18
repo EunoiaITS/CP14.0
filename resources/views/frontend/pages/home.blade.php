@@ -69,9 +69,7 @@
 
                                 @endif
                             @endforeach
-                                    @endif
-
-
+                        @endif
                     </div>
                     <!-- end ridemate details -->
                 </div>
@@ -110,27 +108,26 @@
                     @endif
                 </div>
                 <div class="get-a-ride">
-                    <form method="@if(Auth::user() && Auth::user()->role == 'customer'){{'post'}}@else{{'get'}}@endif" action="@if(Auth::user() && Auth::user()->role == 'customer'){{url('/c/ride-request')}}@else{{url('/sign-up/customer')}}@endif">
+                    <form action="{{ url('/search') }}" method="post">
                         {{ csrf_field() }}
                         <div class="col-sm-3 col-xs-12 padding-left-o">
-                            <input type="text" name="from" id="" class="get-select-picker placepicker form-control" placeholder="From" required value="{{ old('from') }}">
+                            <input type="text" name="from" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="From" required>
                         </div>
                         <div class="col-sm-3 col-xs-12 padding-left-o">
-                            <input type="text" name="to" id="" class="get-select-picker placepicker form-control" placeholder="To" required value="{{ old('to') }}">
+                            <input type="text" name="to" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="To" required>
                         </div>
                         <div class="col-sm-2 col-xs-12 padding-left-o">
-                            <input type="text" name="departure_date" placeholder="When" class="form-control" id="datetimepicker4" required value="{{ old('departure_date') }}">
+                            <input type="text" name="when" class="form-control" id="datetimepicker5" placeholder="When" required>
                         </div>
                         <div class="col-sm-2 col-xs-12 padding-left-o">
-                            <select name="seat_required" id="" class="get-select-picker" title="Seats" required>
-                                <option value="1" @if(old('seat_required') == 1) selected @endif>1 Seat</option>
-                                <option value="2" @if(old('seat_required') == 2) selected @endif>2 Seats</option>
-                                <option value="3" @if(old('seat_required') == 3) selected @endif>3 Seats</option>
-                                <option value="4" @if(old('seat_required') == 4) selected @endif>4 Seats</option>
-                                <option value="5" @if(old('seat_required') == 5) selected @endif>5 Seats</option>
+                            <select name="seats" class="get-select-picker" title="Seats" required>
+                                <option value="1">1 seats</option>
+                                <option value="2">2 seats</option>
+                                <option value="3">3 seats</option>
+                                <option value="4">4 seats</option>
+                                <option value="5">5 seats</option>
                             </select>
                         </div>
-                        <input type="hidden" name="req_url" value="{{ url()->current() }}">
                         <div class="col-sm-2 col-xs-12 padding-left-o">
                             <button type="submit" class="btn btn-info btn-offer"><span>Get a ride </span><i class="fas fa-car"></i></button>
                         </div>

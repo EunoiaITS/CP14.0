@@ -32,10 +32,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Riders Details</h4>
+                        <h4 class="modal-title" id="myModalLabel">Ridemate Details</h4>
                     </div>
                     <div class="modal-body rider-details-ridemate">
-                        <h3 class="rider-title">Rider</h3>
+                        <h3 class="rider-title">Ridemate</h3>
                         <div class="ridemate-name-area">
                             <div class="ridemate-name">
                                 Name <span class="ridemate-right">:</span>

@@ -168,6 +168,14 @@
                                 <span class="ride-label-badge">{{ $data->vd->luggage_limit }}</span>
                             </div>
                         </div>
+                        <div class="get-car-details-area clearfix">
+                            <div class="col-sm-6 padding-left-o">
+                                <span class="ride-label">Language<span class="right-into">:</span></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="ride-label-badge">{{ $data->vd->language }}</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-3 col-sm-offset-3 col-xs-12 ride-details-feature">
                         <ul class="get-ride-feature">

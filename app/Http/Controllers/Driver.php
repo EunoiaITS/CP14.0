@@ -33,12 +33,16 @@ class Driver extends Controller
             $id = Auth::id();
             $user = User::find($id);
             $usd = User_data::where('user_id',$id)->first();
+            $vd = VehiclesData::where('user_id',$id)
+                ->where('own_vehicle',1)
+                ->first();
             if($user->role != 'driver'){
                 return redirect()->back();
             }
             return view('frontend.pages.driver-profile',[
                 'usd' => $usd,
                 'user' => $user,
+                'vd'=> $vd,
                 'js' => 'frontend.pages.js.driver-profile-js'
             ]);
         }
@@ -70,6 +74,7 @@ class Driver extends Controller
             $vd->car_type = $request->car_type;
             $vd->car_plate_no = $request->car_plate_no;
             $vd->luggage_limit = $request->luggage_limit;
+            $vd->language = $request->language;
             $vd->save();
             return redirect()
                 ->to('/d/profile/')
@@ -334,7 +339,7 @@ class Driver extends Controller
                 $q->where(['status' => 'active'])
                     ->orWhere(['status' => 'in-progress']);
             })
-            ->orderBy('departure_time', 'asc')
+            ->orderBy('created_at', 'desc')
             ->get();
         foreach($offers as $of){
             $bookings = RideBookings::where(['ride_id' => $of->id])
