@@ -363,6 +363,9 @@ class Driver extends Controller
     */
     public function rideDetails(Request $request, $link){
         $ro = RideOffers::where('link', $link)->first();
+        if(empty($ro)){
+            abort(404);
+        }
         if($ro->status == 'expired' || $ro->status == 'canceled'){
             return redirect()
                 ->to('/')

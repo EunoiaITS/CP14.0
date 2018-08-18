@@ -9,10 +9,10 @@
                     <form method="post" action="{{ url('/choose-country') }}">
                         {{ csrf_field() }}
                         <div class="form-group country-search">
-                            <select name="country" id="" class="get-select-picker form-control" title="Country" required>
-                                @foreach($countries->Results as $cr)
-                                    <option value="{{ $cr->CountryCodes->iso2.','.$cr->GeoPt[0].','.$cr->GeoPt[1] }}">{{ $cr->Name }}</option>
-                                @endforeach
+                            <select name="country" id="" class="get-select-picker form-control" title="Country" required="">
+                                @foreach($countries as $cr)
+                                    <option value="{{ $cr->code.','.$cr->lat.','.$cr->lng }}">{{ $cr->name }}</option>
+                                    @endforeach
                             </select>
                         </div>
                         <div class="form-group country-search">
