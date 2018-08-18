@@ -127,6 +127,14 @@
                                     <input name="luggage_limit" id="car-luggage" type="text" class="form-control" @if(isset($vd->luggage_limit)) value="{{ $vd->luggage_limit }}" @else value="{{ old('luggage_limit') }}"  @endif>
                                 </div>
                             </div>
+                            <div class="form-group clearfix">
+                                <div class="col-sm-6 padding-left-o">
+                                    <label for="language" class="ride-label">Language <span class="right-into">:</span></label>
+                                </div>
+                                <div class="col-sm-6 padding-ride-o">
+                                    <input name="language" id="language" type="text" class="form-control" @if(isset($vd->language)) value="{{ $vd->language }}" @else value="{{ old('language') }}"  @endif>
+                                </div>
+                            </div>
                             @if(isset($vd))<input type="hidden" name="vd_action" id="vd_action" value="edit"><input type="hidden" name="vd_id" value="{{ $vd->id }}">@else <input type="hidden" id="vd_action" name="vd_action" value="add"> @endif
                         </div>
                         <div class="col-md-3 col-md-offset-2 col-sm-12 col-xs-12 col-xs-offset-0 ride-offer-button">

@@ -244,6 +244,7 @@ class Driver extends Controller
                     $vehicles_data->car_type = $request->car_type;
                     $vehicles_data->car_plate_no = $request->car_plate_no;
                     $vehicles_data->luggage_limit = $request->luggage_limit;
+                    $vehicles_data->language = $request->language;
                     $vehicles_data->save();
                     $ride_desc = new RideDescriptions();
                     $ride_desc->ride_offer_id = $ride_offer_id;
