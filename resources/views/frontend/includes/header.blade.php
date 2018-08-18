@@ -63,12 +63,12 @@
                         {{ csrf_field() }}
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" name="from" id="" class="get-select-picker placepicker form-control" placeholder="From" required>
+                                <input type="text" name="from" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="From" required>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" name="to" id="" class="get-select-picker placepicker form-control" placeholder="To" required>
+                                <input type="text" name="to" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="To" required>
                             </div>
                         </div>
                         <div class="col-sm-3">
