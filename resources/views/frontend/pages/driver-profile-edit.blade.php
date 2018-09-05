@@ -89,6 +89,10 @@
                                     <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
                                 </div>
                                 <div class="form-group">
+                                    <label for="ridemate-country">Country Code</label>
+                                    <input id="ridemate-country" type="text" name="country_code" class="form-control" value="{{ $usd->country_code }}" placeholder="Your Country Code">
+                                </div>
+                                <div class="form-group">
                                     <label for="ridemate-contact">Car Registration</label>
                                     <input type="text" name="car_reg" class="form-control" value="{{ $dd->car_reg }}" placeholder="Your Car Registration">
                                 </div>

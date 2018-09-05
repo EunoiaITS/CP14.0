@@ -18,7 +18,7 @@
                     @endforeach
                 @endif
                 <!-- search result page -->
-                <form action="{{ url('/sign-up/customer') }}" method="post">
+                <form action="{{ url('/sign-up/customer') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
@@ -85,7 +85,15 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-sm-12">
+                        <div class="form-group get-sign-up-mate">
+                            <label for="upload-driving-licence">Upload Identity Card (Max 300Kb)</label>
+                            <div class="file btn btn-sm btn-primary">
+                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                <input type="file" class="input-upload" name="idc_picture">
+                            </div>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                     <div class="col-sm-12">
                         <div class="remember-me-option">

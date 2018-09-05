@@ -66,6 +66,7 @@ class Driver extends Controller
             $usd->address = $request->address;
             $usd->id_card = $request->id_card;
             $usd->contact = $request->contact;
+            $usd->country_code = $request->country_code;
             $usd->save();
             $dd->car_reg = $request->car_reg;
             $dd->driving_license = $request->driving_license;

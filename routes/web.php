@@ -38,6 +38,7 @@ Route::get('/non-discrimination', 'Frontend@nonDiscrimination');
 Route::get('/privacy-policy', 'Frontend@privacyPolicy');
 Route::get('/choose-country', 'Frontend@chooseCountry');
 Route::post('/choose-country', 'Frontend@chooseCountry');
+Route::get('/account/user/verify/{token}', 'Frontend@verifyUser');
 
 /* ------------------------------------------------------ */
 

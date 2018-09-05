@@ -8,6 +8,7 @@ use App\RideBookings;
 use App\RideDescriptions;
 use App\UsersExtendedData;
 use App\VehiclesData;
+use App\VerifyUsers;
 use Illuminate\Http\Request;
 use App\User;
 use App\User_data;
@@ -282,5 +283,15 @@ class Frontend extends Controller
      */
     public function privacyPolicy(){
         return view('frontend.pages.privacy-policy');
+    }
+
+    public function verifyUser($link){
+        $linkCheck = VerifyUsers::where('link', $link)->get();
+        if($linkCheck->first()){
+            return redirect()
+                ->to('/login');
+        }else{
+            return 'This link doesn\'t exist';
+        }
     }
 }

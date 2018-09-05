@@ -27,7 +27,10 @@
                             <input type="email" name="email" class="form-control" placeholder="Email" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Pasword" required="required">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="contact" class="form-control" placeholder="Contact No">
                         </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="date-of-birth">Date Of Birth</label>
@@ -64,6 +67,9 @@
                         <div class="form-group">
                             <input type="password" name="repass" class="form-control" placeholder="Confirm Password" required="required">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="country_code" class="form-control" placeholder="Country Code">
+                        </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="gender">Gender</label>
                             <select name="gender" id="" class="get-select-picker" title="Gender">
@@ -79,23 +85,23 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <input type="text" name="car_reg" class="form-control" placeholder="Car’s Plate Reg No." required="required">
+                            <input type="text" name="car_reg" class="form-control" placeholder="Car’s Plate Reg No." required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="driving_license" class="form-control" placeholder="Driving License No." required="required">
+                            <input type="text" name="driving_license" class="form-control" placeholder="Driving License No." required>
                         </div>
                     </div>
                     <div class="col-sm-2 sign-up-order-mm">
                         <div class="form-group">
-                            <input type="text" name="expiry" class="form-control datepicker-f" placeholder="DD/MM/YYYY">
+                            <input type="text" name="expiry" class="form-control datepicker-f" placeholder="DD/MM/YYYY" required>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group get-sign-up-mate">
-                            <label for="upload-driving-licence">Upload Driving Lience</label>
+                            <label for="upload-driving-licence">Upload Driving Lience (Max 300Kb)</label>
                             <div class="file btn btn-sm btn-primary">
-                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , .pdf</span>
-                                <input type="file" class="input-upload" name="uploads">
+                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                <input type="file" class="input-upload" name="dl_picture" required>
                             </div>
                         </div>
                     </div>
@@ -103,7 +109,16 @@
                     <div class="col-sm-12 padding-left-o">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="text" name="id_card" class="form-control" placeholder="Identity Card No." required="required">
+                                <input type="text" name="id_card" class="form-control" placeholder="Identity Card No." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group get-sign-up-mate">
+                            <label for="upload-driving-licence">Upload Identity Card (Max 300Kb)</label>
+                            <div class="file btn btn-sm btn-primary">
+                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                <input type="file" class="input-upload" name="idc_picture">
                             </div>
                         </div>
                     </div>
