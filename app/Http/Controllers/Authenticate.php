@@ -65,6 +65,7 @@ class Authenticate extends Controller
                 $user->email = $request->email;
                 $user->password = bcrypt($request->password);
                 $user->role = 'driver';
+                $user->status = 'not-verified';
                 $user->save();
                 $last_id = User::orderBy('id', 'desc')->first();;
                 $usd->user_id = $last_id->id;
@@ -200,6 +201,7 @@ class Authenticate extends Controller
                 $user->email = $request->email;
                 $user->password = bcrypt($request->password);
                 $user->role = 'customer';
+                $user->status = 'not-verified';
                 $user->save();
                 $last_id = User::orderBy('id', 'desc')->first();
                 $usd->user_id = $last_id->id;

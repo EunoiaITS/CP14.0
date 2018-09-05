@@ -286,12 +286,19 @@ class Frontend extends Controller
     }
 
     public function verifyUser($link){
-        $linkCheck = VerifyUsers::where('link', $link)->get();
-        if($linkCheck->first()){
+        $linkCheck = VerifyUsers::where('link', $link)->first();
+        if($linkCheck != ''){
+            $check = User::where('email',$linkCheck->email)->first();
+            $check->status = 'verified';
+            $check->save();
+            $linkCheck->delete();
             return redirect()
-                ->to('/login');
+                ->to('/login')
+                ->with('success','Your Account Verified Successfully !!');
         }else{
-            return 'This link doesn\'t exist';
+            return redirect()
+                ->to('/login')
+                ->with('error','This Verification link has been expired !!');
         }
     }
 }

@@ -7,6 +7,7 @@ use App\UsersExtendedData;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -41,6 +42,11 @@ class LoginController extends Controller
     }
 
     public function authenticated(Request $request, $user){
+        if($user->status == 'not-verified'){
+            Auth::logout();
+            return redirect('/login')
+                ->with('error', 'Account is not Verified !! Please Check your email for Verification !!');
+        }
         if($user->role != 'super-admin'){
             $request->session()->forget('area');
             $request->session()->forget('lat');
@@ -73,5 +79,4 @@ class LoginController extends Controller
                 ->to('/admin');
         }
     }
-
 }
