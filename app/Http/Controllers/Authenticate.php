@@ -112,9 +112,9 @@ class Authenticate extends Controller
                 $linkExtension = $this->generateRandomString();
                 $link = url('/account/user/verify').'/'.$linkExtension;
 
-                $transport = (new \Swift_SmtpTransport('ssl://smtp.gmail.com', 465))
-                    ->setUsername("secbeatsoft@gmail.com")
-                    ->setPassword('Ulab123!');
+                $transport = (new \Swift_SmtpTransport('ssl://mail.getwobo.com', 465))
+                    ->setUsername("test01@test.getwobo.com")
+                    ->setPassword('2H]KOcQ!H9U[');
 
                 $mailer = new \Swift_Mailer($transport);
 
@@ -233,9 +233,9 @@ class Authenticate extends Controller
                 $linkExtension = $this->generateRandomString();
                 $link = url('/account/user/verify').'/'.$linkExtension;
 
-                $transport = (new \Swift_SmtpTransport('ssl://smtp.gmail.com', 465))
-                    ->setUsername("secbeatsoft@gmail.com")
-                    ->setPassword('Ulab123!');
+                $transport = (new \Swift_SmtpTransport('ssl://mail.getwobo.com', 465))
+                    ->setUsername("test01@test.getwobo.com")
+                    ->setPassword('2H]KOcQ!H9U[');
 
                 $mailer = new \Swift_Mailer($transport);
 
