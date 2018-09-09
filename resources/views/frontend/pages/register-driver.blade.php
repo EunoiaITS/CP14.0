@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-sm-2 sign-up-order-mm">
                         <div class="form-group">
-                            <input type="text" name="expiry" class="form-control datepicker-f" placeholder="DD/MM/YYYY" required>
+                            <input type="text" name="expiry" class="form-control datepicker-f" placeholder="Expiration Date" required>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -127,7 +127,7 @@
                     <div class="col-sm-12">
                         <div class="remember-me-option">
                             <input type="checkbox" id="checkbox1" name="checkbox">
-                            <label for="checkbox1">I Agree to the <a href="#">Privacy Agreement</a> & <a href="#" class="sinuo-class">Terms of Conditions</a>.</label>
+                            <label for="checkbox1">I Agree to the <a href="{{ url('/privacy-policy') }}"> Privacy Policy</a> & <a href="{{ url('/privacy-policy') }}" class="sinuo-class"> Terms of Service</a>.</label>
                         </div>
                         <div class="sign-in-option-get">
                             <button class="btn btn-info btn-offer">Sign Up</button>

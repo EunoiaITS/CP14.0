@@ -73,12 +73,10 @@ class Authenticate extends Controller
                 $usd->dob = $request->year.'-'.$request->month.'-'.$request->day;
                 $usd->gender = $request->gender;
                 $usd->address = $request->address;
-                $usd->picture = $request->picture;
                 $usd->id_card = $request->id_card;
                 $usd->status = $request->status;
                 $usd->contact = $request->contact;
                 $usd->country_code = $request->country_code;
-                $usd->idc_picture = $request->idc_picture;
                 $usd->save();
                 $dd->user_id = $last_id->id;
                 $dd->car_reg = $request->car_reg;
@@ -210,6 +208,8 @@ class Authenticate extends Controller
                 $usd->gender = $request->gender;
                 $usd->address = $request->address;
                 $usd->id_card = $request->id_card;
+                $usd->contact = $request->contact;
+                $usd->country_code = $request->country_code;
                 $usd->save();
                 if($request->hasFile('idc_picture')) {
                     $image = $request->file('idc_picture');

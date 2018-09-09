@@ -7,19 +7,27 @@
                 <div class="col-sm-12">
                     <h3 class="get-about-section-header section-about-us-top">Copyright Policy</h3>
                     <div class="about-us-details">
-                        <h4 class="about-us-details-title">Lorem Ipsum text</h4>
-                        <p>Vitae feugiat iaculis pulvinar justo cursus luctus donec taciti nascetur ligula habitasse metus rhoncus vulputate tellus ullamcorper. Ultricies sociis risus semper per convallis. Adipiscing mi felis ad urna pellentesque a per pharetra Praesent vitae. Quis pellentesque. Placerat cras fermentum phasellus malesuada habitasse torquent taciti posuere Id ornare Egestas suscipit. <br>
-                            Ad mattis augue sociosqu sollicitudin elementum semper iaculis aenean praesent aliquet class felis sem viverra pharetra class enim nullam nibh felis mus. Viverra malesuada elit. Morbi velit fermentum, enim condimentum tellus ipsum neque eleifend in aenean rutrum suscipit etiam sit nisi cubilia velit eros nulla diam id. Montes conubia inceptos tellus penatibus sagittis lectus pharetra magnis. Rhoncus nonummy fermentum a in eget sapien cras. </p>
+                        <h4 class="about-us-details-title">Notification of Copyright Infringement</h4>
+                        <p>getWOBO ("getWOBO") respects the intellectual property rights of others and expects its users to do the same.</p>
+                        <p>It is getWOBO’s policy, in appropriate circumstances and at its discretion, to disable and/or terminate the account or access of users who repeatedly infringe or are repeatedly charged with infringing the copyrights or other intellectual property rights of others.</p>
+                        <p>GetWOBO will respond expeditiously to claims of copyright infringement committed using the GetWOBO website and mobile application (the "Site and Application") that are reported to GetWOBO’s designated email address, identified in the sample notice below.</p>
+                        <p>If you are a copyright owner, or are authorized to act on behalf of one, or authorized to act under any exclusive right under copyright, please report alleged copyright infringements taking place on or through the Site and Application by completing the following Notice of Alleged Infringement and delivering it to GetWOBO’s designated email address. Upon receipt of the Notice as described below, GetWOBO will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged material from the Site and Application.</p>
                     </div>
                     <div class="about-us-details">
-                        <h4 class="about-us-details-title">Notice of Alleged infrigement (notice)</h4>
+                        <h4 class="about-us-details-title">Notice of Alleged Infringement ("Notice")</h4>
                         <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem, sapiente autem cupiditate voluptas, nostrum similique iusto laudantium qui dicta, atque, recusandae saepe veritatis? Odio officiis vero laborum corporis eos?</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem, sapiente autem cupiditate voluptas, nostrum similique iusto laudantium qui dicta,</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem, sapiente autem cupiditate voluptas, nostrum similique iusto laudantium qui dicta, atque, recusandae saepe veritatis? Odio officiis vero laborum corporis eos?</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem, sapiente autem</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem, sapiente autem cupiditate voluptas, nostrum similique iusto laudantium qui dicta, atque, recusandae saepe veritatis? Odio officiis vero laborum corporis eos?</li>
+                            <li>Identify the copyrighted work that you claim has been infringed, or - if multiple copyrighted works are covered by this Notice - you will provide a comprehensive list of the copyrighted works that you claim have been infringed.</li>
+                            <li>Identify the material that you claim is infringing (or to be the subject of infringing activity) and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit us to locate the material, including at a minimum, if applicable, the URL of the link shown on the Site and Application where such material may be found.</li>
+                            <li>Provide your mailing address, telephone number, and, if available, email address.</li>
+                            <li>Include both of the following statements in the body of the Notice:
+                                <ol style="list-style-type: circle;">
+                                    <li>"I hereby state that I have a good faith belief that the disputed use of the copyrighted material is not authorized by the copyright owner, its agent, or the law (e.g., as a fair use)."</li>
+                                    <li>"I hereby state that the information in this Notice is accurate and, under penalty of perjury, that I am the owner, or authorized to act on behalf of the owner, of the copyright or of an exclusive right under the copyright that is allegedly infringed."</li>
+                                </ol>
+                            </li>
+                            <li>Provide your full legal name and your electronic or physical signature.</li>
                         </ol>
+                        <p>Deliver this Notice, with all items completed, to GetWOBO’s designated email address please.</p>
 
                     </div>
                 </div>

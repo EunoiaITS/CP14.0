@@ -67,6 +67,8 @@ class Customer extends Controller
                 $usd->gender = $request->gender;
                 $usd->address = $request->address;
                 $usd->id_card = $request->id_card;
+                $usd->contact = $request->contact;
+                $usd->country_code = $request->country_code;
                 $usd->save();
                 return redirect()
                     ->to('/c/profile/')

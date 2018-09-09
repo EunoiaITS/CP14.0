@@ -9,7 +9,7 @@
                 <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             </ul>
-            <a href="#">Terms and Condition</a>
+            <a href="#">Terms of Service</a>
             <p>© 2018. All rights reserved</p>
         </div>
     </div>

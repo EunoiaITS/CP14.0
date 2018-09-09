@@ -30,6 +30,9 @@
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" placeholder="Password" required="required">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="contact" class="form-control" placeholder="Contact No">
+                        </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="date-of-birth">Date Of Birth</label>
                             <div class="col-sm-3 padding-left-o">
@@ -65,6 +68,9 @@
                         <div class="form-group">
                             <input type="password" name="repass" class="form-control" placeholder="Confirm Password" required="required">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="country_code" class="form-control" placeholder="Country Code">
+                        </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="gender">Gender</label>
                             <select name="gender" class="get-select-picker" title="Gender">
@@ -98,7 +104,7 @@
                     <div class="col-sm-12">
                         <div class="remember-me-option">
                             <input type="checkbox" id="checkbox1" name="checkbox">
-                            <label for="checkbox1">I Agree to the <a href="#">Privacy Agreement</a> & <a href="#">Terms of Conditions</a>.</label>
+                            <label for="checkbox1">I Agree to the <a href="{{ url('/privacy-policy') }}"> Privacy Policy</a> & <a href="{{ url('/privacy-policy') }}" class="sinuo-class"> Terms of Service</a>.</label>
                         </div>
                         <div class="sign-in-option-get">
                             <button class="btn btn-info btn-offer">Sign Up</button>

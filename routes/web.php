@@ -36,6 +36,7 @@ Route::get('/contact-us', 'Frontend@contactUs');
 Route::get('/copyright', 'Frontend@copyright');
 Route::get('/non-discrimination', 'Frontend@nonDiscrimination');
 Route::get('/privacy-policy', 'Frontend@privacyPolicy');
+Route::get('/how-it-works', 'Frontend@howItWorks');
 Route::get('/choose-country', 'Frontend@chooseCountry');
 Route::post('/choose-country', 'Frontend@chooseCountry');
 Route::get('/account/user/verify/{token}', 'Frontend@verifyUser');

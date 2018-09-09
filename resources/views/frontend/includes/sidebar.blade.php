@@ -11,10 +11,10 @@
     <div class="sidebar-menu">
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
-            @if(!Auth::check())
+            {{--@if(!Auth::check())
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/join') }}">Join</a></li>
-            @endif
+            @endif--}}
             @if(Auth::check() && Auth::user()->role == 'driver')
                 <li><a href="{{ url('/d/offer-ride') }}">Offer a Ride</a></li>
                 <li><a href="{{ url('/d/active-offers') }}">My Active Offers</a></li>
@@ -30,9 +30,12 @@
             <li><a href="{{ url('/terms') }}">Terms Of Services</a></li>
             <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
             <li><a href="{{ url('/popular') }}">Popular highlights</a></li>
+            @if(Auth::check())
             <li><a href="{{ url('/search') }}">Search</a></li>
+            @endif
             <li class="otherlist-item"><a href="#" class="disabled">Others <i class="fas fa-angle-down"></i></a>
                 <ul class="main-dropdown-item">
+                    <li><a href="{{ url('/how-it-works') }}">How It Works</a></li>
                     <li><a href="{{ url('/copyright') }}">Copyright Policy</a></li>
                     <li><a href="{{ url('/non-discrimination') }}">Nondiscrimination Policy</a></li>
                     <li><a href="{{ url('/privacy-policy') }}">Privacy Policy</a></li>

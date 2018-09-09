@@ -254,7 +254,9 @@ class Frontend extends Controller
      * Terms page - terms page of the system
      */
     public function terms(){
-        return view('frontend.pages.terms');
+        return view('frontend.pages.terms',[
+            'js' => 'frontend.pages.js.terms-js'
+        ]);
     }
 
     /**
@@ -275,14 +277,25 @@ class Frontend extends Controller
      * non-discrimination page - non-discrimination page of the system
      */
     public function nonDiscrimination(){
-        return view('frontend.pages.non-discrimination');
+        return view('frontend.pages.non-discrimination',[
+            'js' => 'frontend.pages.js.non-discrimination-js'
+        ]);
+
     }
 
     /**
      * privacy-policy page - privacy-policy us page of the system
      */
     public function privacyPolicy(){
-        return view('frontend.pages.privacy-policy');
+        return view('frontend.pages.privacy-policy',[
+            'js' => 'frontend.pages.js.privacy-policy-js'
+        ]);
+    }
+
+    public function howItWorks(){
+        return view('frontend.pages.how-it-works',[
+            'js' => 'frontend.pages.js.how-it-works-js'
+        ]);
     }
 
     public function verifyUser($link){
