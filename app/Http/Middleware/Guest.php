@@ -17,7 +17,7 @@ class Guest
     public function handle($request, Closure $next)
     {
         $sCheck = session('area');
-        if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login')])){
+        if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login'),url('/login/admin')])){
             if(Auth::check() && Auth::user()->role == 'super-admin'){
                 return $next($request);
             }else{
