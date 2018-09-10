@@ -40,6 +40,7 @@ Route::get('/how-it-works', 'Frontend@howItWorks');
 Route::get('/choose-country', 'Frontend@chooseCountry');
 Route::post('/choose-country', 'Frontend@chooseCountry');
 Route::get('/account/user/verify/{token}', 'Frontend@verifyUser');
+Route::get('/login/admin', 'Frontend@login');
 
 /* ------------------------------------------------------ */
 

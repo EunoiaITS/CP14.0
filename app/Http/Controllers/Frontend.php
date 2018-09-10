@@ -314,4 +314,12 @@ class Frontend extends Controller
                 ->with('error','This Verification link has been expired !!');
         }
     }
+    /**
+     * Admin Login - login function for admin area
+     */
+    public function login(Request $request){
+        return view('admin.pages.login',[
+            'slug' => 'admin'
+        ]);
+    }
 }

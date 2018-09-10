@@ -328,11 +328,4 @@ class Admin extends Controller
         ]);
     }
 
-    /**
-     * Login - login function for admin area
-    */
-    public function login(Request $request){
-        return view('admin.pages.login');
-    }
-
 }
