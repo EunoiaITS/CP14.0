@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Countries;
+use App\Notifications;
 use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
@@ -66,6 +67,7 @@ class Frontend extends Controller
             'reqs' => $reqs,
             'offers' => $offers_today,
             'slug' => 'home',
+            'not' => Notifications::all(),
             'modals' => 'frontend.pages.modals.home-modals',
             'js' => 'frontend.pages.js.home-js'
         ]);
@@ -282,5 +284,24 @@ class Frontend extends Controller
      */
     public function privacyPolicy(){
         return view('frontend.pages.privacy-policy');
+    }
+
+    /**
+     * Read Notification - post function for reading notifications
+    */
+    public function readNotification(Request $request){
+        if($request->isMethod('post')){
+            $not = Notifications::find($request->id);
+            $not->status = 'read';
+            if($not->save()){
+                return json_encode([
+                    'stat' => 'true'
+                ]);
+            }else{
+                return json_encode([
+                    'stat' => 'false'
+                ]);
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@
                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             </ul>
             <a href="#">Terms and Condition</a>
-            <p>© 2018. All rights reserved</p>
+            <p>© {{ date('Y') }}. All rights reserved</p>
         </div>
     </div>
 </footer>
@@ -52,6 +52,8 @@
             console.log('lat : '+lat+', lan : '+lan);
         });
     </script>
+
+    @include('frontend.pages.js.notifications-js')
 
     @if(Auth::check())
 

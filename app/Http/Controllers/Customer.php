@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications;
 use App\RideBookings;
 use DB;
 use App\User_data;
@@ -413,6 +414,19 @@ class Customer extends Controller
                     ->with('error', 'Your ride request couldn\'n deleted! Please try again!');
             }
         }
+    }
+
+    /**
+     * Notifications - shows all notifications
+    */
+    public function notifications(){
+        $notifications = Notifications::where('to', Auth::id())
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('frontend.pages.notifications', [
+            'data' => $notifications,
+            'slug' => 'not'
+        ]);
     }
 
 }

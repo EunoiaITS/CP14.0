@@ -38,6 +38,15 @@ Route::get('/non-discrimination', 'Frontend@nonDiscrimination');
 Route::get('/privacy-policy', 'Frontend@privacyPolicy');
 Route::get('/choose-country', 'Frontend@chooseCountry');
 Route::post('/choose-country', 'Frontend@chooseCountry');
+Route::post('/read-notification', 'Frontend@readNotification');
+Route::get('/hit', function(){
+    event(new App\Events\OfferCreated());
+    return "Event has been sent!";
+});
+Route::get('/hit1', function(){
+    event(new App\Events\BookingAccepted());
+    return "Event has been sent!";
+});
 
 /* ------------------------------------------------------ */
 
@@ -70,7 +79,7 @@ Route::prefix('admin')->group(function(){
  * Customer area
  */
 Route::prefix('c')->group(function(){
-    Route::get('/profile/', 'Customer@viewProfile');
+    Route::get('/profile', 'Customer@viewProfile');
     Route::get('/profile/edit/{id}', 'Customer@editProfile');
     Route::post('/profile/edit/{id}', 'Customer@editProfile');
     Route::post('/profile/edit/password/{id}', 'Customer@editPassword');
@@ -84,13 +93,14 @@ Route::prefix('c')->group(function(){
     Route::post('/ride-request', 'Customer@rideRequest');
     Route::get('/requests', 'Customer@rideRequests');
     Route::post('/delete-request', 'Customer@deleteRequest');
+    Route::get('/notifications', 'Customer@notifications');
 });
 
 /**
  * Driver area
  */
 Route::prefix('d')->group(function(){
-    Route::get('/profile/', 'Driver@viewProfile');
+    Route::get('/profile', 'Driver@viewProfile');
     Route::get('/profile/edit/{id}', 'Driver@editProfile');
     Route::post('/profile/edit/{id}', 'Driver@editProfile');
     Route::post('/profile/edit/password/{id}', 'Driver@editPassword');
@@ -108,6 +118,7 @@ Route::prefix('d')->group(function(){
     Route::post('/end-ride', 'Driver@endRide');
     Route::get('/ride-requests', 'Driver@rideRequests');
     Route::post('/income-statement/', 'Driver@incomeStatement');
+    Route::get('/notifications', 'Driver@notifications');
 });
 
 /**
