@@ -1,10 +1,19 @@
 @extends('frontend.layout')
-
 @section('content')
     <!-- sign in page -->
     <div class="get-offer-ride">
         <div class="container">
             <div class="row">
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                 <div class="col-sm-12 sign-in-get-ad padding-left-o padding-right-o">
                     <h3 class="get-popular-list">Welcome</h3>
                     <h3 class="highlight">Back!</h3>

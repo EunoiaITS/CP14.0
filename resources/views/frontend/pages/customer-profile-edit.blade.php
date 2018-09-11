@@ -93,6 +93,14 @@
                                     <input type="text" name="address" class="form-control" value="{{ $usd->address }}" placeholder="Your Address">
                                 </div>
                                 <div class="form-group">
+                                    <label for="ridemate-contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ridemate-contact">Country Code</label>
+                                    <input type="text" name="country_code" class="form-control" value="{{ $usd->country_code }}" placeholder="Your Address">
+                                </div>
+                                <div class="form-group">
                                     <label for="ridemate-identi">Identification No.</label>
                                     <input type="text" name="id_card" class="form-control" value="{{ $usd->id_card }}" placeholder="Your Id Card Number">
                                 </div>

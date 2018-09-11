@@ -87,7 +87,7 @@ class Admin extends Controller
                 ->to('/admin/list')
                 ->with('success', 'User info edited successfully!!');
         }
-        $users = User::all();
+        $users = User::where('role','super-admin')->get();
         $slug = 'list';
         return view('admin.pages.admin-list', [
             'slug' => $slug,
@@ -117,7 +117,7 @@ class Admin extends Controller
      */
 
     public function driverList(Request $request){
-        $dr = User::where('role', 'driver')->paginate(1);
+        $dr = User::where('role', 'driver')->paginate(20);
         foreach ($dr as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -210,7 +210,7 @@ class Admin extends Controller
      */
 
     public function customerList(Request $request){
-        $cus = User::where('role', 'customer')->paginate(1);
+        $cus = User::where('role', 'customer')->paginate(20);
         foreach ($cus as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -326,13 +326,6 @@ class Admin extends Controller
             'dd' => $dd,
             'modals' => 'admin.pages.modals.view-driver-modals'
         ]);
-    }
-
-    /**
-     * Login - login function for admin area
-    */
-    public function login(Request $request){
-        return view('admin.pages.login');
     }
 
 }

@@ -18,7 +18,7 @@
                     @endforeach
                 @endif
                 <!-- search result page -->
-                <form action="{{ url('/sign-up/customer') }}" method="post">
+                <form action="{{ url('/sign-up/customer') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
@@ -29,6 +29,9 @@
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="contact" class="form-control" placeholder="Contact No">
                         </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="date-of-birth">Date Of Birth</label>
@@ -65,6 +68,9 @@
                         <div class="form-group">
                             <input type="password" name="repass" class="form-control" placeholder="Confirm Password" required="required">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="country_code" class="form-control" placeholder="Country Code">
+                        </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="gender">Gender</label>
                             <select name="gender" class="get-select-picker" title="Gender">
@@ -85,12 +91,20 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-sm-12">
+                        <div class="form-group get-sign-up-mate">
+                            <label for="upload-driving-licence">Upload Identity Card (Max 300Kb)</label>
+                            <div class="file btn btn-sm btn-primary">
+                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                <input type="file" class="input-upload" name="idc_picture">
+                            </div>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                     <div class="col-sm-12">
                         <div class="remember-me-option">
                             <input type="checkbox" id="checkbox1" name="checkbox">
-                            <label for="checkbox1">I Agree to the <a href="#">Privacy Agreement</a> & <a href="#">Terms of Conditions</a>.</label>
+                            <label for="checkbox1">I Agree to the <a href="{{ url('/privacy-policy') }}"> Privacy Policy</a> & <a href="{{ url('/privacy-policy') }}" class="sinuo-class"> Terms of Service</a>.</label>
                         </div>
                         <div class="sign-in-option-get">
                             <button class="btn btn-info btn-offer">Sign Up</button>

@@ -35,19 +35,19 @@ class Customer extends Controller
                     ->orWhere(['status' => 'confirmed']);
             })
             ->get();
-        foreach($bookings as $book){
-            $ride_details = RideOffers::find($book->ride_id);
-            $book->ride_details = $ride_details;
-            $user = User::find($ride_details->offer_by);
-            $book->user = $user;
-            $ud = User_data::where(['user_id' => $user->id])->first();
-            $book->ud = $ud;
-            $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
-                ->where(['key' => 'vehicle_id'])
-                ->first();
-            $vd = VehiclesData::find($ride_desc->value);
-            $book->vd = $vd;
-        }
+            foreach($bookings as $book){
+                $ride_details = RideOffers::find($book->ride_id);
+                $book->ride_details = $ride_details;
+                $user = User::find($ride_details->offer_by);
+                $book->user = $user;
+                $ud = User_data::where(['user_id' => $user->id])->first();
+                $book->ud = $ud;
+                $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
+                    ->where(['key' => 'vehicle_id'])
+                    ->first();
+                $vd = VehiclesData::find($ride_desc->value);
+                $book->vd = $vd;
+            }
 
         return view('frontend.pages.customer-profile',[
             'usd' => $usd,
@@ -68,6 +68,8 @@ class Customer extends Controller
                 $usd->gender = $request->gender;
                 $usd->address = $request->address;
                 $usd->id_card = $request->id_card;
+                $usd->contact = $request->contact;
+                $usd->country_code = $request->country_code;
                 $usd->save();
                 return redirect()
                     ->to('/c/profile/')

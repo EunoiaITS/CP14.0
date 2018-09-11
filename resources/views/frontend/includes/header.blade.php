@@ -40,7 +40,7 @@
                 <div class="col-sm-4 col-xs-12 padding-right-0">
                     <div class="get-offer-button">
                         <button class="btn btn-info btn-offer" type="button" class="btn btn-info btn-offer" data-toggle="modal" data-target="#myModalx2"><span>Find A Ride</span> <i class="fas fa-car"></i></button>
-                        <a href="{{ url('/sign-up/driver') }}"><button class="btn btn-info btn-offer" type="button" class="btn btn-info btn-offer"><span>Offer a ride</span> <i class="fas fa-car"></i></button></a>
+                        <a href="{{ url('/login') }}"><button class="btn btn-info btn-offer" type="button" class="btn btn-info btn-offer"><span>Offer a ride</span> <i class="fas fa-car"></i></button></a>
                     </div>
                 </div>
             </div>
