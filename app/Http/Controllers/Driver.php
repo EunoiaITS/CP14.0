@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OfferCreated;
 use App\Ride_request;
 use App\RideBookings;
 use App\User_data;
@@ -309,6 +310,11 @@ class Driver extends Controller
                     $ride_book->seat_booked = $request->seat_booked;
                     $ride_book->status = 'booked';
                     $ride_book->save();
+                    event(new OfferCreated([
+                        'from' => Auth::id(),
+                        'to' => $request->req_user_id,
+                        'ride_id' => $ride_offer_id
+                    ]));
                 }
 
                 return redirect()
@@ -738,4 +744,18 @@ class Driver extends Controller
             return json_encode($ro);
         }
     }
+
+    /**
+     * Notifications - shows all notifications
+     */
+    public function notifications(){
+        $notifications = Notifications::where('to', Auth::id())
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('frontend.pages.notifications', [
+            'data' => $notifications,
+            'slug' => 'not'
+        ]);
+    }
+
 }

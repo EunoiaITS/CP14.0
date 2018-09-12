@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Countries;
+use App\Notifications;
 use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
@@ -67,6 +68,7 @@ class Frontend extends Controller
             'reqs' => $reqs,
             'offers' => $offers_today,
             'slug' => 'home',
+            'not' => Notifications::all(),
             'modals' => 'frontend.pages.modals.home-modals',
             'js' => 'frontend.pages.js.home-js'
         ]);
@@ -321,5 +323,24 @@ class Frontend extends Controller
         return view('admin.pages.login',[
             'slug' => 'admin'
         ]);
+    }
+
+    /**
+     * Read Notification - post function for reading notifications
+    */
+    public function readNotification(Request $request){
+        if($request->isMethod('post')){
+            $not = Notifications::find($request->id);
+            $not->status = 'read';
+            if($not->save()){
+                return json_encode([
+                    'stat' => 'true'
+                ]);
+            }else{
+                return json_encode([
+                    'stat' => 'false'
+                ]);
+            }
+        }
     }
 }

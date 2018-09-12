@@ -25,73 +25,27 @@
                 <div class="col-sm-5 col-xs-4 padding-right-0">
                     <div class="get-notification-area">
                         <div class="notification-badge">
-                            <i class="fas fa-car"></i><span class="badge">2</span>
+                            <i class="fas fa-car"></i><span class="badge">{{ $notify->count() }}</span>
                         </div>
                         <!-- notification popupbar -->
                         <div class="get-notification-popupbar">
                             <h3 class="text-center">Notifications</h3>
                             <ul class="get-notificaton-list">
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text"><a href="#">Barry Alen</a> accept your booking request </span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text">Ride details has been updated for your ride by <a href="#">Jeny</a></span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text"><a href="#">Barry Alen</a> accept your booking request </span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text">Ride details has been updated for your ride by <a href="#">Jeny</a></span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text"><a href="#">Barry Alen</a> accept your booking request </span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text">Ride details has been updated for your ride by <a href="#">Jeny</a></span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text"><a href="#">Barry Alen</a> accept your booking request </span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text">Ride details has been updated for your ride by <a href="#">Jeny</a></span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text"><a href="#">Barry Alen</a> accept your booking request </span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="notificaton-text">
-                                        <span class="get-notiline-text">Ride details has been updated for your ride by <a href="#">Jeny</a></span>
-                                        <button class="btn btn-info get-notification">View My Bookings</button>
-                                    </div>
-                                </li>
+                                @foreach($notify as $n)
+                                    <li class="@if($n->status == 'unread') {{ 'view-bookings-unread' }} @endif" id="notify-{{ $n->id }}">
+                                        <div class="notificaton-text">
+                                            <span class="get-notiline-text">
+                                                <div class="notification-time"><i class="fas fa-clock"></i> <span>{{ date('d M Y', strtotime($n->created_at)) }} at {{ date('H:i a', strtotime($n->created_at)) }}</span></div>
+                                                <?php echo $n->message; ?>
+                                            </span>
+                                            @if($n->ad_link != '')
+                                            <a href="{{ $n->ad_link }}" onmousedown="readNot(event, '{{ $n->id }}');"><button class="btn btn-info get-notification">VISIT FOR DETAILS</button></a>
+                                            @endif
+                                        </div>
+                                    </li>
+                                    @endforeach
                             </ul>
+                            <a href="@if(Auth::user()->role == 'customer') {{ url('/c/notifications') }} @endif @if(Auth::user()->role == 'driver') {{ url('/d/notifications') }} @endif" class="view-all">View All</a>
                         </div>
                         <div class="get-user-login">
                             <div class="login-icon">
