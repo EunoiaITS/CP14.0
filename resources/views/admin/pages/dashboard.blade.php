@@ -17,7 +17,7 @@
                             <div class="row no-padding">
                                 <em class="fa fa-users">&nbsp;</em>
                                 <div class="right-text">
-                                    <div class="large">50</div>
+                                    <div class="large">{{ $c }}</div>
                                     <div class="text-muted">Total Riders</div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                             <div class="row no-padding">
                                 <em class="fa fa-users">&nbsp;</em>
                                 <div class="right-text">
-                                    <div class="large">50</div>
+                                    <div class="large">{{ $d }}</div>
                                     <div class="text-muted">Total Ridemates</div>
                                 </div>
                             </div>
@@ -57,13 +57,13 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab1">
-                                    <h3 class="bigtext">560</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab2">
-                                    <h3 class="bigtext">520</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab3">
-                                    <h3 class="bigtext">120</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                             </div>
                         </div>
@@ -84,13 +84,13 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tabx">
-                                    <h3 class="bigtext">560</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab2x">
-                                    <h3 class="bigtext">760</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab3x">
-                                    <h3 class="bigtext">660</h3>
+                                    <h3 class="bigtext">---</h3>
                                 </div>
                             </div>
                         </div>

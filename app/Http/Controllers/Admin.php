@@ -20,8 +20,12 @@ class Admin extends Controller
     */
     public function dashboard(Request $request){
         $slug = 'home';
+        $driver = User::where('role','driver')->count();
+        $customer = User::where('role','customer')->count();
         return view('admin.pages.dashboard', [
-            'slug' => $slug
+            'slug' => $slug,
+            'd' => $driver,
+            'c' => $customer
         ]);
     }
 

@@ -67,7 +67,7 @@ class Authenticate extends Controller
                 $user->role = 'driver';
                 $user->status = 'not-verified';
                 $user->save();
-                $last_id = User::orderBy('id', 'desc')->first();;
+                $last_id = User::orderBy('id', 'desc')->first();
                 $usd->user_id = $last_id->id;
                 $usd->last_name = $request->last_name;
                 $usd->dob = $request->year.'-'.$request->month.'-'.$request->day;
