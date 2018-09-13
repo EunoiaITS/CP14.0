@@ -85,11 +85,35 @@
             }
         }
 
-        if(data.ev == ''){}
+        if(data.ev == 'ride-start'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
 
-        if(data.ev == ''){}
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
 
-        if(data.ev == ''){}
+        if(data.ev == 'ride-end'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == 'ride-edit'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
 
         if(data.ev == ''){}
 

@@ -43,7 +43,11 @@ Route::post('/read-notification', 'Frontend@readNotification');
 Route::get('/account/user/verify/{token}', 'Frontend@verifyUser');
 Route::get('/login/admin', 'Frontend@login');
 Route::get('/hit', function(){
-    event(new \App\Events\RideBooked());
+    event(new \App\Events\OfferCreated([
+        'event' => 'ride-test',
+        'msg' => 'Mahmud Abdur Rahman is testing the system.',
+        'tos' => [10, 2, 3, 4, 5, 6, 7, 8, 9]
+    ]));
     return 'Event was fired!!';
 });
 

@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Notifications;
+use App\RideBookings;
 use App\RideOffers;
 use App\User;
 use Illuminate\Broadcasting\Channel;
@@ -125,13 +126,91 @@ class OfferCreated implements  ShouldBroadcast
             }
         }
 
-        if($data['event'] == ''){}
+        if($data['event'] == 'ride-start'){
+            $tos = array();
+            $by = User::find($data['from']);
+            $offer = RideOffers::find($data['ride_id']);
+            $books = RideBookings::where('ride_id', $data['ride_id'])
+                ->where(function($q){
+                    $q->where(['status' => 'booked'])
+                        ->orWhere(['status' => 'confirmed']);
+                })->get();
+            foreach($books as $book){
+                $tos[] = $book->user_id;
+                $not = new Notifications();
+                $not->from = $data['from'];
+                $not->to = $book->user_id;
+                $not->message = 'Your ride has started.';
+                $not->ad_link = url('/ride-details/'.$offer->link);
+                $not->status = 'unread';
+                $not->save();
+            }
+            $this->ev = 'ride-start';
+            $this->msg = 'Your ride has started.';
+            $this->ad_link = url('/ride-details/'.$offer->link);
+            $this->rec = $tos;
+            $this->time_at = date('d M Y').' at '.date('H:i');
+        }
 
-        if($data['event'] == ''){}
+        if($data['event'] == 'ride-end'){
+            $tos = array();
+            $by = User::find($data['from']);
+            $offer = RideOffers::find($data['ride_id']);
+            $books = RideBookings::where('ride_id', $data['ride_id'])
+                ->where(function($q){
+                    $q->where(['status' => 'booked'])
+                        ->orWhere(['status' => 'confirmed']);
+                })->get();
+            foreach($books as $book){
+                $tos[] = $book->user_id;
+                $not = new Notifications();
+                $not->from = $data['from'];
+                $not->to = $book->user_id;
+                $not->message = 'Your ride has ended.';
+                $not->ad_link = url('/ride-details/'.$offer->link);
+                $not->status = 'unread';
+                $not->save();
+            }
+            $this->ev = 'ride-end';
+            $this->msg = 'Your ride has ended.';
+            $this->ad_link = url('/ride-details/'.$offer->link);
+            $this->rec = $tos;
+            $this->time_at = date('d M Y').' at '.date('H:i');
+        }
 
-        if($data['event'] == ''){}
+        if($data['event'] == 'ride-edit'){
+            $tos = array();
+            $by = User::find($data['from']);
+            $offer = RideOffers::find($data['ride_id']);
+            $books = RideBookings::where('ride_id', $data['ride_id'])
+                ->where(function($q){
+                    $q->where(['status' => 'booked'])
+                        ->orWhere(['status' => 'confirmed']);
+                })->get();
+            foreach($books as $book){
+                $tos[] = $book->user_id;
+                $not = new Notifications();
+                $not->from = $data['from'];
+                $not->to = $book->user_id;
+                $not->message = 'Your ride credentials was edited.';
+                $not->ad_link = url('/ride-details/'.$offer->link);
+                $not->status = 'unread';
+                $not->save();
+            }
+            $this->ev = 'ride-start';
+            $this->msg = 'Your ride credentials was edited.';
+            $this->ad_link = url('/ride-details/'.$offer->link);
+            $this->rec = $tos;
+            $this->time_at = date('d M Y').' at '.date('H:i');
+        }
 
-        if($data['event'] == ''){}
+        if($data['event'] == 'ride-test'){
+            $this->ev = 'ride-test';
+            $this->msg = $data['msg'];
+            $this->rec = $data['tos'];
+            $this->ad_link = url('/');
+            $this->time_at = date('d M Y').' at '.date('H:i');
+        }
 
         if($data['event'] == ''){}
     }
