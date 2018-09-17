@@ -36,8 +36,9 @@
     </div>
 </div>
 
+@foreach($rides as $ride)
 <!--Riders details -->
-<div class="modal fade" id="myModallx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModallx{{ $ride->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,13 +46,14 @@
                 <h4 class="modal-title" id="myModalLabel">Riders Details</h4>
             </div>
             <div class="modal-body rider-details-ridemate">
+                @foreach($ride->books as $book)
                 <h3 class="rider-title">Rider 1</h3>
                 <div class="ridemate-name-area">
                     <div class="ridemate-name">
                         Name <span class="ridemate-right">:</span>
                     </div>
                     <div class="ridemate-name-xs">
-                        <span>Frank Martin</span>
+                        <span>{{ $book->rider->name }}</span>
                     </div>
                 </div>
                 <div class="ridemate-name-area">
@@ -59,7 +61,7 @@
                         Email <span class="ridemate-right">:</span>
                     </div>
                     <div class="ridemate-name-xs">
-                        <span>Simple@gmail.com</span>
+                        <span>{{ $book->rider->email }}</span>
                     </div>
                 </div>
 
@@ -76,45 +78,12 @@
                         Occupied Seat <span class="ridemate-right">:</span>
                     </div>
                     <div class="ridemate-name-xs">
-                        <span>2</span>
+                        <span>{{ $book->seat_booked }}</span>
                     </div>
                 </div>
-                <!-- rider 2 -->
-                <h3 class="rider-title">Rider 2</h3>
-                <div class="ridemate-name-area">
-                    <div class="ridemate-name">
-                        Name <span class="ridemate-right">:</span>
-                    </div>
-                    <div class="ridemate-name-xs">
-                        <span>Frank Martin</span>
-                    </div>
-                </div>
-                <div class="ridemate-name-area">
-                    <div class="ridemate-name">
-                        Email <span class="ridemate-right">:</span>
-                    </div>
-                    <div class="ridemate-name-xs">
-                        <span>Simple@gmail.com</span>
-                    </div>
-                </div>
-
-                <div class="ridemate-name-area">
-                    <div class="ridemate-name">
-                        Gender <span class="ridemate-right">:</span>
-                    </div>
-                    <div class="ridemate-name-xs">
-                        <span>Male</span>
-                    </div>
-                </div>
-                <div class="ridemate-name-area">
-                    <div class="ridemate-name">
-                        Occupied Seat <span class="ridemate-right">:</span>
-                    </div>
-                    <div class="ridemate-name-xs">
-                        <span>1</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
+    @endforeach

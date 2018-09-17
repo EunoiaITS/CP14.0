@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\RideBookings;
+use App\RideDescriptions;
+use App\RideOffers;
+use App\VehiclesData;
 use Illuminate\Http\Request;
 use App\User;
 use App\User_data;
@@ -290,9 +294,15 @@ class Admin extends Controller
      * Ride Details - shows all the rides info by the system
      */
     public function rideDetails(Request $request){
+        $rides = RideOffers::where('status', 'completed')->paginate(10);
+        foreach($rides as $ride){
+            $ride->mate = User::find($ride->offer_by);
+        }
         $slug = 'rides';
         return view('admin.pages.ride-details', [
-            'slug' => $slug
+            'data' => $rides,
+            'slug' => $slug,
+            'footer_js' => 'admin.pages.js.ride-details-js'
         ]);
     }
 
@@ -304,9 +314,20 @@ class Admin extends Controller
         $id = $request->route('id');
         $user = User::find($id);
         $user_details = User_data::where('user_id', $id)->first();
+        $bookings = RideBookings::where('user_id', $id)
+            ->where('status', 'confirmed')
+            ->get();
+
+        foreach($bookings as $book){
+            $details = RideOffers::where('id', $book->ride_id)
+                ->where('status', 'completed')
+                ->first();
+            $book->details = $details;
+        }
 
         return view('admin.pages.view-customer', [
             'slug' => $slug,
+            'books' => $bookings,
             'data' => $user,
             'details' => $user_details,
             'modals' => 'admin.pages.modals.view-customer-modals'
@@ -323,9 +344,27 @@ class Admin extends Controller
         $user_details = User_data::where('user_id', $id)->first();
         $dd = DriverData::where('user_id', $id)->first();
 
+        $rides = RideOffers::where('offer_by', $id)
+            ->where('status', 'completed')
+            ->paginate(10);
+        foreach($rides as $ride){
+            $books = RideBookings::where('ride_id', $ride->id)
+                ->where('status', 'confirmed')
+                ->get();
+            foreach($books as $book){
+                $book->rider = User::find($book->user_id);
+            }
+            $ride->books = $books;
+            $v_id = RideDescriptions::where('ride_offer_id', $ride->id)
+                ->where('key', 'vehicle_id')
+                ->first();
+            $ride->vehicle = VehiclesData::find($v_id->value);
+        }
+
         return view('admin.pages.view-driver', [
             'slug' => $slug,
             'data' => $user,
+            'rides' => $rides,
             'details' => $user_details,
             'dd' => $dd,
             'modals' => 'admin.pages.modals.view-driver-modals'

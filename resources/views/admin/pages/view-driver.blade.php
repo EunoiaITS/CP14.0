@@ -83,62 +83,23 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $i = 1; ?>
+                            @foreach($rides as $ride)
                             <tr>
-                                <td>1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><span data-toggle="modal" data-target="#myModallx">Details</span></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $ride->id }}</td>
+                                <td>{{ $ride->origin }}</td>
+                                <td>{{ $ride->destination }}</td>
+                                <td>{{ $ride->created_at }}</td>
+                                <td>{{ $ride->departure_time }}</td>
+                                <td>{{ $ride->total_seats }}</td>
+                                <td>{{ $ride->price_per_seat }}</td>
+                                <td><span data-toggle="modal" data-target="#myModallx{{ $ride->id }}">Details</span></td>
+                                <td>{{ $ride->vehicle->car_type }}</td>
+                                <td>{{ $ride->vehicle->car_plate_no }}</td>
+                                <td>{{ $ride->status }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><span data-toggle="modal" data-target="#myModallx">Details</span></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -149,13 +110,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <nav aria-label="Page navigation example" class="admin-pagination">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
+                    {{ $rides->links() }}
                 </nav>
             </div>
         </div>

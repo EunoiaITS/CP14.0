@@ -36,7 +36,6 @@ class Driver extends Controller
             $user = User::find($id);
             $usd = User_data::where('user_id',$id)->first();
             $vd = VehiclesData::where('user_id',$id)
-                ->where('own_vehicle',1)
                 ->first();
             if($user->role != 'driver'){
                 return redirect()->back();

@@ -70,8 +70,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $i = 1; ?>
+                            @foreach($books as $b)
+                                @if(isset($b->details))
                             <tr>
-                                <td>1</td>
+                                <td>{{ $i++ }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -83,45 +86,8 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
