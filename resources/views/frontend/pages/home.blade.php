@@ -77,13 +77,11 @@
         </div>
     @else
 
-        <!-- where to ara -->
-        <div class="get-where">
+        <!-- landing area -->
+        <div class="get-landing-area">
             <div class="container">
                 <div class="row">
-                    <h2 class="get-section-header">Where to?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc ididunt ut labore et dolore magna aliqua.</p>
-                    <div class="col-sm-12 clearfix">
+                    <div class="col-sm-12">
                         @include('frontend.includes.messages')
                         @if(isset($errors))
                             @foreach($errors as $error)
@@ -92,44 +90,38 @@
                                 </p>
                             @endforeach
                         @endif
-                    </div>
-                    <div class="get-a-ride">
-                        <form action="{{ url('/search') }}" method="post">
-                            {{ csrf_field() }}
-                            <div class="col-sm-3 col-xs-12 padding-left-o">
-                                <input type="text" name="from" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="From" required>
-                            </div>
-                            <div class="col-sm-3 col-xs-12 padding-left-o">
-                                <input type="text" name="to" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="To" required>
-                            </div>
-                            <div class="col-sm-2 col-xs-12 padding-left-o">
-                                <input type="text" name="when" class="form-control" id="datetimepicker5" placeholder="When" required>
-                            </div>
-                            <div class="col-sm-2 col-xs-12 padding-left-o">
-                                <select name="seats" class="get-select-picker" title="Seats" required>
-                                    <option value="1">1 seats</option>
-                                    <option value="2">2 seats</option>
-                                    <option value="3">3 seats</option>
-                                    <option value="4">4 seats</option>
-                                    <option value="5">5 seats</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2 col-xs-12 padding-left-o">
-                                <button type="submit" class="btn btn-info btn-offer"><span>Get a ride </span><i class="fas fa-car"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end where to -->
-
-        <!-- landing area -->
-        <div class="get-landing-area clearfix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
                         <div class="get-landing-text">
+                            <h2 class="get-section-header where-to-section-it">Where to?</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc ididunt ut labore et dolore magna aliqua.</p>
+                            <div class="get-a-ride">
+                                <form action="{{ url('/search') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <div class="col-sm-3 col-xs-12 padding-left-o">
+                                        <input type="text" name="from" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="From" required>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12 padding-left-o">
+                                        <input type="text" name="to" id="" data-live-search="true" class="get-select-picker placepicker form-control" placeholder="To" required>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-12 padding-left-o">
+                                        <input type="text" name="when" class="form-control" id="datetimepicker5" placeholder="When" required>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-12 padding-left-o">
+                                        <select name="seats" class="get-select-picker" title="Seats" required>
+                                            <option value="1">1 seats</option>
+                                            <option value="2">2 seats</option>
+                                            <option value="3">3 seats</option>
+                                            <option value="4">4 seats</option>
+                                            <option value="5">5 seats</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 col-xs-12 padding-left-o">
+                                        <button type="submit" class="btn btn-info btn-offer"><span>Get a ride </span><i class="fas fa-car"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="are-you-driving">
                             <h2 class="get-bold-text">Are you driving <br> somewhere soon?</h2>
                             <p>Take a ride through GetWobo and change the experience of the journey that you never feel before.</p>
                         </div>

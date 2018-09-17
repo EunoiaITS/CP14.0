@@ -17,6 +17,7 @@ class Guest
     public function handle($request, Closure $next)
     {
         $sCheck = session('area');
+
         $urls = [
             url('/choose-country'),
             url('/login'),
