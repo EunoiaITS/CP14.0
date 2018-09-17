@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OfferCreated;
+use App\Events\RideRequest;
 use App\Notifications;
 use App\RideBookings;
 use DB;
@@ -198,6 +200,11 @@ class Customer extends Controller
                     $ride_books->seat_booked = 1;
                     $ride_books->status = $request->status;
                     $ride_books->save();
+                    event(new OfferCreated([
+                        'event' => 'ride-booked',
+                        'from' => Auth::id(),
+                        'offer_id' => $request->ride_id
+                    ]));
                 }
                 return redirect()
                     ->to($request->ride_url)
@@ -364,6 +371,11 @@ class Customer extends Controller
                 }
                 $ride_request->status = 'requested';
                 if($ride_request->save()){
+                    event(new OfferCreated([
+                        'event' => 'ride-request',
+                        'from' => Auth::id(),
+                        'req_id' => $ride_request->id
+                    ]));
                     return redirect()
                         ->to($request->req_url)
                         ->with('success', 'The ride request was created successfully!');

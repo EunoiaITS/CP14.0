@@ -14,6 +14,8 @@ class RideBooked
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $msg, $ad_link, $rec, $time_at;
+
     /**
      * Create a new event instance.
      *
@@ -21,7 +23,10 @@ class RideBooked
      */
     public function __construct()
     {
-        //
+        $this->msg = 'Toki has requested for a ride.';
+        $this->ad_link = url('/d/offer-ride');
+        $this->rec = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $this->time_at = date('d M Y').' at '.date('H:i');
     }
 
     /**
@@ -31,6 +36,6 @@ class RideBooked
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return ['ride-booked'];;
     }
 }

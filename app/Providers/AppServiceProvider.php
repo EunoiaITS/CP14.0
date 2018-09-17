@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
             if(auth()->check()){
                 $view->with('notify', Notifications::where('to', auth()->user()->id)
                     ->where(['status' => 'unread'])
+                    ->orderBy('id', 'desc')
                     ->get()
                 );
             }

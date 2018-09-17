@@ -14,7 +14,7 @@ class BookingAccepted implements  ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    public $msg, $ad_link, $rec, $time_at;
 
     /**
      * Create a new event instance.
@@ -23,7 +23,10 @@ class BookingAccepted implements  ShouldBroadcast
      */
     public function __construct()
     {
-        $this->message = "Mahmud Abdur Rahman has accepted your booking. ";
+        $this->msg = 'Toki has requested for a ride.';
+        $this->ad_link = url('/d/offer-ride');
+        $this->rec = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $this->time_at = date('d M Y').' at '.date('H:i');
     }
 
     /**

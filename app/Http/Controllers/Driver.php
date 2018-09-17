@@ -12,6 +12,7 @@ use App\RideOffers;
 use App\RideDescriptions;
 use App\VehiclesData;
 use App\RideComp;
+use App\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -311,6 +312,7 @@ class Driver extends Controller
                     $ride_book->status = 'booked';
                     $ride_book->save();
                     event(new OfferCreated([
+                        'event' => 'offer-created',
                         'from' => Auth::id(),
                         'to' => $request->req_user_id,
                         'ride_id' => $ride_offer_id
@@ -436,6 +438,12 @@ class Driver extends Controller
             }
             $booking->status = 'confirmed';
             $booking->save();
+            event(new OfferCreated([
+                'event' => 'booking-accepted',
+                'from' => Auth::id(),
+                'booking' => $booking,
+                'offer' => $offer
+            ]));
             return redirect('/d/ride-details/'.$request->link)
                 ->with('success', 'The ride booking was confirmed!');
         }else{
@@ -457,6 +465,11 @@ class Driver extends Controller
             }
             $booking->status = 'rejected';
             $booking->save();
+            event(new OfferCreated([
+                'event' => 'booking-canceled',
+                'from' => Auth::id(),
+                'booking' => $booking
+            ]));
             return redirect('/d/ride-details/'.$request->link)
                 ->with('success', 'The ride booking was rejected!');
         }else{
@@ -488,6 +501,11 @@ class Driver extends Controller
                     $offer = RideOffers::find($request->ride_id);
                     $offer->status = 'in-progress';
                     $offer->save();
+                    event(new OfferCreated([
+                        'event' => 'ride-start',
+                        'from' => Auth::id(),
+                        'ride_id' => $request->ride_id
+                    ]));
                     return redirect()
                         ->to($request->ride_url)
                         ->with('success', 'Your ride was started successfully!');
@@ -519,6 +537,11 @@ class Driver extends Controller
             if($end->save()){
                 $ride_det->status = 'completed';
                 $ride_det->save();
+                event(new OfferCreated([
+                    'event' => 'ride-end',
+                    'from' => Auth::id(),
+                    'ride_id' => $request->ride_id
+                ]));
                 return redirect()
                     ->to($request->ride_url)
                     ->with('success', 'Your ride was ended successfully!');
@@ -671,6 +694,11 @@ class Driver extends Controller
                 }
             }
 
+            event(new OfferCreated([
+                'event' => 'ride-edit',
+                'from' => Auth::id(),
+                'ride_id' => $ride_offer_id
+            ]));
             return redirect()
                 ->to('d/edit-ride/'.$ro->link)
                 ->with('success', 'Ride Updated Successfully !!');

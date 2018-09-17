@@ -159,7 +159,7 @@
                         <input type="hidden" name="status" value="confirmed">
                     </form>
                     @endif
-                    <form method="post" action="{{ url('/d/cancel-bookings') }}">
+                    <form id="cancel-booking" method="post" action="{{ url('/d/cancel-bookings') }}">
                         {{ csrf_field() }}
                         <input type="hidden" name="book_id" value="{{ $b->id }}">
                         <input type="hidden" name="link" value="{{ $data->link }}">
@@ -169,7 +169,7 @@
                         @if($b->status != 'confirmed')
                         <button type="submit" form="confirm-book" class="btn btn-info btn-offer ride-popup-ride-button">Confirm Booking</button>
                         @endif
-                        <button class="btn btn-info btn-offer ride-popup-ride-button"  data-dismiss="modal">Cancel Booking</button>
+                        <button class="btn btn-info btn-offer ride-popup-ride-button" form="cancel-booking">Cancel Booking</button>
                     </div>
                 </div>
                 @endif

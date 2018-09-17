@@ -18,7 +18,13 @@ class Guest
     {
         $sCheck = session('area');
 
-        if(!isset($sCheck) &&  !in_array($request->url(), [url('/choose-country'), url('/login'),url('/login/admin'), url('/read-notification')])){
+        $urls = [
+            url('/choose-country'),
+            url('/login'),
+            url('/read-notification'),
+            url('/login/admin')
+        ];
+        if(!isset($sCheck) &&  !in_array($request->url(), $urls)){
             if(Auth::check() && Auth::user()->role == 'super-admin'){
                 return $next($request);
             }else{

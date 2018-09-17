@@ -1,3 +1,4 @@
+@if(Auth::check())
 <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
 <script type="text/javascript">
     var user_id = '{{ Auth::id() }}';
@@ -27,35 +28,96 @@
         var existingNotifications = notifications.html();
         var newNotificationHtml = '<li class="view-bookings-unread">'+
                 '<div class="notificaton-text">'+
-                '<span class="get-notiline-text">'+data.msg+'</span>'+
+                '<span class="get-notiline-text">'+
+                '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
+                data.msg+
+                '</span>'+
                 '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">VISIT FOR DEATILS</button></a>'+
                 '</div>'+
                 '</li>';
-        if(data.rec == user_id){
+        if(data.ev == 'offer-created'){
+            if(data.rec == user_id){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == 'ride-request'){
+            @if(Auth::user()->role == 'driver')
             notifications.html(newNotificationHtml + existingNotifications);
 
             notificationsCount += 1;
             notificationsCountElem.text(notificationsCount);
             notificationsWrapper.show();
+            @endif
+            }
+
+        if(data.ev == 'ride-booked'){
+            if(data.rec == user_id){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
         }
-    });
 
-    var channel1 = pusher.subscribe('booking-accepted');
+        if(data.ev == 'booking-accepted'){
+            if(data.rec == user_id){
+                notifications.html(newNotificationHtml + existingNotifications);
 
-    // Bind a function to a Event (the full Laravel class)
-    channel1.bind('App\\Events\\BookingAccepted', function(data) {
-        var existingNotifications = notifications.html();
-        var newNotificationHtml = '<li class="view-bookings-unread">'+
-        '<div class="notificaton-text">'+
-        '<span class="get-notiline-text">'+data.msg+'</span>'+
-        '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">VISIT FOR DEATILS</button></a>'+
-        '</div>'+
-        '</li>';
-        notifications.html(newNotificationHtml + existingNotifications);
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
 
-        notificationsCount += 1;
-        notificationsCountElem.text(notificationsCount);
-        notificationsWrapper.show();
+        if(data.ev == 'booking-canceled'){
+            if(data.rec == user_id){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == 'ride-start'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == 'ride-end'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == 'ride-edit'){
+            if($.inArray(parseInt(user_id), data.rec) !== -1){
+                notifications.html(newNotificationHtml + existingNotifications);
+
+                notificationsCount += 1;
+                notificationsCountElem.text(notificationsCount);
+                notificationsWrapper.show();
+            }
+        }
+
+        if(data.ev == ''){}
+
+        if(data.ev == ''){}
     });
 
     function readNot(event, id){
@@ -68,10 +130,10 @@
                 success: function(data){
                     if(data.stat == 'true'){
                         $('#notify-'+id).removeAttr('class');
-                        alert('working!!');
                     }
                 }
             });
         }
     }
 </script>
+    @endif
