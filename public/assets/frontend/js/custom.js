@@ -1,34 +1,34 @@
 
 
 (function($) {
-	"use strict";
+    "use strict";
 
 
 
-	/*--========================
-	slidebar call js
-	========================--*/
-	$('#toggle-remove-class').on('click', function(e) {
-		e.preventDefault();
-		$('body').toggleClass('nav-open');
-	});
+    /*--========================
+    slidebar call js
+    ========================--*/
+    $('#toggle-remove-class').on('click', function(e) {
+        e.preventDefault();
+        $('body').toggleClass('nav-open');
+    });
 
-	$('#toggle-remove').on('click', function(e) {
-		e.preventDefault();
-		$('body').removeClass('nav-open');
-    return $(".navi-trigger").removeClass("cross");
-	});
+    $('#toggle-remove').on('click', function(e) {
+        e.preventDefault();
+        $('body').removeClass('nav-open');
+        return $(".navi-trigger").removeClass("cross");
+    });
 
-  // menu icon toggle
+    // menu icon toggle
 
-  $(".get-humber-icon").click(function() {
-    return $(".navi-trigger").toggleClass("cross");
-  });
+    $(".get-humber-icon").click(function() {
+        return $(".navi-trigger").toggleClass("cross");
+    });
 
 
-	 /*=======================================================
-    // Vertical Center Welcome
-    ======================================================*/
+    /*=======================================================
+   // Vertical Center Welcome
+   ======================================================*/
     "use strict";
 
     /*--========================
@@ -138,7 +138,7 @@ $('.timepicker-hh').datetimepicker({
         previous: 'fa fa-angle-left',
         next: 'fa fa-angle-right',
     }
-  });
+});
 
 $('.timepicker-mm').datetimepicker({
     format: "mm",

@@ -110,14 +110,14 @@ class Authenticate extends Controller
                 $linkExtension = $this->generateRandomString();
                 $link = url('/account/user/verify').'/'.$linkExtension;
 
-                $transport = (new \Swift_SmtpTransport('ssl://mail.getwobo.com', 465))
-                    ->setUsername("test01@test.getwobo.com")
-                    ->setPassword('2H]KOcQ!H9U[');
+                $transport = (new \Swift_SmtpTransport('ssl://test.getwobo.com', 465))
+                    ->setUsername("mail@test.getwobo.com")
+                    ->setPassword('6?bxd~bMW,7j');
 
                 $mailer = new \Swift_Mailer($transport);
 
                 $message = new \Swift_Message('Get Wobo - Account verify Link');
-                $message->setFrom(['support@gotguide.info' => 'Account verify link - Get Wobo']);
+                $message->setFrom(['support@getwobo.com' => 'Account verify link - Get Wobo']);
                 $message->setTo([$request->email => $request->name]);
                 $message->setBody('<html><body>'.
                     '<h1>Hi '.$request->name .',</h1>'.
@@ -180,11 +180,11 @@ class Authenticate extends Controller
             $data = $request->all();
             if(!$user->validate($data)){
                 $user_e = $user->errors();
-              foreach ($user_e->messages() as $k => $v){
-                  foreach ($v as $e){
-                      $errors[] = $e;
-                  }
-              }
+                foreach ($user_e->messages() as $k => $v){
+                    foreach ($v as $e){
+                        $errors[] = $e;
+                    }
+                }
             }
             if(!$usd->validate($data)){
                 $usd_e = $usd->errors();
@@ -233,14 +233,14 @@ class Authenticate extends Controller
                 $linkExtension = $this->generateRandomString();
                 $link = url('/account/user/verify').'/'.$linkExtension;
 
-                $transport = (new \Swift_SmtpTransport('ssl://mail.getwobo.com', 465))
-                    ->setUsername("test01@test.getwobo.com")
-                    ->setPassword('2H]KOcQ!H9U[');
+                $transport = (new \Swift_SmtpTransport('ssl://test.getwobo.com', 465))
+                    ->setUsername("mail@test.getwobo.com")
+                    ->setPassword('6?bxd~bMW,7j');
 
                 $mailer = new \Swift_Mailer($transport);
 
                 $message = new \Swift_Message('Get Wobo - Account verify Link');
-                $message->setFrom(['support@gotguide.info' => 'Account verify link - Get Wobo']);
+                $message->setFrom(['support@getwobo.com' => 'Account verify link - Get Wobo']);
                 $message->setTo([$request->email => $request->name]);
                 $message->setBody('<html><body>'.
                     '<h1>Hi '.$request->name .',</h1>'.

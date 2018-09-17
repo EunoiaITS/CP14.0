@@ -19,7 +19,6 @@
                     <h4 class="about-us-details-title">Your Ride anytime anywhere</h4>
                     <p>Vitae feugiat iaculis pulvinar justo cursus luctus donec taciti nascetur ligula habitasse metus rhoncus vulputate tellus ullamcorper. Ultricies sociis risus semper per convallis. Adipiscing mi felis ad urna pellentesque a per pharetra Praesent vitae. Quis pellentesque. Placerat cras fermentum phasellus malesuada habitasse torquent taciti posuere Id ornare Egestas suscipit.</p>
                 </div>
-                <h3 class="get-about-section-header">How It Works</h3>
             </div>
         </div>
     </div>
