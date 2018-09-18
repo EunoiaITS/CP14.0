@@ -106,46 +106,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php $i = 1; ?>
+                                @foreach($data as $d)
+                                    @if(isset($d->ride_req))
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $d->id }}</td>
+                                        <td>{{ $d->requester->name }}</td>
+                                        <td>{{ $d->origin }}</td>
+                                        <td>{{ $d->destination }}</td>
+                                        <td>{{ date('d-M-Y H:i a', strtotime($d->created_at)) }}</td>
+                                        <td>{{ date('d-M-Y H:i a', strtotime($d->departure_time)) }}</td>
+                                        <th>{{ $d->mate->name }}</th>
+                                    </tr>
+                                    @endif
+                                @endforeach
                                 </tbody>
                             </table>
                             <p class="income">Income : <span> </span></p>
