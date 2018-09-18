@@ -731,7 +731,9 @@ class Driver extends Controller
     public function incomeStatement(Request $request){
         if($request->ajax()){
             $id = Auth::id();
-            $ro = RideOffers::where('offer_by',$id)->get();
+            $ro = RideOffers::where('offer_by',$id)
+                ->where('status','completed')
+                ->get();
             foreach ($ro as $r){
                 $rc = RideComp::where('ride_id',$r->id)->get();
                 foreach ($rc as $c){

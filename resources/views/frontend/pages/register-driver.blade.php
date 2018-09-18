@@ -80,25 +80,37 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input type="text" name="address" class="form-control" placeholder="Address" required="required">
+                            <div class="palceholder">
+                                <label for="name">Address <span class="star">*</span></label>
+                            </div>
+                            <input type="text" name="address" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <input type="text" name="car_reg" class="form-control" placeholder="Car’s Plate Reg No." required>
+                            <div class="palceholder">
+                                <label for="name">Car’s Plate Reg No. <span class="star">*</span></label>
+                            </div>
+                            <input type="text" name="car_reg" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="driving_license" class="form-control" placeholder="Driving License No." required>
+                            <div class="palceholder">
+                                <label for="name">Driving License No.  <span class="star">*</span></label>
+                            </div>
+                            <input type="text" name="driving_license" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-sm-2 sign-up-order-mm">
                         <div class="form-group">
-                            <input type="text" name="expiry" class="form-control datepicker-f" placeholder="Expiration Date" required>
+                            <div class="palceholder">
+                                <label for="name">MM/YY <span class="star">*</span></label>
+                            </div>
+                            <input type="text" name="expiry" class="form-control datepicker-f" required>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group get-sign-up-mate">
-                            <label for="upload-driving-licence">Upload Driving Lience (Max 300Kb)</label>
+                            <label for="upload-driving-licence">Upload Driving Lience (Max 300Kb)<span class="star">*</span></label>
                             <div class="file btn btn-sm btn-primary">
                                 <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
                                 <input type="file" class="input-upload" name="dl_picture" required>

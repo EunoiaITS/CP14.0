@@ -137,7 +137,7 @@
                                     <!-- live calender -->
                                     <!-- daily calender -->
                                     <div id="picker"></div>
-                                    <button id="generate" class="btn btn-info btn-offer">Generate</button>
+                                    <button id="generate" rel="{{$data->id}}" class="btn btn-info btn-offer">Generate</button>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-8 ">
@@ -155,7 +155,7 @@
                                 <form action="" method="POST" role="form">
                                     <div class="form-group">
                                         <div class="col-sm-4">
-                                            <label for="mounthly-income">Monthly Income</label>
+                                            <label for="monthly-income">Monthly Income</label>
                                         </div>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="">

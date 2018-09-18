@@ -18,14 +18,14 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
                             <form action="#">
                                 <div class="form-group">
-                                    <select class="form-control get-select-picker" name="search-ops" title="Select" id="search-ops">
-                                        <option value="d">Daily</option>
-                                        <option value="w">Weekly</option>
-                                        <option value="m">Monthly</option>
-                                        <option value="y">Yearly</option>
+                                    <select id="format-selector" class="form-control get-select-picker" name="search-ops" title="Select" id="search-ops">
+                                        <option value="Daily">Daily Income</option>
+                                        <option value="Weekly">Weekly Income</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Yearly">Yearly</option>
                                     </select>
+                                    <div id="picker"></div>
                                 </div>
-                                <div id="calendar"></div>
                                 <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
                             </form>
                         </div>
@@ -80,14 +80,14 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
                             <form action="#">
                                 <div class="form-group">
-                                    <select class="form-control get-select-picker" title="Select">
-                                        <option value="">Daily </option>
-                                        <option value="">Weekly </option>
-                                        <option value="">Monthly </option>
-                                        <option value="">Yearly </option>
+                                    <select id="format-selector-req" class="form-control get-select-picker" title="Select">
+                                        <option value="Daily">Daily Income</option>
+                                        <option value="Weekly">Weekly Income</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Yearly">Yearly</option>
                                     </select>
+                                    <div id="picker-req"></div>
                                 </div>
-                                <div id="calendar2"></div>
                                 <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
                             </form>
                         </div>

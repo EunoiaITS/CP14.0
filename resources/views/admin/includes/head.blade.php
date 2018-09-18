@@ -9,9 +9,9 @@
     <link href="{{ asset('public/assets/admin/css/datepicker3.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/assets/admin/css/bootstrap-select.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/admin/css/flaticon.css') }}">
-    <link href="{{ asset('public/assets/admin/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/jquery-ui-1.10.4.smoothness.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/admin/css/styles.css') }}" rel="stylesheet">
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!--[if lt IE 9]>

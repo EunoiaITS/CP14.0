@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\User_data;
 use App\DriverData;
+use App\RideComp;
 
 class Admin extends Controller
 {
@@ -385,4 +386,48 @@ class Admin extends Controller
         ]);
     }
 
+    public function incomeStatement(Request $request){
+            $id = $request->id;
+            $ro = RideOffers::where('offer_by',$id)
+                ->where('status','completed')
+                ->get();
+            foreach ($ro as $r){
+                $rc = RideComp::where('ride_id',$r->id)->first();
+                    if($request->section == 'daily'){
+                        if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->amount = $rc->total_fair;
+                        }
+                    }
+                    if ($request->section == 'weekly'){
+                        for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
+                            if($i == date('d',strtotime($rc->start_time))){
+                                $r->checked = 'yes';
+                                $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                                $r->time = date('H:i A',strtotime($rc->start_time));
+                                $r->amount = $rc->total_fair;
+                            }
+                        }
+                    }
+                    if ($request->section == 'monthly'){
+                        if(date('m',strtotime($rc->start_time)) == date('m',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->amount = $rc->total_fair;
+                        }
+                    }
+                    if($request->section == 'yearly'){
+                        if(date('Y',strtotime($rc->start_time)) == date('Y',strtotime($request->date))){
+                            $r->checked = 'yes';
+                            $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->amount = $rc->total_fair;
+                        }
+                    }
+            }
+            return json_encode($ro);
+        }
 }

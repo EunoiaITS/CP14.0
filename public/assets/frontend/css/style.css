@@ -2460,6 +2460,28 @@ div.zabuto_calendar .table tr.calendar-month-header td {
 .get-ride-button-cancel{
     margin-left: 30px;
 }
+
+.form-group{
+    position: relative;
+}
+.palceholder{
+    position: absolute;
+    top: 12px;
+    left: 13px;
+    width: 100%;
+}
+.palceholder label{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #61108c;
+}
+.star{
+    color: red;
+    margin-left: 4px;
+}
+
+
 #googleMap {
     width: 100%;
     height: 400px;

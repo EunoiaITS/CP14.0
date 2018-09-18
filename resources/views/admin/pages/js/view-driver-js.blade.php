@@ -16,13 +16,15 @@
                 });
                 $(document).on('click','#generate',function (e) {
                     e.preventDefault();
+                    var drId = $(this).attr('rel');
+                    //alert(drId);
                     var date = $("#dailypicker01").find(".active").data("day");
-                    let link = '<?php echo url('/d/income-statement');?>';
+                    let link = '<?php echo url('admin/income-statement');?>';
                     var html = '';
                     $.ajax({
-                        type: 'POST',
+                        type: 'GET',
                         url: link,
-                        data: {'section':'daily','date':date},
+                        data: {'section':'daily','date':date,'id':drId},
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
@@ -56,12 +58,13 @@
                         //alert(endDate.toISOString().split('T')[0]);
                         $(document).on('click','#generate',function (e) {
                             e.preventDefault();
-                            let link = '<?php echo url('/d/income-statement');?>';
+                            var drId = $(this).attr('rel');
+                            let link = '<?php echo url('admin/income-statement');?>';
                             var html = '';
                             $.ajax({
-                                type: 'POST',
+                                type: 'GET',
                                 url: link,
-                                data: {'section':'weekly','start_date':startDate.toISOString().split('T')[0],'end_date':endDate.toISOString().split('T')[0]},
+                                data: {'section':'weekly','id':drId,'start_date':startDate.toISOString().split('T')[0],'end_date':endDate.toISOString().split('T')[0]},
                                 dataType: 'text',
                                 success: function(data, textStatus, xhr){
                                     console.log(data);
@@ -93,14 +96,15 @@
                 });
                 $(document).on('click','#generate',function (e) {
                     e.preventDefault();
+                    var drId = $(this).attr('rel');
                     var date = $("#dailypicker03").find(".active").data("day");
-                    let link = '<?php echo url('/d/income-statement');?>';
+                    let link = '<?php echo url('/admin/income-statement');?>';
                     //alert(date);
                     var html = '';
                     $.ajax({
-                        type: 'POST',
+                        type: 'GET',
                         url: link,
-                        data: {'section':'monthly','date':date},
+                        data: {'section':'monthly','date':date,'id':drId},
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
@@ -130,14 +134,15 @@
                 });
                 $(document).on('click','#generate',function (e) {
                     e.preventDefault();
+                    var drId = $(this).attr('rel');
                     var date = $("#dailypicker04").find(".active").data("day");
-                    let link = '<?php echo url('/d/income-statement');?>';
+                    let link = '<?php echo url('admin/income-statement');?>';
                     //alert(date);
                     var html = '';
                     $.ajax({
-                        type: 'POST',
+                        type: 'GET',
                         url: link,
-                        data: {'section':'yearly','date':date},
+                        data: {'section':'yearly','date':date,'id':drId},
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
