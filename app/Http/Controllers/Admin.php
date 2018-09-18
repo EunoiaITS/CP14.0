@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
 use App\RideOffers;
@@ -297,6 +298,11 @@ class Admin extends Controller
         $rides = RideOffers::where('status', 'completed')->paginate(10);
         foreach($rides as $ride){
             $ride->mate = User::find($ride->offer_by);
+            if($ride->req_id != null){
+                $ride_req = Ride_request::find($ride->req_id);
+                $ride->requester = User::find($ride_req->user_id);
+                $ride->ride_req = $ride_req;
+            }
         }
         $slug = 'rides';
         return view('admin.pages.ride-details', [
@@ -322,7 +328,14 @@ class Admin extends Controller
             $details = RideOffers::where('id', $book->ride_id)
                 ->where('status', 'completed')
                 ->first();
-            $book->details = $details;
+            if($details != null){
+                $details->ridemate = User::find($details->offer_by);
+                $vehicle_id = RideDescriptions::where('ride_offer_id', $details->id)
+                    ->where('key', 'vehicle_id')
+                    ->first();
+                $details->vehicle = VehiclesData::find($vehicle_id->value);
+                $book->details = $details;
+            }
         }
 
         return view('admin.pages.view-customer', [

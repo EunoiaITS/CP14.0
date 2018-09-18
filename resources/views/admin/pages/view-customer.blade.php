@@ -75,16 +75,16 @@
                                 @if(isset($b->details))
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $b->details->id }}</td>
+                                <td>{{ $b->details->origin }}</td>
+                                <td>{{ $b->details->destination }}</td>
+                                <td>{{ date('d-M-Y H:i a', strtotime($b->details->created_at)) }}</td>
+                                <td>{{ date('d-M-Y H:i a', strtotime($b->details->departure_time)) }}</td>
+                                <td>{{ $b->seat_booked }}</td>
+                                <td>{{ $b->details->price_per_seat }}</td>
+                                <td>{{ $b->details->ridemate->name }}</td>
+                                <td>{{ $b->details->vehicle->car_type }}</td>
+                                <td>{{ $b->details->vehicle->car_plate_no }}</td>
                             </tr>
                             @endif
                                 @endforeach
