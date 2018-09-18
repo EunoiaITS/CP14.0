@@ -57,9 +57,9 @@
    ======================================================*/
     setInterval(function () {
         var widnowHeight = $(window).height();
-        var introHeight = $(".get-landing-text, .not-found").height();
+        var introHeight = $(".not-found").height();
         var paddingTop = widnowHeight - introHeight;
-        $(".get-landing-text, .not-found").css({
+        $(" .not-found").css({
             'padding-top': Math.round(paddingTop / 2) + 'px',
             'padding-bottom': Math.round(paddingTop / 2) + 'px'
         });
@@ -152,21 +152,21 @@ $('.timepicker-mm').datetimepicker({
 
 $('#datetimepicker4').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
-    icons:{
-        time:'fas fa-clock',
+    icons: {
+        time:'timepicker',
     }
 });
 
 $('#datetimepicker5').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
-    icons:{
-        time:'fas fa-clock',
+    icons: {
+        time:'timepicker',
     }
 });
 
 $('#datetimepicker6').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
-    icons:{
-        time:'fas fa-clock',
+    icons: {
+        time:'timepicker',
     }
 });

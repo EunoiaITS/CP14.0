@@ -114,77 +114,62 @@
                 </nav>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Income Statement
+        <div class="clearfix text-center">
+            <button class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModaln" >Review Income Statement</button>
+        </div>
+        <div class="modal fade income-statement-popup" id="myModaln" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Statement Income </h4>
                     </div>
-                    <div class="panel-body">
-                        <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
-                            <form action="#">
-                                <div class="form-group">
-                                    <select class="form-control get-select-picker" title="Select">
-                                        <option value="">Daily Income</option>
-                                        <option value="">Weekly Income</option>
-                                        <option value="">Monthly Income</option>
-                                        <option value="">Yearly Income</option>
+                    <div class="modal-body">
+                        <div class="col-sm-12 padding-left-o padding-right-0">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="statement-ridemate">
+                                    <select name="" id="format-selector" class="get-select-picker" title="Select">
+                                        <option value="Daily">Daily Income</option>
+                                        <option value="Weekly">Weekly Income</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Yearly">Yearly</option>
                                     </select>
+                                    <!-- live calender -->
+                                    <!-- daily calender -->
+                                    <div id="picker"></div>
+                                    <button id="generate" class="btn btn-info btn-offer">Generate</button>
                                 </div>
-                                <div id="calendar"></div>
-                                <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
-                            </form>
+                            </div>
+                            <div class="col-sm-12 col-md-8 ">
+                                <table class="table table-hover table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Amount (including GST 6%)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="income-data">
+                                    </tbody>
+                                </table>
+                                <form action="" method="POST" role="form">
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label for="mounthly-income">Monthly Income</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="col-lg-7 col-md-6 col-lg-offset-1 col-xs-12  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Ride No.</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Amount</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <p class="income">Income : <span> </span></p>
-                        </div>
+                    </div>
+                    <div class="modal-footer income-modal-footer clearfix">
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="col-sm-12">
             <p class="back-link">© 2018. All rights reserved</p>

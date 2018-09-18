@@ -33,6 +33,10 @@
 <script src="{{ asset('public/assets/admin/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('public/assets/admin/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('public/assets/admin/js/custom.js') }}"></script>
+<script src="{{ asset('public/assets/admin/js/moment.js') }}"></script>
+<script src="{{ asset('public/assets/admin/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('public/assets/admin/js/jquery-ui-1.10.4.js') }}"></script>
+<script src="{{ asset('public/assets/admin/js/jquery-weekpicker.js') }}"></script>
 
 @if(isset($footer_js))
     @include($footer_js)

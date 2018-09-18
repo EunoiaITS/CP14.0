@@ -367,6 +367,7 @@ class Admin extends Controller
             'rides' => $rides,
             'details' => $user_details,
             'dd' => $dd,
+            'footer_js' => 'admin.pages.js.view-driver-js',
             'modals' => 'admin.pages.modals.view-driver-modals'
         ]);
     }
