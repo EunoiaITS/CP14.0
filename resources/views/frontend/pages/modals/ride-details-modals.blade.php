@@ -1,13 +1,12 @@
-<!--Riders details -->
+<!--Ridemate details -->
 <div class="modal fade" id="myModalx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Riders Details</h4>
+                <h4 class="modal-title" id="myModalLabel">Ridemate Details</h4>
             </div>
-            <div class="modal-body rider-details-ridemate">
-                <h3 class="rider-title">Rider</h3>
+            <div class="modal-body">
                 <div class="ridemate-name-area">
                     <div class="ridemate-name">
                         Name <span class="ridemate-right">:</span>
@@ -24,21 +23,60 @@
                         <span>{{ $data->user->email }}</span>
                     </div>
                 </div>
-
+                <div class="ridemate-name-area">
+                    <div class="ridemate-name">
+                        Phone <span class="ridemate-right">:</span>
+                    </div>
+                    <div class="ridemate-name-xs">
+                        <span>{{ $data->usd->contact }}</span>
+                    </div>
+                </div>
                 <div class="ridemate-name-area">
                     <div class="ridemate-name">
                         Gender <span class="ridemate-right">:</span>
                     </div>
                     <div class="ridemate-name-xs">
-                        <span>{{ $data->user->gender }}</span>
+                        <span>{{ $data->usd->gender }}</span>
                     </div>
                 </div>
                 <div class="ridemate-name-area">
                     <div class="ridemate-name">
-                        Occupied Seat <span class="ridemate-right">:</span>
+                        Rating<span class="ridemate-right">:</span>
                     </div>
                     <div class="ridemate-name-xs">
-                        <span></span>
+                        <ul class="get-user-icon-layer">
+                            <?php
+                            if($data->average > 0 && $data->average < 2){
+                                echo "<li><i class='fas fa-star'></i></li>";
+                            }
+                            elseif($data->average > 1 && $data->average < 3){
+                                echo "<li><i class='fas fa-star'></i></li>
+                                        <li><i class='fas fa-star'></i></li>";
+                            }elseif($data->average >=3  && $data->average < 4){
+                                echo "<li><i class='fas fa-star'></i></li>
+                                        <li><i class='fas fa-star'></i></li>
+                                          <li><i class='fas fa-star'></i></li>";
+                            }elseif($data->average >= 4 && $data->average < 5){
+                                echo "<li><i class='fas fa-star'></i></li>
+                                        <li><i class='fas fa-star'></i></li>
+                                          <li><i class='fas fa-star'></i></li>
+                                             <li><i class='fas fa-star'></i></li>";
+                            }elseif($data->average == 5){
+                                echo "<li><i class='fas fa-star'></i></li>
+                                        <li><i class='fas fa-star'></i></li>
+                                          <li><i class='fas fa-star'></i></li>
+                                            <li><i class='fas fa-star'></i></li>
+                                              <li><i class='fas fa-star'></i></li>";
+                            }else{
+                                echo '';
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                    <div class="ridemate-name-area">
+                        <div class="ridemate-name-xs">
+                            <span><a href="{{ url('/profile/ridemate/'.$data->user->id) }}">Details</a></span>
+                        </div>
                     </div>
                 </div>
             </div>

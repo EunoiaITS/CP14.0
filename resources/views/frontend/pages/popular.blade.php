@@ -55,11 +55,32 @@
                             <div class="col-sm-4">
                                 <div class="get-user-ratings">
                                     <ul class="get-rate-user">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
+                                        <?php
+                                            if($d->average > 0 && $d->average < 2){
+                                                echo "<li><i class='fas fa-star'></i></li>";
+                                            }
+                                            elseif($d->average > 1 && $d->average < 3){
+                                                echo "<li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>";
+                                            }elseif($d->average >=3  && $d->average < 4){
+                                                echo "<li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>";
+                                            }elseif($d->average >= 4 && $d->average < 5){
+                                                echo "<li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>";
+                                            }elseif($d->average == 5){
+                                                echo "<li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>
+                                                      <li><i class='fas fa-star'></i></li>";
+                                            }else{
+                                                echo '';
+                                            }
+                                        ?>
                                     </ul>
                                     <div class="get-price">
                                         <h3 class="get-total-prize">${{ $d->price_per_seat }}</h3>
