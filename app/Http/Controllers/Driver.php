@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OfferCreated;
+use App\Ratings;
 use App\Ride_request;
 use App\RideBookings;
 use App\User_data;
@@ -407,10 +408,15 @@ class Driver extends Controller
             $book->ud = $ud;
         }
         $ro->bookings = $bookings;
-        
+        $rates = array();
+        $ratings = Ratings::where('ride_id', $ro->id)->get();
+        foreach($ratings as $rate){
+            $rates[] = $rate->from;
+        }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
             'ride_start' => $rideStart,
+            'rates' => $rates,
             'js' => 'frontend.pages.js.ride-details-js',
             'modals' => 'frontend.pages.modals.ride-details-modals'
         ]);
