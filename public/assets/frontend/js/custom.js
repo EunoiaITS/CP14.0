@@ -100,13 +100,6 @@
 
 
     /*--=========================
-    ridemate ratings call
-    ==========================--*/
-    $('.click-performance .fas').click(function() {
-        $(this).toggleClass('active-color');
-    });
-
-    /*--=========================
    available seats call
     ==========================--*/
     $('.first-ride .fas').click(function() {

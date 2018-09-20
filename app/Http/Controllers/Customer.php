@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\OfferCreated;
 use App\Events\RideRequest;
 use App\Notifications;
+use App\Ratings;
 use App\RideBookings;
 use DB;
 use App\User_data;
@@ -440,6 +441,65 @@ class Customer extends Controller
         return view('frontend.pages.notifications', [
             'data' => $notifications,
             'slug' => 'not'
+        ]);
+    }
+
+    /**
+     * Rate - rate a ridemate/driver
+    */
+    public function rate(Request $request, $link){
+        $ride = RideOffers::where('link', $link)
+            ->where('status', 'completed')
+            ->first();
+        if(empty($ride)){
+            abort(404);
+        }else{
+            $check = Ratings::where('ride_id', $ride->id)
+                ->where('from', Auth::id())
+                ->first();
+            if(!empty($check)){
+                abort(404);
+            }
+            $book_check = RideBookings::where('user_id', Auth::id())
+                ->where('ride_id', $ride->id)
+                ->where('status', 'confirmed')
+                ->first();
+            if(empty($book_check)){
+                abort(404);
+            }
+            $ride->driver = User::find($ride->offer_by);
+            $ride->driver_data = User_data::where('user_id', $ride->offer_by)->first();
+        }
+        if($request->isMethod('post')){
+            $errors = array();
+            $rating = new Ratings();
+            if(!$rating->validate($request->all())){
+                $rating_e = $rating->errors();
+                foreach ($rating_e->messages() as $k => $v){
+                    foreach ($v as $e){
+                        $errors[] = $e;
+                    }
+                }
+            }
+            if(empty($errors)){
+                $rating->ride_id = $request->ride_id;
+                $rating->from = $request->from;
+                $rating->to = $request->to;
+                $rating->rating = $request->rating;
+                $rating->comment = $request->comment;
+                $rating->save();
+                return redirect()
+                    ->to('/ride-details/'.$ride->link)
+                    ->with('success', 'Your rating was successfully added!');
+            }else{
+                return redirect()
+                    ->to('/c/rate/'.$ride->link)
+                    ->with('errors', $errors);
+            }
+        }
+        return view('frontend.pages.rate', [
+            'data' => $ride,
+            'js' => 'frontend.pages.js.rate-js'
         ]);
     }
 

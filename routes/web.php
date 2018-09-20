@@ -98,6 +98,8 @@ Route::prefix('c')->group(function(){
     Route::get('/requests', 'Customer@rideRequests');
     Route::post('/delete-request', 'Customer@deleteRequest');
     Route::get('/notifications', 'Customer@notifications');
+    Route::get('/rate/{link}', 'Customer@rate');
+    Route::post('/rate/{link}', 'Customer@rate');
 });
 
 /**
