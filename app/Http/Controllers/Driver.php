@@ -14,6 +14,7 @@ use App\RideDescriptions;
 use App\VehiclesData;
 use App\RideComp;
 use App\Notifications;
+use App\Ratings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -38,6 +39,13 @@ class Driver extends Controller
             $usd = User_data::where('user_id',$id)->first();
             $vd = VehiclesData::where('user_id',$id)
                 ->first();
+            $ratings = Ratings::where('to',$id)->get();
+            foreach ($ratings as $rat){
+                $cus = User::find($rat->from);
+                $img = User_data::where('user_id',$rat->from)->first();
+                $rat->name = $cus->name;
+                $rat->img = $img->picture;
+            }
             if($user->role != 'driver'){
                 return redirect()->back();
             }
@@ -45,6 +53,7 @@ class Driver extends Controller
                 'usd' => $usd,
                 'user' => $user,
                 'vd'=> $vd,
+                'ratings' => $ratings,
                 'js' => 'frontend.pages.js.driver-profile-js'
             ]);
         }

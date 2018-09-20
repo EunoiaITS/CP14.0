@@ -79,48 +79,24 @@
                     </div>
                 </div>
                 <!--Ride description  -->
+
                 <!-- feedback -->
                 <div class="get-feedback-area ridemate-profile--w clearfix">
                     <h3 class="check-total-fare clearfix">Feedbacks</h3>
+                    @foreach($ratings as $rat)
                     <div class="user-feedback-section clearfix">
-                        <div class="feedback-user-icon"><img src="{{ url('/') }}/public/assets/frontend/img/user/user-4.jpg" alt=""></div>
+                        <div class="feedback-user-icon"><img src="{{ asset('/public/uploads/customers/'.$rat->img) }}" alt=""></div>
                         <div class="feedback-get-user">
-                            <h3 class="user-name">Iris West</h3>
+                            <h3 class="user-name">{{ $rat->name }}</h3>
                             <ul class="get-user-icon-layer clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
+                                @for($i = 1; $i <= $rat->rating;$i++)
+                                    <li><i class="fas fa-star"></i></li>
+                                @endfor
                             </ul>
-                            <p>ud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                            <p>{{ $rat->comment }}</p>
                         </div>
                     </div>
-                    <div class="user-feedback-section clearfix">
-                        <div class="feedback-user-icon"><img src="{{ url('/') }}/public/assets/frontend/img/user/user-2.jpg" alt=""></div>
-                        <div class="feedback-get-user">
-                            <h3 class="user-name">barry Alen</h3>
-                            <ul class="get-user-icon-layer clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                            <p>ud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        </div>
-                    </div>
-                    <div class="user-feedback-section clearfix">
-                        <div class="feedback-user-icon"><img src="{{ url('/') }}/public/assets/frontend/img/user/user-3.jpg" alt=""></div>
-                        <div class="feedback-get-user">
-                            <h3 class="user-name">Cisco Remon</h3>
-                            <ul class="get-user-icon-layer clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="far fa-star"></i></li>
-                            </ul>
-                            <p>ud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="clearfix text-center">
                     <button class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModaln" >Review Income Statement</button>

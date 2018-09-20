@@ -18,6 +18,7 @@ use App\RideOffers;
 use App\DriverData;
 use App\GuestRequests;
 use App\RideRequestTemp;
+use App\Ratings;
 use Auth;
 
 class Frontend extends Controller
@@ -137,6 +138,15 @@ class Frontend extends Controller
             $r->usd = $usd;
             $dd = DriverData::where('user_id',$r->offer_by)->first();
             $r->dd = $dd;
+            $rating = Ratings::where('to',$r->offer_by)->get();
+            $count = Ratings::where('to',$r->offer_by)->count();
+            $avg = 0;
+            foreach ($rating as $ra){
+                $avg += $ra->rating;
+            }
+            if($count != 0){
+                $r->average = $avg / $count;
+            }
         }
         return view('frontend.pages.popular',[
             'data' => $ro
@@ -147,6 +157,15 @@ class Frontend extends Controller
         $ro = RideOffers::where('link', $link)->first();
         if(empty($ro)){
             abort(404);
+        }
+        $ratings = Ratings::where('to',$ro->offer_by)->get();
+        $count = Ratings::where('to',$ro->offer_by)->count();
+        $avg = 0;
+        foreach ($ratings as $r){
+            $avg += $r->rating;
+        }
+        if($count != 0){
+            $ro->average = $avg/$count;
         }
         if($ro->status == 'expired' || $ro->status == 'canceled'){
             return redirect()
@@ -240,6 +259,16 @@ class Frontend extends Controller
                         })
                         ->get();
                     $sd->bookings = $bookings;
+                    $rating = Ratings::where('to',$sd->offer_by)->get();
+                    $count = Ratings::where('to',$sd->offer_by)->count();
+                    $avg = 0;
+                    foreach ($rating as $ra){
+                        $avg += $ra->rating;
+                    }
+                    if($count != 0){
+                        $sd->average = $avg / $count;
+                    }
+
                 }
                 return view('frontend.pages.search',[
                     'data' => $search_data,
@@ -349,5 +378,25 @@ class Frontend extends Controller
                 ]);
             }
         }
+    }
+    public function ridemateProfile(Request $request,$id){
+        $user = User::find($id);
+        $usd = User_data::where('user_id',$id)->first();
+        $vd = VehiclesData::where('user_id',$id)
+            ->first();
+        $ratings = Ratings::where('to',$id)->get();
+        foreach ($ratings as $rat){
+            $cus = User::find($rat->from);
+            $img = User_data::where('user_id',$rat->from)->first();
+            $rat->name = $cus->name;
+            $rat->img = $img->picture;
+        }
+
+        return view('frontend.pages.ridemate-profile',[
+            'usd' => $usd,
+            'user' => $user,
+            'vd'=> $vd,
+            'ratings' => $ratings
+        ]);
     }
 }

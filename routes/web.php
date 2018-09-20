@@ -42,6 +42,7 @@ Route::post('/choose-country', 'Frontend@chooseCountry');
 Route::post('/read-notification', 'Frontend@readNotification');
 Route::get('/account/user/verify/{token}', 'Frontend@verifyUser');
 Route::get('/login/admin', 'Frontend@login');
+Route::get('/profile/ridemate/{id}', 'Frontend@ridemateProfile');
 Route::get('/hit', function(){
     event(new \App\Events\OfferCreated([
         'event' => 'ride-test',
