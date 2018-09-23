@@ -14,7 +14,6 @@ use App\RideDescriptions;
 use App\VehiclesData;
 use App\RideComp;
 use App\Notifications;
-use App\Ratings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

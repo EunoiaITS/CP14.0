@@ -297,6 +297,58 @@ class Admin extends Controller
      */
     public function rideDetails(Request $request){
         $rides = RideOffers::where('status', 'completed')->paginate(10);
+        $reqs = RideOffers::where('status', 'completed')
+            ->where('request_id', '!=', 0)
+            ->paginate(10);
+        if($request->isMethod('post')){
+            //dd($request->all());
+            if($request->search_mode == 'd'){
+                $rides = RideOffers::whereDate('departure_time', '=', date('Y-m-d',strtotime($request->date)))
+                    ->where('status', 'completed')
+                    ->paginate(10);
+            }
+            if($request->search_mode == 'w'){
+                $rides = RideOffers::whereBetween('departure_time', [date('Y-m-d',strtotime($request->start_date)), date('Y-m-d',strtotime($request->end_date))])
+                    ->where('status', 'completed')
+                    ->paginate(10);
+            }
+            if($request->search_mode == 'm'){
+                $rides = RideOffers::whereMonth('departure_time', '=', date('m',strtotime($request->date)))
+                    ->where('status', 'completed')
+                    ->paginate(10);
+            }
+            if($request->search_mode == 'y'){
+                $rides = RideOffers::whereYear('departure_time', '=', date('Y',strtotime($request->date)))
+                    ->where('status', 'completed')
+                    ->paginate(10);
+            }
+            if($request->filter == 'req'){
+                if($request->search_mode == 'rd'){
+                    $reqs = RideOffers::whereDate('departure_time', '=', date('Y-m-d',strtotime($request->date)))
+                        ->where('status', 'completed')
+                        ->where('request_id', '!=', 0)
+                        ->paginate(10);
+                }
+                if($request->search_mode == 'rw'){
+                    $reqs = RideOffers::whereBetween('departure_time', [date('Y-m-d',strtotime($request->start_date)), date('Y-m-d',strtotime($request->end_date))])
+                        ->where('status', 'completed')
+                        ->where('request_id', '!=', 0)
+                        ->paginate(10);
+                }
+                if($request->search_mode == 'rm'){
+                    $reqs = RideOffers::whereMonth('departure_time', '=', date('m',strtotime($request->date)))
+                        ->where('status', 'completed')
+                        ->where('request_id', '!=', 0)
+                        ->paginate(10);
+                }
+                if($request->search_mode == 'ry'){
+                    $reqs = RideOffers::whereYear('departure_time', '=', date('Y',strtotime($request->date)))
+                        ->where('status', 'completed')
+                        ->where('request_id', '!=', 0)
+                        ->paginate(10);
+                }
+            }
+        }
         foreach($rides as $ride){
             $ride->mate = User::find($ride->offer_by);
             if($ride->req_id != null){
@@ -305,9 +357,18 @@ class Admin extends Controller
                 $ride->ride_req = $ride_req;
             }
         }
+        if(!empty($reqs)){
+            foreach($reqs as $req){
+                $req->mate = User::find($req->offer_by);
+                $ride_req = Ride_request::find($req->request_id);
+                $req->requester = User::find($ride_req->user_id);
+                $req->ride_req = $ride_req;
+            }
+        }
         $slug = 'rides';
         return view('admin.pages.ride-details', [
             'data' => $rides,
+            'reqs' => $reqs,
             'slug' => $slug,
             'footer_js' => 'admin.pages.js.ride-details-js'
         ]);

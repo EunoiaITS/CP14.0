@@ -18,7 +18,6 @@ use App\RideOffers;
 use App\DriverData;
 use App\GuestRequests;
 use App\RideRequestTemp;
-use App\Ratings;
 use Auth;
 
 class Frontend extends Controller
