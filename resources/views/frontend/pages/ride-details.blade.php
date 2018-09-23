@@ -35,6 +35,14 @@
                             @endif
                         @endif
                 @endif
+                @if(Auth::check() && Auth::user()->role == 'customer' && $data->status == 'completed')
+                    @if(!in_array(Auth::id(), $rates))
+                    <div class="get-form-control-button">
+                        <p class="alert alert-success">Your ride was ended successfully. Please rate this ride.</p>
+                        <a href="{{ url('/c/rate/'.$data->link) }}"><button type="button" class="btn btn-info btn-offer">Rate the Ride</button></a>
+                    </div>
+                        @endif
+                    @endif
                 <div class="col-sm-12 get-join-as">
                     <div class="col-sm-5">
                         <div class="form-ride-details">

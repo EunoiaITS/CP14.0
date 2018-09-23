@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Ride_request;
 use App\RideBookings;
+use App\RideDescriptions;
 use App\RideOffers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -39,6 +40,10 @@ class Kernel extends ConsoleKernel
             $expired_offers = RideOffers::where(['status' => 'expired'])->get();
             foreach($expired_offers as $ex){
                 RideOffers::destroy($ex->id);
+                $descs = RideDescriptions::where('ride_offer_id', $ex->id)->get();
+                foreach($descs as $del){
+                    RideDescriptions::destroy($del->id);
+                }
             }
             $active_req = Ride_request::where(['status' => 'requested'])->get();
             foreach($active_req as $req){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Countries;
 use App\Notifications;
+use App\Ratings;
 use App\Ride_request;
 use App\RideBookings;
 use App\RideDescriptions;
@@ -17,7 +18,6 @@ use App\RideOffers;
 use App\DriverData;
 use App\GuestRequests;
 use App\RideRequestTemp;
-use App\Ratings;
 use Auth;
 
 class Frontend extends Controller
@@ -208,8 +208,14 @@ class Frontend extends Controller
             $book->ud = $ud;
         }
         $ro->bookings = $bookings;
+        $rates = array();
+        $ratings = Ratings::where('ride_id', $ro->id)->get();
+        foreach($ratings as $rate){
+            $rates[] = $rate->from;
+        }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
+            'rates' => $rates,
             'js' => 'frontend.pages.js.ride-details-js',
             'modals' => 'frontend.pages.modals.ride-details-modals'
         ]);

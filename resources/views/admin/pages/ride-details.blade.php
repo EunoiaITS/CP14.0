@@ -16,7 +16,8 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
-                            <form action="#">
+                            <form method="post" action="{{ url('/admin/rides') }}">
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <select id="format-selector" class="form-control get-select-picker" name="search-ops" title="Select" id="search-ops">
                                         <option value="Daily">Daily Income</option>
@@ -26,7 +27,11 @@
                                     </select>
                                     <div id="picker"></div>
                                 </div>
-                                <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
+                                <input type="hidden" name="search_mode" id="search-mode">
+                                <input type="hidden" name="date" id="rides-date">
+                                <input type="hidden" name="start_date" id="start-date">
+                                <input type="hidden" name="end_date" id="end-date">
+                                <button type="submit" class="btn btn-info btn-offer btn-center-admin">Generate</button>
                             </form>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12 table-responsive">
@@ -78,9 +83,10 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
-                            <form action="#">
+                            <form method="post" action="{{ url('/admin/rides') }}">
+                                {{ csrf_field() }}
                                 <div class="form-group">
-                                    <select id="format-selector-req" class="form-control get-select-picker" title="Select">
+                                    <select id="format-selector-req" name="search-ops-req" class="form-control get-select-picker" title="Select">
                                         <option value="Daily">Daily Income</option>
                                         <option value="Weekly">Weekly Income</option>
                                         <option value="Monthly">Monthly</option>
@@ -88,7 +94,12 @@
                                     </select>
                                     <div id="picker-req"></div>
                                 </div>
-                                <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
+                                <input type="hidden" name="search_mode" id="search-mode-req">
+                                <input type="hidden" name="date" id="rides-date-req">
+                                <input type="hidden" name="start_date" id="start-date-req">
+                                <input type="hidden" name="end_date" id="end-date-req">
+                                <input type="hidden" name="filter" value="req">
+                                <button type="submit" class="btn btn-info btn-offer btn-center-admin">Generate</button>
                             </form>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12 table-responsive">
@@ -107,8 +118,7 @@
                                 </thead>
                                 <tbody>
                                 <?php $i = 1; ?>
-                                @foreach($data as $d)
-                                    @if(isset($d->ride_req))
+                                @foreach($reqs as $d)
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $d->id }}</td>
@@ -119,7 +129,6 @@
                                         <td>{{ date('d-M-Y H:i a', strtotime($d->departure_time)) }}</td>
                                         <th>{{ $d->mate->name }}</th>
                                     </tr>
-                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
