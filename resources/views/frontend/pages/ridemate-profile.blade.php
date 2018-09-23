@@ -9,7 +9,7 @@
                         <h3 class="get-popular-list">Ridemate Profile</h3>
                         <div class="get-ridemate-user clearfix">
                             <div class="user-icon">
-                                <img src="@if(isset($usd->picture)) {{ asset('public/uploads/driver/'.$usd->picture) }} @endif" alt="">
+                                <img src="@if(isset($usd->picture)) {{ asset('public/uploads/driver/'.$usd->picture) }} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
                             </div>
                             <div class="user-details">
                                 <h3 class="get-ride-user">{{ $user->name }}</h3>

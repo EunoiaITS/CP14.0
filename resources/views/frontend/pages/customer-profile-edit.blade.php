@@ -36,7 +36,7 @@
                     <div class="col-sm-8 col-xs-12 ride--profile padding-left-o">
                         <div class="get-ridemate-user ">
                             <div class="user-edit-picture img-result user-icon" data-toggle="modal" data-target="#myModalimg">
-                                <img class="image-upload-hide" src="" alt="">
+                                <img class="image-upload-hide" src="@if(isset($usd->picture)){{ asset('public/uploads/customers/'.$usd->picture)}} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
                                 <img class="cropped" src="" alt="">
                                 <div class="image-hover open-popup-image">
                                     <i class="fa fa-upload" aria-hidden="true"></i>

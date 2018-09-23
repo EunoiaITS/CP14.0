@@ -20,7 +20,7 @@
                         @endif
                         <div class="get-ridemate-user clearfix">
                             <div class="user-icon">
-                                <img src="<?php if(isset($usd->picture)){echo asset('public/uploads/drivers/'.$usd->picture);}?>" alt="">
+                                <img src=" @if(isset($usd->picture)){{ asset('public/uploads/drivers/'.$usd->picture) }}  @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
                             </div>
                             <div class="user-details">
                                 <h3 class="get-ride-user">{{ $user->name }}</h3>
@@ -191,7 +191,7 @@
                             <form action="" method="POST" role="form">
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label for="mounthly-income">Monthly Income</label>
+                                        <label for="monthly-income">Monthly Income</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="">

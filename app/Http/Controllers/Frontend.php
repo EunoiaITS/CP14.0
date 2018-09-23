@@ -129,26 +129,36 @@ class Frontend extends Controller
 
     public function popular(Request $request){
         $ro = RideOffers::where(['status' => 'active'])
-            ->paginate(3);
-        foreach ($ro as $r){
+            ->get();
+        $dest = array();
+        foreach ($ro as $ri){
+            $dest[] = $ri->destination;
+        }
+        $dests = array_unique($dest);
+        $rio = RideOffers::where(['status' => 'active'])
+            ->get();
+        $rio_c = RideOffers::where(['status' => 'active'])
+            ->count();
+
+        foreach ($rio as $r){
             $user = User::find($r->offer_by);
             $r->user = $user;
-            $usd = User_data::where('user_id',$r->offer_by)->first();
+            $usd = User_data::where('user_id', $r->offer_by)->first();
             $r->usd = $usd;
-            $dd = DriverData::where('user_id',$r->offer_by)->first();
+            $dd = DriverData::where('user_id', $r->offer_by)->first();
             $r->dd = $dd;
-            $rating = Ratings::where('to',$r->offer_by)->get();
-            $count = Ratings::where('to',$r->offer_by)->count();
+            $rating = Ratings::where('to', $r->offer_by)->get();
+            $count = Ratings::where('to', $r->offer_by)->count();
             $avg = 0;
-            foreach ($rating as $ra){
+            foreach ($rating as $ra) {
                 $avg += $ra->rating;
             }
-            if($count != 0){
+            if ($count != 0) {
                 $r->average = $avg / $count;
             }
         }
         return view('frontend.pages.popular',[
-            'data' => $ro
+            'data' => $rio
         ]);
     }
 

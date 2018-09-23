@@ -22,7 +22,8 @@ class Guest
             url('/choose-country'),
             url('/login'),
             url('/read-notification'),
-            url('/login/admin')
+            url('/login/admin'),
+            url('/account/user/verify/{token}'),
         ];
         if(!isset($sCheck) &&  !in_array($request->url(), $urls)){
             if(Auth::check() && Auth::user()->role == 'super-admin'){

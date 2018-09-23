@@ -95,7 +95,7 @@
                         <div class="getwobo-pagination">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
-                                    {{ $data->links() }}
+
                                 </ul>
                             </nav>
                         </div>
