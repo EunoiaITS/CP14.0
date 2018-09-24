@@ -23,7 +23,7 @@ Route::get('/sign-up/driver', 'Authenticate@registerDriver');
 Route::post('/sign-up/driver', 'Authenticate@registerDriver');
 Route::get('/sign-up/customer', 'Authenticate@registerCustomer');
 Route::post('/sign-up/customer', 'Authenticate@registerCustomer');
-Route::get('/popular', 'Frontend@popular');
+Route::get('/popular/{opt}', 'Frontend@popular');
 Route::get('/ride-details/{link}', 'Frontend@rideDetails');
 Route::post('/guest-requests', 'Frontend@guestRequests');
 Route::post('/request-ride', 'Frontend@riderRequest');

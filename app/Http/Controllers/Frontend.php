@@ -127,10 +127,14 @@ class Frontend extends Controller
         ]);
     }
 
-    public function popular(Request $request){
+    public function popular(Request $request, $opt){
         $ro = RideOffers::where(['status' => 'active'])
+            ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+            ->orderBy('departure_time')
             ->paginate(3);
+        $dests = $drivers = $req_locs = array();
         foreach ($ro as $r){
+            $dests[] = $r->destination;
             $user = User::find($r->offer_by);
             $r->user = $user;
             $usd = User_data::where('user_id',$r->offer_by)->first();

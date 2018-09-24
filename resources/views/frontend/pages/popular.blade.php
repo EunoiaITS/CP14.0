@@ -10,10 +10,11 @@
                         <h3 class="highlight">Popular Highlights</h3>
                     </div>
                     <div class="col-sm-3 col-sm-offset-2 col-xs-12 padding-right-o">
-                        <select name="" id="" class="get-select-picker" title="Popular by">
-                            <option value="destination">Destination</option>
-                            <option value="ridemate">Ridemate</option>
-                            <option value="request-location">Request Location</option>
+                        <select onchange="location = this.value;" class="get-select-picker" title="Popular by">
+                            <option value="{{ url('/popular/all') }}">All</option>
+                            <option value="{{ url('/popular/dest') }}">Destination</option>
+                            <option value="{{ url('/popular/ridemates') }}">Ridemate</option>
+                            <option value="{{ url('/popular/req-loc') }}">Request Location</option>
                         </select>
                     </div>
                 </div>
