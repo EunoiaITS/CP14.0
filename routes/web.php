@@ -129,6 +129,7 @@ Route::prefix('d')->group(function(){
     Route::post('/income-statement/', 'Driver@incomeStatement');
     Route::get('/notifications', 'Driver@notifications');
     Route::get('/history', 'Driver@history');
+    Route::post('/rate/{link}', 'Driver@rate');
 });
 
 /**
