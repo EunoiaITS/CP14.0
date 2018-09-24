@@ -426,8 +426,8 @@ class Frontend extends Controller
         ]);
     }
 
-    public function verifyUser($link){
-        $linkCheck = VerifyUsers::where('link', $link)->first();
+    public function verifyUser(Request $request){
+        $linkCheck = VerifyUsers::where('link', $request->link)->first();
         if($linkCheck != ''){
             $check = User::where('email',$linkCheck->email)->first();
             $check->status = 'verified';

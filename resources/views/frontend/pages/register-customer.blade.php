@@ -69,7 +69,11 @@
                             <input type="password" name="repass" class="form-control" placeholder="Confirm Password" tabindex="6" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="country_code" class="form-control" placeholder="Country Code" tabindex="8">
+                            <select name="country_code" class="form-control" tabindex="8">
+                                @foreach($countries as $c)
+                                    <option value="{{ $c->name . '(' . $c->country_code . ')' }}">{{ $c->name . '( ' . $c->country_code . ' )' }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="gender">Gender</label>

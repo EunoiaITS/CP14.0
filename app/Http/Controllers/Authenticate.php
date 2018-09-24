@@ -9,6 +9,7 @@ use App\User_data;
 use App\DriverData;
 use App\RideRequestTemp;
 use App\VerifyUsers;
+use App\Countries;
 use Illuminate\Support\Facades\Session;
 use DateTime;
 
@@ -21,6 +22,7 @@ class Authenticate extends Controller
 
     public function registerDriver(Request $request){
         $errors = array();
+        $countries = Countries::orderBy('name','asc')->get();
         if($request->isMethod('post')){
             if($request->password !== $request->repass){
                 $errors[] = 'Passwords didn\'t match !!';
@@ -159,11 +161,14 @@ class Authenticate extends Controller
                     ->withInput();
             }
         }
-        return view('frontend.pages.register-driver');
+        return view('frontend.pages.register-driver',[
+            'countries' => $countries
+        ]);
     }
 
     public function registerCustomer(Request $request){
         $errors = array();
+        $countries = Countries::orderBy('name','asc')->get();
         if($request->isMethod('post')){
             if($request->password !== $request->repass){
                 $errors[] = 'Passwords didn\'t match !!';
@@ -177,6 +182,7 @@ class Authenticate extends Controller
             $user = new User();
             $usd = new User_data();
             $rrt = new RideRequestTemp();
+            $country =
             $data = $request->all();
             if(!$user->validate($data)){
                 $user_e = $user->errors();
@@ -283,7 +289,8 @@ class Authenticate extends Controller
             }
         }
         return view('frontend.pages.register-customer',[
-            'data' => $request->all()
+            'data' => $request->all(),
+            'countries' => $countries
         ]);
     }
 
