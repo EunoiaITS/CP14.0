@@ -127,20 +127,14 @@ class Frontend extends Controller
         ]);
     }
 
-    public function popular(Request $request){
+    public function popular(Request $request, $opt){
         $ro = RideOffers::where(['status' => 'active'])
-            ->get();
-        $dest = array();
-        foreach ($ro as $ri){
-            $dest[] = $ri->destination;
-        }
-        $dests = array_unique($dest);
-        $rio = RideOffers::where(['status' => 'active'])
-            ->get();
-        $rio_c = RideOffers::where(['status' => 'active'])
-            ->count();
+            ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+            ->orderBy('departure_time')
+            ->paginate(3);
+        $dests = $drivers = $req_locs = array();
 
-        foreach ($rio as $r){
+        foreach ($ro as $r){
             $user = User::find($r->offer_by);
             $r->user = $user;
             $usd = User_data::where('user_id', $r->offer_by)->first();
@@ -158,7 +152,7 @@ class Frontend extends Controller
             }
         }
         return view('frontend.pages.popular',[
-            'data' => $rio
+            'data' => $ro
         ]);
     }
 

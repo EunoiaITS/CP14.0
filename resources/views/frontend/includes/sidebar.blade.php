@@ -31,7 +31,7 @@
             <li><a href="{{ url('/about-us') }}">About Us</a></li>
             <li><a href="{{ url('/terms') }}">Terms Of Services</a></li>
             <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
-            <li><a href="{{ url('/popular') }}">Popular highlights</a></li>
+            <li><a href="{{ url('/popular/all') }}">Popular highlights</a></li>
             @if(Auth::check())
             <li><a href="{{ url('/search') }}">Search</a></li>
             @endif
