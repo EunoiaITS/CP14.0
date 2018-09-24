@@ -133,21 +133,21 @@ class Frontend extends Controller
             ->orderBy('departure_time')
             ->paginate(3);
         $dests = $drivers = $req_locs = array();
+
         foreach ($ro as $r){
-            $dests[] = $r->destination;
             $user = User::find($r->offer_by);
             $r->user = $user;
-            $usd = User_data::where('user_id',$r->offer_by)->first();
+            $usd = User_data::where('user_id', $r->offer_by)->first();
             $r->usd = $usd;
-            $dd = DriverData::where('user_id',$r->offer_by)->first();
+            $dd = DriverData::where('user_id', $r->offer_by)->first();
             $r->dd = $dd;
-            $rating = Ratings::where('to',$r->offer_by)->get();
-            $count = Ratings::where('to',$r->offer_by)->count();
+            $rating = Ratings::where('to', $r->offer_by)->get();
+            $count = Ratings::where('to', $r->offer_by)->count();
             $avg = 0;
-            foreach ($rating as $ra){
+            foreach ($rating as $ra) {
                 $avg += $ra->rating;
             }
-            if($count != 0){
+            if ($count != 0) {
                 $r->average = $avg / $count;
             }
         }

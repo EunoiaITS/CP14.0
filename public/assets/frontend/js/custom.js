@@ -164,19 +164,22 @@ $('#datetimepicker4').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
     icons: {
         time:'timepicker',
-    }
+    },
+    minDate: moment()
 });
 
 $('#datetimepicker5').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
     icons: {
         time:'timepicker',
-    }
+    },
+    minDate: moment()
 });
 
 $('#datetimepicker6').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
     icons: {
         time:'timepicker',
-    }
+    },
+    minDate: moment()
 });

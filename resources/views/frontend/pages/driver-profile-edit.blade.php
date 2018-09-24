@@ -36,7 +36,10 @@
                     <div class="col-sm-8 col-xs-12 ride--profile padding-left-o">
                         <div class="get-ridemate-user ">
                             <div class="user-edit-picture img-result user-icon" data-toggle="modal" data-target="#myModalimg">
-                                <img class="image-upload-hide" src="@if(isset($usd->picture)){{url('/')}}/public/uploads/drivers/{{$usd->picture}}@endif" alt="">
+                                <img class="image-upload-hide" src="@if(isset($usd->picture)){{ asset('public/uploads/drivers/'.$usd->picture)}} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
+                                <div class="image-hover open-popup-image">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                </div>
                             </div>
 
                             <div class="user-details">
