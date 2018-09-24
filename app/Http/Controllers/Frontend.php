@@ -130,6 +130,10 @@ class Frontend extends Controller
         ]);
     }
 
+    /**
+     * Popular - function to show all the popular rides
+     * param - $opt - 4 options - all, dest, ridemates, req-loc - default(all)
+    */
     public function popular(Request $request, $opt){
         $page = null;
         if(isset($request->page)){
@@ -289,14 +293,16 @@ class Frontend extends Controller
             $book->ud = $ud;
         }
         $ro->bookings = $bookings;
-        $rates = array();
+        $rates = $rate_tos = array();
         $ratings = Ratings::where('ride_id', $ro->id)->get();
         foreach($ratings as $rate){
             $rates[] = $rate->from;
+            $rate_tos[] = $rate->to;
         }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
             'rates' => $rates,
+            'rate_tos' => $rate_tos,
             'js' => 'frontend.pages.js.ride-details-js',
             'modals' => 'frontend.pages.modals.ride-details-modals'
         ]);
