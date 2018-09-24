@@ -800,5 +800,15 @@ class Driver extends Controller
             'slug' => 'not'
         ]);
     }
+    public function history(){
+        $id = Auth::id();
+        $ro = RideOffers::where(['status' => 'completed'])
+            ->where('offer_by',$id)
+            ->orderBy('departure_time')
+            ->paginate(3);
+        return view('frontend.pages.history-driver',[
+            'data' => $ro
+        ]);
+    }
 
 }

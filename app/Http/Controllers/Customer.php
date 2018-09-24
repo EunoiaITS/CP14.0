@@ -508,5 +508,23 @@ class Customer extends Controller
             'js' => 'frontend.pages.js.rate-js'
         ]);
     }
+    public function history(){
+        $id = Auth::id();
+        $ro = RideOffers::where(['status' => 'completed'])
+            ->orderBy('departure_time')
+            ->paginate(3);
+        foreach ($ro as $r){
+            $rb = RideBookings::where('user_id',$id)
+                ->where('ride_id',$r->id)->get();
+            foreach ($rb as $b){
+                $r->seat_booked = $b->seat_booked;
+                $r->check = 'yes';
+            }
+        }
+
+        return view('frontend.pages.history-customer',[
+            'data' => $ro
+        ]);
+    }
 
 }

@@ -21,12 +21,14 @@
                 <li><a href="{{ url('/d/profile') }}">My Profile</a></li>
                 <li><a href="{{ url('/d/ride-requests') }}">Ride Requests</a></li>
                 <li><a href="{{ url('/d/notifications') }}">Notifications</a></li>
+                <li><a href="{{ url('/d/history') }}">Ride History</a></li>
             @endif
             @if(Auth::check() && Auth::user()->role == 'customer')
                 <li><a href="{{ url('/c/requests') }}">My Requests</a></li>
                 <li><a href="{{ url('/c/bookings') }}">My Bookings</a></li>
                 <li><a href="{{ url('/c/profile') }}">My Profile</a></li>
                 <li><a href="{{ url('/c/notifications') }}">Notifications</a></li>
+                <li><a href="{{ url('/c/history') }}">Ride History</a></li>
             @endif
             <li><a href="{{ url('/about-us') }}">About Us</a></li>
             <li><a href="{{ url('/terms') }}">Terms Of Services</a></li>

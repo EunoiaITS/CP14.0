@@ -51,7 +51,13 @@
                             <div class="login-icon">
                                 <img src="{{ asset('public/assets/frontend/img/user/user-1.jpg') }}" alt="">
                             </div>
-                            <span class="get-loged-user" data-toggle="modal" data-target="#myModalLogout">{{ Auth::user()->name }}</span>
+                            <span class="get-loged-user">{{ Auth::user()->name }}</span>
+                        </div>
+                        <div class="logout-option">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <div class="logout-dropdown">
+                                <a href="#" data-toggle="modal" data-target="#myModalLogout">Log Out</a>
+                            </div>
                         </div>
                     </div>
                 </div>

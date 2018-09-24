@@ -102,6 +102,7 @@ Route::prefix('c')->group(function(){
     Route::get('/notifications', 'Customer@notifications');
     Route::get('/rate/{link}', 'Customer@rate');
     Route::post('/rate/{link}', 'Customer@rate');
+    Route::get('/history', 'Customer@history');
 });
 
 /**
@@ -127,6 +128,7 @@ Route::prefix('d')->group(function(){
     Route::get('/ride-requests', 'Driver@rideRequests');
     Route::post('/income-statement/', 'Driver@incomeStatement');
     Route::get('/notifications', 'Driver@notifications');
+    Route::get('/history', 'Driver@history');
 });
 
 /**
