@@ -19,6 +19,9 @@ use App\DriverData;
 use App\GuestRequests;
 use App\RideRequestTemp;
 use Auth;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Frontend extends Controller
 {
@@ -128,11 +131,85 @@ class Frontend extends Controller
     }
 
     public function popular(Request $request, $opt){
+        $page = null;
+        if(isset($request->page)){
+            $page = $request->page;
+        }
         $ro = RideOffers::where(['status' => 'active'])
             ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
             ->orderBy('departure_time')
-            ->paginate(3);
+            ->get();
         $dests = $drivers = $req_locs = array();
+        $dests_unique = $drivers_unique = $req_locs_unique = array();
+
+        if($opt == 'dest'){
+            foreach($ro as $r){
+                $dests[] = $r->destination;
+            }
+            $dests_unique = array_count_values($dests);
+            foreach($ro as $k => $r){
+                $ro->pull($k);
+            }
+            foreach($dests_unique as $k => $v){
+                $rides = RideOffers::where(['status' => 'active'])
+                    ->where('destination', $k)
+                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+                    ->orderBy('departure_time')
+                    ->get();
+                foreach($rides as $ride){
+                    $ro->push($ride);
+                }
+            }
+            //dd($ro);
+        }
+
+        if($opt == 'ridemates'){
+            foreach($ro as $r){
+                $drivers[] = $r->offer_by;
+            }
+            $drivers_unique = array_count_values($drivers);
+            foreach($ro as $k => $r){
+                $ro->pull($k);
+            }
+            foreach($drivers_unique as $k => $v){
+                $rides = RideOffers::where(['status' => 'active'])
+                    ->where('offer_by', $k)
+                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+                    ->orderBy('departure_time')
+                    ->get();
+                foreach($rides as $ride){
+                    $ro->push($ride);
+                }
+            }
+            //dd($ro);
+        }
+
+        if($opt == 'req-loc'){
+            $ro = RideOffers::where(['status' => 'active'])
+                ->where('request_id', '!=', 0)
+                ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+                ->orderBy('departure_time')
+                ->get();
+            foreach($ro as $r){
+                $req_locs[] = $r->destination;
+            }
+            $req_locs_unique = array_count_values($req_locs);
+            foreach($ro as $k => $r){
+                $ro->pull($k);
+            }
+            foreach($req_locs_unique as $k => $v){
+                $rides = RideOffers::where(['status' => 'active'])
+                    ->where('destination', $k)
+                    ->where('request_id', '!=', 0)
+                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+                    ->orderBy('departure_time')
+                    ->get();
+                foreach($rides as $ride){
+                    $ro->push($ride);
+                }
+            }
+            //dd($ro);
+        }
 
         foreach ($ro as $r){
             $user = User::find($r->offer_by);
@@ -152,7 +229,17 @@ class Frontend extends Controller
             }
         }
         return view('frontend.pages.popular',[
-            'data' => $ro
+            'data' => $this->paginate($ro, 3, $page)
+        ]);
+    }
+
+    public function paginate($items, $perPage = 15, $page = null)
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, [
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'page',
         ]);
     }
 
