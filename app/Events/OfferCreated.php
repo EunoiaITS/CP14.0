@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Notifications;
+use App\Ride_request;
 use App\RideBookings;
 use App\RideOffers;
 use App\User;
@@ -27,6 +28,9 @@ class OfferCreated implements  ShouldBroadcast
      */
     public function __construct($data)
     {
+        /**
+         * This is the event for offer created
+        */
         if($data['event'] == 'offer-created'){
             $offer_by = User::find($data['from']);
             $offer = RideOffers::find($data['ride_id']);
@@ -42,11 +46,14 @@ class OfferCreated implements  ShouldBroadcast
                 $this->ev = 'offer-created';
                 $this->msg = $msg;
                 $this->ad_link = $link;
-                $this->rec = $data['to'];
+                $this->rec = [$data['to'] => $not->id];
                 $this->time_at = date('d M Y', strtotime($not->created_at)).' at '.date('H:i', strtotime($not->created_at));
             }
         }
 
+        /**
+         * This is the event for ride request
+         */
         if($data['event'] == 'ride-request'){
             $req_by = User::find($data['from']);
             $recs = array();
@@ -59,7 +66,7 @@ class OfferCreated implements  ShouldBroadcast
                 $not->ad_link = url('/d/offer-ride?req='.$data['req_id']);
                 $not->status = 'unread';
                 if($not->save()){
-                    $recs[] = $driver->id;
+                    $recs[$driver->id] = $not->id;
                 }
             }
             $this->ev = 'ride-request';
@@ -69,6 +76,9 @@ class OfferCreated implements  ShouldBroadcast
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
 
+        /**
+         * This is the event for ride booking
+         */
         if($data['event'] == 'ride-booked'){
             $by = User::find($data['from']);
             $offer = RideOffers::find($data['offer_id']);
@@ -83,11 +93,14 @@ class OfferCreated implements  ShouldBroadcast
                 $this->ev = 'ride-booked';
                 $this->msg = $not->message;
                 $this->ad_link = $not->ad_link;
-                $this->rec = $offer_by->id;
+                $this->rec = [$offer_by->id => $not->id];
                 $this->time_at = date('d M Y', strtotime($not->created_at)).' at '.date('H:i', strtotime($not->created_at));
             }
         }
 
+        /**
+         * This is the event for booking accept
+         */
         if($data['event'] == 'booking-accepted'){
             $offer = $data['offer'];
             $booking = $data['booking'];
@@ -102,11 +115,14 @@ class OfferCreated implements  ShouldBroadcast
                 $this->ev = 'ride-booked';
                 $this->msg = $not->message;
                 $this->ad_link = $not->ad_link;
-                $this->rec = $not->to;
+                $this->rec = [$not->to => $not->id];
                 $this->time_at = date('d M Y', strtotime($not->created_at)).' at '.date('H:i', strtotime($not->created_at));
             }
         }
 
+        /**
+         * This is the event for booking cancel
+         */
         if($data['event'] == 'booking-canceled'){
             $booking = $data['booking'];
             $offer = RideOffers::find($booking->ride_id);
@@ -121,11 +137,14 @@ class OfferCreated implements  ShouldBroadcast
                 $this->ev = 'ride-booked';
                 $this->msg = $not->message;
                 $this->ad_link = $not->ad_link;
-                $this->rec = $not->to;
+                $this->rec = [$not->to => $not->id];
                 $this->time_at = date('d M Y', strtotime($not->created_at)).' at '.date('H:i', strtotime($not->created_at));
             }
         }
 
+        /**
+         * This is the event for ride start
+         */
         if($data['event'] == 'ride-start'){
             $tos = array();
             $by = User::find($data['from']);
@@ -136,14 +155,15 @@ class OfferCreated implements  ShouldBroadcast
                         ->orWhere(['status' => 'confirmed']);
                 })->get();
             foreach($books as $book){
-                $tos[] = $book->user_id;
                 $not = new Notifications();
                 $not->from = $data['from'];
                 $not->to = $book->user_id;
                 $not->message = 'Your ride has started.';
                 $not->ad_link = url('/ride-details/'.$offer->link);
                 $not->status = 'unread';
-                $not->save();
+                if($not->save()){
+                    $tos[$book->user_id] = $not->id;
+                }
             }
             $this->ev = 'ride-start';
             $this->msg = 'Your ride has started.';
@@ -152,6 +172,9 @@ class OfferCreated implements  ShouldBroadcast
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
 
+        /**
+         * This is the event for ride end
+         */
         if($data['event'] == 'ride-end'){
             $tos = array();
             $by = User::find($data['from']);
@@ -162,14 +185,15 @@ class OfferCreated implements  ShouldBroadcast
                         ->orWhere(['status' => 'confirmed']);
                 })->get();
             foreach($books as $book){
-                $tos[] = $book->user_id;
                 $not = new Notifications();
                 $not->from = $data['from'];
                 $not->to = $book->user_id;
                 $not->message = 'Your ride has ended.';
                 $not->ad_link = url('/ride-details/'.$offer->link);
                 $not->status = 'unread';
-                $not->save();
+                if($not->save()){
+                    $tos[$book->user_id] = $not->id;
+                }
             }
             $this->ev = 'ride-end';
             $this->msg = 'Your ride has ended.';
@@ -178,6 +202,9 @@ class OfferCreated implements  ShouldBroadcast
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
 
+        /**
+         * This is the event for ride edit
+         */
         if($data['event'] == 'ride-edit'){
             $tos = array();
             $by = User::find($data['from']);
@@ -188,31 +215,75 @@ class OfferCreated implements  ShouldBroadcast
                         ->orWhere(['status' => 'confirmed']);
                 })->get();
             foreach($books as $book){
-                $tos[] = $book->user_id;
                 $not = new Notifications();
                 $not->from = $data['from'];
                 $not->to = $book->user_id;
                 $not->message = 'Your ride credentials was edited.';
                 $not->ad_link = url('/ride-details/'.$offer->link);
                 $not->status = 'unread';
-                $not->save();
+                if($not->save()){
+                    $tos[$book->user_id] = $not->id;
+                }
             }
-            $this->ev = 'ride-start';
+            $this->ev = 'ride-edit';
             $this->msg = 'Your ride credentials was edited.';
             $this->ad_link = url('/ride-details/'.$offer->link);
             $this->rec = $tos;
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
 
-        if($data['event'] == 'ride-test'){
-            $this->ev = 'ride-test';
-            $this->msg = $data['msg'];
-            $this->rec = $data['tos'];
-            $this->ad_link = url('/');
-            $this->time_at = date('d M Y').' at '.date('H:i');
+        /**
+         * This is the event for request expired
+         */
+        if($data['event'] == 'req-expired'){
+            $req = Ride_request::find($data['req_id']);
+            $not = new Notifications();
+            $not->from = $req->user_id;
+            $not->to = $req->user_id;
+            $not->message = 'Your ride request from '.$req->from.' to '.$req->to.' is expired.';
+            $not->ad_link = url('/c/requests/');
+            $not->status = 'unread';
+            if($not->save()){
+                $this->ev = 'req-expired';
+                $this->msg = $not->message;
+                $this->rec = [$req->user_id => $not->id];
+                $this->ad_link = $not->ad_link;
+                $this->time_at = date('d M Y').' at '.date('H:i');
+            }
         }
 
-        if($data['event'] == ''){}
+        /**
+         * This is the event for ride expired
+         */
+        if($data['event'] == 'ride-expired'){
+            $ride = RideOffers::find($data['ride_id']);
+            $tos = $mans = array();
+            $mans[] = $ride->offer_by;
+            $books = RideBookings::where('ride_id', $data['ride_id'])
+                ->where(function($q){
+                    $q->where(['status' => 'booked'])
+                        ->orWhere(['status' => 'confirmed']);
+                })->get();
+            foreach($books as $book){
+                $mans[] = $book->user_id;
+            }
+            foreach($mans as $man){
+                $not = new Notifications();
+                $not->from = $man;
+                $not->to = $man;
+                $not->message = 'Your ride is expired.';
+                $not->ad_link = url('/ride-details/'.$ride->link);
+                $not->status = 'unread';
+                if($not->save()){
+                    $tos[$man] = $not->id;
+                }
+            }
+            $this->ev = 'ride-expired';
+            $this->msg = 'Your ride is expired.';
+            $this->ad_link = url('/ride-details/'.$ride->link);
+            $this->rec = $tos;
+            $this->time_at = date('d M Y').' at '.date('H:i');
+        }
     }
 
     /**
