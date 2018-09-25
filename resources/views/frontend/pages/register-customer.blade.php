@@ -36,8 +36,12 @@
 					        </div>
                             <input type="password" name="password" class="form-control" tabindex="5" required="required">
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="contact" class="form-control" placeholder="Contact No" tabindex="7">
+			<div class="form-group">
+                            <select name="country_code" class="form-control" tabindex="8">
+                                @foreach($countries as $c)
+                                    <option value="{{ $c->name . '(' . $c->country_code . ')' }}">{{ $c->name . '( ' . $c->country_code . ' )' }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="date-of-birth">Date Of Birth</label>
@@ -80,12 +84,8 @@
 					        </div>
                             <input type="password" name="repass" class="form-control" tabindex="6" required="required">
                         </div>
-                        <div class="form-group">
-                            <select name="country_code" class="form-control" tabindex="8">
-                                @foreach($countries as $c)
-                                    <option value="{{ $c->name . '(' . $c->country_code . ')' }}">{{ $c->name . '( ' . $c->country_code . ' )' }}</option>
-                                @endforeach
-                            </select>
+			<div class="form-group">
+                            <input type="text" name="contact" class="form-control" placeholder="Contact No" tabindex="7">
                         </div>
                         <div class="form-group get-sign-up-mate">
                             <label for="gender">Gender <span class="star">*<span></label>
@@ -98,7 +98,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                            <div class="palceholder">
-					            <label for="name">Confirm Email <span class="star">*</span></label>
+					            <label for="name">Address <span class="star">*</span></label>
 					        </div>
                             <input type="text" name="address" class="form-control" tabindex="13" required="required">
                         </div>
@@ -106,7 +106,10 @@
                     <div class="col-sm-12 padding-left-o">
                         <div class="col-sm-6 pad-xs-o">
                             <div class="form-group">
-                                <input type="text" name="id_card" class="form-control" placeholder="Identity Card No." tabindex="14" required="required">
+			    <div class="palceholder">
+					            <label for="name">Identity Card No. <span class="star">*</span></label>
+					        </div>
+                                <input type="text" name="id_card" class="form-control" tabindex="14" required="required">
                             </div>
                         </div>
                     </div>
