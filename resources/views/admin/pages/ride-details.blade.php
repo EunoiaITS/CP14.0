@@ -19,7 +19,7 @@
                             <form method="post" action="{{ url('/admin/rides') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <select id="format-selector" class="form-control get-select-picker" name="search-ops" title="Select a category to choose the period of time">
+                                    <select id="format-selector" class="form-control get-select-picker" name="search-ops" title="Select a period of time">
                                         <option value="Daily">Daily Income</option>
                                         <option value="Weekly">Weekly Income</option>
                                         <option value="Monthly">Monthly</option>
