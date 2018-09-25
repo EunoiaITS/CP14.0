@@ -21,16 +21,16 @@
                     <div class="get-form-offer">
                         <div class="col-sm-6 padding-left-o price-seat">
                             <div class="form-group">
-                                <label for="pickup-point">Pickup Point <span class="star">*</span></label>
+                                <label for="pickup-point">Pickup Point</label>
                                 <input name="origin" type="text" id="origin-input" placeholder="Enter a departure location" class="form-control" required="required" @if(isset($data->from)) value="{{ $data->from }}" readonly @else value="{{ old('origin') }}"  @endif>
                             </div>
                             <div class="form-group">
-                                <label for="pickup-point">Destination <span class="star">*</span></label>
+                                <label for="pickup-point">Destination</label>
                                 <input name="destination" type="text" id="destination-input" placeholder="Enter a destination location" class="form-control" required="required" @if(isset($data->to)) value="{{ $data->to }}" readonly @else value="{{ old('destination') }}"  @endif>
                             </div>
                             <div class="col-sm-4 padding-left-o">
                                 <div class="form-group">
-                                    <label for="price">Price Per seat <span class="star">*</span></label>
+                                    <label for="price">Price Per seat</label>
                                     <input name="price_per_seat" type="text" placeholder="$200" class="form-control form-control-placeholder" required="required" value="{{ old('price_per_seat') }}">
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-sm-6 pick--get-atime">
                             <div class="form-group pick-get-time">
-                                <label for="departure-time">Departure Time <span class="star">*</span></label>
+                                <label for="departure-time">Departure Time</label>
                                 <div class="col-sm-6 padding-left-o">
                                     <input name="d_date" type="text" class="form-control datepicker-f" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
                                 </div>
@@ -115,7 +115,7 @@
                             <input type="hidden" id="own-vehicle" name="own_vehicle" value="">
                             <div class="form-group clearfix">
                                 <div class="col-sm-6 padding-left-o">
-                                    <label for="car-type" class="ride-label">Car Type <span class="right-into">:</span></label>
+                                    <label for="car-type" class="ride-label">Car Type <span class="star">*</span><span class="right-into">:</span></label>
                                 </div>
                                 <div class="col-sm-6 padding-ride-o">
                                     <input name="car_type" id="car-type" type="text" class="form-control" @if(isset($vd->car_type)) value="{{ $vd->car_type }}" @else value="{{ old('car_type') }}" @endif>
@@ -123,7 +123,7 @@
                             </div>
                             <div class="form-group clearfix">
                                 <div class="col-sm-6 padding-left-o">
-                                    <label for="car-plate" class="ride-label">Car Plate No <span class="right-into">:</span></label>
+                                    <label for="car-plate" class="ride-label">Car Plate No <span class="star">*</span><span class="right-into">:</span></label>
                                 </div>
                                 <div class="col-sm-6 padding-ride-o">
                                     <input name="car_plate_no" id="car-plate" type="text" class="form-control" @if(isset($vd->car_plate_no)) value="{{ $vd->car_plate_no }}" @else value="{{ old('car_plate_no') }}"  readonly @endif>
