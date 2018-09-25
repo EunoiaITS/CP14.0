@@ -132,7 +132,7 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
                             <form action="#">
                                 <div class="form-group">
-                                    <select id="format-selector" class="form-control get-select-picker" title="Select a category to choose the period of time">
+                                    <select id="format-selector" class="form-control get-select-picker" title="Select a period of time">
                                         <option value="Daily">Daily Income</option>
                                         <option value="Weekly">Weekly Income</option>
                                         <option value="Monthly">Monthly</option>
