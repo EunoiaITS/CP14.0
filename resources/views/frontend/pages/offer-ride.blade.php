@@ -21,22 +21,22 @@
                     <div class="get-form-offer">
                         <div class="col-sm-6 padding-left-o price-seat">
                             <div class="form-group">
-                                <label for="pickup-point">Pickup Point</label>
+                                <label for="pickup-point">Pickup Point <span class="star">*</span></label>
                                 <input name="origin" type="text" id="origin-input" placeholder="Enter a departure location" class="form-control" required="required" @if(isset($data->from)) value="{{ $data->from }}" readonly @else value="{{ old('origin') }}"  @endif>
                             </div>
                             <div class="form-group">
-                                <label for="pickup-point">Destination</label>
+                                <label for="pickup-point">Destination <span class="star">*</span></label>
                                 <input name="destination" type="text" id="destination-input" placeholder="Enter a destination location" class="form-control" required="required" @if(isset($data->to)) value="{{ $data->to }}" readonly @else value="{{ old('destination') }}"  @endif>
                             </div>
                             <div class="col-sm-6 padding-left-o">
                                 <div class="form-group">
-                                    <label for="price">Price Per seat</label>
+                                    <label for="price">Price Per seat <span class="star">*</span></label>
                                     <input name="price_per_seat" type="text" placeholder="$200" class="form-control form-control-placeholder" required="required" value="{{ old('price_per_seat') }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="number-of-seat">Number Of Seats</label>
+                                    <label for="number-of-seat">Number Of Seats <span class="star">*</span></label>
                                     <select name="total_seats" id="" class="get-select-picker" title="Seats" required>
                                         <option value="1" @if(old('total_seats') == 1) selected @endif>1 Seat</option>
                                         <option value="2" @if(old('total_seats') == 2) selected @endif>2 Seats</option>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-sm-6 pick--get-atime">
                             <div class="form-group pick-get-time">
-                                <label for="departure-time">Departure Time</label>
+                                <label for="departure-time">Departure Time <span class="star">*</span></label>
                                 <div class="col-sm-6 padding-left-o">
                                     <input name="d_date" type="text" class="form-control datepicker-f" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
                                 </div>

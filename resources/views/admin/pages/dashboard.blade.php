@@ -57,13 +57,13 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab1">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $c_daily }}</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab2">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $c_weekly }}</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab3">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $c_monthly }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -84,13 +84,13 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tabx">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $d_daily }}</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab2x">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $d_weekly }}</h3>
                                 </div>
                                 <div class="tab-pane fade" id="tab3x">
-                                    <h3 class="bigtext">---</h3>
+                                    <h3 class="bigtext">{{ $d_monthly }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div class="row">
+        {{--<div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--/.row-->
+        </div>--}}<!--/.row-->
 
         <div class="row">
             <div class="col-sm-12">
@@ -132,15 +132,15 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 panel-body-border">
                             <form action="#">
                                 <div class="form-group">
-                                    <select class="form-control get-select-picker" title="Select">
-                                        <option value="">Daily Income</option>
-                                        <option value="">Weekly Income</option>
-                                        <option value="">Monthly Income</option>
-                                        <option value="">Yearly Income</option>
+                                    <select id="format-selector" class="form-control get-select-picker" title="Select">
+                                        <option value="Daily">Daily Income</option>
+                                        <option value="Weekly">Weekly Income</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Yearly">Yearly</option>
                                     </select>
+                                    <div id="picker"></div>
                                 </div>
-                                <div id="calendar"></div>
-                                <button class="btn btn-info btn-offer btn-center-admin">Generate</button>
+                                <button id="generate" class="btn btn-info btn-offer btn-center-admin">Generate</button>
                             </form>
                         </div>
                         <div class="col-lg-7 col-md-6 col-lg-offset-1 col-xs-12 table-responsive">
@@ -154,38 +154,9 @@
                                     <th>Amount</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <tbody id="income-data">
                                 </tbody>
                             </table>
-                            <p class="income">Income : <span> </span></p>
                         </div>
                     </div>
                 </div>

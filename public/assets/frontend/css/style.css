@@ -192,7 +192,9 @@
     }
 
     .timepicker:before{
-      content:"Time Picker";
+      content:"Select Time";
+      color: red;
+      font-weight: bold;
     }
     .forget-password-ex{
       margin-top: 150px;
