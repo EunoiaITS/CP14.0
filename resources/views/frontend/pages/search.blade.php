@@ -20,7 +20,8 @@
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
-								<input type="text" name="when" class="form-control" id="datetimepicker5" placeholder="When" required>
+								<input type="text" name="when" class="form-control" id="datetimepicker5" placeholder="When" required oninvalid="this.setCustomValidity('You have to select time.')"
+									   oninput="setCustomValidity('')">
 							</div>
 						</div>
 						<div class="col-sm-3">

@@ -28,13 +28,23 @@
                                 <label for="pickup-point">Destination</label>
                                 <input name="destination" type="text" id="destination-input" placeholder="Enter a destination location" class="form-control" required="required" @if(isset($data->to)) value="{{ $data->to }}" readonly @else value="{{ old('destination') }}"  @endif>
                             </div>
-                            <div class="col-sm-6 padding-left-o">
+                            <div class="col-sm-4 padding-left-o">
                                 <div class="form-group">
                                     <label for="price">Price Per seat</label>
                                     <input name="price_per_seat" type="text" placeholder="$200" class="form-control form-control-placeholder" required="required" value="{{ old('price_per_seat') }}">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="price">Currency</label>
+                                    <select name="currency" class="form-control form-control-placeholder" required="required" value="{{ old('price_per_seat') }}">
+                                        <option>USD</option>
+                                        <option>BDT</option>
+                                        <option>RM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for="number-of-seat">Number Of Seats</label>
                                     <select name="total_seats" id="" class="get-select-picker" title="Seats" required>

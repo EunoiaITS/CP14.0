@@ -77,6 +77,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/drivers/view/{id}', 'Admin@viewDriver');
     Route::get('/income-statement/', 'Admin@incomeStatement');
     Route::get('/total-income/', 'Admin@totalIncome');
+    Route::post('/block/', 'Admin@block');
+    Route::post('/unblock/', 'Admin@unblock');
 });
 
 /* ------------------------------------------------------ */

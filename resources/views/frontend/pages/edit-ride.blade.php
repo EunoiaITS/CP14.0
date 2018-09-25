@@ -29,20 +29,31 @@
                                 <label for="pickup-point">Destination</label>
                                 <input name="destination" type="text" id="destination-input" class="form-control" value="{{ $data->destination }}" @if($data->bookings->isNotEmpty()) readonly @endif>
                             </div>
-                            <div class="col-sm-6 padding-left-o">
+                            <div class="col-sm-4 padding-left-o">
                                 <div class="form-group">
                                     <label for="price">Price Per seat</label>
                                     <input name="price_per_seat" type="text" placeholder="$200" class="form-control form-control-placeholder" value="{{ $data->price_per_seat }}" @if($data->bookings->isNotEmpty()) readonly @endif>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="price">Currency</label>
+                                    <select name="currency" class="form-control form-control-placeholder" required="required" value="{{ old('currency') }}">
+                                        <option @if(isset($data))@if($data->currency == 'USD'){{ 'selected' }}@endif @endif>USD</option>
+                                        <option @if(isset($data))@if($data->currency == 'BDT'){{ 'selected' }}@endif @endif>BDT</option>
+                                        <option @if(isset($data))@if($data->currency == 'RM'){{ 'selected' }}@endif @endif>RM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for="number-of-seat">Number Of Seats</label>
                                     <select name="total_seats" id="" class="get-select-picker" title="Seats">
-                                        <option value="1" @if($data->total_seats == 1) {{ 'selected' }} @endif>1 Seat</option>
-                                        <option value="2" @if($data->total_seats == 2) {{ 'selected' }} @endif>2 Seats</option>
-                                        <option value="3" @if($data->total_seats == 3) {{ 'selected' }} @endif>3 Seats</option>
-                                        <option value="4" @if($data->total_seats == 4) {{ 'selected' }} @endif>4 Seats</option>
+                                        <option value="1" @if(isset($data->total_seats)) @if($data->total_seats == 1) {{ 'selected' }} @endif @endif>1 Seat</option>
+                                        <option value="2" @if(isset($data->total_seats)) @if($data->total_seats == 2) {{ 'selected' }} @endif @endif>2 Seats</option>
+                                        <option value="3" @if(isset($data->total_seats)) @if($data->total_seats == 3) {{ 'selected' }} @endif @endif>3 Seats</option>
+                                        <option value="4" @if(isset($data->total_seats)) @if($data->total_seats == 4) {{ 'selected' }} @endif @endif>4 Seats</option>
+                                        <option value="5" @if(isset($data->total_seats)) @if($data->total_seats == 5) {{ 'selected' }} @endif @endif>5 Seats</option>
                                     </select>
                                 </div>
                             </div>

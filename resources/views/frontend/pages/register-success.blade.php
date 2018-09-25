@@ -11,7 +11,7 @@
                     <h3>For Signing Up with GetWobo !</h3>
                 </div>
                 <div class="col-sm-12">
-                    <h3 class="">An email with verification link has been sent to you. Please verify to <a class="" href="{{ url('/login') }}">login.</a></h3>
+                    <h3 class="">A verification link will be sent to your email within 30 minutes. Thank you!</h3>
                 </div>
             </div>
         </div>

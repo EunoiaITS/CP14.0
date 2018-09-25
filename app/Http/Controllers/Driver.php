@@ -192,6 +192,7 @@ class Driver extends Controller
             $ro_valid['origin'] = $request->origin;
             $ro_valid['destination'] = $request->destination;
             $ro_valid['price_per_seat'] = $request->price_per_seat;
+            $ro_valid['currency'] = $request->currency;
             $ro_valid['total_seats'] = $request->total_seats;
             $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date .' '. $request->d_hour.':'.$request->d_minute));
             $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date .' '. $request->a_hour.':'.$request->a_minute));
@@ -243,6 +244,7 @@ class Driver extends Controller
                 $ride_offer->origin = $request->origin;
                 $ride_offer->destination = $request->destination;
                 $ride_offer->price_per_seat = $request->price_per_seat;
+                $ride_offer->currency = $request->currency;
                 $ride_offer->total_seats = $request->total_seats;
                 $ride_offer->departure_time = $ro_valid['departure_time'];
                 $ride_offer->arrival_time = $ro_valid['arrival_time'];

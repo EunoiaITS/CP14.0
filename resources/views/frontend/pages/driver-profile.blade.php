@@ -164,7 +164,7 @@
                     <div class="col-sm-12 padding-left-o padding-right-0">
                         <div class="col-sm-12 col-md-4">
                             <div class="statement-ridemate">
-                                <select name="" id="format-selector" class="get-select-picker" title="Select">
+                                <select name="" id="format-selector" class="get-select-picker" title="Select a category to choose the period of time">
                                     <option value="Daily">Daily Income</option>
                                     <option value="Weekly">Weekly Income</option>
                                     <option value="Monthly">Monthly</option>
