@@ -76,6 +76,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/customers/view/{id}', 'Admin@viewCustomer');
     Route::get('/drivers/view/{id}', 'Admin@viewDriver');
     Route::get('/income-statement/', 'Admin@incomeStatement');
+    Route::get('/total-income/', 'Admin@totalIncome');
 });
 
 /* ------------------------------------------------------ */

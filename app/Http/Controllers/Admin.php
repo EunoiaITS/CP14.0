@@ -12,6 +12,7 @@ use App\User;
 use App\User_data;
 use App\DriverData;
 use App\RideComp;
+use Carbon\Carbon;
 
 class Admin extends Controller
 {
@@ -25,13 +26,54 @@ class Admin extends Controller
      * Admin dashboard - overall reviews of the system
     */
     public function dashboard(Request $request){
+        Carbon::setWeekStartsAt(Carbon::MONDAY);
+        Carbon::setWeekEndsAt(Carbon::SUNDAY);
+
         $slug = 'home';
         $driver = User::where('role','driver')->count();
         $customer = User::where('role','customer')->count();
+        $today = date('Y-m-d');
+        $month = date('m');
+        //dd($today);
+        $c_daily = User::whereDate('created_at','=', $today)
+            ->where('status','verified')
+            ->where('role','customer')
+            ->count();
+        $c_monthly = User::whereMonth('created_at','=', $month)
+            ->where('status','verified')
+            ->where('role','customer')
+            ->count();
+        $c_weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->where('status','verified')
+            ->where('role','customer')
+            ->count();
+
+        $d_daily = User::whereDate('created_at','=', $today)
+            ->where('status','verified')
+            ->where('role','driver')
+            ->count();
+
+        $d_weekly = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->where('status','verified')
+            ->where('role','driver')
+            ->count();
+
+        $d_monthly = User::whereMonth('created_at','=', $month)
+            ->where('status','verified')
+            ->where('role','driver')
+            ->count();
+
         return view('admin.pages.dashboard', [
             'slug' => $slug,
             'd' => $driver,
-            'c' => $customer
+            'c' => $customer,
+            'c_daily' => $c_daily,
+            'c_monthly' => $c_monthly,
+            'c_weekly' => $c_weekly,
+            'd_daily' => $d_daily,
+            'd_weekly' => $d_weekly,
+            'd_monthly' => $d_monthly,
+            'footer_js' => 'admin.pages.js.dashboard-js'
         ]);
     }
 
@@ -491,4 +533,50 @@ class Admin extends Controller
             }
             return json_encode($ro);
         }
+    public function totalIncome(Request $request){
+        $ro = RideOffers::where('status','completed')
+            ->get();
+        foreach ($ro as $r){
+            $rc = RideComp::where('ride_id',$r->id)->first();
+            if($request->section == 'daily'){
+                if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
+                    $r->checked = 'yes';
+                    $r->ride_no = $r->id;
+                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                    $r->time = date('H:i A',strtotime($rc->start_time));
+                    $r->amount = $rc->total_fair;
+                }
+            }
+            if ($request->section == 'weekly'){
+                for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
+                    if($i == date('d',strtotime($rc->start_time))){
+                        $r->checked = 'yes';
+                        $r->ride_no = $r->id;
+                        $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        $r->amount = $rc->total_fair;
+                    }
+                }
+            }
+            if ($request->section == 'monthly'){
+                if(date('m',strtotime($rc->start_time)) == date('m',strtotime($request->date))){
+                    $r->checked = 'yes';
+                    $r->ride_no = $r->id;
+                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                    $r->time = date('H:i A',strtotime($rc->start_time));
+                    $r->amount = $rc->total_fair;
+                }
+            }
+            if($request->section == 'yearly'){
+                if(date('Y',strtotime($rc->start_time)) == date('Y',strtotime($request->date))){
+                    $r->checked = 'yes';
+                    $r->ride_no = $r->id;
+                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                    $r->time = date('H:i A',strtotime($rc->start_time));
+                    $r->amount = $rc->total_fair;
+                }
+            }
+        }
+        return json_encode($ro);
+    }
 }
