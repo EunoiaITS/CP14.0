@@ -44,7 +44,7 @@
                         </div>
                         
                         <div class="form-group get-sign-up-mate">
-                            <label for="date-of-birth">Date Of Birth <span class="star">*</star></label>
+                            <label for="date-of-birth">Date Of Birth <span class="star">*</span></label>
                             <div class="col-sm-3 padding-left-o">
                                 <select name="day" id="" class="get-select-picker" tabindex="9" title="Day">
                                     @for($i = 1; $i <= 31; $i++)
