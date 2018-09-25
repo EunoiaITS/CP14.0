@@ -272,14 +272,16 @@ class Customer extends Controller
             $book->ud = $ud;
         }
         $ro->bookings = $bookings;
-        $rates = array();
+        $rates = $rate_tos = array();
         $ratings = Ratings::where('ride_id', $ro->id)->get();
         foreach($ratings as $rate){
             $rates[] = $rate->from;
+            $rate_tos[] = $rate->to;
         }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
             'rates' => $rates,
+            'rate_tos' => $rate_tos,
             'js' => 'frontend.pages.js.ride-details-js',
             'modals' => 'frontend.pages.modals.ride-details-modals'
         ]);

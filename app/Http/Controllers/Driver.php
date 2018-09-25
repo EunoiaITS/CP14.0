@@ -416,15 +416,17 @@ class Driver extends Controller
             $book->ud = $ud;
         }
         $ro->bookings = $bookings;
-        $rates = array();
+        $rates = $rate_tos = array();
         $ratings = Ratings::where('ride_id', $ro->id)->get();
         foreach($ratings as $rate){
             $rates[] = $rate->from;
+            $rate_tos[] = $rate->to;
         }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
             'ride_start' => $rideStart,
             'rates' => $rates,
+            'rate_tos' => $rate_tos,
             'js' => 'frontend.pages.js.ride-details-js',
             'modals' => 'frontend.pages.modals.ride-details-modals'
         ]);
@@ -738,6 +740,7 @@ class Driver extends Controller
             'data' => $rr
         ]);
     }
+
     /**
      * Income Statement  - shows Income Statement of a driver
      * In Basis of Daily,weekly,monthly,yearly
@@ -800,6 +803,7 @@ class Driver extends Controller
             'slug' => 'not'
         ]);
     }
+
     public function history(){
         $id = Auth::id();
         $ro = RideOffers::where(['status' => 'completed'])
@@ -809,6 +813,39 @@ class Driver extends Controller
         return view('frontend.pages.history-driver',[
             'data' => $ro
         ]);
+    }
+
+    /**
+     * Rate - rate a ridemate/driver
+     */
+    public function rate(Request $request, $link){
+        if($request->isMethod('post')){
+            $errors = array();
+            $rating = new Ratings();
+            if(!$rating->validate($request->all())){
+                $rating_e = $rating->errors();
+                foreach ($rating_e->messages() as $k => $v){
+                    foreach ($v as $e){
+                        $errors[] = $e;
+                    }
+                }
+            }
+            if(empty($errors)){
+                $rating->ride_id = $request->ride_id;
+                $rating->from = $request->from;
+                $rating->to = $request->to;
+                $rating->rating = $request->rating;
+                $rating->comment = $request->comment;
+                $rating->save();
+                return redirect()
+                    ->to('/ride-details/'.$link)
+                    ->with('success', 'Your rating was successfully added!');
+            }else{
+                return redirect()
+                    ->to('/c/rate/'.$link)
+                    ->with('errors', $errors);
+            }
+        }
     }
 
 }
