@@ -25,10 +25,16 @@
                             <input type="text" name="name" class="form-control" placeholder="First Name" tabindex="1" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email" tabindex="3" required="required">
+                            <div class="palceholder">
+					            <label for="name">Email <span class="star">*</span></label>
+					        </div>
+                            <input type="email" name="email" class="form-control" tabindex="3" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Password" tabindex="5" required="required">
+                           <div class="palceholder">
+					            <label for="name">Password <span class="star">*</span></label>
+					        </div>
+                            <input type="password" name="password" class="form-control" tabindex="5" required="required">
                         </div>
                         <div class="form-group">
                             <input type="text" name="contact" class="form-control" placeholder="Contact No" tabindex="7">
@@ -63,10 +69,16 @@
                             <input type="text" name="last_name" class="form-control" placeholder="Last Name" tabindex="2" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="reemail" class="form-control" placeholder="Confirm Email" tabindex="4" required="required">
+                           <div class="palceholder">
+					            <label for="name">Confirm Email <span class="star">*</span></label>
+					        </div>
+                            <input type="email" name="reemail" class="form-control" tabindex="4" required="required">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="repass" class="form-control" placeholder="Confirm Password" tabindex="6" required="required">
+                             <div class="palceholder">
+					            <label for="name">Confirm Password <span class="star">*</span></label>
+					        </div>
+                            <input type="password" name="repass" class="form-control" tabindex="6" required="required">
                         </div>
                         <div class="form-group">
                             <select name="country_code" class="form-control" tabindex="8">
@@ -76,7 +88,7 @@
                             </select>
                         </div>
                         <div class="form-group get-sign-up-mate">
-                            <label for="gender">Gender</label>
+                            <label for="gender">Gender <span class="star">*<span></label>
                             <select name="gender" class="get-select-picker" tabindex="12" title="Gender">
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -85,7 +97,10 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input type="text" name="address" class="form-control" placeholder="Address" tabindex="13" required="required">
+                           <div class="palceholder">
+					            <label for="name">Confirm Email <span class="star">*</span></label>
+					        </div>
+                            <input type="text" name="address" class="form-control" tabindex="13" required="required">
                         </div>
                     </div>
                     <div class="col-sm-12 padding-left-o">
