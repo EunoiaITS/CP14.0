@@ -8,6 +8,7 @@ use App\RideDescriptions;
 use App\RideOffers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Events\OfferCreated;
 
 class Kernel extends ConsoleKernel
 {
@@ -34,7 +35,12 @@ class Kernel extends ConsoleKernel
             foreach($active_offers as $ac){
                 if(date('Y-m-d H:i') >= date('Y-m-d H:i', strtotime($ac->departure_time)+3600)){
                     $ac->status = 'expired';
-                    $ac->save();
+                    if($ac->save()){
+                        event(new OfferCreated([
+                            'event' => 'ride-expired',
+                            'ride_id' => $ac->id
+                        ]));
+                    }
                 }
             }
             $expired_offers = RideOffers::where(['status' => 'expired'])->get();
@@ -49,7 +55,12 @@ class Kernel extends ConsoleKernel
             foreach($active_req as $req){
                 if(date('Y-m-d H:i') >= date('Y-m-d H:i', strtotime($req->departure_date))){
                     $req->status = 'expired';
-                    $req->save();
+                    if($req->save()){
+                        event(new OfferCreated([
+                            'event' => 'req-expired',
+                            'req_id' => $req->id
+                        ]));
+                    }
                 }
             }
             $ex_req = Ride_request::where(function($q){
