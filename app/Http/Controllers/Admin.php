@@ -584,13 +584,13 @@ class Admin extends Controller
         $user->status = 'not-verified';
         $user->save();
         return redirect()
-            ->to('/admin/drivers');
+            ->to('admin/drivers/view/'.$request->user_id);
     }
     public function unblock(Request $request){
         $user = User::find($request->user_id);
         $user->status = 'verified';
         $user->save();
         return redirect()
-            ->to('/admin/drivers');
+            ->to('admin/drivers/view/'.$request->user_id);
     }
 }

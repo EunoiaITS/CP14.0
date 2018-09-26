@@ -10,8 +10,9 @@
                 <div class="account-status">
                     <span>Account Status: <code>@if(isset($data->status)) @if($data->status == 'verified'){{ 'Unblocked' }} @else {{ 'Blocked' }} @endif @endif</code></span>
                     <div>Change Status:
-                        <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</span>
-                        <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</span> </div>
+                        <button class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'not-verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</button>
+                        <button class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</button>
+                    </div>
                 </div>
             </div>
         </div><!--/.row-->
