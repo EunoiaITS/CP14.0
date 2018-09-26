@@ -160,6 +160,32 @@ $('.timepicker-mm').datetimepicker({
     }
 });
 
+
+  /*--==========================
+   // departure-arrival datetime picker
+   =============================--*/
+   var minDate = new Date();
+   minDate.setMinutes(minDate.getMinutes() + 30);
+   $("#datetimepicker-departure").datetimepicker({
+      minDate: minDate,
+      icons:{
+        time:'timepicker',
+      }
+   });
+
+  // arrival time
+  var minDate = new Date();
+  minDate.setMinutes(minDate.getMinutes() + 90);
+   $("#Arrival-time").datetimepicker({
+      minDate: minDate,
+      icons:{
+        time:'timepicker',
+      }
+   });
+
+
+
+
 $('#datetimepicker4').datetimepicker({
     format: "YYYY-MM-DD HH:mm",
     icons: {
