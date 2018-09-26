@@ -201,28 +201,16 @@
                             </div>
                         </div>
                         <div class="col-sm-6 pick--get-atime">
-                            <div class="form-group pick-get-time">
+                            <div class="form-group ">
                                 <label for="departure-time">Departure Time</label>
-                                <div class="col-sm-6 padding-left-o">
-                                    <input name="d_date" type="text" class="form-control datepicker-f" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
-                                </div>
-                                <div class="col-sm-3">
-                                    <input name="d_hour" type="text" class="form-control timepicker-hh" placeholder="Hrs:HH" required="required" @if(isset($data->departure_date)) value="{{ date('H', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_hour') }}" @endif>
-                                </div>
-                                <div class="col-sm-3 padding-right-o">
-                                    <input name="d_minute" type="text" class="form-control timepicker-mm" placeholder="Min:MM" required="required" @if(isset($data->departure_date)) value="{{ date('i', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_minute') }}" @endif>
+                                <div class="padding-left-o">
+                                    <input name="d_date" type="text" class="form-control" id="datetimepicker-departure" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
                                 </div>
                             </div>
-                            <div class="form-group pick-get-time">
+                            <div class="form-group">
                                 <label for="departure-time">Arrival Time(Optional)</label>
-                                <div class="col-sm-6 padding-left-o">
-                                    <input name="a_date" type="text" class="form-control datepicker-f" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" @else value="{{ old('a_date') }}" @endif>
-                                </div>
-                                <div class="col-sm-3">
-                                    <input name="a_hour" type="text" class="form-control timepicker-hh" placeholder="Hrs:HH" required="required" @if(isset($data->departure_date)) value="{{ date('H', strtotime($data->departure_date)) + 1 }}" @else value="{{ old('a_hour') }}" @endif>
-                                </div>
-                                <div class="col-sm-3 padding-right-o">
-                                    <input name="a_minute" type="text" class="form-control timepicker-mm" placeholder="Min:MM" required="required" @if(isset($data->departure_date)) value="{{ date('i', strtotime($data->departure_date)) }}" @else value="{{ old('a_minute') }}" @endif>
+                                <div class="padding-left-o">
+                                    <input name="a_date" type="text" class="form-control" id="Arrival-time" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" @else value="{{ old('a_date') }}" @endif>
                                 </div>
                             </div>
                         </div>
