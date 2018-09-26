@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class Guest
 {
@@ -16,6 +17,10 @@ class Guest
      */
     public function handle($request, Closure $next)
     {
+        $area = Cookie::get('area');
+        if(isset($area)){
+            session(['area' => $area]);
+        }
         $sCheck = session('area');
 
         $urls = [
