@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\UsersExtendedData;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,16 +57,19 @@ class LoginController extends Controller
                 foreach($c_data as $c){
                     if($c->key == 'country'){
                         session(['area' => $c->value]);
+                        Cookie::queue('area', $c->value, 300);
                     }
                 }
                 foreach($c_data as $c){
                     if($c->key == 'lat'){
                         session(['lat' => $c->value]);
+                        Cookie::queue('lat', $c->value, 300);
                     }
                 }
                 foreach($c_data as $c){
                     if($c->key == 'lan'){
                         session(['lan' => $c->value]);
+                        Cookie::queue('lan', $c->value, 300);
                     }
                 }
             }
