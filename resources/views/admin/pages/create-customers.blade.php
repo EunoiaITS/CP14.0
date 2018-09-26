@@ -46,13 +46,13 @@
                                     <input class="form-control" placeholder="Re-type Password" name="repass" type="password" value="" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="datetime" class="form-control datepicker-f" placeholder="MM/YY" name="dob" value="{{ old('dob') }}">
+                                    <input type="datetime" class="form-control datepicker-f" placeholder="Date of Birth(YYYY-MM-DD)" name="dob" value="{{ old('dob') }}">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Enter Address" name="address" value="{{ old('address') }}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Enter Id Card No" name="id_card" value="{{ old('id_card') }}">
+                                    <input type="text" class="form-control" placeholder="National/IC ID No" name="id_card" value="{{ old('id_card') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="gender">Gender</label>
@@ -62,7 +62,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="upload-driving-licence">Upload Picture</label>
+                                    <label for="upload-driving-licence">Upload National/IC Picture(Max 300kb,Ex: .jpg , .png)</label>
                                     <div class="file">
                                         <input type="file" class="" name="picture">
                                     </div>

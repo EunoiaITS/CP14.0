@@ -8,8 +8,10 @@
             </div>
             <div class="col-lg-6 col-xs-12">
                 <div class="account-status">
-                    <span>Account Status: <code>Unblocked</code></span>
-                    <div>Change Status: <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalxs">block</span> <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalx">Unblock</span> </div>
+                    <span>Account Status: <code>@if(isset($data->status)) @if($data->status == 'verified'){{ 'Unblocked' }} @else {{ 'Blocked' }} @endif @endif</code></span>
+                    <div>Change Status:
+                        <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</span>
+                        <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</span> </div>
                 </div>
             </div>
         </div><!--/.row-->
@@ -20,7 +22,7 @@
                     <div class="panel-body">
                         <div class="col-sm-3 col-xs-12">
                             <div class="user-profile-icon">
-                                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="profile-img">
+                                <img src="@if(isset($details->picture)){{ asset('/public/uploads/drivers/'.$details->picture) }} @endif" class="img-responsive" alt="profile-img">
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
@@ -128,7 +130,7 @@
                         <div class="col-sm-12 padding-left-o padding-right-0">
                             <div class="col-sm-12 col-md-4">
                                 <div class="statement-ridemate">
-                                    <select name="" id="format-selector" class="get-select-picker" title="Select">
+                                    <select name="" id="format-selector" class="get-select-picker" title="Select a period of time">
                                         <option value="Daily">Daily Income</option>
                                         <option value="Weekly">Weekly Income</option>
                                         <option value="Monthly">Monthly</option>
@@ -146,7 +148,7 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Time</th>
-                                        <th>Amount (including GST 6%)</th>
+                                        <th>Amount (USD)</th>
                                     </tr>
                                     </thead>
                                     <tbody id="income-data">

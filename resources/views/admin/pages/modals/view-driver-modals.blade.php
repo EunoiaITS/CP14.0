@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModalxs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModalxs{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,19 +6,23 @@
                 <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to <b>Block</b> <span>John Doe</span> ?</p>
+                <p>Are you sure you want to <b>Block</b> <span>{{ $data->name }}</span> ?</p>
             </div>
+        <form action="{{ url('/admin/block') }}" method="post">
+            {{ csrf_field() }}
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Yes</button>
+                <input type="hidden" name="user_id" value="{{ $data->id }}">
+                <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
+        </form>
         </div>
     </div>
 </div>
 
 <!-- unblock modal	 -->
 
-<div class="modal fade" id="myModalx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModalx{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -26,10 +30,13 @@
                 <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to <b>Unblock</b> Jhon Doe ?</p>
+                <p>Are you sure you want to <b>Unblock</b> {{ $data->name }} ?</p>
             </div>
+            <form action="{{ url('/admin/unblock') }}" method="post">
+                {{ csrf_field() }}
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Yes</button>
+                <input type="hidden" name="user_id" value="{{ $data->id }}">
+                <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
         </div>

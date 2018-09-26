@@ -52,7 +52,7 @@
                     <div class="sign-in-option-get">
                         <button class="btn btn-info btn-offer" type="submit" >Sign In</button>
                         <span>Or</span>
-                        <button class="btn btn-info btn-offer join-us-sign-in" type="button">Join Us</button>
+                        <a href="{{ url('/join') }}"><button type="button" class="btn btn-info btn-offer join-us-sign-in">Join Us</button></a>
                     </div>
                 </form>
             </div>

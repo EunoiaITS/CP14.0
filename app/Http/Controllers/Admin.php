@@ -579,4 +579,18 @@ class Admin extends Controller
         }
         return json_encode($ro);
     }
+    public function block(Request $request){
+        $user = User::find($request->user_id);
+        $user->status = 'not-verified';
+        $user->save();
+        return redirect()
+            ->to('/admin/drivers');
+    }
+    public function unblock(Request $request){
+        $user = User::find($request->user_id);
+        $user->status = 'verified';
+        $user->save();
+        return redirect()
+            ->to('/admin/drivers');
+    }
 }

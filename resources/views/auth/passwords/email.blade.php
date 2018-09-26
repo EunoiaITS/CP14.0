@@ -22,7 +22,6 @@
                     </div>
                     <div class="sign-in-option-get clearfix">
                         <button type="submit" class="btn btn-info btn-offer">Submit</button>
-                        <a class="btn btn-info btn-offer btn-cancel" href="#">Cancel</a>
                     </div>
                 </form>
             </div>

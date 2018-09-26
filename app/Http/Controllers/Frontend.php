@@ -327,7 +327,6 @@ class Frontend extends Controller
 
     public function search(Request $request){
         if($request->isMethod('post')){
-            //dd($request->all());
             $search_data = RideOffers::
                 whereDate('departure_time', '=', date('Y-m-d',strtotime($request->when)))
                 ->orWhere('origin', 'like', '%'. trim($request->from) .'%')
