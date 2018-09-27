@@ -208,6 +208,13 @@
         $('#green-label-'+rel).addClass('add-green-color');
         $('#value-'+rel).val('yes');
     });
+
+    $("#datetimepicker-departure").on('dp.change', function(ev){
+        ev.preventDefault();
+        var d = new Date(ev.date);
+        d.setHours(d.getHours()+1);
+        $("#Arrival-time").data('DateTimePicker').minDate(d);
+    });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDYEWgbPh1YBGNEZoMye44-F9ugukmRo&libraries=places&callback=initMap"
         async defer></script>

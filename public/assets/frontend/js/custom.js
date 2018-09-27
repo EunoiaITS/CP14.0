@@ -173,6 +173,14 @@ $('.timepicker-mm').datetimepicker({
       }
    });
 
+$('#datetimepicker4').datetimepicker({
+    format: "YYYY-MM-DD HH:mm",
+    icons: {
+        time:'timepicker',
+    },
+    minDate: minDate
+});
+
   // arrival time
   var minDate = new Date();
   minDate.setMinutes(minDate.getMinutes() + 90);
@@ -182,17 +190,6 @@ $('.timepicker-mm').datetimepicker({
         time:'timepicker',
       }
    });
-
-
-
-
-$('#datetimepicker4').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
-    icons: {
-        time:'timepicker',
-    },
-    minDate: moment()
-});
 
 $('#datetimepicker5').datetimepicker({
     format: "YYYY-MM-DD HH:mm",

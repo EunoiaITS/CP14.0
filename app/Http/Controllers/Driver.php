@@ -184,6 +184,9 @@ class Driver extends Controller
         }
         $vd = VehiclesData::where(['user_id' => Auth::id()])->first();
         if($request->isMethod('post')){
+//            echo date('Y-m-d H:i', strtotime($request->d_date)).'<br>';
+//            echo date('Y-m-d H:i', strtotime($request->a_date)).'<br>';
+//            dd($request->all());
             $ride_offer = new RideOffers();
             $vehicles_data = new VehiclesData();
             $errors = array();
@@ -194,8 +197,8 @@ class Driver extends Controller
             $ro_valid['price_per_seat'] = $request->price_per_seat;
             $ro_valid['currency'] = $request->currency;
             $ro_valid['total_seats'] = $request->total_seats;
-            $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date .' '. $request->d_hour.':'.$request->d_minute));
-            $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date .' '. $request->a_hour.':'.$request->a_minute));
+            $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date));
+            $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date));
 
             if($ro_valid['departure_time'] >= $ro_valid['arrival_time']){
                 $errors[] = 'Arrival time has to be greater than the departure time!';
@@ -355,6 +358,7 @@ class Driver extends Controller
     public function myOffers(Request $request){
         $offers = RideOffers::where(['offer_by' => Auth::id()])
             ->whereDate('departure_time', '>=', date('Y-m-d'))
+            ->whereTime('departure_time', '>=', date('H:i'))
             ->where(function($q){
                 $q->where(['status' => 'active'])
                     ->orWhere(['status' => 'in-progress']);
