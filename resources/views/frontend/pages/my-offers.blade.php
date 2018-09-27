@@ -17,6 +17,17 @@
                 <!-- Ride details -->
                 <div class="get-ridemate-single">
                     <h3 class="check-total-fare text-center">Upcoming Rides</h3>
+                    <div class="col-sm-6">
+                        @include('frontend.includes.messages')
+                        @if(isset($errors))
+                            @foreach($errors as $error)
+                                <p class="alert alert-danger">
+                                    {{ $error }}
+                                </p>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="clearfix"></div>
 
                     @foreach($data as $offer)
 

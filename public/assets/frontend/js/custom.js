@@ -182,8 +182,7 @@ $('#datetimepicker4').datetimepicker({
 });
 
   // arrival time
-  var minDate = new Date();
-  minDate.setMinutes(minDate.getMinutes() + 90);
+  minDate.setMinutes(minDate.getMinutes() + 60);
    $("#Arrival-time").datetimepicker({
       minDate: minDate,
       icons:{
