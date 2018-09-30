@@ -63,6 +63,19 @@ class Kernel extends ConsoleKernel
                     }
                 }
             }
+            $in_progress = RideOffers::where('status', 'in-progress')
+                ->where('arrival_time', '<=', date('Y-m-d H:i:s'))
+                ->get();
+            foreach ($in_progress as $inp){
+                $inp->status = 'completed';
+                if($inp->save()){
+                    event(new OfferCreated([
+                        'event' => 'ride-end',
+                        'from' => $inp->offer_by,
+                        'ride_id' => $inp->id
+                    ]));
+                }
+            }
             $ex_req = Ride_request::where(function($q){
                 $q->where(['status' => 'expired'])
                     ->orWhere(['status' => 'canceled']);

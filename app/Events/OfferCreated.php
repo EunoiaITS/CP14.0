@@ -179,11 +179,17 @@ class OfferCreated implements  ShouldBroadcast
             $tos = array();
             $by = User::find($data['from']);
             $offer = RideOffers::find($data['ride_id']);
+            $not = new Notifications();
+            $not->from = $data['from'];
+            $not->to = $by->id;
+            $not->message = 'Your ride has ended.';
+            $not->ad_link = url('/ride-details/'.$offer->link);
+            $not->status = 'unread';
+            if($not->save()){
+                $tos[$by->id] = $not->id;
+            }
             $books = RideBookings::where('ride_id', $data['ride_id'])
-                ->where(function($q){
-                    $q->where(['status' => 'booked'])
-                        ->orWhere(['status' => 'confirmed']);
-                })->get();
+                ->where('status','confirmed')->get();
             foreach($books as $book){
                 $not = new Notifications();
                 $not->from = $data['from'];

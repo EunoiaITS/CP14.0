@@ -31,7 +31,9 @@ class Customer extends Controller
     public function viewProfile(){
         $id = Auth::id();
         $user = User::find($id);
+        //dd($user);
         $usd = User_data::where('user_id',$id)->first();
+        //dd($usd);
         $bookings = RideBookings::where(['user_id' => Auth::id()])
             ->where(function($q){
                 $q->where(['status' => 'booked'])
@@ -91,13 +93,20 @@ class Customer extends Controller
                 $image = $request->file('picture');
                 $name = str_slug($id).'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/customers');
-                $imagePath = $destinationPath. "/".  $name;
-                $image->move($destinationPath, $name);
-                $usd->picture = $name;
-                $usd->save();
-                return redirect()
-                    ->to('/c/profile/')
-                    ->with('success', 'Your Profile Picture Updated Successfully !!');
+                $formats = array("JPG","jpg","jpeg","png","gif");
+                if(in_array($image->getClientOriginalExtension(),$formats)){
+                    $imagePath = $destinationPath. "/".  $name;
+                    $image->move($destinationPath, $name);
+                    $usd->picture = $name;
+                    $usd->save();
+                    return redirect()
+                        ->to('/c/profile/edit/'.$id)
+                        ->with('success', 'Your Profile Picture Updated Successfully !!');
+                }else{
+                    return redirect()
+                        ->to('/c/profile/edit/'.$id)
+                        ->with('error', 'Your Profile Picture Format Not Supported !!');
+                }
             }
         }
     }
