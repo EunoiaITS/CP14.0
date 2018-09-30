@@ -208,6 +208,22 @@
         $('#green-label-'+rel).addClass('add-green-color');
         $('#value-'+rel).val('yes');
     });
+
+    @if(isset($data->departure_date))
+    var d_date = '{{ date('m/d/Y H:i a', strtotime($data->departure_date)) }}';
+    d_date = d_date.match(/(\d+)\/(\d+)\/(\d+)\s*(\d+):(\d+)/);
+    d_date  = new Date(d_date[3], d_date[1]-1, d_date[2], d_date[4], d_date[5], 0, 0);
+    $("#datetimepicker-departure").data('DateTimePicker').minDate(d_date);
+    d_date.setMinutes(d_date.getMinutes()+60);
+    $("#Arrival-time").data('DateTimePicker').minDate(d_date);
+    @endif
+
+    $("#datetimepicker-departure").on('dp.change', function(ev){
+        ev.preventDefault();
+        var d = new Date(ev.date);
+        d.setHours(d.getHours()+1);
+        $("#Arrival-time").data('DateTimePicker').minDate(d);
+    });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDYEWgbPh1YBGNEZoMye44-F9ugukmRo&libraries=places&callback=initMap"
         async defer></script>

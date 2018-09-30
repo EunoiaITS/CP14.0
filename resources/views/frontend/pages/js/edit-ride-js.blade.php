@@ -236,7 +236,44 @@
     });
     @endif
     @endforeach
+    var d_date = '{{ date('m/d/Y H:i a', strtotime($data->departure_time)) }}';
+    var a_date = '{{ date('m/d/Y H:i a', strtotime($data->arrival_time)) }}';
+    d_date = d_date.match(/(\d+)\/(\d+)\/(\d+)\s*(\d+):(\d+)/);
+    d_date  = new Date(d_date[3], d_date[1]-1, d_date[2], d_date[4], d_date[5], 0, 0);
+    a_date = a_date.match(/(\d+)\/(\d+)\/(\d+)\s*(\d+):(\d+)/);
+    a_date  = new Date(a_date[3], a_date[1]-1, a_date[2], a_date[4], a_date[5], 0, 0);
+    /*--==========================
+     // edit departure-arrival datetime picker
+     =============================--*/
+    var editDate = new Date();
+    editDate.setMinutes(editDate.getMinutes() + 30);
+    $("#edit-dep").datetimepicker({
+        useCurrent: false,
+        defaultDate: d_date,
+        minDate: editDate,
+        icons:{
+            time:'timepicker',
+        }
+    });
 
+    editDate.setMinutes(editDate.getMinutes() + 60);
+    var minDateArr = d_date.setHours(d_date.getHours()+1);
+    $("#edit-arr").datetimepicker({
+        useCurrent: false,
+        defaultDate: a_date,
+        minDate: minDateArr,
+        icons:{
+            time:'timepicker',
+        }
+    });
+
+    $("#edit-dep").on('dp.change', function(ev){
+        ev.preventDefault();
+        var d = new Date(ev.date);
+        d.setHours(d.getHours()+1);
+        $("#edit-arr").data('DateTimePicker').minDate(d);
+        $("#edit-arr").data('DateTimePicker').date(d);
+    });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDYEWgbPh1YBGNEZoMye44-F9ugukmRo&libraries=places&callback=initMap"
         async defer></script>

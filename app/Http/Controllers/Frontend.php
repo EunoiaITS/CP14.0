@@ -140,7 +140,8 @@ class Frontend extends Controller
             $page = $request->page;
         }
         $ro = RideOffers::where(['status' => 'active'])
-            ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
+            ->whereDate('departure_time', '>=', date('Y-m-d'))
+            ->whereTime('departure_time', '>=', date('H:i:s'))
             ->orderBy('departure_time')
             ->get();
         $dests = $drivers = $req_locs = array();

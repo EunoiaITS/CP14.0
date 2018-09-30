@@ -204,13 +204,13 @@
                             <div class="form-group ">
                                 <label for="departure-time">Departure Time</label>
                                 <div class="padding-left-o">
-                                    <input name="d_date" type="text" class="form-control" id="datetimepicker-departure" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
+                                    <input name="d_date" type="text" class="form-control" id="datetimepicker-departure" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('m/d/Y H:i A', strtotime($data->departure_date)) }}" readonly @else value="{{ old('d_date') }}" @endif>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="departure-time">Arrival Time(Optional)</label>
                                 <div class="padding-left-o">
-                                    <input name="a_date" type="text" class="form-control" id="Arrival-time" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('Y-m-d', strtotime($data->departure_date)) }}" @else value="{{ old('a_date') }}" @endif>
+                                    <input name="a_date" type="text" class="form-control" id="Arrival-time" placeholder="Pick a Date" required="required" @if(isset($data->departure_date)) value="{{ date('m/d/Y H:i A', strtotime($data->departure_date)+3600) }}" @else value="{{ old('a_date') }}" @endif>
                                 </div>
                             </div>
                         </div>
