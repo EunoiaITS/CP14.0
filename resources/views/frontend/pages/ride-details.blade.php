@@ -73,7 +73,7 @@
                         <h3 class="check-total-fare">Available Seats</h3>
                     </div>
                     <div class="col-sm-5 col-sm-offset-3 col-xs-12">
-                        <h3 class="price-per-seats">Price Per Seat: <span>${{ $data->price_per_seat }}</span></h3>
+                        <h3 class="price-per-seats">Price Per Seat: <span>{{ $data->price_per_seat }}</span></h3>
                     </div>
                     <ul class="get-ride-seat clearfix">
                         <li>
@@ -123,7 +123,7 @@
                     <span class="text-right">*Click To Select Your Seat</span>
                     @endif
                     <div class="col-sm-4 padding-left-o">
-                        <h3 class="price-per-seats get-total-fare">Total Fare: <span>${{ $data->price_per_seat*$total_books }}</span></h3>
+                        <h3 class="price-per-seats get-total-fare">Total Fare: <span>{{ $data->price_per_seat*$total_books }}</span></h3>
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')
@@ -217,7 +217,7 @@
                     <button class="btn btn-info btn-offer ride-final-ride-button" type="button" data-toggle="modal" data-target="#myModalx">Ridemate Details</button>
                         @endif
                     @if(Auth::check() && Auth::user()->role == 'driver' && !isset($ride_start->start_time) && Auth::id() == $data->offer_by)
-                        <button class="btn btn-info btn-offer ride-final-ride-button" type="button"><a style="color: #ffffff" href="{{ url('/d/edit-ride/'.$data->link) }}">Edit Ride Details</a></button>
+                        <a style="color: #ffffff" href="{{ url('/d/edit-ride/'.$data->link) }}"><button class="btn btn-info btn-offer ride-final-ride-button" type="button">Edit Ride Details</button></a>
                     @endif
                 </div>
             </div>

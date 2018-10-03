@@ -14,6 +14,7 @@ use App\RideDescriptions;
 use App\VehiclesData;
 use App\RideComp;
 use App\Notifications;
+use App\Countries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +68,7 @@ class Driver extends Controller
         $usd = User_data::where('user_id',$id)->first();
         $dd = DriverData::where('user_id',$id)->first();
         $vd = VehiclesData::where('user_id',$id)->first();
+        $countries = Countries::orderBy('name','asc')->get();
         if($request->isMethod('post')){
             $user->name = $request->name;
             $user->email = $request->email;
@@ -95,7 +97,8 @@ class Driver extends Controller
             'user' => $user,
             'usd' => $usd,
             'dd' => $dd,
-            'vd' => $vd
+            'vd' => $vd,
+            'countries' => $countries
         ]);
     }
 

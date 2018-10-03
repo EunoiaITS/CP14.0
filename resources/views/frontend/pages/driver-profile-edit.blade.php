@@ -88,12 +88,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ridemate-contact">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
+                                    <label for="ridemate-country">Country Code</label>
+                                    <select id="ridemate-country" name="country_code" class="form-control" title="Choose">
+                                        @foreach($countries as $c)
+                                            <option value="{{ $c->name .'('. $c->country_code .')' }}" @if($usd->country_code == $c->name .'('. $c->country_code .')'){{ 'selected' }} @endif>{{ $c->name.'('.$c->country_code.')' }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ridemate-country">Country Code</label>
-                                    <input id="ridemate-country" type="text" name="country_code" class="form-control" value="{{ $usd->country_code }}" placeholder="Your Country Code">
+                                    <label for="ridemate-contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-contact">Car Registration</label>

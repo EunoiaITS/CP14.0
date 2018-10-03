@@ -10,7 +10,9 @@ class User_data extends Model
 
     protected $rules = array(
         'address'  => 'required',
-        'gender' => 'required'
+        'gender' => 'required',
+        'picture' => 'mimes:jpeg,jpg,png,gif | max:2000',
+        'idc_picture' => 'mimes:jpeg,jpg,png,gif | max:2000'
     );
 
     protected $errors;

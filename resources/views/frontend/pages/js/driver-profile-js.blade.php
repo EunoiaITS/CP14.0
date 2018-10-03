@@ -64,14 +64,18 @@
                                data: {'section':'weekly','start_date':startDate.toISOString().split('T')[0],'end_date':endDate.toISOString().split('T')[0]},
                                dataType: 'text',
                                success: function(data, textStatus, xhr){
-                                   console.log(data);
+                                   //console.log(data);
                                    $.each(JSON.parse(data),function (i,e) {
                                        if(e.checked === 'yes') {
-                                           html += '<tr>' +
-                                               '<td>'+e.start_time+'</td>' +
-                                               ' <td>'+e.time+'</td>' +
-                                               '<td>'+e.amount+'</td>' +
-                                               '</tr>';
+                                           if(e.ammount != null){
+                                               if(e.ammount != null){
+                                                   html += '<tr>' +
+                                                       '<td>'+e.start_time+'</td>' +
+                                                       ' <td>'+e.time+'</td>' +
+                                                       '<td>'+e.amount+'</td>' +
+                                                       '</tr>';
+                                               }
+                                           }
                                        }
                                    });
                                    $('#income-data').html(html);
@@ -106,11 +110,13 @@
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
                                if(e.checked === 'yes') {
-                                   html += '<tr>' +
-                                       '<td>'+e.start_time+'</td>' +
-                                       ' <td>'+e.time+'</td>' +
-                                       '<td>'+e.amount+'</td>' +
-                                       '</tr>';
+                                   if(e.ammount != null){
+                                       html += '<tr>' +
+                                           '<td>'+e.start_time+'</td>' +
+                                           ' <td>'+e.time+'</td>' +
+                                           '<td>'+e.amount+'</td>' +
+                                           '</tr>';
+                                   }
                                }
                            });
                            $('#income-data').html(html);
@@ -143,11 +149,13 @@
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
                                if(e.checked === 'yes') {
-                                   html += '<tr>' +
-                                       '<td>'+e.start_time+'</td>' +
-                                       ' <td>'+e.time+'</td>' +
-                                       '<td>'+e.amount+'</td>' +
-                                       '</tr>';
+                                   if(e.ammount != null){
+                                       html += '<tr>' +
+                                           '<td>'+e.start_time+'</td>' +
+                                           ' <td>'+e.time+'</td>' +
+                                           '<td>'+e.amount+'</td>' +
+                                           '</tr>';
+                                   }
                                }
                            });
                            $('#income-data').html(html);

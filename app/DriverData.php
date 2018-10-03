@@ -11,7 +11,8 @@ class DriverData extends Model
     protected $rules = array(
         'car_reg'  => 'required',
         'driving_license'  => 'required',
-        'expiry' => 'required'
+        'expiry' => 'required',
+        'uploads' => 'mimes:jpeg,jpg,png,gif | max:2000',
     );
 
     protected $errors;
