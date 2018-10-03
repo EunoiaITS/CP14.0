@@ -278,7 +278,7 @@ class OfferCreated implements  ShouldBroadcast
                 $not->from = $man;
                 $not->to = $man;
                 $not->message = 'Your ride is expired.';
-                $not->ad_link = url('/ride-details/'.$ride->link);
+                $not->ad_link = url('/');
                 $not->status = 'unread';
                 if($not->save()){
                     $tos[$man] = $not->id;
@@ -286,7 +286,7 @@ class OfferCreated implements  ShouldBroadcast
             }
             $this->ev = 'ride-expired';
             $this->msg = 'Your ride is expired.';
-            $this->ad_link = url('/ride-details/'.$ride->link);
+            $this->ad_link = url('/');
             $this->rec = $tos;
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
