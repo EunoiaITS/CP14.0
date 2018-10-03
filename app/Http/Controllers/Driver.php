@@ -354,11 +354,9 @@ class Driver extends Controller
     */
     public function myOffers(Request $request){
         $offers = RideOffers::where(['offer_by' => Auth::id()])
-            ->where(['status' => 'in-progress'])
             ->where(function($q){
                 $q->where(['status' => 'active'])
-                    ->whereDate('departure_time', '>=', date('Y-m-d'))
-                    ->whereTime('departure_time', '>=', date('H:i'));
+                    ->orWhere(['status' => 'in-progress']);
             })
             ->orderBy('created_at', 'desc')
             ->get();
