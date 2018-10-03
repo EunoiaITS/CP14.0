@@ -14,6 +14,7 @@ use App\Ride_request;
 use App\RideOffers;
 use App\RideDescriptions;
 use App\VehiclesData;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -30,19 +31,17 @@ class Customer extends Controller
 
     public function viewProfile(){
         $id = Auth::id();
-        //dd($id);
         $user = User::find($id);
-        //dd($user);
         $usd = User_data::where('user_id',$id)->first();
-        //dd($usd);
-        $col = new \stdClass();
-        $bookings = RideBookings::where(['user_id' => Auth::id()])
+        $bookings = new Collection();
+        $booking = RideBookings::where(['user_id' => Auth::id()])
             ->where(function($q){
                 $q->where(['status' => 'booked'])
                     ->orWhere(['status' => 'confirmed']);
             })->get();
-            foreach($bookings as $book){
+            foreach($booking as $book){
                 $ride_details = RideOffers::find($book->ride_id);
+                if(!empty($ride_details)){
                     $book->ride_details = $ride_details;
                     $user = User::find($ride_details->offer_by);
                     $book->user = $user;
@@ -53,6 +52,8 @@ class Customer extends Controller
                         ->first();
                     $vd = VehiclesData::find($ride_desc->value);
                     $book->vd = $vd;
+                    $bookings->push($book);
+                }
             }
 
         return view('frontend.pages.customer-profile',[
@@ -153,24 +154,28 @@ class Customer extends Controller
      * Bookings - shows the customer ride bookings
     */
     public function bookings(Request $request){
-        $bookings = RideBookings::where(['user_id' => Auth::id()])
+        $bookings = new Collection();
+        $booking = RideBookings::where(['user_id' => Auth::id()])
             ->where(function($q){
                 $q->where(['status' => 'booked'])
                     ->orWhere(['status' => 'confirmed']);
             })
             ->get();
-        foreach($bookings as $book){
+        foreach($booking as $book){
             $ride_details = RideOffers::find($book->ride_id);
-            $book->ride_details = $ride_details;
-            $user = User::find($ride_details->offer_by);
-            $book->user = $user;
-            $ud = User_data::where(['user_id' => $user->id])->first();
-            $book->ud = $ud;
-            $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
-                ->where(['key' => 'vehicle_id'])
-                ->first();
-            $vd = VehiclesData::find($ride_desc->value);
-            $book->vd = $vd;
+            if(!empty($ride_details)){
+                $book->ride_details = $ride_details;
+                $user = User::find($ride_details->offer_by);
+                $book->user = $user;
+                $ud = User_data::where(['user_id' => $user->id])->first();
+                $book->ud = $ud;
+                $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
+                    ->where(['key' => 'vehicle_id'])
+                    ->first();
+                $vd = VehiclesData::find($ride_desc->value);
+                $book->vd = $vd;
+                $bookings->push($book);
+            }
         }
         return view('frontend.pages.bookings', [
             'data' => $bookings,
