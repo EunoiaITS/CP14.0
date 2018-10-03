@@ -7,6 +7,7 @@ use App\Notifications;
 use App\Ratings;
 use App\Ride_request;
 use App\RideBookings;
+use App\RideComp;
 use App\RideDescriptions;
 use App\UsersExtendedData;
 use App\VehiclesData;
@@ -266,6 +267,7 @@ class Frontend extends Controller
                 ->to('/')
                 ->with('error', 'This ride was canceled/expired!');
         }
+        $rideStart = RideComp::where(['ride_id' => $ro->id])->first();
         $rd = RideDescriptions::where('ride_offer_id',$ro->id)->get();
         $ro->rd = $rd;
         $user = User::where('id', $ro->offer_by)->first();
@@ -301,6 +303,7 @@ class Frontend extends Controller
         }
         return view('frontend.pages.ride-details',[
             'data' => $ro,
+            'ride_start' => $rideStart,
             'rates' => $rates,
             'rate_tos' => $rate_tos,
             'js' => 'frontend.pages.js.ride-details-js',
