@@ -502,6 +502,10 @@ class Driver extends Controller
             //dd($request->all());
             $start = new RideComp();
             $errors = array();
+            $stat = RideOffers::find($request->ride_id);
+            if($stat->status != 'active'){
+                $errors[] = 'This ride can\'t be started!';
+            }
             if(!$start->validate($request->all())){
                 $ride_e = $start->errors();
                 foreach ($ride_e->messages() as $k => $v){
