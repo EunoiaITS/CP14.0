@@ -46,6 +46,10 @@ class Kernel extends ConsoleKernel
             $expired_offers = RideOffers::where(['status' => 'expired'])->get();
             foreach($expired_offers as $ex){
                 RideOffers::destroy($ex->id);
+                $books = RideBookings::where('ride_id', $ex->id)->get();
+                foreach($books as $book){
+                    RideBookings::destroy($book->id);
+                }
                 $descs = RideDescriptions::where('ride_offer_id', $ex->id)->get();
                 foreach($descs as $del){
                     RideDescriptions::destroy($del->id);
