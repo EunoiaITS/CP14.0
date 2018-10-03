@@ -5,7 +5,7 @@
         <div class="row">
             <div class="price-seat">
                 <div class="col-lg-12 col-sm-12">
-                    <button class="btn btn-info btn-offer edit-badge-area">Edit Info <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
+                    <button class="btn btn-info btn-offer edit-badge-area">Edit Info {{ $user->id }} <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
                     <!-- notification popupbar -->
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
@@ -75,7 +75,7 @@
 
                 <div class="my-bookings-area clearfix">
                     <h3 class="get-popular-list">My Bookings</h3>
-                    @foreach($data as $book)
+                    @foreach($data->bookings as $book)
                         @if($book->ride_details->status == 'active')
                             <!-- single ride area -->
                             <div class="col-md-12 col-lg-8 col-sm-12 col-xs-12 padding-left-o">

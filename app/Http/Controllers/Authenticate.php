@@ -84,7 +84,6 @@ class Authenticate extends Controller
                 $dd->car_reg = $request->car_reg;
                 $dd->driving_license = $request->driving_license;
                 $dd->expiry = $request->expiry;
-                $dd->uploads = $request->uploads;
                 $dd->save();
                 $vd->user_id = $last_id->id;
                 $vd->own_vehicle = 1;
@@ -94,19 +93,45 @@ class Authenticate extends Controller
                     $image = $request->file('dl_picture');
                     $name = str_slug($last_id->id).'.'.$image->getClientOriginalExtension();
                     $destinationPath = public_path('/uploads/drivers/dl');
-                    $imagePath = $destinationPath. "/".  $name;
-                    $image->move($destinationPath, $name);
-                    $usd->picture = $name;
-                    $usd->save();
+                    $formats = array("JPG","jpg","jpeg","png","gif");
+                    if(in_array($image->getClientOriginalExtension(),$formats)){
+                        if($image->getSize() > 2097152){
+                            return redirect()
+                                ->to('/sign-up/driver')
+                                ->with('error', 'Your Driving Licence Picture Size Exceed Limit of 2Mb !!');
+                        }else{
+                            $imagePath = $destinationPath. "/".  $name;
+                            $image->move($destinationPath, $name);
+                            $usd->picture = $name;
+                            $usd->save();
+                        }
+                    }else{
+                        return redirect()
+                            ->to('/sign-up/driver')
+                            ->with('error', 'Your Driving Licence Picture Format is Not Supported !!');
+                    }
                 }
                 if($request->hasFile('idc_picture')) {
                     $image = $request->file('idc_picture');
                     $name = str_slug($last_id->id).'.'.$image->getClientOriginalExtension();
                     $destinationPath = public_path('/uploads/drivers/idc');
-                    $imagePath = $destinationPath. "/".  $name;
-                    $image->move($destinationPath, $name);
-                    $usd->idc_picture = $name;
-                    $usd->save();
+                    $formats = array("JPG","jpg","jpeg","png","gif");
+                    if(in_array($image->getClientOriginalExtension(),$formats)){
+                        if($image->getSize() > 2097152){
+                            return redirect()
+                                ->to('/sign-up/driver')
+                                ->with('error', 'Your ID Card Picture Size Exceed Limit of 2Mb !!');
+                        }else{
+                            $imagePath = $destinationPath. "/".  $name;
+                            $image->move($destinationPath, $name);
+                            $usd->idc_picture = $name;
+                            $usd->save();
+                        }
+                    }else{
+                        return redirect()
+                            ->to('/sign-up/driver')
+                            ->with('error', 'Your ID Card Picture Format is Not Supported !!');
+                    }
                 }
 
                 $linkExtension = $this->generateRandomString();
@@ -221,10 +246,23 @@ class Authenticate extends Controller
                     $image = $request->file('idc_picture');
                     $name = str_slug($last_id->id).'.'.$image->getClientOriginalExtension();
                     $destinationPath = public_path('/uploads/customers/idc');
-                    $imagePath = $destinationPath. "/".  $name;
-                    $image->move($destinationPath, $name);
-                    $usd->idc_picture = $name;
-                    $usd->save();
+                    $formats = array("JPG","jpg","jpeg","png","gif");
+                    if(in_array($image->getClientOriginalExtension(),$formats)){
+                        if($image->getSize() > 2097152){
+                            return redirect()
+                                ->to('/sign-up/customer')
+                                ->with('error', 'Your ID Card Picture Size Exceed Limit of 2Mb !!');
+                        }else{
+                            $imagePath = $destinationPath. "/".  $name;
+                            $image->move($destinationPath, $name);
+                            $usd->idc_picture = $name;
+                            $usd->save();
+                        }
+                    }else{
+                        return redirect()
+                            ->to('/sign-up/customer')
+                            ->with('error', 'Your ID Card Picture Format Not Supported !!');
+                    }
                 }
                 if($request->from != ''){
                     $rrt->user_id = $last_id->id;
