@@ -3,7 +3,6 @@
 <div class="wrapper">
     <!-- header area -->
     <div class="get-header">
-
         <div class="navbar nav">
             <div class="container">
                 <div class="col-sm-2 col-xs-2 padding-left-0">
@@ -49,7 +48,7 @@
                         </div>
                         <div class="get-user-login">
                             <div class="login-icon">
-                                <img src="{{ asset('public/assets/frontend/img/user/user-1.jpg') }}" alt="">
+                                <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><img src="@if(Auth::user()->role == 'customer'){{ asset('public/uploads/customers/'.Auth::user()->id.'.jpg') }}@endif @if(Auth::user()->role == 'driver'){{ asset('public/uploads/drivers/'.Auth::user()->id.'.jpg') }}@endif" alt=""></a>
                             </div>
                             <span class="get-loged-user">{{ Auth::user()->name }}</span>
                         </div>

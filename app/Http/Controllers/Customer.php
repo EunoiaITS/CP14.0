@@ -38,8 +38,7 @@ class Customer extends Controller
             ->where(function($q){
                 $q->where(['status' => 'booked'])
                     ->orWhere(['status' => 'confirmed']);
-            })
-            ->get();
+            })->get();
             foreach($booking as $book){
                 $ride_details = RideOffers::find($book->ride_id);
                 if(!empty($ride_details)){
@@ -97,14 +96,20 @@ class Customer extends Controller
                 $name = str_slug($id).'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/customers');
                 $formats = array("JPG","jpg","jpeg","png","gif");
-                if(in_array($image->getClientOriginalExtension(),$formats)){
-                    $imagePath = $destinationPath. "/".  $name;
-                    $image->move($destinationPath, $name);
-                    $usd->picture = $name;
-                    $usd->save();
-                    return redirect()
-                        ->to('/c/profile/edit/'.$id)
-                        ->with('success', 'Your Profile Picture Updated Successfully !!');
+                        if(in_array($image->getClientOriginalExtension(),$formats)){
+                            if($image->getSize() > 2097152){
+                                return redirect()
+                                    ->to('/c/profile/edit/'.$id)
+                                    ->with('error', 'Your Profile Picture Size Exceed Limit of 2Mb !!');
+                            }else{
+                        $imagePath = $destinationPath. "/".  $name;
+                        $image->move($destinationPath, $name);
+                        $usd->picture = $name;
+                        $usd->save();
+                        return redirect()
+                            ->to('/c/profile/edit/'.$id)
+                            ->with('success', 'Your Profile Picture Updated Successfully !!');
+                    }
                 }else{
                     return redirect()
                         ->to('/c/profile/edit/'.$id)
