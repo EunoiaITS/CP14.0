@@ -210,8 +210,8 @@ class Driver extends Controller
             $ro_valid['price_per_seat'] = $request->price_per_seat;
             $ro_valid['currency'] = $request->currency;
             $ro_valid['total_seats'] = $request->total_seats;
-            $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date .' '. $request->d_hour.':'.$request->d_minute));
-            $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date .' '. $request->a_hour.':'.$request->a_minute));
+            $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date));
+            $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date));
 
             if($ro_valid['departure_time'] >= $ro_valid['arrival_time']){
                 $errors[] = 'Arrival time has to be greater than the departure time!';
@@ -515,7 +515,6 @@ class Driver extends Controller
     */
     public function startRide(Request $request){
         if($request->isMethod('post')){
-            //dd($request->all());
             $start = new RideComp();
             $errors = array();
             $stat = RideOffers::find($request->ride_id);
@@ -647,8 +646,8 @@ class Driver extends Controller
             $ro_edit->destination = $request->destination;
             $ro_edit->price_per_seat = $request->price_per_seat;
             $ro_edit->total_seats = $request->total_seats;
-            $ro_edit->departure_time = date('Y-m-d H:i', strtotime($request->d_date .' '. $request->d_hour.':'.$request->d_minute));
-            $ro_edit->arrival_time = date('Y-m-d H:i', strtotime($request->a_date .' '. $request->a_hour.':'.$request->a_minute));
+            $ro_edit->departure_time = date('Y-m-d H:i', strtotime($request->d_date));
+            $ro_edit->arrival_time = date('Y-m-d H:i', strtotime($request->a_date));
             if($ro_edit->departure_time >= $ro_edit->arrival_time){
                 return redirect()
                     ->to('/d/edit-ride/'.$ro_edit->link)
