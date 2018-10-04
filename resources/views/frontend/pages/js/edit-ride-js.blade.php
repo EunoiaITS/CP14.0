@@ -246,9 +246,12 @@
      // edit departure-arrival datetime picker
      =============================--*/
     var editDate = new Date();
+    if(d_date < editDate){
+        editDate = d_date;
+    }
     $("#edit-dep").datetimepicker({
         useCurrent: false,
-        defaultDate: editDate,
+        defaultDate: d_date,
         minDate: editDate,
         icons:{
             time:'timepicker',
