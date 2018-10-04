@@ -575,7 +575,7 @@ class Driver extends Controller
                 event(new OfferCreated([
                     'event' => 'ride-end',
                     'from' => Auth::id(),
-                    'ride_id' => $request->ride_id
+                    'ride_id' => $end->ride_id
                 ]));
                 return redirect()
                     ->to($request->ride_url)
