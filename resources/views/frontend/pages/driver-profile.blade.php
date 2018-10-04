@@ -85,7 +85,7 @@
                     <h3 class="check-total-fare clearfix">Feedbacks</h3>
                     @foreach($ratings as $rat)
                     <div class="user-feedback-section clearfix">
-                        <div class="feedback-user-icon"><img src="{{ asset('/public/uploads/customers/'.$rat->img) }}" alt=""></div>
+                        <div class="feedback-user-icon"><img src="@if(isset($rat->img)){{ asset('/public/uploads/customers/'.$rat->img) }}@else{{ asset('public/assets/frontend/img/pp.png') }}@endif" alt=""></div>
                         <div class="feedback-get-user">
                             <h3 class="user-name">{{ $rat->name }}</h3>
                             <ul class="get-user-icon-layer clearfix">

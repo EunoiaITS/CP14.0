@@ -49,7 +49,7 @@
                                 <div class="col-sm-2">
                                     <div class="total-fare-area">
                                         <h3 class="total-fare-get-section">
-                                            Total Fare <span>${{ $book->ride_details->price_per_seat }}</span>
+                                            Total Fare <span>{{ $book->ride_details->price_per_seat }}{{ ' ' }}{{ $book->ride_details->currency }}</span>
                                         </h3>
                                         <h3 class="total-fare-get-section">
                                             Status : <span>@if($book->status == 'booked') <i class="fa fa-exclamation-circle"></i> @elseif($book->status == 'confirmed') <i class="fa fa-check-circle"></i> @else {{ 'None' }} @endif</span>

@@ -127,7 +127,7 @@
                                                     ?>
 												</ul>
 												<div class="get-price">
-													<h3 class="get-total-prize">${{ $d->price_per_seat }}</h3>
+													<h3 class="get-total-prize">{{ $d->price_per_seat }}{{' '}}{{ $d->currency }}</h3>
 												</div>
 												<a href="@if(Auth::check() && Auth::user()->role == 'driver') {{ url('/d/ride-details/'.$d->link) }} @elseif(Auth::check() && Auth::user()->role == 'customer') {{ url('/c/ride-details/'.$d->link) }} @else {{ url('/ride-details/'.$d->link) }} @endif"><button class="btn btn-info btn-offer text-uppercase">Details</button></a>
 											</div>

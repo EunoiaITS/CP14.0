@@ -11,8 +11,8 @@
                         </p>
                     @endif
                     <div class="ridemate-offer-button">
-                        <button class="btn btn-info btn-offer"><a style="color: #ffffff;" href="{{ url('/d/offer-ride') }}">Offer a ride <i class="fas fa-car"></i></a></button>
-                        <button class="btn btn-info btn-offer">Requests For Ride</button>
+                        <a style="color: #ffffff;" href="{{ url('/d/offer-ride') }}"><button class="btn btn-info btn-offer">Offer a ride <i class="fas fa-car"></i></button></a>
+                        <a style="color: #ffffff;" href="{{ url('/d/ride-requests') }}"><button class="btn btn-info btn-offer">Requests For Ride</button></a>
                     </div>
                     <!-- Ride details -->
                     <div class="get-ridemate-single">
