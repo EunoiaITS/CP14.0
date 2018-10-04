@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Notifications;
+use App\User_data;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
         view()->composer('*', function($view) {
             if(auth()->check()){
                 $view->with('notify', Notifications::where('to', auth()->user()->id)
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         });
+        View::share('img', User_data::find(Auth::id()));
     }
 
     /**

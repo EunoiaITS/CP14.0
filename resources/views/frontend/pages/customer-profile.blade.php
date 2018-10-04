@@ -75,7 +75,7 @@
 
                 <div class="my-bookings-area clearfix">
                     <h3 class="get-popular-list">My Bookings</h3>
-                    @foreach($data->bookings as $book)
+                    @foreach($data as $book)
                         @if($book->ride_details->status == 'active')
                             <!-- single ride area -->
                             <div class="col-md-12 col-lg-8 col-sm-12 col-xs-12 padding-left-o">
