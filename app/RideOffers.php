@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\Validator;
 class RideOffers extends Model
 {
 
+    protected $fillable = [
+        'request_id',
+        'offer_by',
+        'origin',
+        'destination',
+        'arrival_time',
+        'departure_time',
+        'price_per_seat',
+        'total_seats',
+        'currency',
+        'link',
+        'status'
+    ];
+
     protected $rules = array(
         'origin'  => 'required',
         'destination'  => 'required',
