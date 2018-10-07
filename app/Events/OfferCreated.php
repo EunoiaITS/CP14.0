@@ -283,7 +283,7 @@ class OfferCreated implements  ShouldBroadcast
                 $not = new Notifications();
                 $not->from = $man;
                 $not->to = $man;
-                $not->message = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->origin)).' is expired.';
+                $not->message = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->departure_time)).' is expired.';
                 $not->ad_link = '';
                 $not->status = 'unread';
                 if($not->save()){
