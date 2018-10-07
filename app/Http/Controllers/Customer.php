@@ -14,6 +14,7 @@ use App\Ride_request;
 use App\RideOffers;
 use App\RideDescriptions;
 use App\VehiclesData;
+use App\Countries;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,6 +75,7 @@ class Customer extends Controller
     public function editProfile(Request $request){
         $user = User::find(Auth::id());
         $usd = User_data::where('user_id', Auth::id())->first();
+        $countries = Countries::orderBy('name','asc')->get();
             if($request->isMethod('post')) {
                 $user->name = $request->name;
                 $user->save();
@@ -91,7 +93,8 @@ class Customer extends Controller
             }
         return view('frontend.pages.customer-profile-edit', [
                 'user' => $user,
-                'usd' => $usd
+                'usd' => $usd,
+                'countries' => $countries
             ]);
     }
 
@@ -538,6 +541,7 @@ class Customer extends Controller
             'js' => 'frontend.pages.js.rate-js'
         ]);
     }
+
     public function history(){
         $id = Auth::id();
         $ro = RideOffers::where(['status' => 'completed'])

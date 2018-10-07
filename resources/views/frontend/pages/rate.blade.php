@@ -25,7 +25,7 @@
                         <h3 class="highlight">The Ridemate</h3>
                         <div class="get-ridemate-user clearfix">
                             <div class="user-icon">
-                                <img src="{{ asset('/public/assets/frontend/img/user/user-1.jpg') }}" alt="">
+                                <img src="@if(isset($data->driver_data->picture)){{ asset('/public/uploads/drivers/'.$data->driver_data->picture) }} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
                             </div>
                             <div class="user-details">
                                 <h3 class="get-ride-user">{{ $data->driver->name }} {{ $data->driver_data->last_name }}</h3>

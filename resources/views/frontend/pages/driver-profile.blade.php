@@ -188,16 +188,6 @@
                                 <tbody id="income-data">
                                 </tbody>
                             </table>
-                            <form action="" method="POST" role="form">
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <label for="monthly-income">Monthly Income</label>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="">
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>

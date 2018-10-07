@@ -93,12 +93,16 @@
                                     <input type="text" name="address" class="form-control" value="{{ $usd->address }}" placeholder="Your Address">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ridemate-contact">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
+                                    <label for="ridemate-country">Country Code</label>
+                                    <Select id="ridemate-country" type="text" name="country_code" class="form-control">
+                                        @foreach($countries as $c)
+                                            <option value="{{ $c->name .'('. $c->country_code .')' }}" @if($usd->country_code == $c->name .'('. $c->country_code .')'){{ 'selected' }} @endif>{{ $c->name.'('.$c->country_code.')' }}</option>
+                                        @endforeach
+                                    </Select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ridemate-contact">Country Code</label>
-                                    <input type="text" name="country_code" class="form-control" value="{{ $usd->country_code }}" placeholder="Your Address">
+                                    <label for="ridemate-contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-identi">Identification No.</label>

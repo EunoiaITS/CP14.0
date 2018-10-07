@@ -7,7 +7,7 @@
         });
         $(document).on('change','#format-selector',function (e) {
            e.preventDefault();
-           if(this.value == 'Daily'){
+           if(this.value === 'Daily'){
                $('#picker').html('<div class="view-ridemate-profile-popup" id="dailypicker01"></div>');
                $('#dailypicker01').datetimepicker({
                    inline: true,
@@ -28,13 +28,11 @@
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
                                 if(e.checked === 'yes') {
-                                    if(e.ammount != null){
-                                        html += '<tr>' +
-                                            '<td>'+e.start_time+'</td>' +
-                                            ' <td>'+e.time+'</td>' +
-                                            '<td>'+e.amount+'</td>' +
-                                            '</tr>';
-                                    }
+                                    html += '<tr>' +
+                                        '<td>'+e.start_time+'</td>' +
+                                        ' <td>'+e.time+'</td>' +
+                                        '<td>'+e.amount+'</td>' +
+                                        '</tr>';
                                 }
                            });
                            $('#income-data').html(html);
@@ -45,7 +43,7 @@
                    });
                    return false;
                });
-           }else if(this.value == 'Weekly'){
+           }else if(this.value === 'Weekly'){
                $('#picker').html('<div class="view-ridemate-profile-popup" id="dailypicker02"></div><div id="week-start"></div>');
                var dateText = '<?php echo date("m/d/Y");?>',
                    display = $('#week-start');
@@ -69,13 +67,11 @@
                                    //console.log(data);
                                    $.each(JSON.parse(data),function (i,e) {
                                        if(e.checked === 'yes') {
-                                           if(e.ammount != null){
-                                                   html += '<tr>' +
-                                                       '<td>'+e.start_time+'</td>' +
-                                                       ' <td>'+e.time+'</td>' +
-                                                       '<td>'+e.amount+'</td>' +
-                                                       '</tr>';
-                                           }
+                                           html += '<tr>' +
+                                               '<td>'+e.start_time+'</td>' +
+                                               ' <td>'+e.time+'</td>' +
+                                               '<td>'+e.amount+'</td>' +
+                                               '</tr>';
                                        }
                                    });
                                    $('#income-data').html(html);
@@ -88,7 +84,7 @@
                        });
                    }
                });
-           }else if(this.value == 'Monthly'){
+           }else if(this.value === 'Monthly'){
                $('#picker').html('<div class="view-ridemate-profile-popup" id="dailypicker03"></div>');
                $('#dailypicker03').datetimepicker({
                    inline: true,
@@ -110,13 +106,11 @@
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
                                if(e.checked === 'yes') {
-                                   if(e.ammount != null){
-                                       html += '<tr>' +
-                                           '<td>'+e.start_time+'</td>' +
-                                           ' <td>'+e.time+'</td>' +
-                                           '<td>'+e.amount+'</td>' +
-                                           '</tr>';
-                                   }
+                                   html += '<tr>' +
+                                       '<td>'+e.start_time+'</td>' +
+                                       ' <td>'+e.time+'</td>' +
+                                       '<td>'+e.amount+'</td>' +
+                                       '</tr>';
                                }
                            });
                            $('#income-data').html(html);
@@ -127,7 +121,7 @@
                    });
                    return false;
                });
-           }else if(this.value == 'Yearly'){
+           }else if(this.value === 'Yearly'){
                $('#picker').html('<div class="view-ridemate-profile-popup" id="dailypicker04"></div>');
                $('#dailypicker04').datetimepicker({
                    inline: true,
@@ -149,13 +143,11 @@
                            //console.log(data);
                            $.each(JSON.parse(data),function (i,e) {
                                if(e.checked === 'yes') {
-                                   if(e.ammount != null){
-                                       html += '<tr>' +
-                                           '<td>'+e.start_time+'</td>' +
-                                           ' <td>'+e.time+'</td>' +
-                                           '<td>'+e.amount+'</td>' +
-                                           '</tr>';
-                                   }
+                                   html += '<tr>' +
+                                       '<td>'+e.start_time+'</td>' +
+                                       ' <td>'+e.time+'</td>' +
+                                       '<td>'+e.amount+'</td>' +
+                                       '</tr>';
                                }
                            });
                            $('#income-data').html(html);
