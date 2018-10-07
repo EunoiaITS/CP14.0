@@ -185,8 +185,16 @@ class Driver extends Controller
         if($req_id != 0){
             $req_details = Ride_request::find($req_id);
             $time_check = RideOffers::where(['offer_by' => Auth::id()])
-                ->where('departure_time', '<=', $req_details->departure_date)
-                ->where('arrival_time', '>=', $req_details->departure_date)
+                ->where(function($q) use ($req_details){
+                    $q->whereDate('departure_time', '>=', $req_details->departure_date)
+                        ->whereDate('arrival_time', '<=', $req_details->departure_date)
+                        ->where('status', 'active');
+                })
+                ->orWhere(function($q) use ($req_details){
+                    $q->whereDate('departure_time', '<=', $req_details->departure_date)
+                        ->whereDate('arrival_time', '<=', $req_details->departure_date)
+                        ->where('status', 'active');
+                })
                 ->first();
             if(!empty($time_check)){
                 return redirect('/d/offer-ride')
@@ -210,8 +218,8 @@ class Driver extends Controller
             $ro_valid['price_per_seat'] = $request->price_per_seat;
             $ro_valid['currency'] = $request->currency;
             $ro_valid['total_seats'] = $request->total_seats;
-            $ro_valid['departure_time'] = date('Y-m-d H:i', strtotime($request->d_date));
-            $ro_valid['arrival_time'] = date('Y-m-d H:i', strtotime($request->a_date));
+            $ro_valid['departure_time'] = date('Y-m-d H:i:s', strtotime($request->d_date));
+            $ro_valid['arrival_time'] = date('Y-m-d H:i:s', strtotime($request->a_date));
 
             if($ro_valid['departure_time'] >= $ro_valid['arrival_time']){
                 $errors[] = 'Arrival time has to be greater than the departure time!';
@@ -239,13 +247,6 @@ class Driver extends Controller
             if($request->req_id != ''){
                 $ride_offer->request_id = $request->req_id;
                 $page_link = '?req='.$request->req_id;
-                $time_check = RideOffers::where(['offer_by' => Auth::id()])
-                    ->whereDate('departure_time', '<=', $ro_valid['departure_time'])
-                    ->whereDate('arrival_time', '>=', $ro_valid['departure_time'])
-                    ->first();
-                if(!empty($time_check)){
-                    $errors[] = 'You already have existing ride during the requested time!';
-                }
                 $ex_offer = RideOffers::where(['request_id' => $request->req_id])->first();
                 if(!empty($ex_offer)){
                     return redirect('/d/offer-ride')
@@ -253,6 +254,22 @@ class Driver extends Controller
                 }
             }else{
                 $ride_offer->request_id = 0;
+            }
+
+            $rides = 0;
+            $ride_check = RideOffers::where(['offer_by' => Auth::id()])
+                ->where('status', 'active')
+                ->get();
+            foreach($ride_check as $rc){
+                $fromUser = new \DateTime($ro_valid['departure_time']);
+                $startDate = new \DateTime($rc->departure_time);
+                $endDate = new \DateTime($rc->arrival_time);
+                if($fromUser >= $startDate && $fromUser <= $endDate){
+                    $rides++;
+                }
+            }
+            if($rides != 0){
+                $errors[] = 'You already have existing ride during the requested time!';
             }
 
             if(empty($errors)){
@@ -374,7 +391,7 @@ class Driver extends Controller
                 $q->where(['status' => 'active'])
                     ->orWhere(['status' => 'in-progress']);
             })
-            ->orderBy('created_at', 'desc')
+            ->orderBy('departure_time', 'asc')
             ->get();
         foreach($offers as $of){
             $bookings = RideBookings::where(['ride_id' => $of->id])
@@ -646,19 +663,27 @@ class Driver extends Controller
             $ro_edit->destination = $request->destination;
             $ro_edit->price_per_seat = $request->price_per_seat;
             $ro_edit->total_seats = $request->total_seats;
-            $ro_edit->departure_time = date('Y-m-d H:i', strtotime($request->d_date));
-            $ro_edit->arrival_time = date('Y-m-d H:i', strtotime($request->a_date));
+            $ro_edit->departure_time = date('Y-m-d H:i:s', strtotime($request->d_date));
+            $ro_edit->arrival_time = date('Y-m-d H:i:s', strtotime($request->a_date));
             if($ro_edit->departure_time >= $ro_edit->arrival_time){
                 return redirect()
                     ->to('/d/edit-ride/'.$ro_edit->link)
                     ->with('error', 'Arrival time should be greater than the departure time!');
             }
+            $rides = 0;
             $ride_check = RideOffers::where(['offer_by' => Auth::id()])
                 ->where('id', '!=', $request->ride_id)
-                ->where('departure_time', '>=', $ro_edit->departure_time)
-                ->where('departure_time', '<=', $ro_edit->arrival_time)
-                ->first();
-            if(!empty($ride_check)){
+                ->where('status', 'active')
+                ->get();
+            foreach($ride_check as $rc){
+                $fromUser = new \DateTime($ro_edit->departure_time);
+                $startDate = new \DateTime($rc->departure_time);
+                $endDate = new \DateTime($rc->arrival_time);
+                if($fromUser >= $startDate && $fromUser <= $endDate){
+                    $rides++;
+                }
+            }
+            if($rides != 0){
                 return redirect()
                     ->to('/d/edit-ride/'.$ro_edit->link)
                     ->with('error', 'You already have existing ride during the requested time!');
