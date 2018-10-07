@@ -27,9 +27,11 @@ class AppServiceProvider extends ServiceProvider
                     ->orderBy('id', 'desc')
                     ->get()
                 );
+                $id = Auth::id();
+                $usd = User_data::where('user_id',$id)->first();
+                View::share('img', $usd->picture);
             }
         });
-        View::share('img', User_data::find(Auth::id()));
     }
 
     /**

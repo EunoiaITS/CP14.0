@@ -151,7 +151,7 @@
                                 <div class="get-single-departure clearfix">
                                     <div class="col-md-8 col-sm-12">
                                         <div class="get-user-icon">
-                                            <img src="{{ asset('public/assets/frontend/img/user/user-1.jpg') }}" alt="">
+                                            <img src="@if(isset($of->user_data->picture )) {{ asset('public/uploads/drivers/'.$of->user_data->picture) }} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt="">
                                         </div>
                                         <div class="get-user-details">
                                             <h3 class="get-user-name"><span>Name <span class="get-right-icon">:</span></span>

@@ -48,7 +48,7 @@
                         </div>
                         <div class="get-user-login">
                             <div class="login-icon">
-                                <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><img src="@if(Auth::user()->role == 'customer')@if(isset($img)){{ asset('public/uploads/customers/'.$img) }}@endif @else {{ asset('public/assets/frontend/img/pp.png') }}@endif @if(Auth::user()->role == 'driver') @if(isset($img)){{ asset('public/uploads/drivers/'.$img) }}@endif @else {{ asset('public/assets/frontend/img/pp.png') }}@endif" alt=""></a>
+                                <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><img src="@if(isset($img))@if(Auth::user()->role == 'customer'){{ asset('public/uploads/customers/'.$img) }} @elseif(Auth::user()->role == 'driver') {{ asset('public/uploads/drivers/'.$img) }}@else {{ asset('public/assets/frontend/img/pp.png') }} @endif @endif" alt=""></a>
                             </div>
                             <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><span class="get-loged-user">{{ Auth::user()->name }}</span></a>
                         </div>
