@@ -252,14 +252,14 @@ class OfferCreated implements  ShouldBroadcast
             $not = new Notifications();
             $not->from = $req->user_id;
             $not->to = $req->user_id;
-            $not->message = 'Your ride request from '.$req->from.' to '.$req->to.' is expired.';
-            $not->ad_link = url('/c/requests/');
+            $not->message = 'Your ride request from '.$req->from.' to '.$req->to.' on '.date('d-M-Y H:i A', strtotime($req->departure_date)).' is expired.';
+            $not->ad_link = '';
             $not->status = 'unread';
             if($not->save()){
                 $this->ev = 'req-expired';
                 $this->msg = $not->message;
                 $this->rec = [$req->user_id => $not->id];
-                $this->ad_link = $not->ad_link;
+                $this->ad_link = '';
                 $this->time_at = date('d M Y').' at '.date('H:i');
             }
         }
@@ -283,16 +283,16 @@ class OfferCreated implements  ShouldBroadcast
                 $not = new Notifications();
                 $not->from = $man;
                 $not->to = $man;
-                $not->message = 'Your ride is expired.';
-                $not->ad_link = url('/');
+                $not->message = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->departure_time)).' is expired.';
+                $not->ad_link = '';
                 $not->status = 'unread';
                 if($not->save()){
                     $tos[$man] = $not->id;
                 }
             }
             $this->ev = 'ride-expired';
-            $this->msg = 'Your ride is expired.';
-            $this->ad_link = url('/');
+            $this->msg = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->departure_time)).' is expired.';
+            $this->ad_link = '';
             $this->rec = $tos;
             $this->time_at = date('d M Y').' at '.date('H:i');
         }
