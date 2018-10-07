@@ -291,7 +291,7 @@ class OfferCreated implements  ShouldBroadcast
                 }
             }
             $this->ev = 'ride-expired';
-            $this->msg = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->origin)).' is expired.';
+            $this->msg = 'Your ride from '.$ride->origin.' to '.$ride->destination.' scheduled on '.date('d-M-Y H:i A', strtotime($ride->departure_time)).' is expired.';
             $this->ad_link = '';
             $this->rec = $tos;
             $this->time_at = date('d M Y').' at '.date('H:i');
