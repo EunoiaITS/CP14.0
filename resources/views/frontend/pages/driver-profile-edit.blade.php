@@ -13,7 +13,7 @@
                     <!-- notification popupbar -->
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
-                            <li><a href="{{ url('d/profile/edit/'.$user->id) }}">Edit Profile</a></li>
+                            <li><a href="{{ url('d/profile/edit') }}">Edit Profile</a></li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
                         </ul>
                     </div>
@@ -29,7 +29,7 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
-                <form action="{{ url('d/profile/edit/'.$user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('d/profile/edit') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="clearfix">
                     <!-- end edit ridemate profile -->
@@ -178,7 +178,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Change Password</h4>
                 </div>
-                <form action="{{ url('d/profile/edit/password/'.$user->id) }}" method="post">
+                <form action="{{ url('d/profile/edit/password') }}" method="post">
                     {{csrf_field()}}
                     <div class="modal-body">
                         <div class="col-sm-12 padding-left-o padding-right-0">
@@ -214,7 +214,7 @@
                     <h4 class="modal-title" id="myModalLabel">Upload Your Profile Picture</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('d/profile/edit/image/'.$user->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('d/profile/edit/image') }}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                         <!-- input file -->
                         <div class="box">

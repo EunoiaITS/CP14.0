@@ -5,11 +5,11 @@
         <div class="row">
             <div class="price-seat">
                 <div class="col-lg-12 col-sm-12">
-                    <button class="btn btn-info btn-offer edit-badge-area">Edit Info {{ $user->id }} <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
+                    <button class="btn btn-info btn-offer edit-badge-area">Edit Info <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
                     <!-- notification popupbar -->
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
-                            <li><a href="{{ url('c/profile/edit/'.$user->id) }}">Edit Profile</a></li>
+                            <li><a href="{{ url('c/profile/edit') }}">Edit Profile</a></li>
                             <li data-toggle="modal" data-target="#myModal">Credit Card Information</li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
                         </ul>
@@ -195,7 +195,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Change Password</h4>
             </div>
-            <form action="{{ url('c/profile/edit/password/'.$user->id) }}" method="post">
+            <form action="{{ url('c/profile/edit/password') }}" method="post">
                 {{csrf_field()}}
             <div class="modal-body">
                 <div class="col-sm-12 padding-left-o padding-right-0">

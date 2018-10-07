@@ -75,7 +75,7 @@
                     </div>
                     <div class="ridemate-name-area">
                         <div class="ridemate-name-xs">
-                            <span><a href="{{ url('/profile/ridemate/'.$data->user->id) }}">Details</a></span>
+                            <span><a href="{{ url('/profile/ridemate?email='.$data->user->email) }}">Details</a></span>
                         </div>
                     </div>
                 </div>

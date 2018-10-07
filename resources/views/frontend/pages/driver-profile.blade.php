@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-2 col-sm-offset-10 col-xs-12 col-xs-offset-0 padding-right-0">
                     <div class="col-lg-12 col-sm-12">
-                        <a href="{{ url('d/profile/edit/'.$user->id) }}"><button class="btn btn-info btn-offer edit-badge-area">Edit Profile <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button></a>
+                        <a href="{{ url('d/profile/edit') }}"><button class="btn btn-info btn-offer edit-badge-area">Edit Profile <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>

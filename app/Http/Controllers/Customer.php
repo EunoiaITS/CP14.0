@@ -32,29 +32,36 @@ class Customer extends Controller
     public function viewProfile(){
         $id = Auth::id();
         $user = User::find($id);
-        $usd = User_data::where('user_id',$id)->first();
+        if($user->role != 'customer'){
+            return redirect()
+                ->to('/')
+                ->with('error', 'You don\'t have access to this page!');
+        }
+        $usd = User_data::where('user_id', $id)->first();
         $bookings = new Collection();
-        $booking = RideBookings::where(['user_id' => Auth::id()])
+        $booking = RideBookings::where('user_id', $id)
             ->where(function($q){
                 $q->where(['status' => 'booked'])
                     ->orWhere(['status' => 'confirmed']);
-            })->get();
-            foreach($booking as $book){
-                $ride_details = RideOffers::find($book->ride_id);
-                if(!empty($ride_details)){
-                    $book->ride_details = $ride_details;
-                    $user = User::find($ride_details->offer_by);
-                    $book->user = $user;
-                    $ud = User_data::where(['user_id' => $user->id])->first();
-                    $book->ud = $ud;
-                    $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
-                        ->where(['key' => 'vehicle_id'])
-                        ->first();
-                    $vd = VehiclesData::find($ride_desc->value);
-                    $book->vd = $vd;
-                    $bookings->push($book);
-                }
+            })
+            ->get();
+
+        foreach($booking as $book){
+            $ride_details = RideOffers::find($book->ride_id);
+            if(!empty($ride_details)){
+                $book->ride_details = $ride_details;
+                $by = User::find($ride_details->offer_by);
+                $book->user = $by;
+                $ud = User_data::where(['user_id' => $user->id])->first();
+                $book->ud = $ud;
+                $ride_desc = RideDescriptions::where(['ride_offer_id' => $book->ride_id])
+                    ->where(['key' => 'vehicle_id'])
+                    ->first();
+                $vd = VehiclesData::find($ride_desc->value);
+                $book->vd = $vd;
+                $bookings->push($book);
             }
+        }
 
         return view('frontend.pages.customer-profile',[
             'usd' => $usd,
@@ -64,9 +71,9 @@ class Customer extends Controller
         ]);
     }
 
-    public function editProfile(Request $request,$id){
-        $user = User::find($id);
-        $usd = User_data::where('user_id',$id)->first();
+    public function editProfile(Request $request){
+        $user = User::find(Auth::id());
+        $usd = User_data::where('user_id', Auth::id())->first();
             if($request->isMethod('post')) {
                 $user->name = $request->name;
                 $user->save();
@@ -88,18 +95,18 @@ class Customer extends Controller
             ]);
     }
 
-    public function imageUpload(Request $request,$id){
-        $usd = User_data::where('user_id',$id)->first();
+    public function imageUpload(Request $request){
+        $usd = User_data::where('user_id', Auth::id())->first();
         if($request->isMethod('post')){
             if($request->hasFile('picture')) {
                 $image = $request->file('picture');
-                $name = str_slug($id).'.'.$image->getClientOriginalExtension();
+                $name = str_slug(Auth::id()).'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/customers');
                 $formats = array("JPG","jpg","jpeg","png","gif");
                         if(in_array($image->getClientOriginalExtension(),$formats)){
                             if($image->getSize() > 2097152){
                                 return redirect()
-                                    ->to('/c/profile/edit/'.$id)
+                                    ->to('/c/profile/edit/')
                                     ->with('error', 'Your Profile Picture Size Exceed Limit of 2Mb !!');
                             }else{
                         $imagePath = $destinationPath. "/".  $name;
@@ -107,12 +114,12 @@ class Customer extends Controller
                         $usd->picture = $name;
                         $usd->save();
                         return redirect()
-                            ->to('/c/profile/edit/'.$id)
+                            ->to('/c/profile/edit/')
                             ->with('success', 'Your Profile Picture Updated Successfully !!');
                     }
                 }else{
                     return redirect()
-                        ->to('/c/profile/edit/'.$id)
+                        ->to('/c/profile/edit/')
                         ->with('error', 'Your Profile Picture Format Not Supported !!');
                 }
             }
@@ -122,29 +129,29 @@ class Customer extends Controller
     /**
      * editPassword - function to edit the password
     */
-    public function editPassword(Request $request,$id){
-        $user = User::find($id);
+    public function editPassword(Request $request){
+        $user = User::find(Auth::id());
         if($request->isMethod('post')){
             if(Hash::check($request->oldpass,$user->password ) == false){
                 return redirect()
-                    ->to('c/profile/edit/'.$id)
+                    ->to('c/profile/edit')
                     ->with('error','Password Did not matched !!');
             }
             elseif ($request->newpass != $request->repass){
                 return redirect()
-                    ->to('c/profile/edit/'.$id)
+                    ->to('c/profile/edit')
                     ->with('error','Wrong password entered');
             }
             elseif(strlen($request->newpass) < 6 ){
                 return redirect()
-                    ->to('c/profile/edit/'.$id)
+                    ->to('c/profile/edit')
                     ->with('error','Password Must be 6 characters or greater !');
             }
             else{
                 $user->password = bcrypt($request->newpass);
                 $user->save();
                 return redirect()
-                    ->to('c/profile/edit/'.$id)
+                    ->to('c/profile/edit')
                     ->with('success','Password Changed Successfully !');
             }
         }

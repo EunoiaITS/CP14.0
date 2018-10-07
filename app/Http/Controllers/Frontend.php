@@ -477,12 +477,22 @@ class Frontend extends Controller
             }
         }
     }
-    public function ridemateProfile(Request $request,$id){
-        $user = User::find($id);
-        $usd = User_data::where('user_id',$id)->first();
-        $vd = VehiclesData::where('user_id',$id)
+
+
+    public function ridemateProfile(Request $request){
+        if(!isset($request->email)){
+            abort(404);
+        }
+        $user = User::where('email', $request->email)
+            ->where('role', 'driver')
             ->first();
-        $ratings = Ratings::where('to',$id)->get();
+        if(empty($user)){
+            abort(404);
+        }
+        $usd = User_data::where('user_id', $user->id)->first();
+        $vd = VehiclesData::where('user_id', $user->id)
+            ->first();
+        $ratings = Ratings::where('to', $user->id)->get();
         foreach ($ratings as $rat){
             $cus = User::find($rat->from);
             $img = User_data::where('user_id',$rat->from)->first();

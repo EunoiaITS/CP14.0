@@ -42,7 +42,7 @@ Route::post('/choose-country', 'Frontend@chooseCountry');
 Route::post('/read-notification', 'Frontend@readNotification');
 Route::get('/account/user/verify', 'Frontend@verifyUser');
 Route::get('/login/admin', 'Frontend@login');
-Route::get('/profile/ridemate/{id}', 'Frontend@ridemateProfile');
+Route::get('/profile/ridemate', 'Frontend@ridemateProfile');
 Route::get('/hit', function(){
     event(new \App\Events\OfferCreated([
         'event' => 'ride-test',
@@ -89,10 +89,10 @@ Route::prefix('admin')->group(function(){
  */
 Route::prefix('c')->group(function(){
     Route::get('/profile', 'Customer@viewProfile');
-    Route::get('/profile/edit/{id}', 'Customer@editProfile');
-    Route::post('/profile/edit/{id}', 'Customer@editProfile');
+    Route::get('/profile/edit', 'Customer@editProfile');
+    Route::post('/profile/edit', 'Customer@editProfile');
     Route::post('/profile/edit/password/{id}', 'Customer@editPassword');
-    Route::post('/profile/edit/image/{id}', 'Customer@imageUpload');
+    Route::post('/profile/edit/image', 'Customer@imageUpload');
     Route::get('/ride-details/{link}', 'Customer@rideDetails');
     Route::get('/search', 'Customer@search');
     Route::post('/search', 'Customer@search');
@@ -113,10 +113,10 @@ Route::prefix('c')->group(function(){
  */
 Route::prefix('d')->group(function(){
     Route::get('/profile', 'Driver@viewProfile');
-    Route::get('/profile/edit/{id}', 'Driver@editProfile');
-    Route::post('/profile/edit/{id}', 'Driver@editProfile');
-    Route::post('/profile/edit/password/{id}', 'Driver@editPassword');
-    Route::post('/profile/edit/image/{id}', 'Driver@imageUpload');
+    Route::get('/profile/edit', 'Driver@editProfile');
+    Route::post('/profile/edit', 'Driver@editProfile');
+    Route::post('/profile/edit/password', 'Driver@editPassword');
+    Route::post('/profile/edit/image', 'Driver@imageUpload');
     Route::get('/offer-ride', 'Driver@offerRide');
     Route::post('/offer-ride', 'Driver@offerRide');
     Route::get('/active-offers', 'Driver@myOffers');
