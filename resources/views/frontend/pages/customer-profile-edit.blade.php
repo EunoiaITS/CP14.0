@@ -13,7 +13,7 @@
                     <!-- notification popupbar -->
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
-                            <li><a href="{{ url('c/profile/edit/'.$user->id) }}">Edit Profile</a></li>
+                            <li><a href="{{ url('c/profile/edit/') }}">Edit Profile</a></li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
                         </ul>
                     </div>
@@ -29,7 +29,7 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
-                <form action="{{ url('c/profile/edit/'.$user->id) }}" method="post">
+                <form action="{{ url('c/profile/edit/') }}" method="post">
                     {{ csrf_field() }}
                     <div class="clearfix">
                     <!-- end edit ridemate profile -->
@@ -110,7 +110,6 @@
                 </div>
                 <!-- ride description -->
                 <div class="ridemate-option-get text-center sign-in-option-get clearfix">
-                    <input type="hidden" name="cus_id" value="{{ $user->id }}">
                     <button type="submit" class="btn btn-info btn-offer">Save</button>
                     <button type="button" class="btn btn-info btn-offer join-us-sign-in">Cancel</button>
                 </div>
@@ -130,7 +129,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Change Password</h4>
                 </div>
-                <form action="{{ url('c/profile/edit/password/'.$user->id) }}" method="post">
+                <form action="{{ url('c/profile/edit/password') }}" method="post">
                     {{csrf_field()}}
                     <div class="modal-body">
                     <div class="col-sm-12 padding-left-o padding-right-0">
@@ -165,7 +164,7 @@
                     <h4 class="modal-title" id="myModalLabel">Upload Your Profile Picture</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="image_form" method="post" action="{{ url('c/profile/edit/image/'.$user->id) }}" enctype="multipart/form-data">
+                    <form id="image_form" method="post" action="{{ url('c/profile/edit/image') }}" enctype="multipart/form-data">
                         <!-- input file -->
                         {{ csrf_field() }}
                         <div class="box">

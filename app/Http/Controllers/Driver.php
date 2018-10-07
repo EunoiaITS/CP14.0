@@ -63,11 +63,11 @@ class Driver extends Controller
      * EditProfile - Profile edit functionality for driver
      * params - $request, takes post/get method data and changes them on database
     */
-    public function editProfile(Request $request,$id){
-        $user = User::find($id);
-        $usd = User_data::where('user_id',$id)->first();
-        $dd = DriverData::where('user_id',$id)->first();
-        $vd = VehiclesData::where('user_id',$id)->first();
+    public function editProfile(Request $request){
+        $user = User::find(Auth::id());
+        $usd = User_data::where('user_id', Auth::id())->first();
+        $dd = DriverData::where('user_id', Auth::id())->first();
+        $vd = VehiclesData::where('user_id', Auth::id())->first();
         $countries = Countries::orderBy('name','asc')->get();
         if($request->isMethod('post')){
             $user->name = $request->name;
@@ -107,18 +107,18 @@ class Driver extends Controller
      * ImageUpload - function for uploading driver's profile picture
      * params - $request takes post method data and processes accordingly
     */
-    public function imageUpload(Request $request,$id){
-        $usd = User_data::where('user_id',$id)->first();
+    public function imageUpload(Request $request){
+        $usd = User_data::where('user_id', Auth::id())->first();
         if($request->isMethod('post')){
             if($request->hasFile('picture')) {
                 $image = $request->file('picture');
-                $name = str_slug($id).'.'.$image->getClientOriginalExtension();
+                $name = str_slug(Auth::id()).'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/drivers');
                 $formats = array("JPG","jpg","jpeg","png","gif");
                 if(in_array($image->getClientOriginalExtension(),$formats)){
                     if($image->getSize() > 2097152){
                         return redirect()
-                            ->to('/d/profile/edit/'.$id)
+                            ->to('/d/profile/edit')
                             ->with('error', 'Your Profile Picture Size Exceed Limit of 2Mb !!');
                     }else{
                         $imagePath = $destinationPath. "/".  $name;
@@ -131,7 +131,7 @@ class Driver extends Controller
                     }
                 }else{
                 return redirect()
-                    ->to('/d/profile/edit/'.$id)
+                    ->to('/d/profile/edit')
                     ->with('error', 'Your Profile Picture Format Not Supported !!');
                 }
             }
@@ -143,8 +143,8 @@ class Driver extends Controller
      * EditPassword - function for editing driver account password
      * params - $request takes post/get request data and processes accordingly
     */
-    public function editPassword(Request $request, $id){
-        $user = User::find($id);
+    public function editPassword(Request $request){
+        $user = User::find(Auth::id());
         if($request->isMethod('post')){
             if(Hash::check($request->oldpass, $user->password ) == false){
                 return redirect()
@@ -153,19 +153,19 @@ class Driver extends Controller
             }
             elseif ($request->newpass != $request->repass){
                 return redirect()
-                    ->to('d/profile/edit/'.$id)
+                    ->to('d/profile/edit')
                     ->with('error','Wrong password entered');
             }
             elseif(strlen($request->newpass) < 6 ){
                 return redirect()
-                    ->to('d/profile/edit/'.$id)
+                    ->to('d/profile/edit')
                     ->with('error','Password Must be 6 characters or greater !');
             }
             else{
                 $user->password = bcrypt($request->newpass);
                 $user->save();
                 return redirect()
-                    ->to('d/profile/edit/'.$id)
+                    ->to('d/profile/edit')
                     ->with('success','Password Changed Successfully !');
             }
         }
@@ -575,7 +575,7 @@ class Driver extends Controller
                 event(new OfferCreated([
                     'event' => 'ride-end',
                     'from' => Auth::id(),
-                    'ride_id' => $request->ride_id
+                    'ride_id' => $end->ride_id
                 ]));
                 return redirect()
                     ->to($request->ride_url)

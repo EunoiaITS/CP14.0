@@ -236,8 +236,8 @@
     });
     @endif
     @endforeach
-    var d_date = '{{ date('m/d/Y H:i a', strtotime($data->departure_time)) }}';
-    var a_date = '{{ date('m/d/Y H:i a', strtotime($data->arrival_time)) }}';
+    var d_date = '{{ date('m/d/Y H:i A', strtotime($data->departure_time)) }}';
+    var a_date = '{{ date('m/d/Y H:i A', strtotime($data->arrival_time)) }}';
     d_date = d_date.match(/(\d+)\/(\d+)\/(\d+)\s*(\d+):(\d+)/);
     d_date  = new Date(d_date[3], d_date[1]-1, d_date[2], d_date[4], d_date[5], 0, 0);
     a_date = a_date.match(/(\d+)\/(\d+)\/(\d+)\s*(\d+):(\d+)/);
@@ -246,7 +246,9 @@
      // edit departure-arrival datetime picker
      =============================--*/
     var editDate = new Date();
-    editDate.setMinutes(editDate.getMinutes() + 30);
+    if(d_date < editDate){
+        editDate = d_date;
+    }
     $("#edit-dep").datetimepicker({
         useCurrent: false,
         defaultDate: d_date,
