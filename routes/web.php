@@ -40,7 +40,7 @@ Route::get('/how-it-works', 'Frontend@howItWorks');
 Route::get('/choose-country', 'Frontend@chooseCountry');
 Route::post('/choose-country', 'Frontend@chooseCountry');
 Route::post('/read-notification', 'Frontend@readNotification');
-Route::get('/account/user/verify/{link}', 'Frontend@verifyUser');
+Route::get('/account/user/verify', 'Frontend@verifyUser');
 Route::get('/login/admin', 'Frontend@login');
 Route::get('/profile/ridemate', 'Frontend@ridemateProfile');
 Route::get('/hit', function(){
