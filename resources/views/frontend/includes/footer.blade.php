@@ -9,7 +9,7 @@
                 <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
             </ul>
-            <a href="#">Term of Services</a>
+            <a href="{{ url('/terms') }}">Term of Services</a>
             <p>© {{ date('Y') }}. All rights reserved</p>
         </div>
     </div>

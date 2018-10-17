@@ -123,7 +123,7 @@
                     <span class="text-right">*Click To Select Your Seat</span>
                     @endif
                     <div class="col-sm-4 padding-left-o">
-                        <h3 class="price-per-seats get-total-fare">Total Fare: <span>{{ $data->price_per_seat*$total_books }}{{' '}}{{ $data->currency }}</span></h3>
+                        <h3 class="price-per-seats get-total-fare">Total Fare: <span>{{ $data->price_per_seat * $total_books }}{{' '}}{{ $data->currency }}</span></h3>
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')
@@ -189,19 +189,19 @@
                         <ul class="get-ride-feature">
                             <li>
                                 <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'pets')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">Pets</span>
+                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'pets')@if( $r->value == 'yes'){{ 'Pets' }}@else{{ '' }}@endif @endif @endforeach</span>
                             </li>
                             <li>
                                 <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'music')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">Music</span>
+                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'music')@if( $r->value == 'yes'){{ 'Music' }}@else{{ '' }}@endif @endif @endforeach</span>
                             </li>
                             <li>
                                 <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'smoking')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">Smoking</span>
+                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'smoking')@if( $r->value == 'yes'){{ 'Smoking' }}@else{{ '' }}@endif @endif @endforeach</span>
                             </li>
                             <li>
                                 <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'back_seat')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">Max.2 in back Seat</span>
+                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'back_seat')@if( $r->value == 'yes'){{ 'Max.2 in back Seat' }}@else{{ '' }}@endif @endif @endforeach</span>
                             </li>
                             @foreach($data->rd as $r)
                                 @if(!in_array($r->key, ['vehicle_id', 'pets', 'music', 'smoking', 'back_seat']))

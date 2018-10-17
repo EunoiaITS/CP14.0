@@ -184,19 +184,19 @@ class Driver extends Controller
         }
         if($req_id != 0){
             $req_details = Ride_request::find($req_id);
-            $time_check = RideOffers::where(['offer_by' => Auth::id()])
-                ->where(function($q) use ($req_details){
-                    $q->whereDate('departure_time', '>=', $req_details->departure_date)
-                        ->whereDate('arrival_time', '<=', $req_details->departure_date)
-                        ->where('status', 'active');
-                })
-                ->orWhere(function($q) use ($req_details){
-                    $q->whereDate('departure_time', '<=', $req_details->departure_date)
-                        ->whereDate('arrival_time', '<=', $req_details->departure_date)
-                        ->where('status', 'active');
-                })
-                ->first();
-            if(!empty($time_check)){
+            $rides = 0;
+            $ride_check = RideOffers::where(['offer_by' => Auth::id()])
+                ->where('status', 'active')
+                ->get();
+            foreach($ride_check as $rc){
+                $fromUser = new \DateTime($req_details->departure_date);
+                $startDate = new \DateTime($rc->departure_time);
+                $endDate = new \DateTime($rc->arrival_time);
+                if($fromUser >= $startDate && $fromUser <= $endDate){
+                    $rides++;
+                }
+            }
+            if($rides != 0){
                 return redirect('/d/offer-ride')
                     ->with('error', 'You already have existing ride during the requested time!');
             }

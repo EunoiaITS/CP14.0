@@ -8,14 +8,16 @@
                 <div class="col-sm-12 sign-in-get-ad padding-left-o padding-right-o">
                     <h3 class="get-popular-list">Join</h3>
                     <h3 class="highlight">With Us Today!</h3>
-                    @if(isset($errors))
-                        @foreach($errors as $error)
-                            <p class="alert alert-danger">
-                                {{ $error }}
-                            </p>
-                        @endforeach
-                    @endif
+                    <h4>Required fields are marked with a red asterisk (*)</h4>
                 </div>
+                <div class="clearfix"></div>
+                @if(isset($errors))
+                    @foreach($errors as $error)
+                        <p class="alert alert-danger">
+                            {{ $error }}
+                        </p>
+                @endforeach
+                @endif
                 <!-- search result page -->
                 <form action="{{ url('/sign-up/driver') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}

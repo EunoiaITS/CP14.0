@@ -32,6 +32,10 @@
                                         <span class="get-dynamic-name">{{ $d->user->name }}</span></h3>
                                     <h3 class="get-user-name"><span>Age <span class="get-right-icon">:</span></span>
                                         <span class="get-dynamic-name">{{ date('Y') - date('Y',strtotime($d->usd->dob)) }}</span></h3>
+                                    <h3 class="get-user-name"><span>From <span class="get-right-icon">:</span></span>
+                                        <span class="get-dynamic-name">{{ $d->origin }}</span></h3>
+                                    <h3 class="get-user-name"><span>To <span class="get-right-icon">:</span></span>
+                                        <span class="get-dynamic-name">{{ $d->destination }}</span></h3>
                                     <h3 class="get-user-name"><span>Seats Available <span class="get-right-icon">:</span></span>
                                         <span class="get-dynamic-name"></span></h3>
                                     <ul class="get-user-icon-layer">
