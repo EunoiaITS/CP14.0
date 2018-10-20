@@ -48,15 +48,12 @@
                         </div>
                         <div class="get-user-login">
                             <div class="login-icon">
-                                <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><img src="@if(isset($img))@if(Auth::user()->role == 'customer'){{ asset('public/uploads/customers/'.$img) }} @elseif(Auth::user()->role == 'driver') {{ asset('public/uploads/drivers/'.$img) }}@else {{ asset('public/assets/frontend/img/pp.png') }} @endif @endif" alt=""></a>
+                                <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><img src="@if(isset($img))@if(Auth::user()->role == 'customer'){{ asset('public/uploads/customers/'.$img) }} @elseif(Auth::user()->role == 'driver') {{ asset('public/uploads/drivers/'.$img) }} @endif @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" alt=""></a>
                             </div>
                             <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><span class="get-loged-user">{{ Auth::user()->name }}</span></a>
                         </div>
                         <div class="logout-option">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <div class="logout-dropdown">
-                                <a href="#" data-toggle="modal" data-target="#myModalLogout">Log Out</a>
-                            </div>
+                            <a href="#" data-toggle="modal" data-target="#myModalLogout"><i class="fas fa-sign-out-alt"></i></a>
                         </div>
                     </div>
                 </div>

@@ -73,7 +73,7 @@
                         <h3 class="check-total-fare">Available Seats</h3>
                     </div>
                     <div class="col-sm-5 col-sm-offset-3 col-xs-12">
-                        <h3 class="price-per-seats">Price Per Seat: <span>{{ $data->price_per_seat }}{{ ' ' }}{{ $data->currency }}</span></h3>
+                        <h3 class="price-per-seats">Price Per Seat: <span id="price" rel="{{ $data->price_per_seat }}">{{ $data->price_per_seat }}{{ ' ' }}{{ $data->currency }}</span></h3>
                     </div>
                     <ul class="get-ride-seat clearfix">
                         <li>
@@ -113,7 +113,7 @@
                         @for($i = $total; $i <= $data->total_seats; $i++)
                             <li>
                                 <div class="ride-seat-icon first-ride">
-                                    <i class="fas fa-user"></i>
+                                    <i class="fas fa-user count" ></i>
                                     <span>Empty</span>
                                 </div>
                             </li>
@@ -123,7 +123,7 @@
                     <span class="text-right">*Click To Select Your Seat</span>
                     @endif
                     <div class="col-sm-4 padding-left-o">
-                        <h3 class="price-per-seats get-total-fare">Total Fare: <span>{{ $data->price_per_seat * $total_books }}{{' '}}{{ $data->currency }}</span></h3>
+                        <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}{{ $data->currency }}</span></h3>
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')

@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
                     ->get()
                 );
                 if(Auth::user()->role != 'super-admin'){
-                    $id = Auth::id();
+                    $id = Auth::user()->id;
                     $usd = User_data::where('user_id',$id)->first();
                     View::share('img', $usd->picture);
                 }

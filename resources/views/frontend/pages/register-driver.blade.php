@@ -131,9 +131,12 @@
                     <div class="col-sm-12">
                         <div class="form-group get-sign-up-mate">
                             <label for="upload-driving-licence">Upload Driving Lience (Max 2MB)<span class="star">*</span></label>
-                            <div class="file btn btn-sm btn-primary">
-                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
-                                <input type="file" class="input-upload" name="dl_picture" tabindex="17" required>
+                            <div class="col-sm-6">
+                                <div class="file btn btn-sm btn-primary">
+                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                    <input type="file" class="input-upload" id="dl" name="dl_picture" tabindex="17" required>
+                                </div>
+                                <span class="col-sm-2" id="loading1"></span>
                             </div>
                         </div>
                     </div>
@@ -148,9 +151,12 @@
                     <div class="col-sm-12">
                         <div class="form-group get-sign-up-mate">
                             <label for="upload-driving-licence">Upload Identity Card (Max 2MB)</label>
-                            <div class="file btn btn-sm btn-primary">
-                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
-                                <input type="file" class="input-upload" name="idc_picture" tabindex="19">
+                            <div class="col-sm-6">
+                                <div class="file btn btn-sm btn-primary">
+                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                    <input type="file" class="input-upload" id="idc" name="idc_picture" tabindex="19">
+                                </div>
+                                <span class="col-sm-2" id="loading2"></span>
                             </div>
                         </div>
                     </div>

@@ -174,11 +174,32 @@
                                     <div class="col-md-4 col-sm-12">
                                         <div class="get-user-ratings">
                                             <ul class="get-rate-user">
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
+                                                <?php
+                                                    if($of->average > 0 && $of->average < 2){
+                                                        echo "<li><i class='fas fa-star'></i></li>";
+                                                    }
+                                                    elseif($of->average > 1 && $of->average < 3){
+                                                        echo "<li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>";
+                                                    }elseif($of->average >=3  && $of->average < 4){
+                                                        echo "<li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>";
+                                                    }elseif($of->average >= 4 && $of->average < 5){
+                                                        echo "<li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>";
+                                                    }elseif($of->average == 5){
+                                                        echo "<li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>
+                                                            <li><i class='fas fa-star'></i></li>";
+                                                    }else{
+                                                        echo '';
+                                                    }
+                                                ?>
                                             </ul>
                                             <a href="@if(Auth::check() && Auth::user()->role == 'driver') {{ url('/d/ride-details/'.$of->link) }} @elseif(Auth::check() && Auth::user()->role == 'customer') {{ url('/c/ride-details/'.$of->link) }} @else {{ url('/ride-details/'.$of->link) }} @endif"><button class="btn btn-info btn-offer text-uppercase">Book Ride</button></a>
                                         </div>

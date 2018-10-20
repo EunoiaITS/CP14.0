@@ -13,7 +13,6 @@
                     <!-- notification popupbar -->
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
-                            <li><a href="{{ url('c/profile/edit/') }}">Edit Profile</a></li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
                         </ul>
                     </div>
@@ -102,7 +101,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-contact">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Ex: 01xxx xxx x00">
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-identi">Identification No.</label>

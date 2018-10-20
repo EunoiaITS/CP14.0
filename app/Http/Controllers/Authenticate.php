@@ -159,7 +159,8 @@ class Authenticate extends Controller
             }
         }
         return view('frontend.pages.register-driver',[
-            'countries' => $countries
+            'countries' => $countries,
+            'js' => 'frontend.pages.js.register-driver-js'
         ]);
     }
 
@@ -286,7 +287,8 @@ class Authenticate extends Controller
         }
         return view('frontend.pages.register-customer',[
             'data' => $request->all(),
-            'countries' => $countries
+            'countries' => $countries,
+            'js' => 'frontend.pages.js.register-customer-js'
         ]);
     }
 

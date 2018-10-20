@@ -10,7 +10,6 @@
                     <div class="get-edit-profile">
                         <ul class="edit-profile-option">
                             <li><a href="{{ url('c/profile/edit') }}">Edit Profile</a></li>
-                            <li data-toggle="modal" data-target="#myModal">Credit Card Information</li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
                         </ul>
                     </div>

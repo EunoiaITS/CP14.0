@@ -67,6 +67,15 @@ class Frontend extends Controller
                 })
                 ->get();
             $of->bookings = $bookings;
+            $rating = Ratings::where('to', $of->offer_by)->get();
+            $count = Ratings::where('to', $of->offer_by)->count();
+            $avg = 0;
+            foreach ($rating as $ra) {
+                $avg += $ra->rating;
+            }
+            if ($count != 0) {
+                $of->average = $avg / $count;
+            }
         }
         return view('frontend.pages.home', [
             'reqs' => $reqs,

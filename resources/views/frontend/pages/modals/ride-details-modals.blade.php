@@ -343,7 +343,7 @@
                                     Required seats <span class="ridemate-right">:</span>
                                 </div>
                                 <div class="ridemate-name-xs">
-                                    <span class="col-xs-4"><input type="number" class="form-control" name="seat_booked" min="1" max="{{ $data->total_seats - $total_books }}" value="1" required=""></span>
+                                    <span class="col-xs-4"><input type="number" id="req-seats" class="form-control" name="seat_booked" min="1" max="{{ $data->total_seats - $total_books }}" required=""></span>
                                 </div>
                             </div>
 

@@ -117,9 +117,12 @@
                     <div class="col-sm-12">
                         <div class="form-group get-sign-up-mate">
                             <label for="upload-driving-licence">Upload Identity Card (Max 2MB)</label>
-                            <div class="file btn btn-sm btn-primary">
-                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
-                                <input type="file" class="input-upload" name="idc_picture" tabindex="15">
+                            <div class="col-sm-6">
+                                <div class="file btn btn-sm btn-primary col-sm-4">
+                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><span>Upload jpg , png , pdf</span>
+                                    <input type="file" class="input-upload" name="idc_picture" tabindex="15">
+                                </div>
+                                <span class="col-sm-2" id="loading"></span>
                             </div>
                         </div>
                     </div>

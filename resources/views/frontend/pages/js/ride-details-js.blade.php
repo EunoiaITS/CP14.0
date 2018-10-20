@@ -3,6 +3,7 @@
         /*--=========================
          ridemate ratings call
          ==========================--*/
+        var count = 0;
         $('.click-performance .fas').click(function() {
             var val = parseInt($(this).attr('rel'));
             var user_id = $(this).attr('data-no');
@@ -13,6 +14,14 @@
             for(var i = 1; i <= val; i++){
                 $('#rate-'+i+user_id).addClass('active-color');
             }
+        });
+        $('.count').on('click',function (e) {
+           e.preventDefault;
+            count++;
+            //alert(count);
+            $('#req-seats').attr('min',count).val(count);
+            var rel = $('#price').attr('rel');
+            $('#temp-fare').text(rel * count);
         });
     });
 </script>

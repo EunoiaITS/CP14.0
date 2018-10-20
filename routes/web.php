@@ -91,7 +91,7 @@ Route::prefix('c')->group(function(){
     Route::get('/profile', 'Customer@viewProfile');
     Route::get('/profile/edit', 'Customer@editProfile');
     Route::post('/profile/edit', 'Customer@editProfile');
-    Route::post('/profile/edit/password/{id}', 'Customer@editPassword');
+    Route::post('/profile/edit/password', 'Customer@editPassword');
     Route::post('/profile/edit/image', 'Customer@imageUpload');
     Route::get('/ride-details/{link}', 'Customer@rideDetails');
     Route::get('/search', 'Customer@search');
