@@ -15,6 +15,7 @@
         var current = 1;
         $('#one').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             current = 1;
             one = '<h4 class="about-us-details-title">Our Commitment to Inclusion and Respect</h4>\n' +
                 '<p>GetWOBO is, at its core, an open community dedicated to bring the world closer together by fostering meaningful, shared experiences among people from all parts of the world. Our community includes millions of people from virtually every country on the globe. It is an incredibly diverse community, drawing together individuals of different cultures, values, and norms.</p>\n' +
@@ -29,6 +30,7 @@
         });
         $('#two').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             current = 2;
             two = '<h4 class="about-us-details-title">Specific Guidance for getWOBO Members</h4>\n' +
                 '<p>As a general matter, we will familiarize ourselves with all applicable federal, state, and local laws that apply to vehicle ride on sharing basis. Ridemates should contact GetWOBO customer service if they have any questions about their obligations to comply with this GetWOBO Nondiscrimination Policy. Guided by these principles, our community will follow these rules:</p>\n' +
@@ -77,6 +79,7 @@
         });
         $('#three').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             current = 3;
             three = '<p><b>When Riders are turned down.</b> Ridemates should keep in mind that no one likes to be turned down. While a Ridemates may have, and articulate, lawful and legitimate reasons for turning down a potential Rider, it may cause that member of our community to feel unwelcome or excluded. Ridemates should make every effort to be welcoming to Riders of all backgrounds. Ridemates who demonstrate a pattern of rejecting Riders from a protected class (even while articulating legitimate reasons), undermine the strength of our community by making potential Riders feel unwelcome, and GetWOBO may suspend Ridemates who have demonstrated such a pattern from the GetWOBO platform.</p>\n' +
                 '<p> <b>What happens when a Ridemates does not comply with our policies in this area?</b> </p>\n' +

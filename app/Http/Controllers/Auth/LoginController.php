@@ -48,6 +48,12 @@ class LoginController extends Controller
             return redirect('/login')
                 ->with('error', 'Account is not Verified !! Please Check your email for Verification !!');
         }
+        if($user->status == 'blocked'){
+            Auth::logout();
+            return redirect('/login')
+                ->with('error', 'This account has been
+            BLOCKED by the admin. Please contact to the admin.');
+        }
         if($user->role != 'super-admin'){
             $request->session()->forget('area');
             $request->session()->forget('lat');

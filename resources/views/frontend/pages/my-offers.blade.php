@@ -5,18 +5,19 @@
         <div class="container">
             <div class="row">
                 <div class="ridemate-offer-button">
-                    <form action="#">
+                    <form action="{{ url('/d/active-offers') }}" method="post">
+                        {{ csrf_field() }}
                         <div class="col-sm-2 col-sm-offset-2">
                             <label for="search-ride">Search <span class="right-info-right">:</span></label>
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" placeholder="Ex:Location , Riders name" class="form-control">
+                            <input type="text" name="search" placeholder="Ex: Location" class="form-control">
                         </div>
                     </form>
                 </div>
                 <!-- Ride details -->
                 <div class="get-ridemate-single">
-                    <h3 class="check-total-fare text-center">Upcoming Rides</h3>
+                    <h3 class="check-total-fare text-center">Active Rides</h3>
                     <div class="col-sm-6">
                         @include('frontend.includes.messages')
                         @if(isset($errors))
@@ -43,7 +44,7 @@
                     <!-- single request area -->
 
                     <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12 ridemate-details-offer padding-left-o">
-                        <h4 class="ridemate-home-h3">Ride Details</h4>
+                        <h4 class="ridemate-home-h3"><span class="pull-left">Ride Details</span> @if($offer->status == 'in-progress') <span style="color: #8ad919" class="pull-right">Ride In Progress.</span> @endif</h4>
                         <div class="col-sm-8 col-xs-12 padding-left-o">
                             <div class="get-car-details-area clearfix">
                                 <div class="col-sm-5">

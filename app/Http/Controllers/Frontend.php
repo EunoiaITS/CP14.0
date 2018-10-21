@@ -148,7 +148,7 @@ class Frontend extends Controller
         if(isset($request->page)){
             $page = $request->page;
         }
-        $ro = RideOffers::where(['status' => 'active'])
+        $ro = RideOffers::where(['status' => 'completed'])
             ->whereDate('departure_time', '>=', date('Y-m-d'))
             ->whereTime('departure_time', '>=', date('H:i:s'))
             ->orderBy('departure_time')

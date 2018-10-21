@@ -32,6 +32,7 @@
         var five = '';
         $('#one').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             one = '<p>Last Updated: 14 February,2018</p>\n' +
                 '                        <p>Thank you for using getWOBO, enjoy the Ride!</p>\n' +
                 '                        <p>This Privacy Policy explains how we collect, use, process, and disclose your information across the getWOBO Platform.</p>\n' +
@@ -61,6 +62,7 @@
         });
         $('#two').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             two = '<ol>\n' +
                 '<li><b>Information We Collect</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
@@ -91,6 +93,7 @@
         });
         $('#three').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             three = '<li><b>HOW WE USE INFORMATION WE COLLECT</b>\n' +
                 '                                <p>We use, store, and process information about you to provide, understand, improve, and develop the getWOBO Platform, and to create and maintain a trusted and safer environment.</p>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
@@ -133,6 +136,7 @@
         });
         $('#four').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             four = '<li><b>SHARING & DISCLOSURE</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>With Your Consent.</b>\n' +
@@ -208,6 +212,7 @@
         });
         $('#five').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             five = '<ol><li><b>OTHER IMPORTANT INFORMATION</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>Analyzing your Communications.</b>\n' +

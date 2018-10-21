@@ -581,7 +581,7 @@ class Admin extends Controller
     }
     public function block(Request $request){
         $user = User::find($request->user_id);
-        $user->status = 'not-verified';
+        $user->status = 'blocked';
         $user->save();
         return redirect()
             ->to('admin/drivers/view/'.$request->user_id);

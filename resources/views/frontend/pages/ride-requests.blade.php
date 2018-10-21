@@ -4,19 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="ridemate-offer-button">
-                <form action="#">
+                <form action="{{ url('/d/ride-requests') }}" method="post">
+                    {{ csrf_field() }}
                     <div class="col-sm-2 col-sm-offset-2">
                         <label for="search-ride">Search <span class="right-info-right">:</span></label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" placeholder="Ex:Location , Riders name" class="form-control">
+                        <input type="text" name="search" placeholder="Ex: Location" class="form-control">
                     </div>
                 </form>
             </div>
             <!-- Ride details -->
             <div class="get-ridemate-single">
                 <h3 class="check-total-fare text-center">Requests of Rides</h3>
-
                 <!-- single request area -->
                 @foreach($data as $d)
                 <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12 ridemate-details-offer padding-left-o">
@@ -67,7 +67,6 @@
             <div class="col-xs-12 col-lg-12">
                 <div class="getwobo-pagination">
                     <nav aria-label="Page navigation">
-                        {{ $data->links() }}
                     </nav>
                 </div>
             </div>

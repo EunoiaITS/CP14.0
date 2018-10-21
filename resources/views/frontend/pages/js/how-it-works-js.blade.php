@@ -28,6 +28,7 @@
         var two = '';
         $('#one').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content-bx').html('');
             one = '<p>This is a people powered community built on trust, with user friendly platform suitable for anyone, anytime, anywhere. All you need to do is to enjoy the ride. Welcome to getWOBO.</p>\n' +
                 '                        <br>\n' +
@@ -57,6 +58,7 @@
         });
         $('#two').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content').html('');
             two = '<h4 class="about-us-details-title text-center">Ratings</h4>\n' +
                 '                        <p>getWOBO’s rating system are merely visible recommendations as to foster decision making process prior to confirm any ride. This is important, the process helps to elevate trust within the community. So, please do not forget to rate to share your experience with the rest of the community after your ride.</p>\n' +

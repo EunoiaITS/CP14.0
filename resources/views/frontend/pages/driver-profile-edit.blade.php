@@ -56,7 +56,7 @@
                                     <input type="text" name="address" class="form-control" value="{{ $usd->address }}" placeholder="Your Address">
                                 </div>
                                 <div class="form-group get-sign-up-mate">
-                                    <label for="ridemate-name">Age</label>
+                                    <label for="ridemate-name">Date of Birth</label>
                                     <div class="col-sm-3 padding-left-o">
                                         <select name="day" id="" class="get-select-picker" title="Day">
                                             @for($i = 1; $i <= 31; $i++)
@@ -100,16 +100,12 @@
                                     <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ridemate-contact">Car Registration</label>
-                                    <input type="text" name="car_reg" class="form-control" value="{{ $dd->car_reg }}" placeholder="Your Car Registration">
-                                </div>
-                                <div class="form-group">
                                     <label for="ridemate-dle">Driving License No. & Expiry Date</label>
                                     <div class="col-sm-8 col-xs-12 main--form padding-left-o">
                                         <input type="text" name="driving_license" class="form-control" value="{{ $dd->driving_license }}" placeholder="Your Driving Licence">
                                     </div>
                                     <div class="col-sm-3 col-xs-12">
-                                        <input type="text" name="expiry" class="form-control" value="{{ date('m/Y',strtotime($dd->expiry)) }}" placeholder="mm/yy">
+                                        <input type="text" name="expiry" class="form-control datepicker-f" value="{{ date('m/Y',strtotime($dd->expiry)) }}" placeholder="mm/yy">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -134,7 +130,7 @@
                         </div>
                         <div class="form-group clearfix">
                             <div class="col-sm-6 padding-left-o">
-                                <label for="car-plate" class="ride-label">Car Plate No <span class="right-into">:</span></label>
+                                <label for="car-plate" class="ride-label">Registration Number <span class="right-into">:</span></label>
                             </div>
                             <div class="col-sm-6 padding-ride-o">
                                 <input name="car_plate_no" id="car-plate" type="text" class="form-control" @if(isset($vd->car_plate_no)) value="{{ $vd->car_plate_no }}" @else value="{{ old('car_plate_no') }}"  readonly @endif>
@@ -160,7 +156,7 @@
                     </div>
                 <div class="ridemate-option-get text-center sign-in-option-get clearfix">
                     <button type="submit" class="btn btn-info btn-offer">Save</button>
-                    <button type="button" class="btn btn-info btn-offer join-us-sign-in">Cancel</button>
+                    <a href="{{ url('/d/profile') }}"><button type="button" class="btn btn-info btn-offer join-us-sign-in">Cancel</button></a>
                 </div>
                 <!--Ride description  -->
                 </form>

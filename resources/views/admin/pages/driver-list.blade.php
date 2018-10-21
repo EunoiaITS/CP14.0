@@ -73,12 +73,14 @@
                             @php $count = 0 @endphp
                             @foreach($data as $d)
                                 @php $count ++ @endphp
-                                <tr>
-                                    <td>{{ $count }}</td>
-                                    <td>{{ $d->name }}</td>
-                                    <td>{{ $d->email }}</td>
-                                    <td><a href="{{ url('/admin/drivers/view/'.$d->id) }}" class="btn btn-info btn-offer">View</a></td>
-                                </tr>
+                                @if($d->status == 'verified' || $d->status == 'blocked')
+                                    <tr>
+                                        <td>{{ $count }}</td>
+                                        <td>{{ $d->name }}</td>
+                                        <td>{{ $d->email }}</td>
+                                        <td><a href="{{ url('/admin/drivers/view/'.$d->id) }}" class="btn btn-info btn-offer">View</a></td>
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

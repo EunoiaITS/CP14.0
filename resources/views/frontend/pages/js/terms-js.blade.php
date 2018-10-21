@@ -30,6 +30,7 @@
         var eleven = '';
         $('#one').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             one = '<p>Please read these Terms of Service carefully as they contain important information about our legal rights, remedies and obligations. By accessing or using the getWOBO platform, you agree to comply with and be bound by these Terms of Service.</p>\n' +
                 '                        <p>Last Updated: 14-Feb, 2018 </p>\n' +
                 '                        <p>Thank you for using getWOBO, enjoy the ride!</p>\n' +
@@ -51,6 +52,7 @@
         });
         $('#two').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             two = '<h4 class="about-us-details-title">2. Eligibility, Using the getWOBO Platform, Member Verification</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>You must be at least 18 years old and able to enter into legally binding contracts to access and use the getWOBO Platform or register a getWOBO Account. By accessing or using the getWOBO Platform you represent and warrant that you are 18 or older and have the legal capacity and authority to enter into a contract.</li>\n' +
@@ -63,6 +65,7 @@
         });
         $('#three').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             three = '<h4 class="about-us-details-title">3. Modification of these Terms</h4>\n' +
                 '                        <p>getWOBO reserves the right to modify these Terms at any time in accordance with this provision. If we make changes to these Terms, we will post the revised Terms on the getWOBO Platform and update the “Last Updated” date at the top of these Terms, it is your responsibility to keep yourself updated from time to time through the Platform. If you disagree with the revised Terms, you may terminate your membership or this Agreement with immediate effect. If you do not terminate your memebership or Agreement the date the revised Terms become effective, your continued access to or use of the getWOBO Platform will constitute acceptance of the revised Terms.</p>\n' +
                 '                        <h4 class="about-us-details-title">4. Account Registration</h4>\n' +
@@ -77,6 +80,7 @@
         });
         $('#four').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             four = '<h4 class="about-us-details-title">5. Content</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>getWOBO may, at its sole discretion, enable Members to (i) create, upload, post, send, receive and store content, such as text, photos, audio, video, or other materials and information on or through the getWOBO Platform ("<b>Member Content</b>"); and (ii) access and view Member Content and any content that getWOBO itself makes available on or through the getWOBO Platform, including proprietary getWOBO content and any content licensed or authorized for use by or through getWOBO from a third party ("<b>getWOBO Content</b>" and together with Member Content, "<b>Collective Content</b>").</li>\n' +
@@ -91,6 +95,7 @@
         });
         $('#five').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             five = '<h4 class="about-us-details-title">6. Service Fees</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>getWOBO may charge fees to Ride Provider ("<b>Ridemate Fees</b>") and/or Rider ("<b>Rider Fees</b>") (collectively, "<b>Service Fees</b>") in consideration for the use of the getWOBO Platform.</li>\n' +
@@ -114,6 +119,7 @@
 
         $('#six').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             six = '<h4 class="about-us-details-title">8. Terms specific for Riders</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li><b>Terms applicable to all Ride bookings</b>\n' +
@@ -143,6 +149,7 @@
 
         $('#seven').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             seven = '<h4 class="about-us-details-title">9. Ride Modifications, Cancellations and Refunds</h4>' +
                 '<ol class="terms-circle">' +
                 '<li>Ridemate and Riders are responsible for any modifications to any Ride that they make via the getWOBO Platform to make Ride Modification ("<b>Ride Modifications</b>"), and agree to pay any additional Ride Fees, Ride Provider Fees or Rider Fees and/or Taxes associated with such Ride Modifications..</li>' +
@@ -177,6 +184,7 @@
 
         $('#eight').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             eight = '<h4 class="about-us-details-title">14. Prohibited Activities</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>As a member, you are solely responsible for compliance with any and all laws, rules, regulations, and Tax obligations that may apply to your use of the getWOBO Platform. In connection with your use of the getWOBO Platform, you will not and will not assist or enable others to:\n' +
@@ -205,6 +213,7 @@
         });
         $('#nine').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             nine = '<h4 class="about-us-details-title">15. Term and Termination, Suspension and other Measures</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>This Agreement shall be effective for a 30-day term, at the end of which it will automatically and continuously renew for subsequent 30-day terms until such time when you or getWOBO terminate the Agreement in accordance with this provision.</li>\n' +
@@ -227,6 +236,7 @@
         });
         $('#ten').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             ten = '<h4 class="about-us-details-title">16. Disclaimers</h4>\n' +
                 '                        <strong>\n' +
                 '                            <p>If you choose to use the getWOBO Platform or Collective Content, you do so voluntarily and at your sole risk. The getWOBO Platform and Collective Content is provided “as is”, without warranty of any kind, either express or implied.</p>\n' +
@@ -246,6 +256,7 @@
         });
         $('#eleven').on('click',function (e) {
             e.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, 500);
             eleven = '<h4 class="about-us-details-title">18. Indemnification</h4>\n' +
                 '                        <ol class="terms-circle">\n' +
                 '                            <li>You agree to release, defend (at getWOBO’s option), indemnify, and hold getWOBO and its affiliates and subsidiaries, and their officers, directors, employees and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms or our Policies or Standards, where applicable (ii) your improper use of the getWOBO Platform or any getWOBO Services, (iii) your interaction with any Member, participation in a Ride or other Ridemate Service, including without limitation any injuries, losses or damages (whether compensatory, direct, incidental, consequential or otherwise) of any kind arising in connection with or as a result of such interaction, ride, participation or use, (iv) getWOBO’s Collection and Remittance of Occupancy Taxes, or (v) your breach of any laws, regulations or third party rights.</li>\n' +

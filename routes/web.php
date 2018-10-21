@@ -120,6 +120,7 @@ Route::prefix('d')->group(function(){
     Route::get('/offer-ride', 'Driver@offerRide');
     Route::post('/offer-ride', 'Driver@offerRide');
     Route::get('/active-offers', 'Driver@myOffers');
+    Route::post('/active-offers', 'Driver@myOffers');
     Route::get ('/ride-details/{link}', 'Driver@rideDetails');
     Route::post ('/ride-details/{link}', ['as' => 'ride_details', 'uses' => 'Driver@rideDetails']);
     Route::get('/edit-ride/{id}', 'Driver@editRide');
@@ -129,6 +130,7 @@ Route::prefix('d')->group(function(){
     Route::post('/start-ride', 'Driver@startRide');
     Route::post('/end-ride', 'Driver@endRide');
     Route::get('/ride-requests', 'Driver@rideRequests');
+    Route::post('/ride-requests', 'Driver@rideRequests');
     Route::post('/income-statement/', 'Driver@incomeStatement');
     Route::get('/notifications', 'Driver@notifications');
     Route::get('/history', 'Driver@history');

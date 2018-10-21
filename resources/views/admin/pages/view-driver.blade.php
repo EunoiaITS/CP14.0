@@ -10,8 +10,8 @@
                 <div class="account-status">
                     <span>Account Status: <code>@if(isset($data->status)) @if($data->status == 'verified'){{ 'Unblocked' }} @else {{ 'Blocked' }} @endif @endif</code></span>
                     <div>Change Status:
-                        <button class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'not-verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</button>
-                        <button class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</button>
+                        <button type="button" class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'blocked') disabled @endif @endif"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</button>
+                        <button type="button" class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</button>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <div class="col-sm-3 col-xs-12">
                             <div class="user-profile-icon">
-                                <img src="@if(isset($details->picture)){{ asset('/public/uploads/drivers/'.$details->picture) }} @endif" class="img-responsive" alt="profile-img">
+                                <img src="@if(isset($details->picture)){{ asset('/public/uploads/drivers/'.$details->picture) }} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" class="img-responsive" alt="profile-img">
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">

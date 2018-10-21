@@ -386,13 +386,25 @@ class Driver extends Controller
      * MyOffers - shows all the active offers created by a driver
     */
     public function myOffers(Request $request){
-        $offers = RideOffers::where(['offer_by' => Auth::id()])
-            ->where(function($q){
-                $q->where(['status' => 'active'])
-                    ->orWhere(['status' => 'in-progress']);
-            })
-            ->orderBy('departure_time', 'asc')
-            ->get();
+        if($request->has('search')){
+            $offers = RideOffers::where(['offer_by' => Auth::id()])
+                ->where(function($q){
+                    $q->where(['status' => 'active'])
+                        ->orWhere(['status' => 'in-progress']);
+                })
+                ->where('origin','like', '%'. $request->search .'%')
+                ->orWhere('destination','like','%' . $request->search . '%')
+                ->orderBy('departure_time', 'asc')
+                ->get();
+        }else{
+            $offers = RideOffers::where(['offer_by' => Auth::id()])
+                ->where(function($q){
+                    $q->where(['status' => 'active'])
+                        ->orWhere(['status' => 'in-progress']);
+                })
+                ->orderBy('departure_time', 'asc')
+                ->get();
+        }
         foreach($offers as $of){
             $bookings = RideBookings::where(['ride_id' => $of->id])
                 ->where(function($q){
@@ -402,6 +414,7 @@ class Driver extends Controller
                 ->get();
             $of->bookings = $bookings;
         }
+
         return view('frontend.pages.my-offers', [
             'data' => $offers
         ]);
@@ -773,14 +786,25 @@ class Driver extends Controller
     /**
      * Ride Request  - shows all the active ride requested by a customer
      */
-    public function rideRequests(){
-        $rr = Ride_request::where('status','requested')->paginate(3);
+    public function rideRequests(Request $request){
+        if($request->has('search')){
+            $rr = Ride_request::where('status','requested')
+                ->where('to','like','%' . $request->search . '%')
+                ->orWhere('from','like','%' . $request->search . '%')
+                ->orderBy('departure_date', 'asc')
+                ->get();
+        }else{
+            $rr = Ride_request::where('status','requested')
+                ->orderBy('departure_date', 'asc')
+                ->get();
+        }
         foreach ($rr as $r){
             $user = User::where('id',$r->user_id)->first();
             $r->user = $user;
             $usd = User_data::where('user_id',$r->user_id)->first();
             $r->usd = $usd;
         }
+
         return view('frontend.pages.ride-requests',[
             'data' => $rr
         ]);
@@ -853,7 +877,7 @@ class Driver extends Controller
         $id = Auth::id();
         $ro = RideOffers::where(['status' => 'completed'])
             ->where('offer_by',$id)
-            ->orderBy('departure_time')
+            ->orderBy('departure_time','desc')
             ->paginate(3);
         return view('frontend.pages.history-driver',[
             'data' => $ro
