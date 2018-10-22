@@ -822,36 +822,54 @@ class Driver extends Controller
                 ->get();
             foreach ($ro as $r){
                 $rc = RideComp::where('ride_id',$r->id)->get();
-                foreach ($rc as $c){
-                    if($request->section == 'daily'){
-                        if(date('d',strtotime($c->start_time)) == date('d',strtotime($request->date))){
-                            $r->checked = 'yes';
-                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                            $r->time = date('H:i A',strtotime($c->start_time));
-                            $r->amount = $c->total_fair;
-                        }
-                    }elseif ($request->section == 'weekly'){
-                        for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
-                            if($i == date('d',strtotime($c->start_time))){
+                if(!empty($rc)){
+                    foreach ($rc as $c){
+                        if($request->section == 'daily'){
+                            if(date('d',strtotime($c->start_time)) == date('d',strtotime($request->date))){
                                 $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($c->start_time));
                                 $r->time = date('H:i A',strtotime($c->start_time));
-                                $r->amount = $c->total_fair;
+                                if($c->total_fair != null){
+                                    $r->amount = $c->total_fair;
+                                }else{
+                                    $r->amount = 0;
+                                }
                             }
-                        }
-                    }elseif ($request->section == 'monthly'){
-                        if(date('m',strtotime($c->start_time)) == date('m',strtotime($request->date))){
-                            $r->checked = 'yes';
-                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                            $r->time = date('H:i A',strtotime($c->start_time));
-                            $r->amount = $c->total_fair;
-                        }
-                    }elseif($request->section == 'yearly'){
-                        if(date('Y',strtotime($c->start_time)) == date('Y',strtotime($request->date))){
-                            $r->checked = 'yes';
-                            $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                            $r->time = date('H:i A',strtotime($c->start_time));
-                            $r->amount = $c->total_fair;
+                        }elseif ($request->section == 'weekly'){
+                            for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
+                                if($i == date('d',strtotime($c->start_time))){
+                                    $r->checked = 'yes';
+                                    $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                                    $r->time = date('H:i A',strtotime($c->start_time));
+                                    if($c->total_fair != null){
+                                        $r->amount = $c->total_fair;
+                                    }else{
+                                        $r->amount = 0;
+                                    }
+                                }
+                            }
+                        }elseif ($request->section == 'monthly'){
+                            if(date('m',strtotime($c->start_time)) == date('m',strtotime($request->date))){
+                                $r->checked = 'yes';
+                                $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                                $r->time = date('H:i A',strtotime($c->start_time));
+                                if($c->total_fair != null){
+                                    $r->amount = $c->total_fair;
+                                }else{
+                                    $r->amount = 0;
+                                }
+                            }
+                        }elseif($request->section == 'yearly'){
+                            if(date('Y',strtotime($c->start_time)) == date('Y',strtotime($request->date))){
+                                $r->checked = 'yes';
+                                $r->start_time = date('Y-m-d',strtotime($c->start_time));
+                                $r->time = date('H:i A',strtotime($c->start_time));
+                                if($c->total_fair != null){
+                                    $r->amount = $c->total_fair;
+                                }else{
+                                    $r->amount = 0;
+                                }
+                            }
                         }
                     }
                 }
