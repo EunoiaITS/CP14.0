@@ -57,6 +57,20 @@
                 </li>
             </ul>
         </li>
-        <li @if(isset($slug) && $slug == 'rides')class="active"@endif><a href="{{ url('/admin/rides') }}"><em class="fa fa-info-circle">&nbsp;</em>Rides Details</a></li>
+        <li class="parent @if(isset($slug) && $slug == 'rides' || $slug == 'requests'){{'active'}}@endif"><a data-toggle="collapse" href="#sub-item-4">
+                <em class="fa fa-user">&nbsp;</em> Rides Details <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+            </a>
+            <ul class="children collapse" id="sub-item-4">
+                <li @if(isset($slug) && $slug == 'rides')class="active"@endif><a class="" href="{{ url('/admin/rides') }}">
+                        <span class="fa fa-arrow-right">&nbsp;</span> All Rides
+                    </a>
+                </li>
+                <li @if(isset($slug) && $slug == 'requests')class="active"@endif>
+                    <a class="" href="{{ url('/admin/requests') }}">
+                        <span class="fa fa-arrow-right">&nbsp;</span> All Requests
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div><!--/.sidebar-->

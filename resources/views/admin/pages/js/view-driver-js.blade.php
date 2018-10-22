@@ -32,7 +32,7 @@
                                 if(e.checked === 'yes') {
                                     html += '<tr>' +
                                         '<td>'+e.start_time+'</td>' +
-                                        ' <td>'+e.time+'</td>' +
+                                        '<td>'+e.time+'</td>' +
                                         '<td>'+e.amount+'</td>' +
                                         '</tr>';
                                 }

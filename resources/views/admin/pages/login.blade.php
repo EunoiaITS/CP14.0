@@ -1,4 +1,5 @@
 @extends('frontend.admin-layout')
+@section('title','Login Panel')
 @section('content')
     <!-- sign in page -->
     <div class="get-offer-ride">

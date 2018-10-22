@@ -187,22 +187,30 @@
                     </div>
                     <div class="col-sm-3 col-sm-offset-3 col-xs-12 ride-details-feature">
                         <ul class="get-ride-feature">
-                            <li>
-                                <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'pets')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'pets')@if( $r->value == 'yes'){{ 'Pets' }}@else{{ '' }}@endif @endif @endforeach</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'music')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'music')@if( $r->value == 'yes'){{ 'Music' }}@else{{ '' }}@endif @endif @endforeach</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'smoking')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'smoking')@if( $r->value == 'yes'){{ 'Smoking' }}@else{{ '' }}@endif @endif @endforeach</span>
-                            </li>
-                            <li>
-                                <span class="right-ride-feature @foreach($data->rd as $r)@if($r->key == 'back_seat')@if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif @endif @endforeach"></span>
-                                <span class="left-ride-feature">@foreach($data->rd as $r)@if($r->key == 'back_seat')@if( $r->value == 'yes'){{ 'Max.2 in back Seat' }}@else{{ '' }}@endif @endif @endforeach</span>
-                            </li>
+                            @foreach($data->rd as $r)@if($r->key == 'pets')
+                                <li>
+                                    <span class="right-ride-feature @if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif "></span>
+                                    <span class="left-ride-feature">{{ 'Pets' }}</span>
+                                </li>
+                            @endif @endforeach
+                            @foreach($data->rd as $r)@if($r->key == 'music')
+                                <li>
+                                    <span class="right-ride-feature @if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif"></span>
+                                    <span class="left-ride-feature">{{ 'Music' }}</span>
+                                </li>
+                            @endif @endforeach
+                            @foreach($data->rd as $r)@if($r->key == 'smoking')
+                                <li>
+                                    <span class="right-ride-feature @if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif"></span>
+                                    <span class="left-ride-feature">{{ 'Smoking' }}</span>
+                                </li>
+                            @endif @endforeach
+                            @foreach($data->rd as $r)@if($r->key == 'back_seat')
+                                <li>
+                                    <span class="right-ride-feature @if( $r->value == 'yes'){{"icon-feature-details"}}@else{{"icon-cross-details"}}@endif"></span>
+                                    <span class="left-ride-feature">{{ 'Max.2 in back Seat' }}</span>
+                                </li>
+                            @endif @endforeach
                             @foreach($data->rd as $r)
                                 @if(!in_array($r->key, ['vehicle_id', 'pets', 'music', 'smoking', 'back_seat']))
                                     <li>

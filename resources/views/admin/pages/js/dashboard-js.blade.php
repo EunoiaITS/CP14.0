@@ -1,6 +1,7 @@
 <script>
     $(document).on('change','#format-selector',function (e) {
         e.preventDefault();
+
         if(this.value == 'Daily'){
             $('#picker').html('<div class="view-ridemate-profile-popup" id="dailypicker01"></div>');
             $('#dailypicker01').datetimepicker({
@@ -26,14 +27,19 @@
                                 html += '<tr>' +
                                     '<td>'+count+'</td>' +
                                     '<td>'+e.ride_no+'</td>' +
+                                    '<td>'+e.name+'</td>' +
                                     '<td>'+e.start_time+'</td>' +
-                                    ' <td>'+e.time+'</td>' +
-                                    '<td>'+e.amount+'</td>' +
+                                    '<td>'+e.time+'</td>' +
+                                    '<td class="total-amount">'+e.amount+'</td>' +
                                     '</tr>';
                                 count++;
                             }
                         });
-                        $('#income-data').html(html);
+                        $('#income-data').html(html+'<tr>' +
+                            '<td></td><td></td><td></td>'+
+                            '<td colspan="2">Total Income</td>' +
+                            '<td></td>' +
+                            '</tr>');
                     },
                     error: function(xhr, textStatus, error){
                         //alert(textStatus);
@@ -69,6 +75,7 @@
                                         html += '<tr>' +
                                             '<td>'+count+'</td>' +
                                             '<td>'+e.ride_no+'</td>' +
+                                            '<td>'+e.name+'</td>' +
                                             '<td>'+e.start_time+'</td>' +
                                             ' <td>'+e.time+'</td>' +
                                             '<td>'+e.amount+'</td>' +
@@ -76,7 +83,11 @@
                                         count++;
                                     }
                                 });
-                                $('#income-data').html(html);
+                                $('#income-data').html(html+'<tr>' +
+                                    '<td></td><td></td><td></td>'+
+                                    '<td colspan="2">Total Income</td>' +
+                                    '<td></td>' +
+                                    '</tr>');
                             },
                             error: function(xhr, textStatus, error){
                                 //alert(textStatus);
@@ -112,14 +123,19 @@
                                 html += '<tr>' +
                                     '<td>'+count+'</td>' +
                                     '<td>'+e.ride_no+'</td>' +
+                                    '<td>'+e.name+'</td>' +
                                     '<td>'+e.start_time+'</td>' +
                                     ' <td>'+e.time+'</td>' +
-                                    '<td>'+e.amount+'</td>' +
+                                    '<td class="total-amount">'+e.amount+'</td>' +
                                     '</tr>';
                                 count++;
                             }
                         });
-                        $('#income-data').html(html);
+                        $('#income-data').html(html+'<tr>' +
+                            '<td></td><td></td><td></td>'+
+                            '<td colspan="2">Total Income</td>' +
+                            '<td></td>' +
+                            '</tr>');
                     },
                     error: function(xhr, textStatus, error){
                         //alert(textStatus);
@@ -153,6 +169,7 @@
                                 html += '<tr>' +
                                     '<td>'+count+'</td>' +
                                     '<td>'+e.ride_no+'</td>' +
+                                    '<td>'+e.name+'</td>' +
                                     '<td>'+e.start_time+'</td>' +
                                     ' <td>'+e.time+'</td>' +
                                     '<td>'+e.amount+'</td>' +
@@ -160,7 +177,11 @@
                                 count++;
                             }
                         });
-                        $('#income-data').html(html);
+                        $('#income-data').html(html+'<tr>' +
+                            '<td></td><td></td><td></td>'+
+                            '<td colspan="2">Total Income</td>' +
+                            '<td></td>' +
+                            '</tr>');
                     },
                     error: function(xhr, textStatus, error){
                         //alert(textStatus);

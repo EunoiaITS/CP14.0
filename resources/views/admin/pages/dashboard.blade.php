@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title','Dashboard')
 @section('content')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -149,6 +150,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Ride No.</th>
+                                    <th>Offered By</th>
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Amount (USD)</th>

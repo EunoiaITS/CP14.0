@@ -43,3 +43,7 @@ $(function() {
     return $(".navi-trigger").toggleClass("cross");
   });
 });
+
+$(document).ready(function() {
+    $('#example').DataTable();
+});

@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title','Ridemate List')
 @section('content')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -103,6 +104,14 @@
                                 <td>{{ $ride->status }}</td>
                             </tr>
                             @endforeach
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="3">Total Amount</td>
+                                <td>500</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -155,16 +164,6 @@
                                     <tbody id="income-data">
                                     </tbody>
                                 </table>
-                                <form action="" method="POST" role="form">
-                                    <div class="form-group">
-                                        <div class="col-sm-4">
-                                            <label for="monthly-income">Monthly Income</label>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>

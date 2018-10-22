@@ -12,6 +12,7 @@
             {{ csrf_field() }}
             <div class="modal-footer">
                 <input type="hidden" name="user_id" value="{{ $data->id }}">
+                <input type="hidden" name="role" value="drivers">
                 <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
@@ -34,11 +35,13 @@
             </div>
             <form action="{{ url('/admin/unblock') }}" method="post">
                 {{ csrf_field() }}
-            <div class="modal-footer">
-                <input type="hidden" name="user_id" value="{{ $data->id }}">
-                <button type="submit" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="user_id" value="{{ $data->id }}">
+                    <input type="hidden" name="role" value="drivers">
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

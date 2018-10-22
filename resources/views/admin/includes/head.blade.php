@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GetWobo - Dashboard</title>
+    <title>GetWobo - @yield('title')</title>
     <link href="{{ asset('public/assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/datepicker3.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/assets/admin/css/bootstrap-select.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/admin/css/flaticon.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link href="{{ asset('public/assets/admin/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/jquery-ui-1.10.4.smoothness.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/styles.css') }}" rel="stylesheet">

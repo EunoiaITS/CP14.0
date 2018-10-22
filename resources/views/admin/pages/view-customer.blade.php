@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title','Rider List')
 @section('content')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -8,8 +9,11 @@
             </div>
             <div class="col-lg-6 col-xs-12">
                 <div class="account-status">
-                    <span>Account Status: <code>Unblocked</code></span>
-                    <div>Change Status To: <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalxs">block</span> <span class="btn btn-info btn-offer"  data-toggle="modal" data-target="#myModalx">Unblock</span> </div>
+                    <span>Account Status: <code>@if(isset($data->status)) @if($data->status == 'verified'){{ 'Unblocked' }} @else {{ 'Blocked' }} @endif @endif</code></span>
+                    <div>Change Status:
+                        <button type="button" class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'blocked') disabled @endif @endif"  data-toggle="modal" data-target="#myModalxs{{ $data->id }}">block</button>
+                        <button type="button" class="btn btn-info btn-offer @if(isset($data->status)) @if($data->status == 'verified') disabled @endif @endif"  data-toggle="modal" data-target="#myModalx{{ $data->id }}">Unblock</button>
+                    </div>
                 </div>
             </div>
         </div><!--/.row-->
@@ -20,7 +24,7 @@
                     <div class="panel-body">
                         <div class="col-sm-3 col-xs-12">
                             <div class="user-profile-icon">
-                                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="profile-img">
+                                <img src="@if(isset($details->picture)){{ asset('/public/uploads/customers/'.$details->picture) }} @else {{ asset('public/assets/frontend/img/pp.png') }} @endif" class="img-responsive" alt="profile-img">
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">

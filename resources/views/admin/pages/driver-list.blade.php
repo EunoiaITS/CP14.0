@@ -1,11 +1,12 @@
 @extends('admin.layout')
+@section('title','Ridemate List')
 @section('content')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Riders List (Driver)</h1>
+                <h1 class="page-header">Ridemates List (Driver)</h1>
             </div>
         </div><!--/.row-->
 
@@ -15,9 +16,9 @@
                     <div class="panel-heading">
                         <span class="heading-option">Filter :</span>
                         <div class="filter-option">
-                            <select class="form-control get-select-picker" title="Filter">
-                                <option value="">A-Z</option>
-                                <option value="">Z-A</option>
+                            <select class="form-control get-select-picker selectfilter" title="Filter">
+                                <option value="ascending">A-Z</option>
+                                <option value="descending">Z-A</option>
                             </select>
                         </div>
                     </div>
@@ -49,7 +50,6 @@
                             <li><a href="#">X</a></li>
                             <li><a href="#">Y</a></li>
                             <li><a href="#">Z</a></li>
-
                         </ul>
                     </div>
                 </div>
@@ -66,6 +66,7 @@
                                 <th>Serial</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -78,6 +79,7 @@
                                         <td>{{ $count }}</td>
                                         <td>{{ $d->name }}</td>
                                         <td>{{ $d->email }}</td>
+                                        <td>@if($d->status == 'blocked'){{ 'Blocked' }}@else {{ 'Unblocked' }} @endif</td>
                                         <td><a href="{{ url('/admin/drivers/view/'.$d->id) }}" class="btn btn-info btn-offer">View</a></td>
                                     </tr>
                                 @endif

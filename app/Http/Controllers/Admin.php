@@ -169,7 +169,13 @@ class Admin extends Controller
      */
 
     public function driverList(Request $request){
-        $dr = User::where('role', 'driver')->paginate(20);
+        $cur_order = 'asc';
+        if(isset($request->order)){
+            $cur_order = $request->order;
+        }
+        $dr = User::where('role', 'driver')
+            ->orderBy('name',$cur_order)
+            ->paginate(4);
         foreach ($dr as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -177,7 +183,8 @@ class Admin extends Controller
         $slug = 'drivers';
         return view('admin.pages.driver-list', [
             'slug' => $slug,
-            'data' => $dr
+            'data' => $dr,
+            'footer_js' => 'admin.pages.js.selector-js'
         ]);
     }
 
@@ -262,7 +269,13 @@ class Admin extends Controller
      */
 
     public function customerList(Request $request){
-        $cus = User::where('role', 'customer')->paginate(20);
+        $cur_order ='asc';
+        if (isset($request->order)){
+            $cur_order = $request->order;
+        }
+        $cus = User::where('role', 'customer')
+            ->orderBy('name',$cur_order)
+            ->paginate(5);
         foreach ($cus as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -270,7 +283,8 @@ class Admin extends Controller
         $slug = 'customers';
         return view('admin.pages.customer-list', [
             'slug' => $slug,
-            'data' => $cus
+            'data' => $cus,
+            'footer_js' => 'admin.pages.js.selector-js'
         ]);
     }
 
@@ -337,60 +351,14 @@ class Admin extends Controller
     /**
      * Ride Details - shows all the rides info by the system
      */
-    public function rideDetails(Request $request){
-        $rides = RideOffers::where('status', 'completed')->paginate(10);
-        $reqs = RideOffers::where('status', 'completed')
-            ->where('request_id', '!=', 0)
-            ->paginate(10);
-        if($request->isMethod('post')){
-            //dd($request->all());
-            if($request->search_mode == 'd'){
-                $rides = RideOffers::whereDate('departure_time', '=', date('Y-m-d',strtotime($request->date)))
-                    ->where('status', 'completed')
-                    ->paginate(10);
-            }
-            if($request->search_mode == 'w'){
-                $rides = RideOffers::whereBetween('departure_time', [date('Y-m-d',strtotime($request->start_date)), date('Y-m-d',strtotime($request->end_date))])
-                    ->where('status', 'completed')
-                    ->paginate(10);
-            }
-            if($request->search_mode == 'm'){
-                $rides = RideOffers::whereMonth('departure_time', '=', date('m',strtotime($request->date)))
-                    ->where('status', 'completed')
-                    ->paginate(10);
-            }
-            if($request->search_mode == 'y'){
-                $rides = RideOffers::whereYear('departure_time', '=', date('Y',strtotime($request->date)))
-                    ->where('status', 'completed')
-                    ->paginate(10);
-            }
-            if($request->filter == 'req'){
-                if($request->search_mode == 'rd'){
-                    $reqs = RideOffers::whereDate('departure_time', '=', date('Y-m-d',strtotime($request->date)))
-                        ->where('status', 'completed')
-                        ->where('request_id', '!=', 0)
-                        ->paginate(10);
-                }
-                if($request->search_mode == 'rw'){
-                    $reqs = RideOffers::whereBetween('departure_time', [date('Y-m-d',strtotime($request->start_date)), date('Y-m-d',strtotime($request->end_date))])
-                        ->where('status', 'completed')
-                        ->where('request_id', '!=', 0)
-                        ->paginate(10);
-                }
-                if($request->search_mode == 'rm'){
-                    $reqs = RideOffers::whereMonth('departure_time', '=', date('m',strtotime($request->date)))
-                        ->where('status', 'completed')
-                        ->where('request_id', '!=', 0)
-                        ->paginate(10);
-                }
-                if($request->search_mode == 'ry'){
-                    $reqs = RideOffers::whereYear('departure_time', '=', date('Y',strtotime($request->date)))
-                        ->where('status', 'completed')
-                        ->where('request_id', '!=', 0)
-                        ->paginate(10);
-                }
-            }
+    public function rides(Request $request){
+        $cur_order ='asc';
+        if (isset($request->order)){
+            $cur_order = $request->order;
         }
+            $rides = RideOffers::where('status', 'completed')
+                ->orderBy('id',$cur_order)
+                ->paginate(5);
         foreach($rides as $ride){
             $ride->mate = User::find($ride->offer_by);
             if($ride->req_id != null){
@@ -399,6 +367,23 @@ class Admin extends Controller
                 $ride->ride_req = $ride_req;
             }
         }
+        $slug = 'rides';
+        return view('admin.pages.rides', [
+            'data' => $rides,
+            'slug' => $slug,
+            'footer_js' => 'admin.pages.js.selector-js'
+        ]);
+    }
+
+    public function requests(Request $request){
+        $cur_order ='asc';
+        if (isset($request->order)){
+            $cur_order = $request->order;
+        }
+        $reqs = RideOffers::where('status', 'completed')
+            ->where('request_id', '!=', 0)
+            ->orderBy('id',$cur_order)
+            ->paginate(5);
         if(!empty($reqs)){
             foreach($reqs as $req){
                 $req->mate = User::find($req->offer_by);
@@ -407,12 +392,11 @@ class Admin extends Controller
                 $req->ride_req = $ride_req;
             }
         }
-        $slug = 'rides';
-        return view('admin.pages.ride-details', [
-            'data' => $rides,
+        $slug = 'requests';
+        return view('admin.pages.requests', [
             'reqs' => $reqs,
             'slug' => $slug,
-            'footer_js' => 'admin.pages.js.ride-details-js'
+            'footer_js' => 'admin.pages.js.selector-js'
         ]);
     }
 
@@ -496,12 +480,17 @@ class Admin extends Controller
                 ->get();
             foreach ($ro as $r){
                 $rc = RideComp::where('ride_id',$r->id)->first();
+                if(!empty($rc)){
                     if($request->section == 'daily'){
                         if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
                             $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
-                            $r->amount = $rc->total_fair;
+                            if($rc->total_fair != null){
+                                $r->amount = $rc->total_fair;
+                            }else{
+                                $r->amount = 0;
+                            }
                         }
                     }
                     if ($request->section == 'weekly'){
@@ -510,7 +499,11 @@ class Admin extends Controller
                                 $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                                 $r->time = date('H:i A',strtotime($rc->start_time));
-                                $r->amount = $rc->total_fair;
+                                if($rc->total_fair != null){
+                                    $r->amount = $rc->total_fair;
+                                }else{
+                                    $r->amount = 0;
+                                }
                             }
                         }
                     }
@@ -519,7 +512,11 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
-                            $r->amount = $rc->total_fair;
+                            if($rc->total_fair != null){
+                                $r->amount = $rc->total_fair;
+                            }else{
+                                $r->amount = 0;
+                            }
                         }
                     }
                     if($request->section == 'yearly'){
@@ -527,9 +524,14 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
-                            $r->amount = $rc->total_fair;
+                            if($rc->total_fair != null){
+                                $r->amount = $rc->total_fair;
+                            }else{
+                                $r->amount = 0;
+                            }
                         }
                     }
+                }
             }
             return json_encode($ro);
         }
@@ -537,43 +539,63 @@ class Admin extends Controller
         $ro = RideOffers::where('status','completed')
             ->get();
         foreach ($ro as $r){
+            $user = User::find($r->offer_by);
+            $r->name = $user->name;
             $rc = RideComp::where('ride_id',$r->id)->first();
-            if($request->section == 'daily'){
-                if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
-                    $r->checked = 'yes';
-                    $r->ride_no = $r->id;
-                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                    $r->time = date('H:i A',strtotime($rc->start_time));
-                    $r->amount = $rc->total_fair;
-                }
-            }
-            if ($request->section == 'weekly'){
-                for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
-                    if($i == date('d',strtotime($rc->start_time))){
+            if(!empty($rc)){
+                if($request->section == 'daily'){
+                    if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
                         $r->checked = 'yes';
                         $r->ride_no = $r->id;
                         $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                         $r->time = date('H:i A',strtotime($rc->start_time));
-                        $r->amount = $rc->total_fair;
+                        if($rc->total_fair != null){
+                            $r->amount = $rc->total_fair;
+                        }else{
+                            $r->amount = 0;
+                        }
                     }
                 }
-            }
-            if ($request->section == 'monthly'){
-                if(date('m',strtotime($rc->start_time)) == date('m',strtotime($request->date))){
-                    $r->checked = 'yes';
-                    $r->ride_no = $r->id;
-                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                    $r->time = date('H:i A',strtotime($rc->start_time));
-                    $r->amount = $rc->total_fair;
+                if ($request->section == 'weekly'){
+                    for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
+                        if($i == date('d',strtotime($rc->start_time))){
+                            $r->checked = 'yes';
+                            $r->ride_no = $r->id;
+                            $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            if($rc->total_fair != null){
+                                $r->amount = $rc->total_fair;
+                            }else{
+                                $r->amount = 0;
+                            }
+                        }
+                    }
                 }
-            }
-            if($request->section == 'yearly'){
-                if(date('Y',strtotime($rc->start_time)) == date('Y',strtotime($request->date))){
-                    $r->checked = 'yes';
-                    $r->ride_no = $r->id;
-                    $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                    $r->time = date('H:i A',strtotime($rc->start_time));
-                    $r->amount = $rc->total_fair;
+                if ($request->section == 'monthly'){
+                    if(date('m',strtotime($rc->start_time)) == date('m',strtotime($request->date))){
+                        $r->checked = 'yes';
+                        $r->ride_no = $r->id;
+                        $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        if($rc->total_fair != null){
+                            $r->amount = $rc->total_fair;
+                        }else{
+                            $r->amount = 0;
+                        }
+                    }
+                }
+                if($request->section == 'yearly'){
+                    if(date('Y',strtotime($rc->start_time)) == date('Y',strtotime($request->date))){
+                        $r->checked = 'yes';
+                        $r->ride_no = $r->id;
+                        $r->start_time = date('Y-m-d',strtotime($rc->start_time));
+                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        if($rc->total_fair != null){
+                            $r->amount = $rc->total_fair;
+                        }else{
+                            $r->amount = 0;
+                        }
+                    }
                 }
             }
         }
@@ -584,13 +606,13 @@ class Admin extends Controller
         $user->status = 'blocked';
         $user->save();
         return redirect()
-            ->to('admin/drivers/view/'.$request->user_id);
+            ->to('admin/'. $request->role .'/view/'.$request->user_id);
     }
     public function unblock(Request $request){
         $user = User::find($request->user_id);
         $user->status = 'verified';
         $user->save();
         return redirect()
-            ->to('admin/drivers/view/'.$request->user_id);
+            ->to('admin/'. $request->role .'/view/'.$request->user_id);
     }
 }
