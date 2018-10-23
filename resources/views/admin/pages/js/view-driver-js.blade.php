@@ -21,6 +21,7 @@
                     var date = $("#dailypicker01").find(".active").data("day");
                     let link = '<?php echo url('admin/income-statement');?>';
                     var html = '';
+                    var count = 1;
                     $.ajax({
                         type: 'GET',
                         url: link,
@@ -28,16 +29,24 @@
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
+                            var total = 0;
                             $.each(JSON.parse(data),function (i,e) {
                                 if(e.checked === 'yes') {
                                     html += '<tr>' +
+                                        '<td>'+count+'</td>' +
                                         '<td>'+e.start_time+'</td>' +
                                         '<td>'+e.time+'</td>' +
                                         '<td>'+e.amount+'</td>' +
                                         '</tr>';
+                                    count++;
+                                    total += parseInt(e.amount);
                                 }
                             });
-                            $('#income-data').html(html);
+                            $('#income-data').html(html+'<tr>' +
+                                '<td></td>'+
+                                '<td colspan="2">Total Income</td>' +
+                                '<td>'+total+'</td>' +
+                                '</tr>');
                         },
                         error: function(xhr, textStatus, error){
                             //alert(textStatus);
@@ -61,23 +70,32 @@
                             var drId = $(this).attr('rel');
                             let link = '<?php echo url('admin/income-statement');?>';
                             var html = '';
+                            var count = 1;
                             $.ajax({
                                 type: 'GET',
                                 url: link,
                                 data: {'section':'weekly','id':drId,'start_date':startDate.toISOString().split('T')[0],'end_date':endDate.toISOString().split('T')[0]},
                                 dataType: 'text',
                                 success: function(data, textStatus, xhr){
-                                    console.log(data);
+                                    //console.log(data);
+                                    var total = 0;
                                     $.each(JSON.parse(data),function (i,e) {
                                         if(e.checked === 'yes') {
                                             html += '<tr>' +
+                                                '<td>'+count+'</td>' +
                                                 '<td>'+e.start_time+'</td>' +
                                                 ' <td>'+e.time+'</td>' +
                                                 '<td>'+e.amount+'</td>' +
                                                 '</tr>';
+                                            count++;
+                                            total += parseInt(e.amount);
                                         }
                                     });
-                                    $('#income-data').html(html);
+                                    $('#income-data').html(html+'<tr>' +
+                                        '<td></td>'+
+                                        '<td colspan="2">Total Income</td>' +
+                                        '<td>'+total+'</td>' +
+                                        '</tr>');
                                 },
                                 error: function(xhr, textStatus, error){
                                     //alert(textStatus);
@@ -101,6 +119,7 @@
                     let link = '<?php echo url('/admin/income-statement');?>';
                     //alert(date);
                     var html = '';
+                    var count = 1;
                     $.ajax({
                         type: 'GET',
                         url: link,
@@ -108,16 +127,24 @@
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
+                            var total = 0;
                             $.each(JSON.parse(data),function (i,e) {
                                 if(e.checked === 'yes') {
                                     html += '<tr>' +
+                                        '<td>'+count+'</td>' +
                                         '<td>'+e.start_time+'</td>' +
                                         ' <td>'+e.time+'</td>' +
                                         '<td>'+e.amount+'</td>' +
                                         '</tr>';
+                                    count++;
+                                    total += parseInt(e.amount);
                                 }
                             });
-                            $('#income-data').html(html);
+                            $('#income-data').html(html+'<tr>' +
+                                '<td></td>'+
+                                '<td colspan="2">Total Income</td>' +
+                                '<td>'+total+'</td>' +
+                                '</tr>');
                         },
                         error: function(xhr, textStatus, error){
                             //alert(textStatus);
@@ -139,6 +166,7 @@
                     let link = '<?php echo url('admin/income-statement');?>';
                     //alert(date);
                     var html = '';
+                    var count = 1;
                     $.ajax({
                         type: 'GET',
                         url: link,
@@ -146,16 +174,24 @@
                         dataType: 'text',
                         success: function(data, textStatus, xhr){
                             //console.log(data);
+                            var total = 0;
                             $.each(JSON.parse(data),function (i,e) {
                                 if(e.checked === 'yes') {
                                     html += '<tr>' +
+                                        '<td>'+count+'</td>' +
                                         '<td>'+e.start_time+'</td>' +
                                         ' <td>'+e.time+'</td>' +
                                         '<td>'+e.amount+'</td>' +
                                         '</tr>';
+                                    count++;
+                                    total += parseInt(e.amount);
                                 }
                             });
-                            $('#income-data').html(html);
+                            $('#income-data').html(html+'<tr>' +
+                                '<td></td>'+
+                                '<td colspan="2">Total Income</td>' +
+                                '<td>'+total+'</td>' +
+                                '</tr>');
                         },
                         error: function(xhr, textStatus, error){
                             //alert(textStatus);

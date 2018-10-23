@@ -22,6 +22,7 @@
                     dataType: 'text',
                     success: function(data, textStatus, xhr){
                         //console.log(data);
+                        var total = 0;
                         $.each(JSON.parse(data),function (i,e) {
                             if(e.checked === 'yes') {
                                 html += '<tr>' +
@@ -33,12 +34,13 @@
                                     '<td class="total-amount">'+e.amount+'</td>' +
                                     '</tr>';
                                 count++;
+                                total += parseInt(e.amount);
                             }
                         });
                         $('#income-data').html(html+'<tr>' +
                             '<td></td><td></td><td></td>'+
                             '<td colspan="2">Total Income</td>' +
-                            '<td></td>' +
+                            '<td>'+total+'</td>' +
                             '</tr>');
                     },
                     error: function(xhr, textStatus, error){
@@ -70,6 +72,7 @@
                             dataType: 'text',
                             success: function(data, textStatus, xhr){
                                 console.log(data);
+                                var total = 0;
                                 $.each(JSON.parse(data),function (i,e) {
                                     if(e.checked === 'yes') {
                                         html += '<tr>' +
@@ -81,12 +84,13 @@
                                             '<td>'+e.amount+'</td>' +
                                             '</tr>';
                                         count++;
+                                        total += parseInt(e.amount);
                                     }
                                 });
                                 $('#income-data').html(html+'<tr>' +
                                     '<td></td><td></td><td></td>'+
                                     '<td colspan="2">Total Income</td>' +
-                                    '<td></td>' +
+                                    '<td>'+total+'</td>' +
                                     '</tr>');
                             },
                             error: function(xhr, textStatus, error){
@@ -118,6 +122,7 @@
                     dataType: 'text',
                     success: function(data, textStatus, xhr){
                         //console.log(data);
+                        var total = 0;
                         $.each(JSON.parse(data),function (i,e) {
                             if(e.checked === 'yes') {
                                 html += '<tr>' +
@@ -129,12 +134,13 @@
                                     '<td class="total-amount">'+e.amount+'</td>' +
                                     '</tr>';
                                 count++;
+                                total += parseInt(e.amount);
                             }
                         });
                         $('#income-data').html(html+'<tr>' +
                             '<td></td><td></td><td></td>'+
                             '<td colspan="2">Total Income</td>' +
-                            '<td></td>' +
+                            '<td>'+ total +'</td>' +
                             '</tr>');
                     },
                     error: function(xhr, textStatus, error){
@@ -164,6 +170,7 @@
                     dataType: 'text',
                     success: function(data, textStatus, xhr){
                         //console.log(data);
+                        var total = 0;
                         $.each(JSON.parse(data),function (i,e) {
                             if(e.checked === 'yes') {
                                 html += '<tr>' +
@@ -175,12 +182,13 @@
                                     '<td>'+e.amount+'</td>' +
                                     '</tr>';
                                 count++;
+                                total += parseInt(e.amount);
                             }
                         });
                         $('#income-data').html(html+'<tr>' +
                             '<td></td><td></td><td></td>'+
                             '<td colspan="2">Total Income</td>' +
-                            '<td></td>' +
+                            '<td>'+total+'</td>' +
                             '</tr>');
                     },
                     error: function(xhr, textStatus, error){

@@ -156,6 +156,7 @@
                                 <table class="table table-hover table-responsive">
                                     <thead>
                                     <tr>
+                                        <th>Serial</th>
                                         <th>Date</th>
                                         <th>Time</th>
                                         <th>Amount (USD)</th>
