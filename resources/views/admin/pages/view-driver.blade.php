@@ -87,10 +87,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1; ?>
+                            @php $count = 1; $total = 0;@endphp
                             @foreach($rides as $ride)
                             <tr>
-                                <td>{{ $i++ }}</td>
+                                <td>{{ $count++ }}</td>
                                 <td>{{ $ride->id }}</td>
                                 <td>{{ $ride->origin }}</td>
                                 <td>{{ $ride->destination }}</td>
@@ -103,6 +103,7 @@
                                 <td>{{ $ride->vehicle->car_plate_no }}</td>
                                 <td>{{ $ride->status }}</td>
                             </tr>
+                                @php $total += $ride->price_per_seat @endphp
                             @endforeach
                             <tr>
                                 <td></td>
@@ -110,7 +111,7 @@
                                 <td></td>
                                 <td></td>
                                 <td colspan="3">Total Amount</td>
-                                <td>500</td>
+                                <td>{{ $total }}</td>
                             </tr>
                             </tbody>
                         </table>

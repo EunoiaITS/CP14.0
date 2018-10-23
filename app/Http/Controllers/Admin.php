@@ -447,7 +447,7 @@ class Admin extends Controller
 
         $rides = RideOffers::where('offer_by', $id)
             ->where('status', 'completed')
-            ->paginate(10);
+            ->paginate(3);
         foreach($rides as $ride){
             $books = RideBookings::where('ride_id', $ride->id)
                 ->where('status', 'confirmed')
