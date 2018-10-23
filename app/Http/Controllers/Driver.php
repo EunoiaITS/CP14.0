@@ -186,7 +186,10 @@ class Driver extends Controller
             $req_details = Ride_request::find($req_id);
             $rides = 0;
             $ride_check = RideOffers::where(['offer_by' => Auth::id()])
-                ->where('status', 'active')
+                ->where(function($q){
+                    $q->where('status', 'active')
+                        ->orWhere('status', 'in-progress');
+                })
                 ->get();
             foreach($ride_check as $rc){
                 $fromUser = new \DateTime($req_details->departure_date);
@@ -258,7 +261,10 @@ class Driver extends Controller
 
             $rides = 0;
             $ride_check = RideOffers::where(['offer_by' => Auth::id()])
-                ->where('status', 'active')
+                ->where(function($q){
+                    $q->where('status', 'active')
+                        ->orWhere('status', 'in-progress');
+                })
                 ->get();
             foreach($ride_check as $rc){
                 $fromUser = new \DateTime($ro_valid['departure_time']);
@@ -571,6 +577,13 @@ class Driver extends Controller
                         'from' => Auth::id(),
                         'ride_id' => $request->ride_id
                     ]));
+                    $cancel_books = RideBookings::where('ride_id', $request->ride_id)
+                        ->where('status', 'booked')
+                        ->get();
+                    foreach($cancel_books as $cancel){
+                        $cancel->status = 'canceled';
+                        $cancel->save();
+                    }
                     return redirect()
                         ->to($request->ride_url)
                         ->with('success', 'Your ride was started successfully!');

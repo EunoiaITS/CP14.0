@@ -11,7 +11,7 @@
                     @foreach($data as $d)
 
                         <!-- single notification area -->
-                        <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12 ridemate-notification-offer padding-left-o @if($d->status == 'unread') {{ 'read-notification' }} @endif">
+                        <div onmousedown="readNot(event, '{{ $d->id }}');" class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12 ridemate-notification-offer padding-left-o @if($d->status == 'unread') {{ 'read-notification' }} @endif" id="not-not-{{ $d->id }}">
                             <div class="col-sm-8 col-xs-10 padding-left-o">
                                 <div class="get-car-details-area clearfix">
                                     <span><?php echo $d->message; ?></span>

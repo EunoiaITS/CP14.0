@@ -31,14 +31,14 @@
                             <h3 class="text-center">Notifications</h3>
                             <ul class="get-notificaton-list">
                                 @foreach($notify as $n)
-                                    <li class="@if($n->status == 'unread') {{ 'view-bookings-unread' }} @endif" id="notify-{{ $n->id }}">
+                                    <li onmousedown="readNot(event, '{{ $n->id }}');" class="@if($n->status == 'unread') {{ 'view-bookings-unread' }} @endif" id="notify-{{ $n->id }}">
                                         <div class="notificaton-text">
                                             <span class="get-notiline-text">
                                                 <div class="notification-time"><i class="fas fa-clock"></i> <span>{{ date('d M Y', strtotime($n->created_at)) }} at {{ date('H:i a', strtotime($n->created_at)) }}</span></div>
                                                 <?php echo $n->message; ?>
                                             </span>
                                             @if($n->ad_link != '')
-                                            <a href="{{ $n->ad_link }}" onmousedown="readNot(event, '{{ $n->id }}');"><button class="btn btn-info get-notification">VISIT FOR DETAILS</button></a>
+                                            <a href="{{ $n->ad_link }}"><button class="btn btn-info get-notification">VISIT FOR DETAILS</button></a>
                                             @endif
                                         </div>
                                     </li>
