@@ -37,13 +37,13 @@
                 '</li>';
         if(data.ev == 'offer-created'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Offer</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Offer</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -57,13 +57,13 @@
         if(data.ev == 'ride-request'){
             @if(Auth::user()->role == 'driver')
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">Offer Ride</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">Offer Ride</button></a>'+
                 '</div>'+
                 '</li>';
             }
@@ -77,13 +77,13 @@
 
         if(data.ev == 'ride-booked'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -96,13 +96,13 @@
 
         if(data.ev == 'booking-accepted'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -115,13 +115,13 @@
 
         if(data.ev == 'booking-canceled'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -134,13 +134,13 @@
 
         if(data.ev == 'ride-start'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -153,13 +153,13 @@
 
         if(data.ev == 'ride-end'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -172,13 +172,13 @@
 
         if(data.ev == 'ride-edit'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -191,13 +191,13 @@
 
         if(data.ev == 'req-expired'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">My Requests</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">My Requests</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -210,13 +210,13 @@
 
         if(data.ev == 'ride-expired'){
             if($.inArray(user_id, Object.keys(data.rec)) !== -1){
-                newNotificationHtml = '<li class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
+                newNotificationHtml = '<li onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');" class="view-bookings-unread" id="notify-'+data.rec[parseInt(user_id)]+'">'+
                 '<div class="notificaton-text">'+
                 '<span class="get-notiline-text">'+
                 '<div class="notification-time"><i class="fas fa-clock"></i> <span>'+data.time_at+'</span></div>'+
                 data.msg+
                 '</span>'+
-                '<a href="'+data.ad_link+'" onmousedown="readNot(event, \''+data.rec[parseInt(user_id)]+'\');"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
+                '<a href="'+data.ad_link+'"><button class="btn btn-info get-notification">View Ride Details</button></a>'+
                 '</div>'+
                 '</li>';
                 notifications.html(newNotificationHtml + existingNotifications);
@@ -238,7 +238,11 @@
                 success: function(data){
                     if(data.stat == 'true'){
                         $('#notify-'+id).removeAttr('class');
+                        $('#not-not-'+id).removeClass('read-notification');
                         notificationsCount -= 1;
+                        if(notificationsCount <= 0){
+                            notificationsCount = 0;
+                        }
                         notificationsCountElem.text(notificationsCount);
                     }
                 }
