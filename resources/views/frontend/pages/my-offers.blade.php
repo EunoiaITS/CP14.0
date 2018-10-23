@@ -18,6 +18,11 @@
                 <!-- Ride details -->
                 <div class="get-ridemate-single">
                     <h3 class="check-total-fare text-center">Active Rides</h3>
+                    @if(isset($oc))
+                        <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12">
+                            <h4 class="text-center alert alert-success">{{ $oc . ' Search Results Found !' }}</h4>
+                        </div>
+                    @endif
                     <div class="col-sm-6">
                         @include('frontend.includes.messages')
                         @if(isset($errors))

@@ -17,6 +17,11 @@
             <!-- Ride details -->
             <div class="get-ridemate-single">
                 <h3 class="check-total-fare text-center">Requests of Rides</h3>
+                @if(isset($rrc))
+                    <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12">
+                        <h4 class="text-center alert alert-success">{{ $rrc . ' Search Results Found !' }}</h4>
+                    </div>
+                @endif
                 <!-- single request area -->
                 @foreach($data as $d)
                 <div class="col-md-8 col-md-offset-2  col-sm-12 col-xs-12 ridemate-details-offer padding-left-o">
