@@ -1396,115 +1396,137 @@ ul.filter-a-z li a{
   }
 
 
-  /*jquery weekpicker css */
+/*jquery weekpicker css */
 
-  .ui-datepicker {
-    border-radius: 0;
-    padding: 0 0 1.5em;
-    border: 0;
-    box-shadow: 2px 2px 5px #aaa;
-    width: 14.5em;
-  }
+    .ui-datepicker {
+      border-radius: 0;
+      padding: 0 0 1.5em;
+      border: 0;
+      box-shadow: 0px #aaa;
+      width: 14.5em;
+    }
 
-  .ui-datepicker table {
-    font-size: 13px;
-  }
+    .ui-datepicker table {
+      font-size: 13px;
+    }
 
-  .ui-datepicker th,
-  .ui-datepicker td {
-    padding: 0;
-    width: 10px;
-  }
+    .ui-datepicker th,
+    .ui-datepicker td {
+      padding: 0;
+      width: 10px;
+    }
 
-  .ui-datepicker th {
-    text-transform: uppercase;
-    color: #337ab7;
-    font-size: .8em;
-    padding-bottom: 1em;
-  }
+    .ui-datepicker th {
+      font-family: 'Roboto Slab', serif;
+      text-transform: capitalize;
+      color: #606060;
+      font-size: 16px;
+      padding-bottom: 1em;
+    }
 
-  .ui-datepicker .ui-datepicker-header {
-    border: none;
-    border-radius: 0;
-    background: #337ab7;
-    color: #fff;
-    margin-bottom: 2em;
-  }
+    .ui-datepicker .ui-datepicker-header {
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: #606060;
+      margin-bottom: 15px;
+    }
 
-  .ui-datepicker .ui-datepicker-title {
-    line-height: 1;
-    padding: 1em 0;
-    font-family: 'Roboto Slab', sans-serif;
-    text-transform: uppercase;
-  }
+    .ui-datepicker .ui-datepicker-title {
+      line-height: 1;
+      padding: 5px 0;
+      text-transform: capitalize;
+      font-family: 'Roboto Slab', serif;
+    }
 
-  .ui-datepicker .ui-datepicker-month {
-    display: block;
-    font-size: .8em;
-    margin-bottom: .4em;
-  }
+    .ui-datepicker .ui-datepicker-month {
+      display: inline-block;
+      font-size: .8em;
+      margin-bottom: .4em;
+    }
 
-  .ui-datepicker .ui-datepicker-year {
-    color: rgba(255, 255, 255, 0.7);
-  }
+    .ui-datepicker .ui-datepicker-year {
+        color: #606060;
+        display: inline-block;
+    }
+    .ui-datepicker .ui-datepicker-prev,
+    .ui-datepicker .ui-datepicker-next {
+      top: 50%;
+      margin-top: -16px;
+      border: 0;
+      cursor: pointer;
+    }
 
-  .ui-datepicker .ui-datepicker-prev,
-  .ui-datepicker .ui-datepicker-next {
-    top: 50%;
-    margin-top: -16px;
-    border: 0;
-    cursor: pointer;
-  }
+    .ui-datepicker .ui-datepicker-prev {
+      left: 10px;
+    }
 
-  .ui-datepicker .ui-datepicker-prev {
-    left: 10px;
-  }
+    .ui-datepicker .ui-datepicker-next {
+      right: 10px;
+    }
 
-  .ui-datepicker .ui-datepicker-next {
-    right: 10px;
-  }
+    .ui-datepicker .ui-datepicker-prev .ui-icon {
+      background-position: -1px -2px;
+    }
 
-  .ui-datepicker .ui-datepicker-prev .ui-icon {
-    background-position: -96px -32px;
-  }
+    .ui-datepicker .ui-datepicker-prev:hover .ui-icon {
+      background-position:-1px -2px;
+    }
 
-  .ui-datepicker .ui-datepicker-prev:hover .ui-icon {
-    background-position: -96px -48px;
-  }
+    .ui-datepicker .ui-datepicker-next .ui-icon {
+        background-position: -26px -2px;
+    }
 
-  .ui-datepicker .ui-datepicker-next .ui-icon {
-    background-position: -32px -32px;
-  }
+    .ui-datepicker .ui-datepicker-next:hover .ui-icon {
+      background-position: -26px -2px;
+    }
+    .ui-icon {
+        width: 20px;
+        height: 25px;
+    }
+    .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+        display: block;
+        position: absolute;
+        left: 50%;
+        margin-left: -11px;
+        top: 50%;
+        margin-top: -13px;
+    }
 
-  .ui-datepicker .ui-datepicker-next:hover .ui-icon {
-    background-position: -32px -48px;
-  }
+    .ui-datepicker .ui-state-default {
+      font-family: 'Roboto Slab', serif;
+      border: none;
+      background: transparent;
+      padding: 0;
+      height: 40px;
+      line-height: 38px;
+      text-align: center;
+      font-size: 16px;
+    }
 
-  .ui-datepicker .ui-state-default {
-    border: none;
-    background: transparent;
-    padding: 0;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-  }
+    .ui-datepicker td.ui-datepicker-current-day .ui-state-default,
+    .ui-datepicker .ui-state-hover {
+      background: #62118d;
+      color: #fff;
+    }
+    .ui-datepicker-next-hover,
+    .ui-datepicker-prev-hover{
+      background: #ddd !important;
+    }
 
-  .ui-datepicker td.ui-datepicker-current-day .ui-state-default,
-  .ui-datepicker .ui-state-hover {
-    background: #337ab7;
-    color: #fff;
-  }
-
-  .ui-datepicker .ui-priority-secondary,
-  .ui-datepicker .ui-widget-content .ui-priority-secondary,
-  .ui-datepicker .ui-widget-header .ui-priority-secondary {
-    opacity: .4;
-    filter: Alpha(Opacity=40);
-  }
-  #week-start{
-    text-align: center;
-    margin:10px auto;
-    display: table;
+    .ui-datepicker .ui-priority-secondary,
+    .ui-datepicker .ui-widget-content .ui-priority-secondary,
+    .ui-datepicker .ui-widget-header .ui-priority-secondary {
+      opacity: .4;
+      filter: Alpha(Opacity=40);
+    }
+    .ui-widget-header .ui-icon {
+        background-image: url(../img/arrow.png);
+    }
+    .datepicker table tr td span.active:hover, .datepicker table tr td span.active:hover:hover, .datepicker table tr td span.active.disabled:hover, .datepicker table tr td span.active.disabled:hover:hover, .datepicker table tr td span.active:focus, .datepicker table tr td span.active:hover:focus, .datepicker table tr td span.active.disabled:focus, .datepicker table tr td span.active.disabled:hover:focus, .datepicker table tr td span.active:active, .datepicker table tr td span.active:hover:active, .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover:active, .datepicker table tr td span.active.active, .datepicker table tr td span.active:hover.active, .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:hover.active, .open .dropdown-toggle.datepicker table tr td span.active, .open .dropdown-toggle.datepicker table tr td span.active:hover, .open .dropdown-toggle.datepicker table tr td span.active.disabled, .open .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
+      color: #ffffff;
+      background-color: #62118d;
+      border-color: #62118d;
   }
 
 @media (min-width: 1200px){
