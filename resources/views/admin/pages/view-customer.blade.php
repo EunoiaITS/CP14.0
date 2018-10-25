@@ -38,11 +38,11 @@
                             </div>
                             <div class="name-text">
                                 <span class="name-text-user">Date Of birth</span>
-                                <span class="name-text-name">{{ date('Y-m-d',strtotime($details->dob)) }}</span>
+                                <span class="name-text-name">@if(isset($details->dob)){{ date('Y-m-d',strtotime($details->dob)) }}@endif</span>
                             </div>
                             <div class="name-text">
                                 <span class="name-text-user">Gender</span>
-                                <span class="name-text-name">{{ $details->gender }}</span>
+                                <span class="name-text-name">@if(isset($details->gender)){{ $details->gender }}@endif</span>
                             </div>
                         </div>
                     </div>

@@ -175,7 +175,7 @@ class Admin extends Controller
         }
         $dr = User::where('role', 'driver')
             ->orderBy('name',$cur_order)
-            ->paginate(4);
+            ->paginate(10);
         foreach ($dr as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -275,7 +275,7 @@ class Admin extends Controller
         }
         $cus = User::where('role', 'customer')
             ->orderBy('name',$cur_order)
-            ->paginate(5);
+            ->paginate(10);
         foreach ($cus as $c){
             $usd = User_data::where('user_id', $c->id);
             $c->usd = $usd;
@@ -403,9 +403,8 @@ class Admin extends Controller
     /**
      * View Customer - shows the detailed info of a customer on the system
      */
-    public function viewCustomer(Request $request){
+    public function viewCustomer(Request $request,$id){
         $slug = '';
-        $id = $request->route('id');
         $user = User::find($id);
         $user_details = User_data::where('user_id', $id)->first();
         $bookings = RideBookings::where('user_id', $id)
@@ -484,6 +483,7 @@ class Admin extends Controller
                     if($request->section == 'daily'){
                         if(date('d',strtotime($rc->start_time)) == date('d',strtotime($request->date))){
                             $r->checked = 'yes';
+                            $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
                             if($rc->total_fair != null){
@@ -497,6 +497,7 @@ class Admin extends Controller
                         for($i = (date('d',strtotime($request->start_date))+1); $i <= (date('d',strtotime($request->end_date))+1); $i++){
                             if($i == date('d',strtotime($rc->start_time))){
                                 $r->checked = 'yes';
+                                $r->ride_no = $r->id;
                                 $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                                 $r->time = date('H:i A',strtotime($rc->start_time));
                                 if($rc->total_fair != null){
@@ -510,6 +511,7 @@ class Admin extends Controller
                     if ($request->section == 'monthly'){
                         if(date('m',strtotime($rc->start_time)) == date('m',strtotime($request->date))){
                             $r->checked = 'yes';
+                            $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
                             if($rc->total_fair != null){
@@ -522,6 +524,7 @@ class Admin extends Controller
                     if($request->section == 'yearly'){
                         if(date('Y',strtotime($rc->start_time)) == date('Y',strtotime($request->date))){
                             $r->checked = 'yes';
+                            $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
                             $r->time = date('H:i A',strtotime($rc->start_time));
                             if($rc->total_fair != null){

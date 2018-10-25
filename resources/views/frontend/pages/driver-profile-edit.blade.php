@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-contact">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Your Phone Number">
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="1xxxx xxx xxx">
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-dle">Driving License No. & Expiry Date</label>

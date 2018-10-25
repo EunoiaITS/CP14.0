@@ -10,17 +10,17 @@
                         <div class="getwobo-pagination">
                             <nav aria-label="Page navigation" class="pull-right">
                                 <ul class="pagination">
-                                    <li id="one"><a href="#">1</a></li>
-                                    <li id="two"><a href="#">2</a></li>
-                                    <li id="three"><a href="#">3</a></li>
-                                    <li id="four"><a href="#">4</a></li>
-                                    <li id="five"><a href="#">5</a></li>
-                                    <li id="six"><a href="#">6</a></li>
-                                    <li id="seven"><a href="#">7</a></li>
-                                    <li id="eight"><a href="#">8</a></li>
-                                    <li id="nine"><a href="#">9</a></li>
-                                    <li id="ten"><a href="#">10</a></li>
-                                    <li id="eleven"><a href="#">11</a></li>
+                                    <li class="one"><a href="#">1</a></li>
+                                    <li class="two"><a href="#">2</a></li>
+                                    <li class="three"><a href="#">3</a></li>
+                                    <li class="four"><a href="#">4</a></li>
+                                    <li class="five"><a href="#">5</a></li>
+                                    <li class="six"><a href="#">6</a></li>
+                                    <li class="seven"><a href="#">7</a></li>
+                                    <li class="eight"><a href="#">8</a></li>
+                                    <li class="nine"><a href="#">9</a></li>
+                                    <li class="ten"><a href="#">10</a></li>
+                                    <li class="eleven"><a href="#">11</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -32,17 +32,17 @@
                     <div class="getwobo-pagination">
                         <nav aria-label="Page navigation" class="pull-right">
                             <ul class="pagination">
-                                <li id="one"><a href="#">1</a></li>
-                                <li id="two"><a href="#">2</a></li>
-                                <li id="three"><a href="#">3</a></li>
-                                <li id="four"><a href="#">4</a></li>
-                                <li id="five"><a href="#">5</a></li>
-                                <li id="six"><a href="#">6</a></li>
-                                <li id="seven"><a href="#">7</a></li>
-                                <li id="eight"><a href="#">8</a></li>
-                                <li id="nine"><a href="#">9</a></li>
-                                <li id="ten"><a href="#">10</a></li>
-                                <li id="eleven"><a href="#">11</a></li>
+                                <li class="one"><a href="#">1</a></li>
+                                <li class="two"><a href="#">2</a></li>
+                                <li class="three"><a href="#">3</a></li>
+                                <li class="four"><a href="#">4</a></li>
+                                <li class="five"><a href="#">5</a></li>
+                                <li class="six"><a href="#">6</a></li>
+                                <li class="seven"><a href="#">7</a></li>
+                                <li class="eight"><a href="#">8</a></li>
+                                <li class="nine"><a href="#">9</a></li>
+                                <li class="ten"><a href="#">10</a></li>
+                                <li class="eleven"><a href="#">11</a></li>
                             </ul>
                         </nav>
                     </div>

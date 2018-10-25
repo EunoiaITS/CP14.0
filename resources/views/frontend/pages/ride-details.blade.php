@@ -79,7 +79,7 @@
                         <li>
                             <div class="ride-seat-icon">
                                 <i class="fas fa-user-times fixed-hover"></i>
-                                <span>Ridermate</span>
+                                <span>Ridemate</span>
                             </div>
                         </li>
                         <?php $total = 1; ?>
@@ -123,7 +123,7 @@
                     <span class="text-right">*Click To Select Your Seat</span>
                     @endif
                     <div class="col-sm-4 padding-left-o">
-                        <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}{{ $data->currency }}</span></h3>
+                        <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')

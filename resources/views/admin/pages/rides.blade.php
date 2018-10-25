@@ -25,7 +25,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-12 col-md-6 col-xs-12 table-responsive">
-                            <table class="table table-hover ">
+                            <table class="table table-hover" id="example" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>No</th>
@@ -58,13 +58,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <nav aria-label="Page navigation example" class="admin-pagination">
-                                        {{ $data->links() }}
-                                    </nav>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -2,9 +2,9 @@
     $(document).ready(function () {
         $('input[type=file]').change(function(e){
             e.preventDefault;
-            $('#loading').html('<img src="{{ asset('/public/assets/frontend/img/loading.gif') }}">');
+            $('#loading').html('<i class="alert alert-success">Uploading...</i>');
             setTimeout(function() {
-                $('#loading').html('');
+                $('#loading').html('<i class="alert alert-success">Uploaded</i>');
             }, 2000);
         });
     });

@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-contact">Contact Number</label>
-                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Ex: 01xxx xxx x00">
+                                    <input type="text" name="contact" class="form-control" value="{{ $usd->contact }}" placeholder="Ex: 1xxxx xxx xxx">
                                 </div>
                                 <div class="form-group">
                                     <label for="ridemate-identi">Identification No.</label>
@@ -114,7 +114,7 @@
                 <!-- ride description -->
                 <div class="ridemate-option-get text-center sign-in-option-get clearfix">
                     <button type="submit" class="btn btn-info btn-offer">Save</button>
-                    <button type="button" class="btn btn-info btn-offer join-us-sign-in">Cancel</button>
+                    <a href="{{ url('/c/profile') }}"><button type="button" class="btn btn-info btn-offer join-us-sign-in">Cancel</button></a>
                 </div>
                 <!--Ride description  -->
                 </form>

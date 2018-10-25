@@ -17,11 +17,18 @@
         });
         $('.count').on('click',function (e) {
            e.preventDefault;
-            count++;
-            //alert(count);
-            $('#req-seats').attr('min',count).val(count);
-            var rel = $('#price').attr('rel');
-            $('#temp-fare').text(rel * count);
+           if($('.count').hasClass('active-class')){
+               count++;
+               //alert(count);
+               $('#req-seats').attr('min',count).val(count);
+               var rel = $('#price').attr('rel');
+               var fare = parseInt($('#temp-fare').text());
+               if(fare > 0){
+                   $('#temp-fare').text((rel * count));
+               }else{
+                   $('#temp-fare').text(rel * count);
+               }
+           }
         });
     });
 </script>

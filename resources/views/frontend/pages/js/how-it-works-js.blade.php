@@ -26,7 +26,7 @@
             '                        <p><i>Get in touch before you travel:</i> Use our secure messaging system. Get to know each other before the ride and easily organise where to meet.</p>');
         var one = '';
         var two = '';
-        $('#one').on('click',function (e) {
+        $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content-bx').html('');
@@ -56,7 +56,7 @@
                 '                        <p><i>Get in touch before you travel:</i> Use our secure messaging system. Get to know each other before the ride and easily organise where to meet.</p>';
             $('#content').html(one);
         });
-        $('#two').on('click',function (e) {
+        $('.two').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content').html('');

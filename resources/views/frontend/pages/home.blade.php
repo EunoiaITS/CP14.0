@@ -172,6 +172,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
+                                        <h3 class="get-user-name"><span>Departure Time <span class="get-right-icon">:</span></span>
+                                            <span class="get-dynamic-name">{{ date('Y-m-d H:i A',strtotime($of->departure_time)) }}</span></h3><br/>
                                         <div class="get-user-ratings">
                                             <ul class="get-rate-user">
                                                 <?php

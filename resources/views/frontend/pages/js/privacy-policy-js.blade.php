@@ -30,7 +30,7 @@
         var three = '';
         var four = '';
         var five = '';
-        $('#one').on('click',function (e) {
+        $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             one = '<p>Last Updated: 14 February,2018</p>\n' +
@@ -60,7 +60,7 @@
                 '</ol>';
             $('#content').html(one);
         });
-        $('#two').on('click',function (e) {
+        $('.two').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             two = '<ol>\n' +
@@ -91,7 +91,7 @@
                 '                            </li>';
             $('#content').html(two);
         });
-        $('#three').on('click',function (e) {
+        $('.three').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             three = '<li><b>HOW WE USE INFORMATION WE COLLECT</b>\n' +
@@ -134,7 +134,7 @@
                 '                            </li>';
             $('#content').html(three);
         });
-        $('#four').on('click',function (e) {
+        $('.four').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             four = '<li><b>SHARING & DISCLOSURE</b>\n' +
@@ -210,7 +210,7 @@
                 '                            </li>';
             $('#content').html(four);
         });
-        $('#five').on('click',function (e) {
+        $('.five').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             five = '<ol><li><b>OTHER IMPORTANT INFORMATION</b>\n' +

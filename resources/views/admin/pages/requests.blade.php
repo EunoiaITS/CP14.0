@@ -25,7 +25,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-12 col-md-6 col-xs-12 table-responsive">
-                            <table class="table table-hover ">
+                            <table class="table table-hover" id="example" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>No</th>
@@ -39,10 +39,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $i = 1; ?>
+                                @php $count = 0; @endphp
                                 @foreach($reqs as $d)
+                                    @php $count++; @endphp
                                     <tr>
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $count }}</td>
                                         <td>{{ $d->id }}</td>
                                         <td>{{ $d->requester->name }}</td>
                                         <td>{{ $d->origin }}</td>

@@ -158,6 +158,7 @@
                                     <thead>
                                     <tr>
                                         <th>Serial</th>
+                                        <th>Ride Id</th>
                                         <th>Date</th>
                                         <th>Time</th>
                                         <th>Amount (USD)</th>

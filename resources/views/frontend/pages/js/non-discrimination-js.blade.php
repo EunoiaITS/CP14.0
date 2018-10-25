@@ -13,7 +13,7 @@
         var two = '';
         var three = '';
         var current = 1;
-        $('#one').on('click',function (e) {
+        $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             current = 1;
@@ -28,7 +28,7 @@
                 '</ol>';
             $('#content').html(one);
         });
-        $('#two').on('click',function (e) {
+        $('.two').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             current = 2;
@@ -77,7 +77,7 @@
                 '</ol>';
             $('#content').html(two);
         });
-        $('#three').on('click',function (e) {
+        $('.three').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             current = 3;

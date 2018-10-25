@@ -44,6 +44,17 @@ $(function() {
   });
 });
 
-$(document).ready(function() {
-    $('#example').DataTable();
+// datatables call
+$('#example').DataTable({
+    responsive: true,
+    "searching": true,
+    "lengthChange": false,
+    "pageLength": 10,
+    "ordering":true,
+    "language": {
+        "paginate": {
+            "previous": "<i class='fa fa-angle-left'></i>",
+            "next": "<i class='fa fa-angle-right'></i>"
+        }
+    }
 });

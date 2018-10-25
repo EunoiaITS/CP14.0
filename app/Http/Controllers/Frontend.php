@@ -340,8 +340,8 @@ class Frontend extends Controller
     public function search(Request $request){
         if($request->isMethod('post')){
             $search_data = RideOffers::where('status','=','active')
-                ->Where('destination' , 'like' , '%'. trim($request->to) .'%')
-                ->whereDate('departure_time', '=', date('Y-m-d',strtotime($request->when)))
+                ->where('destination' , 'like' , '%'. trim($request->to) .'%')
+                ->whereDate('departure_time', '>=', date('Y-m-d',strtotime($request->when)))
                 ->orWhere('origin', 'like', '%'. trim($request->from) .'%')
                 ->orderBy('created_at', 'desc')
                 ->get();

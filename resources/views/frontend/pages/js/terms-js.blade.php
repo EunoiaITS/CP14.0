@@ -28,7 +28,7 @@
         var nine = '';
         var ten = '';
         var eleven = '';
-        $('#one').on('click',function (e) {
+        $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             one = '<p>Please read these Terms of Service carefully as they contain important information about our legal rights, remedies and obligations. By accessing or using the getWOBO platform, you agree to comply with and be bound by these Terms of Service.</p>\n' +
@@ -50,7 +50,7 @@
                 '                        </ol>';
             $('#content').html(one);
         });
-        $('#two').on('click',function (e) {
+        $('.two').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             two = '<h4 class="about-us-details-title">2. Eligibility, Using the getWOBO Platform, Member Verification</h4>\n' +
@@ -63,7 +63,7 @@
                 '                        </ol>';
             $('#content').html(two);
         });
-        $('#three').on('click',function (e) {
+        $('.three').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             three = '<h4 class="about-us-details-title">3. Modification of these Terms</h4>\n' +
@@ -78,7 +78,7 @@
                 '                        </ol>';
             $('#content').html(three);
         });
-        $('#four').on('click',function (e) {
+        $('.four').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             four = '<h4 class="about-us-details-title">5. Content</h4>\n' +
@@ -93,7 +93,7 @@
                 '                        </ol>';
             $('#content').html(four);
         });
-        $('#five').on('click',function (e) {
+        $('.five').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             five = '<h4 class="about-us-details-title">6. Service Fees</h4>\n' +
@@ -117,7 +117,7 @@
             $('#content').html(five);
         });
 
-        $('#six').on('click',function (e) {
+        $('.six').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             six = '<h4 class="about-us-details-title">8. Terms specific for Riders</h4>\n' +
@@ -147,7 +147,7 @@
             $('#content').html(six);
         });
 
-        $('#seven').on('click',function (e) {
+        $('.seven').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             seven = '<h4 class="about-us-details-title">9. Ride Modifications, Cancellations and Refunds</h4>' +
@@ -182,7 +182,7 @@
             $('#content').html(seven);
         });
 
-        $('#eight').on('click',function (e) {
+        $('.eight').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             eight = '<h4 class="about-us-details-title">14. Prohibited Activities</h4>\n' +
@@ -211,7 +211,7 @@
                 '                        </ol>';
             $('#content').html(eight);
         });
-        $('#nine').on('click',function (e) {
+        $('.nine').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             nine = '<h4 class="about-us-details-title">15. Term and Termination, Suspension and other Measures</h4>\n' +
@@ -234,7 +234,7 @@
                 '                        </ol>';
             $('#content').html(nine);
         });
-        $('#ten').on('click',function (e) {
+        $('.ten').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             ten = '<h4 class="about-us-details-title">16. Disclaimers</h4>\n' +
@@ -254,7 +254,7 @@
                 '                        </ol>';
             $('#content').html(ten);
         });
-        $('#eleven').on('click',function (e) {
+        $('.eleven').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             eleven = '<h4 class="about-us-details-title">18. Indemnification</h4>\n' +
