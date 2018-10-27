@@ -124,6 +124,7 @@
                     @endif
                     <div class="col-sm-4 padding-left-o">
                         <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
+                        <input type="hidden" id="fare" value="{{ $data->price_per_seat * $total_books }}">
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')

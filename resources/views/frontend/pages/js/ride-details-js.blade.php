@@ -17,18 +17,25 @@
         });
         $('.count').on('click',function (e) {
            e.preventDefault;
-           if($('.count').hasClass('active-class')){
+           if($(this).hasClass('active-class')){
                count++;
-               //alert(count);
                $('#req-seats').attr('min',count).val(count);
-               var rel = $('#price').attr('rel');
-               var fare = parseInt($('#temp-fare').text());
-               if(fare > 0){
-                   $('#temp-fare').text((rel * count));
-               }else{
-                   $('#temp-fare').text(rel * count);
-               }
+               var price = $('#price').attr('rel');
+               var fare = $('#fare').val();
+               var total = (price * count);
+               var tf = (+total)+(+fare);
+               $('#temp-fare').html(tf);
+           }else{
+               count--;
+               $('#temp-fare').html('');
+               $('#req-seats').attr('min',count).val(count);
+               var price = $('#price').attr('rel');
+               var fare = $('#fare').val();
+               var total = (price * count);
+               var tf = (+total)+(+fare);
+               $('#temp-fare').html(tf);
            }
+
         });
     });
 </script>

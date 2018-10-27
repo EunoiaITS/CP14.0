@@ -165,7 +165,7 @@ class Frontend extends Controller
                 $ro->pull($k);
             }
             foreach($dests_unique as $k => $v){
-                $rides = RideOffers::where(['status' => 'active'])
+                $rides = RideOffers::where(['status' => 'completed'])
                     ->where('destination', $k)
                     ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
                     ->orderBy('departure_time')
@@ -186,7 +186,7 @@ class Frontend extends Controller
                 $ro->pull($k);
             }
             foreach($drivers_unique as $k => $v){
-                $rides = RideOffers::where(['status' => 'active'])
+                $rides = RideOffers::where(['status' => 'completed'])
                     ->where('offer_by', $k)
                     ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
                     ->orderBy('departure_time')
@@ -199,7 +199,7 @@ class Frontend extends Controller
         }
 
         if($opt == 'req-loc'){
-            $ro = RideOffers::where(['status' => 'active'])
+            $ro = RideOffers::where(['status' => 'completed'])
                 ->where('request_id', '!=', 0)
                 ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
                 ->orderBy('departure_time')
@@ -212,7 +212,7 @@ class Frontend extends Controller
                 $ro->pull($k);
             }
             foreach($req_locs_unique as $k => $v){
-                $rides = RideOffers::where(['status' => 'active'])
+                $rides = RideOffers::where(['status' => 'completed'])
                     ->where('destination', $k)
                     ->where('request_id', '!=', 0)
                     ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
@@ -340,9 +340,11 @@ class Frontend extends Controller
     public function search(Request $request){
         if($request->isMethod('post')){
             $search_data = RideOffers::where('status','=','active')
-                ->where('destination' , 'like' , '%'. trim($request->to) .'%')
-                ->whereDate('departure_time', '>=', date('Y-m-d',strtotime($request->when)))
-                ->orWhere('origin', 'like', '%'. trim($request->from) .'%')
+                ->where('departure_time', '>=', date('Y-m-d H:i:s',strtotime($request->when)))
+                ->where(function($q) use ($request){
+                    $q->where('origin','like','%' . $request->from . '%')
+                      ->orWhere('destination','like','%' . $request->to . '%');
+                })
                 ->orderBy('created_at', 'desc')
                 ->get();
             if(!$search_data->first()){
