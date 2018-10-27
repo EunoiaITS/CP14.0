@@ -239,11 +239,6 @@
                     if(data.stat == 'true'){
                         $('#notify-'+id).removeAttr('class');
                         $('#not-not-'+id).removeClass('read-notification');
-                        notificationsCount -= 1;
-                        if(notificationsCount <= 0){
-                            notificationsCount = 0;
-                        }
-                        notificationsCountElem.text(notificationsCount);
                     }
                 }
             });
