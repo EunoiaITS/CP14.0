@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('notify', Notifications::where('to', auth()->user()->id)
                     ->where(['status' => 'unread'])
                     ->orderBy('id', 'desc')
-                    ->get()
+                    ->paginate(5)
                 );
                 if(Auth::user()->role != 'super-admin'){
                     $id = Auth::user()->id;

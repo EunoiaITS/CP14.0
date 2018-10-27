@@ -75,6 +75,8 @@
     ======================--*/
     $(".notification-badge").on('click',function() {
         $(".get-notification-popupbar").toggleClass("add-popupbar");
+        var count = $(".notification-badge").find('span.badge');
+        count.text(0);
     });
 
     $(".edit-badge-area").on('click',function() {
