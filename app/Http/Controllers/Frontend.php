@@ -149,9 +149,7 @@ class Frontend extends Controller
             $page = $request->page;
         }
         $ro = RideOffers::where(['status' => 'completed'])
-            ->whereDate('departure_time', '>=', date('Y-m-d'))
-            ->whereTime('departure_time', '>=', date('H:i:s'))
-            ->orderBy('departure_time')
+            ->orderBy('departure_time','desc')
             ->get();
         $dests = $drivers = $req_locs = array();
         $dests_unique = $drivers_unique = $req_locs_unique = array();
@@ -167,8 +165,7 @@ class Frontend extends Controller
             foreach($dests_unique as $k => $v){
                 $rides = RideOffers::where(['status' => 'completed'])
                     ->where('destination', $k)
-                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
-                    ->orderBy('departure_time')
+                    ->orderBy('departure_time','desc')
                     ->get();
                 foreach($rides as $ride){
                     $ro->push($ride);
@@ -188,8 +185,7 @@ class Frontend extends Controller
             foreach($drivers_unique as $k => $v){
                 $rides = RideOffers::where(['status' => 'completed'])
                     ->where('offer_by', $k)
-                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
-                    ->orderBy('departure_time')
+                    ->orderBy('departure_time','desc')
                     ->get();
                 foreach($rides as $ride){
                     $ro->push($ride);
@@ -201,8 +197,7 @@ class Frontend extends Controller
         if($opt == 'req-loc'){
             $ro = RideOffers::where(['status' => 'completed'])
                 ->where('request_id', '!=', 0)
-                ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
-                ->orderBy('departure_time')
+                ->orderBy('departure_time','desc')
                 ->get();
             foreach($ro as $r){
                 $req_locs[] = $r->destination;
@@ -215,8 +210,7 @@ class Frontend extends Controller
                 $rides = RideOffers::where(['status' => 'completed'])
                     ->where('destination', $k)
                     ->where('request_id', '!=', 0)
-                    ->whereDate('departure_time', '>=', date('Y-m-d H:i:s'))
-                    ->orderBy('departure_time')
+                    ->orderBy('departure_time','desc')
                     ->get();
                 foreach($rides as $ride){
                     $ro->push($ride);
@@ -243,7 +237,7 @@ class Frontend extends Controller
             }
         }
         return view('frontend.pages.popular',[
-            'data' => $this->paginate($ro, 3, $page)
+            'data' => $this->paginate($ro, 10, $page)
         ]);
     }
 
