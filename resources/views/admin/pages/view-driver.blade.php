@@ -151,6 +151,7 @@
                                     <!-- daily calender -->
                                     <div id="picker"></div>
                                     <button id="generate" rel="{{$data->id}}" class="btn btn-info btn-offer">Generate</button>
+                                    <div id="loading"></div>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-8 ">

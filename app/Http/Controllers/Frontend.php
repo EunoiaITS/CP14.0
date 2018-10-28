@@ -237,7 +237,8 @@ class Frontend extends Controller
             }
         }
         return view('frontend.pages.popular',[
-            'data' => $this->paginate($ro, 10, $page)
+            'data' => $this->paginate($ro, 10, $page),
+            'opt' => $opt
         ]);
     }
 

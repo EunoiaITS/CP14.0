@@ -16,6 +16,10 @@
                });
                $(document).on('click','#generate',function (e) {
                    e.preventDefault();
+                   $('#loading').html('<i class="alert alert-success">Loading...</i>');
+                   setTimeout(function() {
+                       $('#loading').html('');
+                   }, 500);
                    var date = $("#dailypicker01").find(".active").data("day");
                    let link = '<?php echo url('/d/income-statement');?>';
                    var html = '';
@@ -65,6 +69,10 @@
                        //alert(endDate.toISOString().split('T')[0]);
                        $(document).on('click','#generate',function (e) {
                            e.preventDefault();
+                           $('#loading').html('<i class="alert alert-success">Loading...</i>');
+                           setTimeout(function() {
+                               $('#loading').html('');
+                           }, 500);
                            let link = '<?php echo url('/d/income-statement');?>';
                            var html = '';
                            var count = 1;
@@ -111,6 +119,10 @@
                });
                $(document).on('click','#generate',function (e) {
                    e.preventDefault();
+                   $('#loading').html('<i class="alert alert-success">Loading...</i>');
+                   setTimeout(function() {
+                       $('#loading').html('');
+                   }, 500);
                    var date = $("#dailypicker03").find(".active").data("day");
                    let link = '<?php echo url('/d/income-statement');?>';
                    //alert(date);
@@ -157,6 +169,10 @@
                });
                $(document).on('click','#generate',function (e) {
                    e.preventDefault();
+                   $('#loading').html('<i class="alert alert-success">Loading...</i>');
+                   setTimeout(function() {
+                       $('#loading').html('');
+                   }, 500);
                    var date = $("#dailypicker04").find(".active").data("day");
                    let link = '<?php echo url('/d/income-statement');?>';
                    //alert(date);

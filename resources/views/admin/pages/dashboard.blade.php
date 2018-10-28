@@ -142,6 +142,7 @@
                                     <div id="picker"></div>
                                 </div>
                                 <button id="generate" class="btn btn-info btn-offer btn-center-admin">Generate</button>
+                                <div id="loading"></div>
                             </form>
                         </div>
                         <div class="col-lg-7 col-md-6 col-lg-offset-1 col-xs-12 table-responsive">
