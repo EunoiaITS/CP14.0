@@ -1298,7 +1298,7 @@
       font-weight: bold;
     }
     .highlight-text{
-      font-size:40px;
+      font-size:40px !important;
     }
     .highlight-get-popular .bootstrap-select{
         width: 150px !important;
@@ -1797,7 +1797,11 @@
     }
     .price-seat .btn.btn-offer{
       text-transform: capitalize;
-      float: left;
+      float: right;
+    }
+    .price-seat .btn.btn-offer.ridemate--profile{
+      float:left !important;
+      
     }
     .price-seat .btn.btn-offer img{
       width: 20px;
