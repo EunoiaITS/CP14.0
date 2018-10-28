@@ -1495,7 +1495,7 @@
       margin-bottom: 30px;
     }
     .price-per-seats{
-      font-size: 40px;
+      font-size: 34px;
       font-weight: bold;
       color: #31343f;
       margin-bottom: 30px;
@@ -1503,6 +1503,7 @@
     }
     .price-per-seats span{
       color: #61108c;
+      margin-right:5px;
     }
     .get-ride-seat li{
       width: 19%;
