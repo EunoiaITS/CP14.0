@@ -73,15 +73,29 @@
     /*--==================
     click notification bar
     ======================--*/
-    $(".notification-badge").on('click',function() {
-        $(".get-notification-popupbar").toggleClass("add-popupbar");
-        var count = $(".notification-badge").find('span.badge');
-        count.text(0);
+    $(".notification-badge").click(function(e) {
+       e.stopPropagation();
+   	   $(".get-notification-popupbar").toggleClass("add-popupbar");
+       var count = $(".notification-badge").find('span.badge');
+       count.text(0);
+  	});
+    
+    $(".edit-badge-area").click(function(e) {
+      e.stopPropagation();
+       $(".get-edit-profile").toggleClass("add-profile");
     });
 
-    $(".edit-badge-area").on('click',function() {
-        $(".get-edit-profile").toggleClass("add-profile");
+   $(document).click(function(){
+      if( $(".get-notification-popupbar").hasClass("add-popupbar") ){
+          $(".get-notification-popupbar").removeClass("add-popupbar");
+      };
     });
+
+   $(document).click(function(){
+      if( $(".get-edit-profile").hasClass("add-profile") ){
+          $(".get-edit-profile").removeClass("add-profile");
+      };
+   })
 
     /*--===========================
  Making placeholder star specifically red
