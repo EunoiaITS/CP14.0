@@ -1297,6 +1297,9 @@
       color:#31343f;
       font-weight: bold;
     }
+    .highlight-text{
+      font-size:40px !important;
+    }
     .highlight-get-popular .bootstrap-select{
         width: 150px !important;
         float: right !important;
@@ -1492,7 +1495,7 @@
       margin-bottom: 30px;
     }
     .price-per-seats{
-      font-size: 40px;
+      font-size: 34px;
       font-weight: bold;
       color: #31343f;
       margin-bottom: 30px;
@@ -1500,6 +1503,7 @@
     }
     .price-per-seats span{
       color: #61108c;
+      margin-right:5px;
     }
     .get-ride-seat li{
       width: 19%;
@@ -1794,7 +1798,11 @@
     }
     .price-seat .btn.btn-offer{
       text-transform: capitalize;
-      float: left;
+      float: right;
+    }
+    .price-seat .btn.btn-offer.ridemate--profile{
+      float:left !important;
+      
     }
     .price-seat .btn.btn-offer img{
       width: 20px;
@@ -2614,7 +2622,7 @@
     }
 
     .not-found h4{
-      font-size: 70px;
+      font-size: 60px;
       text-transform: uppercase;
       font-weight: bold;
     }
