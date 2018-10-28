@@ -1297,6 +1297,9 @@
       color:#31343f;
       font-weight: bold;
     }
+    .highlight-text{
+      font-size:40px;
+    }
     .highlight-get-popular .bootstrap-select{
         width: 150px !important;
         float: right !important;
