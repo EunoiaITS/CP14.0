@@ -55,7 +55,7 @@
 					<div class="single-popular-item">
 						<div class="col-md-10 col-md-offset-1 col-sm-12 popular-departure col-xs-12 padding-left-o">
 							@if(isset($data->error))
-								<h3 class="highlight">{{ $data->error }}</h3>
+								<h3 class="highlight highlight-text">{{ $data->error }}</h3>
 							@else
 								@foreach($data as $d)
 									@php $books = 0 @endphp
