@@ -257,8 +257,15 @@ input.form-control{
 
 .btn-center-admin{
     margin: 20px auto 10px;
-    display: block;
+    display: inline-block;
 }
+.loading{
+    display: inline-block;
+}
+.loading .alert{
+ margin: 4px 5px 0px;
+}
+
 .table thead > tr{
     background: #ddd;
     color: #62118d;
