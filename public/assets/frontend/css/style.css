@@ -2660,6 +2660,14 @@
       display: table;
       margin:20px auto 0px;
     }
+   
+  #generate, #loading{
+    display:inline-block !important;    
+  }
+  #loading .alert{
+   margin:5px 8px;
+  }
+
 
 
 
