@@ -147,6 +147,17 @@ $('.datepicker-f').datetimepicker({
     },
     minDate: moment()
 });
+
+$('.datepicker-d').datetimepicker({
+    format: "MM/YYYY",
+    icons: {
+        up: 'fa fa-angle-up',
+        down: 'fa fa-angle-down',
+        previous: 'fa fa-angle-left',
+        next: 'fa fa-angle-right',
+    },
+    minDate: moment()
+});
 $('#datetimepicker12').datepicker({
     todayHighlight: true,
     inline: true,

@@ -546,7 +546,7 @@ class Customer extends Controller
         $id = Auth::id();
         $ro = RideOffers::where(['status' => 'completed'])
             ->orderBy('departure_time')
-            ->paginate(3);
+            ->paginate(10);
         foreach ($ro as $r){
             $rb = RideBookings::where('user_id',$id)
                 ->where('ride_id',$r->id)->get();
