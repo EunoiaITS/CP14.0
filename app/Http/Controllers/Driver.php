@@ -80,7 +80,7 @@ class Driver extends Controller
             $usd->contact = $request->contact;
             $usd->country_code = $request->country_code;
             $usd->save();
-            $dd->car_reg = $request->car_reg;
+            $dd->car_reg = $request->car_plate_no;
             $dd->driving_license = $request->driving_license;
             $dd->expiry = $request->expiry;
             $dd->save();

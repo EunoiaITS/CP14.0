@@ -9,7 +9,7 @@ class DriverData extends Model
 {
 
     protected $rules = array(
-        'car_reg'  => 'required',
+        'car_plate_no'  => 'required',
         'driving_license'  => 'required',
         'expiry' => 'required',
         'uploads' => 'mimes:jpeg,jpg,png,gif | max:2000',
