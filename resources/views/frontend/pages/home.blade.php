@@ -157,7 +157,7 @@
                                             <h3 class="get-user-name"><span>Name <span class="get-right-icon">:</span></span>
                                                 <span class="get-dynamic-name">{{ $of->user_details->name }} {{ $of->user_data->last_name }}</span></h3>
                                             <h3 class="get-user-name"><span>Age <span class="get-right-icon">:</span></span>
-                                                <span class="get-dynamic-name">{{ date('Y') - date('Y',strtotime($of->user_details->dob)) }}</span></h3>
+                                                <span class="get-dynamic-name">{{ date('Y') - date('Y',strtotime($of->user_data->dob)) }}</span></h3>
                                             <h3 class="get-user-name"><span>From <span class="get-right-icon">:</span></span>
                                                 <span class="get-dynamic-name">{{ $of->origin }}</span></h3>
                                             <h3 class="get-user-name"><span>To <span class="get-right-icon">:</span></span>
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <h3 class="get-user-name"><span>Departure Time <span class="get-right-icon">:</span></span>
-                                            <span class="get-dynamic-name">{{ date('Y-m-d H:i A',strtotime($of->departure_time)) }}</span></h3><br/>
+                                            <span class="get-dynamic-name">{{ date('Y-m-d H:i',strtotime($of->departure_time)) }}</span></h3><br/>
                                         <div class="get-user-ratings">
                                             <ul class="get-rate-user">
                                                 <?php

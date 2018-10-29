@@ -358,7 +358,7 @@ class Admin extends Controller
         }
             $rides = RideOffers::where('status', 'completed')
                 ->orderBy('id',$cur_order)
-                ->paginate(5);
+                ->paginate(10);
         foreach($rides as $ride){
             $ride->mate = User::find($ride->offer_by);
             if($ride->req_id != null){
@@ -383,7 +383,7 @@ class Admin extends Controller
         $reqs = RideOffers::where('status', 'completed')
             ->where('request_id', '!=', 0)
             ->orderBy('id',$cur_order)
-            ->paginate(5);
+            ->paginate(10);
         if(!empty($reqs)){
             foreach($reqs as $req){
                 $req->mate = User::find($req->offer_by);
@@ -446,7 +446,7 @@ class Admin extends Controller
 
         $rides = RideOffers::where('offer_by', $id)
             ->where('status', 'completed')
-            ->paginate(3);
+            ->paginate(10);
         foreach($rides as $ride){
             $books = RideBookings::where('ride_id', $ride->id)
                 ->where('status', 'confirmed')
@@ -485,7 +485,7 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->time = date('H:i',strtotime($rc->start_time));
                             if($rc->total_fair != null){
                                 $r->amount = $rc->total_fair;
                             }else{
@@ -499,7 +499,7 @@ class Admin extends Controller
                                 $r->checked = 'yes';
                                 $r->ride_no = $r->id;
                                 $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                                $r->time = date('H:i A',strtotime($rc->start_time));
+                                $r->time = date('H:i',strtotime($rc->start_time));
                                 if($rc->total_fair != null){
                                     $r->amount = $rc->total_fair;
                                 }else{
@@ -513,7 +513,7 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->time = date('H:i',strtotime($rc->start_time));
                             if($rc->total_fair != null){
                                 $r->amount = $rc->total_fair;
                             }else{
@@ -526,7 +526,7 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->time = date('H:i',strtotime($rc->start_time));
                             if($rc->total_fair != null){
                                 $r->amount = $rc->total_fair;
                             }else{
@@ -551,7 +551,7 @@ class Admin extends Controller
                         $r->checked = 'yes';
                         $r->ride_no = $r->id;
                         $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        $r->time = date('H:i',strtotime($rc->start_time));
                         if($rc->total_fair != null){
                             $r->amount = $rc->total_fair;
                         }else{
@@ -565,7 +565,7 @@ class Admin extends Controller
                             $r->checked = 'yes';
                             $r->ride_no = $r->id;
                             $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                            $r->time = date('H:i A',strtotime($rc->start_time));
+                            $r->time = date('H:i',strtotime($rc->start_time));
                             if($rc->total_fair != null){
                                 $r->amount = $rc->total_fair;
                             }else{
@@ -579,7 +579,7 @@ class Admin extends Controller
                         $r->checked = 'yes';
                         $r->ride_no = $r->id;
                         $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        $r->time = date('H:i',strtotime($rc->start_time));
                         if($rc->total_fair != null){
                             $r->amount = $rc->total_fair;
                         }else{
@@ -592,7 +592,7 @@ class Admin extends Controller
                         $r->checked = 'yes';
                         $r->ride_no = $r->id;
                         $r->start_time = date('Y-m-d',strtotime($rc->start_time));
-                        $r->time = date('H:i A',strtotime($rc->start_time));
+                        $r->time = date('H:i',strtotime($rc->start_time));
                         if($rc->total_fair != null){
                             $r->amount = $rc->total_fair;
                         }else{

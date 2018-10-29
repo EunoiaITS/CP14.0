@@ -70,6 +70,7 @@ class Driver extends Controller
         $vd = VehiclesData::where('user_id', Auth::id())->first();
         $countries = Countries::orderBy('name','asc')->get();
         if($request->isMethod('post')){
+            //dd($request->all());
             $user->name = $request->name;
             $user->email = $request->email;
             $user->save();
@@ -98,7 +99,7 @@ class Driver extends Controller
             'usd' => $usd,
             'dd' => $dd,
             'vd' => $vd,
-            'countries' => $countries
+            'countries' => $countries,
         ]);
     }
 
@@ -865,7 +866,7 @@ class Driver extends Controller
                             if(date('d',strtotime($c->start_time)) == date('d',strtotime($request->date))){
                                 $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                                $r->time = date('H:i A',strtotime($c->start_time));
+                                $r->time = date('H:i',strtotime($c->start_time));
                                 if($c->total_fair != null){
                                     $r->amount = $c->total_fair;
                                 }else{
@@ -877,7 +878,7 @@ class Driver extends Controller
                                 if($i == date('d',strtotime($c->start_time))){
                                     $r->checked = 'yes';
                                     $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                                    $r->time = date('H:i A',strtotime($c->start_time));
+                                    $r->time = date('H:i',strtotime($c->start_time));
                                     if($c->total_fair != null){
                                         $r->amount = $c->total_fair;
                                     }else{
@@ -889,7 +890,7 @@ class Driver extends Controller
                             if(date('m',strtotime($c->start_time)) == date('m',strtotime($request->date))){
                                 $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                                $r->time = date('H:i A',strtotime($c->start_time));
+                                $r->time = date('H:i',strtotime($c->start_time));
                                 if($c->total_fair != null){
                                     $r->amount = $c->total_fair;
                                 }else{
@@ -900,7 +901,7 @@ class Driver extends Controller
                             if(date('Y',strtotime($c->start_time)) == date('Y',strtotime($request->date))){
                                 $r->checked = 'yes';
                                 $r->start_time = date('Y-m-d',strtotime($c->start_time));
-                                $r->time = date('H:i A',strtotime($c->start_time));
+                                $r->time = date('H:i',strtotime($c->start_time));
                                 if($c->total_fair != null){
                                     $r->amount = $c->total_fair;
                                 }else{
@@ -933,7 +934,7 @@ class Driver extends Controller
         $ro = RideOffers::where(['status' => 'completed'])
             ->where('offer_by',$id)
             ->orderBy('departure_time','desc')
-            ->paginate(3);
+            ->paginate(10);
         return view('frontend.pages.history-driver',[
             'data' => $ro
         ]);

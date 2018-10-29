@@ -104,8 +104,8 @@
                                     <div class="col-sm-8 col-xs-12 main--form padding-left-o">
                                         <input type="text" name="driving_license" class="form-control" value="{{ $dd->driving_license }}" placeholder="Your Driving Licence">
                                     </div>
-                                    <div class="col-sm-3 col-xs-12">
-                                        <input type="text" name="expiry" class="form-control datepicker-f" value="{{ date('m/Y',strtotime($dd->expiry)) }}" placeholder="mm/yy" required>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <input type="text" name="expiry" class="form-control datepicker-d" value="{{ $dd->expiry }}" placeholder="MM/YYYY" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
