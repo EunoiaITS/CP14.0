@@ -24,7 +24,7 @@
                 <div class="col-sm-5 col-xs-4 padding-right-0">
                     <div class="get-notification-area">
                         <div class="notification-badge">
-                            <i class="fas fa-car"></i><span class="badge">{{ $notify->count() }}</span>
+                            <i class="fas fa-car"></i><span class="badge">{{ $notify_count->count() }}</span>
                         </div>
                         <!-- notification popupbar -->
                         <div class="get-notification-popupbar">

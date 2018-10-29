@@ -23,9 +23,13 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function($view) {
             if(auth()->check()){
                 $view->with('notify', Notifications::where('to', auth()->user()->id)
-                    ->where(['status' => 'unread'])
                     ->orderBy('id', 'desc')
                     ->paginate(5)
+                );
+                $view->with('notify_count', Notifications::where('to', auth()->user()->id)
+                    ->where('status', 'unread')
+                    ->orderBy('id', 'desc')
+                    ->get()
                 );
                 if(Auth::user()->role != 'super-admin'){
                     $id = Auth::user()->id;

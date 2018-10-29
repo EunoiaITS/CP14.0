@@ -62,7 +62,7 @@
                                 <span class="ride-label-badge">{{ date('d-m-Y',strtotime($d->departure_date)) }}</span>
                             </div>
                         </div>
-                        <a href="{{ url('/d/offer-ride/') }}"><button class="btn btn-info btn-offer offer-ride-ridemate-home">Offer Ride</button></a>
+                        <a href="{{ url('/d/offer-ride?req='.$d->id) }}"><button class="btn btn-info btn-offer offer-ride-ridemate-home">Offer Ride</button></a>
                     </div>
                 </div>
                 @endforeach

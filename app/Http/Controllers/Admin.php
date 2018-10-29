@@ -13,6 +13,7 @@ use App\User_data;
 use App\DriverData;
 use App\RideComp;
 use Carbon\Carbon;
+use Auth;
 
 class Admin extends Controller
 {
@@ -139,7 +140,9 @@ class Admin extends Controller
                 ->to('/admin/list')
                 ->with('success', 'User info edited successfully!!');
         }
-        $users = User::where('role','super-admin')->get();
+        $users = User::where('role','super-admin')
+            ->where('id', '!=', Auth::id())
+            ->get();
         $slug = 'list';
         return view('admin.pages.admin-list', [
             'slug' => $slug,

@@ -8,9 +8,9 @@
     var notificationsCount     = parseInt(notificationsCountElem.text());
     var notifications          = notificationsWrapper.find('ul.get-notificaton-list');
 
-    if (notificationsCount <= 0) {
-        notificationsWrapper.hide();
-    }
+//    if (notificationsCount <= 0) {
+//        notificationsWrapper.hide();
+//    }
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
