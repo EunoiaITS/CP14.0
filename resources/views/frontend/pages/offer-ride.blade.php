@@ -245,7 +245,7 @@
                             <input type="hidden" id="own-vehicle" name="own_vehicle" value="">
                             <div class="form-group clearfix">
                                 <div class="col-sm-6 padding-left-o">
-                                    <label for="car-type" class="ride-label">Car Type <span class="star">*</span><span class="right-into">:</span></label>
+                                    <label for="car-type" class="ride-label">Car Type <span class="star"></span><span class="right-into">:</span></label>
                                 </div>
                                 <div class="col-sm-6 padding-ride-o">
                                     <input name="car_type" id="car-type" type="text" class="form-control" @if(isset($vd->car_type)) value="{{ $vd->car_type }}" @else value="{{ old('car_type') }}" @endif>
