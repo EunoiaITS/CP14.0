@@ -120,7 +120,7 @@ class Authenticate extends Controller
                 $message->setTo([$request->email => $request->name]);
                 $message->setBody('<html><body>'.
                     '<h1>Hi '.$request->name .',</h1>'.
-                    '<p style="font-size:18px;">Your account registration is complete. Please click the button/link below to verify your account.</p>'.
+                    '<p style="font-size:18px;">Your account registration is complete. Please click the button/link below to verify your account. The link will expire after 24-hours.</p>'.
                     '<table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                       <td>
@@ -247,7 +247,7 @@ class Authenticate extends Controller
                 $message->setTo([$request->email => $request->name]);
                 $message->setBody('<html><body>'.
                     '<h1>Hi '.$request->name .',</h1>'.
-                    '<p style="font-size:18px;">Your account registration is complete. Please click the button/link below to verify your account.</p>'.
+                    '<p style="font-size:18px;">Your account registration is complete. Please click the button/link below to verify your account. The link will expire after 24-hours.</p>'.
                     '<table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                       <td>

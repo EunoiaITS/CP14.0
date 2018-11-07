@@ -8,7 +8,7 @@
                 <div class="col-sm-12 sign-in-get-ad padding-left-o padding-right-o">
                     <h3 class="get-popular-list">Join</h3>
                     <h3 class="highlight">With Us Today!</h3>
-                    <h4>Required fields are marked with a red asterisk (*)</h4>
+                    <h4>Required fields are marked with a red asterisk (<span class="star">*</span>)</h4>
                 </div>
                 <div class="clearfix"></div>
                 @if(isset($errors))
@@ -123,9 +123,9 @@
                     <div class="col-sm-2 sign-up-order-mm">
                         <div class="form-group">
                             <div class="palceholder">
-                                <label for="name">MM/YY <span class="star">*</span></label>
+                                <label for="name">MM/YY (Driving License Exp. Date)<span class="star">*</span></label>
                             </div>
-                            <input type="text" name="expiry" class="form-control datepicker-f" tabindex="16" required>
+                            <input type="text" name="expiry" class="form-control datepicker-d" tabindex="16" required>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -170,6 +170,7 @@
                         <div class="sign-in-option-get">
                             <button class="btn btn-info btn-offer">Sign Up</button>
                         </div>
+                        <h4>Required fields are marked with a red asterisk (<span class="star">*</span>)</h4>
                     </div>
                     <input type="hidden" name="role" value="driver">
                 </form>

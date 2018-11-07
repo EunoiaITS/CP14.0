@@ -5,18 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class DriverData extends Model
+class Contact extends Model
 {
-
     protected $rules = array(
-        'driving_license'  => 'required',
-        'expiry' => 'required',
-        'uploads' => 'mimes:jpeg,jpg,png,gif | max:2000',
+        'name'  => 'required',
+        'email'  => 'required|unique:contacts',
     );
 
     protected $errors;
 
-    protected $table = 'driver_data';
+    protected $table = 'contacts';
 
     public function validate($data)
     {
@@ -33,5 +31,4 @@ class DriverData extends Model
     {
         return $this->errors;
     }
-
 }

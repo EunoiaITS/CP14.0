@@ -278,6 +278,9 @@
                             @if(isset($vd))<input type="hidden" name="vd_action" id="vd_action" value="edit"><input type="hidden" name="vd_id" value="{{ $vd->id }}">@else <input type="hidden" id="vd_action" name="vd_action" value="add"> @endif
                         </div>
                         <div class="col-md-3 col-md-offset-2 col-sm-12 col-xs-12 col-xs-offset-0 ride-offer-button">
+                            <div class="col-sm-12 padding-left-o ride-own-car">
+                                <p>Choose your requirements</p>
+                            </div>
                             <ul class="get-ride-feature">
                                 <li>
                                     <span class="left-ride-feature">Pets</span>

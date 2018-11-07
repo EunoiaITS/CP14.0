@@ -240,7 +240,7 @@ class Customer extends Controller
                 }
                 return redirect()
                     ->to($request->ride_url)
-                    ->with('success', 'The ride booking was added!');
+                    ->with('success', 'Ride is added, please wait for confirmation notification!');
             }else{
                 return redirect()
                     ->to($request->ride_url)

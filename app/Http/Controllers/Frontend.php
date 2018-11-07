@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Countries;
 use App\Notifications;
 use App\Ratings;
@@ -403,7 +404,32 @@ class Frontend extends Controller
     /**
      * Contact us page - Contact us page of the system
      */
-    public function ContactUs(){
+    public function ContactUs(Request $request){
+        $errors = array();
+        $cont = new Contact();
+        if($request->isMethod('post')){
+            if(!$cont->validate($request->all())){
+                $cont_e = $cont->errors();
+                foreach ($cont_e->messages() as $k => $v){
+                    foreach ($v as $e){
+                        $errors[] = $e;
+                    }
+                }
+            }
+            if(empty($errors)){
+                $cont->name = $request->name;
+                $cont->email = $request->email;
+                $cont->message = $request->message;
+                $cont->save();
+                    return redirect()
+                        ->to('/contact-us')
+                        ->with('success','Your Message Is Sent, We Hear You !!');
+            }else{
+                return redirect()
+                    ->to('/contact-us')
+                    ->with('error','Your Message Can Not Be Sent, Please Try Again !!');
+            }
+        }
         return view('frontend.pages.contact-us');
     }
 
@@ -441,19 +467,30 @@ class Frontend extends Controller
 
     public function verifyUser(Request $request){
         $linkCheck = VerifyUsers::where('link', $request->link)->first();
-        if($linkCheck != ''){
-            $check = User::where('email',$linkCheck->email)->first();
-            $check->status = 'verified';
-            $check->save();
-            $linkCheck->delete();
-            return redirect()
-                ->to('/login')
-                ->with('success','Your Account Verified Successfully !!');
+        if(!empty($linkCheck)){
+            $date = date('Y-m-d');
+            $date1 = strtotime($linkCheck->created_at);
+            $date2 = strtotime($date);
+            $timediff = $date2 - $date1;
+            if($timediff > 86400){
+                return redirect()
+                    ->to('/login')
+                    ->with('error','This Verification link has been expired !!');
+            }else{
+                $check = User::where('email',$linkCheck->email)->first();
+                $check->status = 'verified';
+                $check->save();
+                $linkCheck->delete();
+                return redirect()
+                    ->to('/login')
+                    ->with('success','Your Account Verified Successfully !!');
+            }
         }else{
             return redirect()
                 ->to('/login')
                 ->with('error','This Verification link has been expired !!');
         }
+
     }
     /**
      * Admin Login - login function for admin area

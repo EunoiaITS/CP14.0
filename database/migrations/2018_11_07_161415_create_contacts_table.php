@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeRideOffersTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class ChangeRideOffersTable extends Migration
      */
     public function up()
     {
-        Schema::table('ride_offers', function (Blueprint $table) {
-            $table->integer('request_id')->after('id');
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email');
+            $table->text('message');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +29,6 @@ class ChangeRideOffersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ride_offers');
+        Schema::dropIfExists('contacts');
     }
 }

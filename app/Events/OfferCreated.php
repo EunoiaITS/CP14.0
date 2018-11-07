@@ -108,7 +108,7 @@ class OfferCreated implements  ShouldBroadcast
             $not = new Notifications();
             $not->from = $data['from'];
             $not->to = $booking->user_id;
-            $not->message = '<a href="#">'.$offer_by->name.'</a> has accepted your ride booking.';
+            $not->message = '<a href="#">'.$offer_by->name.'</a> has accepted your ride booking. Please view RIDEMATES contact details and communicate directly.';
             $not->ad_link = url('/ride-details/'.$offer->link);
             $not->status = 'unread';
             if($not->save()){
