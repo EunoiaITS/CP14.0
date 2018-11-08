@@ -35,6 +35,8 @@
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
         crossorigin="anonymous"></script>
 <script src="{{ asset('public/assets/frontend/js/zabuto_calendar.js') }}"></script>
+<!-- nicescroll js -->
+<script src="{{ asset('public/assets/frontend/js/jquery.nicescroll.min.js') }}"></script>
 <!-- bootstrap selcet js -->
 <script src="{{ asset('public/assets/frontend/js/bootstrap-select.js') }}"></script>
 <!-- weekly picker js -->
