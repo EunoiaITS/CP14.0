@@ -713,7 +713,7 @@
     }
     .get-notification-area{
         float: right;
-        width: 70%;
+        width: 72%;
         margin: 18px 0px;
     }
     .get-user-login{
@@ -3106,6 +3106,10 @@
       .sign-up-order-mm {
           margin-top: 5px;
       }
+      .logout-option {
+          padding: 5px 0px;
+          margin-left: 10px;
+      }
     }
 
 
@@ -3153,6 +3157,8 @@
       }
       .logout-option{
         width: 20px;
+        padding: 0px 0px;
+         margin-left: 0px;
       }
       .logout-option i{
         margin:9px;
