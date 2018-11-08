@@ -8,7 +8,7 @@
                 <div class="col-sm-12 sign-in-get-ad padding-left-o padding-right-o">
                     <h3 class="get-popular-list">Rider</h3>
                     <h3 class="highlight">Register!!</h3>
-                    <h4>"MANDATORY fields are marked with a red asterisk  (<span class="star">*</span>)"</h4>
+                    <h4>MANDATORY fields are marked with a red asterisk  (<span class="star">*</span>)</h4>
                 </div>
                 <div class="clearfix"></div>
                 @if(isset($errors))
@@ -138,7 +138,7 @@
                         <div class="sign-in-option-get">
                             <button class="btn btn-info btn-offer">Sign Up</button>
                         </div>
-                        <h4>"MANDATORY fields are marked with a red asterisk  (<span class="star">*</span>)"</h4>
+                        <h4>MANDATORY fields are marked with a red asterisk  (<span class="star">*</span>)</h4>
                     </div>
                     <input type="hidden" name="role" value="customer">
                     @if(isset($data))
