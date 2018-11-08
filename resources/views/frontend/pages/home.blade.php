@@ -159,9 +159,9 @@
                                             <h3 class="get-user-name"><span>Age <span class="get-right-icon">:</span></span>
                                                 <span class="get-dynamic-name">{{ date('Y') - date('Y',strtotime($of->user_data->dob)) }}</span></h3>
                                             <h3 class="get-user-name"><span>From <span class="get-right-icon">:</span></span>
-                                                <span class="get-dynamic-name">{{ $of->origin }}</span></h3>
+                                                <span class="get-dynamic-name dynamic-options">{{ $of->origin }}</span></h3>
                                             <h3 class="get-user-name"><span>To <span class="get-right-icon">:</span></span>
-                                                <span class="get-dynamic-name">{{ $of->destination }}</span></h3>
+                                                <span class="get-dynamic-name dynamic-options">{{ $of->destination }}</span></h3>
                                             <h3 class="get-user-name"><span>Seats Available <span class="get-right-icon">:</span></span>
                                                 <span class="get-dynamic-name"></span></h3>
                                             <ul class="get-user-icon-layer">
