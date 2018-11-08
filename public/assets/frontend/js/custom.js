@@ -9,7 +9,7 @@
 
       $(".dynamic-options").niceScroll({
         cursorcolor:"#64118f",
-        cursorwidth:"2px"
+        cursorwidth:"3px"
       });
 
     /*--========================
