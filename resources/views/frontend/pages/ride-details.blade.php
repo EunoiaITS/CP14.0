@@ -187,6 +187,9 @@
                         </div>
                     </div>
                     <div class="col-sm-3 col-sm-offset-3 col-xs-12 ride-details-feature">
+                        <div class="col-sm-12 padding-left-o ride-own-car">
+                            <p>Requirements</p>
+                        </div>
                         <ul class="get-ride-feature">
                             @foreach($data->rd as $r)@if($r->key == 'pets')
                                 <li>
