@@ -53,7 +53,7 @@
                             <a href="@if(Auth::user()->role == 'customer'){{ url('/c/profile') }}@endif @if(Auth::user()->role == 'driver'){{ url('/d/profile') }}@endif"><span class="get-loged-user">{{ Auth::user()->name }}</span></a>
                         </div>
                         <div class="logout-option">
-                            <a href="#" data-toggle="modal" data-target="#myModalLogout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            <a href="#" data-toggle="modal" data-target="#myModalLogout" data-toggle="tooltip" data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
                         </div>
                     </div>
                 </div>
