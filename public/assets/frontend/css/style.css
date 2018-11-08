@@ -579,6 +579,11 @@
         font-weight: 400 !important;
          font-family: 'Source Sans Pro', sans-serif !important;
     }
+    .dynamic-options{
+        height: 30px;
+        display: block;
+        overflow-y: auto;
+    }
     .get-user-icon-layer .fas{
         font-size: 17px;
         margin-right: 5px;
@@ -2904,6 +2909,7 @@
       }
       .padding-left-o, .get-popular-list{
         padding-left: 15px;
+        clear: both;
       }
       .padding-right-0{
         padding-right: 15px;
