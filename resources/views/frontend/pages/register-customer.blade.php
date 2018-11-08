@@ -26,7 +26,7 @@
                             <div class="palceholder">
                                 <label for="name">First Name <span class="star">*</span></label>
                             </div>
-                            <input type="text" name="name" class="form-control" placeholder="First Name" tabindex="1" required="required">
+                            <input type="text" name="name" class="form-control" tabindex="1" required="required">
                         </div>
                         <div class="form-group">
                             <div class="palceholder">
