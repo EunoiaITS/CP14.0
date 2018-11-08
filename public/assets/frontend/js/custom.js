@@ -3,7 +3,14 @@
 (function($) {
     "use strict";
 
+      /*--=====================
+      nice scroll
+      ========================--*/
 
+      $(".dynamic-options").niceScroll({
+        cursorcolor:"#64118f",
+        cursorwidth:"2px"
+      });
 
     /*--========================
     slidebar call js
