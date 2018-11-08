@@ -1468,15 +1468,16 @@
     }
     .form-ride-details {
         text-align: left;
-        margin-left: 80px;
+        margin-left: 40px;
         font-weight: bold;
+        margin-right: 15px;
     }
     .form-ride-details h3{
       font-size: 34px;
       text-transform: uppercase;
     }
     .form-ride-details h2{
-      font-size: 65px;
+      font-size: 47px;
       font-weight: bold;
     }
     .form-ride-details p{
@@ -1487,7 +1488,7 @@
     }
     .get-departure-time{
       margin-top:20px;
-      font-size: 28px !important;
+      font-size: 24px !important;
       font-weight: 700 !important;
     }
     .arrow-icon img{
