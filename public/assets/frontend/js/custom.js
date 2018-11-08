@@ -2,6 +2,12 @@
 
 (function($) {
     "use strict";
+    
+    
+    /*--===============
+    logout tooltip
+    ======================--*/
+    $('.logout-option a').tooltip({ boundary: 'window' });
 
       /*--=====================
       nice scroll
