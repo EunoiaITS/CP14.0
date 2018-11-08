@@ -23,7 +23,10 @@
                     {{ csrf_field() }}
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="First Name" tabindex="1" required="required">
+                            <div class="palceholder">
+                                <label for="name">First Name <span class="star">*</span></label>
+                            </div>
+                            <input type="text" name="name" class="form-control" tabindex="1" required="required">
                         </div>
                         <div class="form-group">
                            <div class="palceholder">
@@ -144,7 +147,10 @@
                     <div class="col-sm-12 padding-left-o">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="text" name="id_card" class="form-control" placeholder="Identity Card No." tabindex="18" required>
+                                <div class="palceholder">
+                                    <label for="name">Identity Card No.  <span class="star">*</span></label>
+                                </div>
+                                <input type="text" name="id_card" class="form-control" tabindex="18" required>
                             </div>
                         </div>
                     </div>

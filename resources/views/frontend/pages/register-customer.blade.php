@@ -23,6 +23,9 @@
                     {{ csrf_field() }}
                     <div class="col-sm-6 col-xs-12">
                         <div class="form-group">
+                            <div class="palceholder">
+                                <label for="name">First Name <span class="star">*</span></label>
+                            </div>
                             <input type="text" name="name" class="form-control" placeholder="First Name" tabindex="1" required="required">
                         </div>
                         <div class="form-group">
@@ -45,7 +48,7 @@
                             </select>
                         </div>
                         <div class="form-group get-sign-up-mate">
-                            <label for="date-of-birth">Date Of Birth</label>
+                            <label for="date-of-birth">Date Of Birth <span class="star">*</span></label>
                             <div class="col-sm-3 padding-left-o">
                                 <select name="day" id="" class="get-select-picker" tabindex="9" title="Day">
                                     @for($i = 1; $i <= 31; $i++)
