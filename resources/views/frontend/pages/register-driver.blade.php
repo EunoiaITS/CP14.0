@@ -87,7 +87,7 @@
                             <div class="palceholder">
 					            <label for="name">Confirm Password <span class="star">*</span></label>
 					        </div>
-                            <input type="password" name="repass" class="form-control" placeholder="Confirm Password" tabindex="6" required="required">
+                            <input type="password" name="repass" class="form-control" tabindex="6" required="required">
                         </div>
                         <div class="form-group">
                             <input type="text" name="contact" class="form-control" placeholder="Contact No" tabindex="7">
@@ -123,7 +123,7 @@
                             <input type="text" name="driving_license" class="form-control" tabindex="15" required>
                         </div>
                     </div>
-                    <div class="col-sm-2 sign-up-order-mm">
+                    <div class="col-sm-5 sign-up-order-mm">
                         <div class="form-group">
                             <div class="palceholder">
                                 <label for="name">MM/YY (Driving License Exp. Date)<span class="star">*</span></label>
