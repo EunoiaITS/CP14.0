@@ -152,6 +152,7 @@
                 <!-- car details -->
                 <div class="get-available-seats">
                     <h3 class="check-total-fare">Car Details</h3>
+                    <div class="clearfix">
                     <div class="col-sm-5 col-xs-12 padding-left-o">
                         <div class="get-car-details-area clearfix">
                             <div class="col-sm-6 padding-left-o">
@@ -224,6 +225,7 @@
                                     @endif
                                 @endforeach
                         </ul>
+                    </div>
                     </div>
                     @if(Auth::id() != $data->offer_by)
                     <button class="btn btn-info btn-offer ride-final-ride-button" type="button" data-toggle="modal" data-target="#myModalx">Ridemate Details</button>
