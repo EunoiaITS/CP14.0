@@ -240,7 +240,8 @@ class Customer extends Controller
                 }
                 return redirect()
                     ->to($request->ride_url)
-                    ->with('success', 'Ride is added, please wait for confirmation notification!');
+                    ->with('success', 'Ride is added, pending acceptance. Check notification bar and
+communicate with Ridemates directly !');
             }else{
                 return redirect()
                     ->to($request->ride_url)
