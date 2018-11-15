@@ -335,23 +335,28 @@ class Frontend extends Controller
 
     public function search(Request $request){
         if($request->isMethod('post')){
+            $data = new Collection();
             $search_data = RideOffers::where('status','=','active')
-                ->where('departure_time', '>=', date('Y-m-d H:i:s',strtotime($request->when)))
                 ->where(function($q) use ($request){
                     $q->where('origin','like','%' . $request->from . '%')
                       ->orWhere('destination','like','%' . $request->to . '%');
                 })
                 ->orderBy('created_at', 'desc')
                 ->get();
-            if(!$search_data->first()){
-                $search_data->error = "Whooops, your desired ride is not available at the moment. Please try again.";
+            foreach ($search_data as $sd){
+                if(date('d-m-Y',strtotime($request->when)) == date('d-m-Y',strtotime($sd->departure_time))){
+                    $data->push($sd);
+                }
+            }
+            if(!$data->first()){
+                $data->error = "Whooops, your desired ride is not available at the moment. Please try again.";
                 return view('frontend.pages.search',[
-                    'data' => $search_data,
+                    'data' => $data,
                     'time' => $request->when,
                     'js' => 'frontend.pages.js.home-js'
                 ]);
             }else{
-                foreach ($search_data as $sd){
+                foreach ($data as $sd){
                     $user = User::where('id',$sd->offer_by)->first();
                     $sd->user = $user;
                     $usd = User_data::where('user_id',$sd->offer_by)->first();
@@ -375,7 +380,7 @@ class Frontend extends Controller
 
                 }
                 return view('frontend.pages.search',[
-                    'data' => $search_data,
+                    'data' => $data,
                     'time' => $request->when,
                     'js' => 'frontend.pages.js.home-js'
                 ]);
