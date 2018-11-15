@@ -38,7 +38,7 @@
                             </div>
                             <div class="name-text">
                                 <span class="name-text-user">Date Of birth</span>
-                                <span class="name-text-name">{{ date('Y-m-d',strtotime($details->dob)) }}</span>
+                                <span class="name-text-name">{{ date('d-m-Y',strtotime($details->dob)) }}</span>
                             </div>
                             <div class="name-text">
                                 <span class="name-text-user">Gender</span>

@@ -13,9 +13,7 @@
             </button>
             <a class="navbar-brand get-logo-text" href="{{ url('/admin') }}"><span>GetWobo</span></a>
             <ul class="nav navbar-top-links navbar-right">
-                <li><a class="count-info" data-toggle="modal" data-target="#myModal" href="#">
-                        <span class="flaticon-logout"></span>
-                    </a></li>
+                <li><a style="color: #ffffff;" class="count-info" data-toggle="modal" data-target="#myModal" href="#"><span class="flaticon-logout"></span>Logout</a></li>
             </ul>
         </div>
     </div><!-- /.container-fluid -->

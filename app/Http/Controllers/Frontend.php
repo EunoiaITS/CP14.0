@@ -333,7 +333,63 @@ class Frontend extends Controller
      * Search - Search functionality of the system
      */
 
-    
+    public function search(Request $request){
+        if($request->isMethod('post')){
+            $data = new Collection();
+            $search_data = RideOffers::where('status','=','active')
+                ->where(function($q) use ($request){
+                    $q->where('origin','like','%' . $request->from . '%')
+                      ->orWhere('destination','like','%' . $request->to . '%');
+                })
+                ->orderBy('created_at', 'desc')
+                ->get();
+            foreach ($search_data as $sd){
+                if(date('d-m-Y',strtotime($request->when)) == date('d-m-Y',strtotime($sd->departure_time))){
+                    $data->push($sd);
+                }
+            }
+            if(!$data->first()){
+                $data->error = "Whooops, your desired ride is not available at the moment. Please try again.";
+                return view('frontend.pages.search',[
+                    'data' => $data,
+                    'time' => $request->when,
+                    'js' => 'frontend.pages.js.home-js'
+                ]);
+            }else{
+                foreach ($data as $sd){
+                    $user = User::where('id',$sd->offer_by)->first();
+                    $sd->user = $user;
+                    $usd = User_data::where('user_id',$sd->offer_by)->first();
+                    $sd->usd = $usd;
+                    $bookings = RideBookings::where(['ride_id' => $sd->id])
+                        ->where(function($q){
+                            $q->where(['status' => 'booked'])
+                                ->orWhere(['status' => 'confirmed']);
+                        })
+                        ->get();
+                    $sd->bookings = $bookings;
+                    $rating = Ratings::where('to',$sd->offer_by)->get();
+                    $count = Ratings::where('to',$sd->offer_by)->count();
+                    $avg = 0;
+                    foreach ($rating as $ra){
+                        $avg += $ra->rating;
+                    }
+                    if($count != 0){
+                        $sd->average = $avg / $count;
+                    }
+
+                }
+                return view('frontend.pages.search',[
+                    'data' => $data,
+                    'time' => $request->when,
+                    'js' => 'frontend.pages.js.home-js'
+                ]);
+            }
+        }
+        return view('frontend.pages.search',[
+            'js' => 'frontend.pages.js.home-js'
+        ]);
+    }
     /**
      * About Us page - About Us page of the system
      */
