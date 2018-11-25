@@ -70,7 +70,24 @@
                 <!-- available seats -->
                 <div class="get-available-seats get-normal-seats clearfix">
                     <div class="col-sm-4 padding-left-o">
-                        <h3 class="check-total-fare">Available Seats</h3>
+                        @php $check = 0; @endphp
+                        @if(isset($data->bookings))
+                            @foreach($data->bookings as $book)
+                                @if($book->status == 'confirmed')
+                                    @php $check++ @endphp
+                                @endif
+                            @endforeach
+                        @endif
+
+                        @if(Auth::user()->role == 'customer')
+                            @if($check > 0)
+                                <h3 class="check-total-fare">Confirmed Seats</h3>
+                            @else
+                                <h3 class="check-total-fare">Available Seats</h3>
+                            @endif
+                            @else
+                            <h3 class="check-total-fare">Available Seats</h3>
+                        @endif
                     </div>
                     <div class="col-sm-5 col-sm-offset-3 col-xs-12">
                         <h3 class="price-per-seats">Price Per Seat: <span id="price" rel="{{ $data->price_per_seat }}">{{ $data->price_per_seat }}{{ ' ' }}{{ $data->currency }}</span></h3>
@@ -90,7 +107,11 @@
                                         <li>
                                             <div class="ride-seat-icon first-ride">
                                                 <i class="fas fa-user fixed-hover" data-toggle="modal" data-target="#myModalnsx{{ $book->id }}"></i>
-                                                <span>Booked</span>
+                                                @if(Auth::user()->role == 'customer')
+                                                    <span>Booked, Click To Cancel</span>
+                                                    @else
+                                                    <span>Booked, Click To Confirm</span>
+                                                @endif
                                             </div>
                                         </li>
                                         <?php $total++; ?>
@@ -111,26 +132,46 @@
                                 @endforeach
                             @endif
                         @for($i = $total; $i <= $data->total_seats; $i++)
+                            @if(Auth::user()->role == 'customer')
+                            @if($check == 0)
                             <li>
                                 <div class="ride-seat-icon first-ride">
                                     <i class="fas fa-user count" ></i>
                                     <span>Empty</span>
                                 </div>
                             </li>
+                            @endif
+                                @else
+                                <li>
+                                    <div class="ride-seat-icon first-ride">
+                                        <i class="fas fa-user count" ></i>
+                                        <span>Empty</span>
+                                    </div>
+                                </li>
+                            @endif
                         @endfor
                     </ul>
                     @if(Auth::check() && Auth::user()->role != 'driver')
-                    <span class="text-right">*Click To Select Your Seat</span>
+                        @if($check == 0)
+                            <span class="text-right">*Click To Select Your Seat</span>
+                        @endif
                     @endif
-                    <div class="col-sm-4 padding-left-o">
+                    <div class="col-sm-7 padding-left-o">
                         <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
-                        <input type="hidden" id="fare" value="{{ $data->price_per_seat * $total_books }}">
+                        @if(Auth::user()->role == 'customer')
+                            @if($check > 0)
+                                <p class="get-total-fare">Your Ridemate: {{ $data->user->name }}{{ ' @'.$data->usd->contact }}</p>
+                            @endif
+                        @endif
+                                <input type="hidden" id="fare" value="{{ $data->price_per_seat * $total_books }}">
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')
                             @if($total_books != $data->total_seats && $data->status == 'active')
                                 <div class="col-sm-5 col-sm-offset-3 col-xs-12">
-                                    <button class="btn btn-info btn-offer" data-toggle="modal" data-target="#book-ride">Request To Book</button>
+                                    @if($check == 0)
+                                        <button class="btn btn-info btn-offer" data-toggle="modal" data-target="#book-ride">Request To Book</button>
+                                    @endif
                                 </div>
                                 @endif
                         @endif
