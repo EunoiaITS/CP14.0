@@ -1576,6 +1576,7 @@
         margin: 27px 0px 0px 60px;
         color: #31343f;
         font-weight: bold;
+        float:left;
     }
     .get-available-seats.get-normal-seats .btn-offer{
       float: right;
