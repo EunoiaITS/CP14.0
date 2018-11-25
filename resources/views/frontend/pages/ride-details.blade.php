@@ -92,6 +92,7 @@
                         <h3 class="price-per-seats">Price Per Seat: <span id="price" rel="{{ $data->price_per_seat }}">{{ $data->price_per_seat }}{{ ' ' }}{{ $data->currency }}</span></h3>
                     </div>
                     <ul class="get-ride-seat clearfix">
+                        @if(Auth::check() && Auth::user()->role == 'customer')
                         @if($check == 0)
                         <li class="ridemate-seats">
                             <div class="ride-seat-icon">
@@ -99,6 +100,14 @@
                                 <span>Ridemate</span>
                             </div>
                         </li>
+                        @endif
+                        @else
+                            <li class="ridemate-seats">
+                                <div class="ride-seat-icon">
+                                    <i class="fas fa-user-times fixed-hover"></i>
+                                    <span>Ridemate</span>
+                                </div>
+                            </li>
                         @endif
                         <?php $total = 1; ?>
                             @if(isset($data->bookings))
