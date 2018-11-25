@@ -169,7 +169,7 @@
                     @if(Auth::check())
                         @if(Auth::user()->role == 'customer')
                             @if($total_books != $data->total_seats && $data->status == 'active')
-                                <div class="col-sm-5 col-sm-offset-3 col-xs-12">
+                                <div class="col-sm-12 col-xs-12 padding-right-0">
                                     @if($check == 0)
                                         <button class="btn btn-info btn-offer" data-toggle="modal" data-target="#book-ride">Request To Book</button>
                                     @endif
