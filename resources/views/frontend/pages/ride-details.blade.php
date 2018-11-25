@@ -160,7 +160,7 @@
                         <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
                         @if(Auth::user()->role == 'customer')
                             @if($check > 0)
-                                <p class="get-ridemate-list">Your Ridemate: {{ $data->user->name }}{{ ' @'.$data->usd->contact }}</p>
+                                <p class="get-ridemate-list">Your Ridemate: <span style="color: #61108c;"> {{ $data->user->name }}{{ ' @'.$data->usd->contact }} </span></p>
                             @endif
                         @endif
                                 <input type="hidden" id="fare" value="{{ $data->price_per_seat * $total_books }}">
