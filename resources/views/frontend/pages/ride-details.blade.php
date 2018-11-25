@@ -93,7 +93,7 @@
                         <h3 class="price-per-seats">Price Per Seat: <span id="price" rel="{{ $data->price_per_seat }}">{{ $data->price_per_seat }}{{ ' ' }}{{ $data->currency }}</span></h3>
                     </div>
                     <ul class="get-ride-seat clearfix">
-                        <li>
+                        <li class="ridemate-seats">
                             <div class="ride-seat-icon">
                                 <i class="fas fa-user-times fixed-hover"></i>
                                 <span>Ridemate</span>
@@ -156,11 +156,11 @@
                             <span class="text-right">*Click To Select Your Seat</span>
                         @endif
                     @endif
-                    <div class="col-sm-7 padding-left-o">
+                    <div class="col-sm-10 padding-left-o">
                         <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
                         @if(Auth::user()->role == 'customer')
                             @if($check > 0)
-                                <p class="get-total-fare">Your Ridemate: {{ $data->user->name }}{{ ' @'.$data->usd->contact }}</p>
+                                <p class="get-ridemate-list">Your Ridemate: {{ $data->user->name }}{{ ' @'.$data->usd->contact }}</p>
                             @endif
                         @endif
                                 <input type="hidden" id="fare" value="{{ $data->price_per_seat * $total_books }}">
