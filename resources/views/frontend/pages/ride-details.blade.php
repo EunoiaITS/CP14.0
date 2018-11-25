@@ -78,7 +78,7 @@
                                 @endif
                             @endforeach
                         @endif
-                        @if(Auth::user()->role == 'customer')
+                        @if(Auth::check() && Auth::user()->role == 'customer')
                             @if($check > 0)
                                 <h3 class="check-total-fare">Confirmed Seats</h3>
                             @else
@@ -108,10 +108,12 @@
                                         <li>
                                             <div class="ride-seat-icon first-ride">
                                                 <i class="fas fa-user fixed-hover" data-toggle="modal" data-target="#myModalnsx{{ $book->id }}"></i>
-                                                @if(Auth::user()->role == 'customer')
+                                                @if(Auth::check() && Auth::user()->role == 'customer')
                                                     <span>Booked, Click To Cancel</span>
-                                                    @else
+                                                @elseif(Auth::check() && Auth::user()->role == 'driver')
                                                     <span>Booked, Click To Confirm</span>
+                                                @else
+                                                    <span>Booked</span>
                                                 @endif
                                             </div>
                                         </li>
@@ -133,7 +135,7 @@
                                 @endforeach
                             @endif
                         @for($i = $total; $i <= $data->total_seats; $i++)
-                            @if(Auth::user()->role == 'customer')
+                            @if(Auth::check() && Auth::user()->role == 'customer')
                             @if($check == 0)
                             <li>
                                 <div class="ride-seat-icon first-ride">
@@ -159,7 +161,7 @@
                     @endif
                     <div class="col-sm-10 padding-left-o">
                         <h3 class="price-per-seats get-total-fare">Total Fare: <span id="temp-fare">{{ $data->price_per_seat * $total_books }}{{' '}}</span>{{ $data->currency }}</h3>
-                        @if(Auth::user()->role == 'customer')
+                        @if(Auth::check() && Auth::user()->role == 'customer')
                             @if($check > 0)
                                 <p class="get-ridemate-list">Your Ridemate: <span style="color: #61108c;"> {{ $data->user->name }}{{ ' @'.$data->usd->contact }} </span></p>
                             @endif
