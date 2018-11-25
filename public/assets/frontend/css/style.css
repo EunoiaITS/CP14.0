@@ -1522,7 +1522,7 @@
       margin-right:5px;
     }
     .get-ride-seat li{
-      width: 19%;
+      width: 16%;
       float: left;
     }
     .get-ride-seat li .ride-seat-icon{
@@ -1569,6 +1569,13 @@
 
     .get-total-fare{
       text-align: left !important;
+      float:left;
+    }
+    .get-ridemate-list{
+        font-size: 24px;
+        margin: 27px 0px 0px 60px;
+        color: #31343f;
+        font-weight: bold;
     }
     .get-available-seats.get-normal-seats .btn-offer{
       float: right;
@@ -2873,7 +2880,19 @@
       .logout-option span{
         display:none;
       }
-      
+      .get-ride-seat li .ride-seat-icon .fas {
+          width: 90px;
+          height: 90px;
+          line-height: 78px;
+          font-size: 2.5em;
+      }
+      .get-ride-seat li .ride-seat-icon span{
+        font-size:15px;
+      }
+      .get-ridemate-list{
+        margin-top:20px;
+        margin-left:0px;
+      }
 
 
     }
@@ -2968,6 +2987,9 @@
         float: none;
         width: 30%;
         margin:20px auto;
+      }
+      .get-ride-seat li .ride-seat-icon span{
+        font-size:17px;
       }
       .ride-final-ride-button{
         margin:  20px;
