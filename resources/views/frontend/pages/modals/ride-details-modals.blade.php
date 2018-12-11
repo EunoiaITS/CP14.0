@@ -222,51 +222,51 @@
                 @if(Auth::check() && Auth::user()->role == 'driver' && $data->status == 'completed' && $data->offer_by == Auth::id() && !in_array($b->user_id, $rate_tos))
                     <form method="post" action="{{ url('/d/rate/'.$data->link) }}">
                         {{ csrf_field() }}
-                    <div class="ride-performance performance-ride text-center">
-                        <p>You have experienced the ride,<span> Now lets rate the ridemate’s performance!</span></p>
-                        <ul class="performance-rating">
-                            <li>
+                        <div class="ride-performance performance-ride text-center">
+                            <p>You have experienced the ride,<span> Now lets rate the ridemate’s performance!</span></p>
+                            <ul class="performance-rating">
+                                <li>
 							<span class="click-performance">
 								<i class="fas fa-star fa-2x" rel="1" id="rate-1{{ $b->id }}" data-no="{{ $b->id }}"></i><br>
 								Bad
 							</span>
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 							<span class="click-performance">
 								<i class="fas fa-star fa-2x" rel="2" id="rate-2{{ $b->id }}" data-no="{{ $b->id }}"></i><br>
 								Unsatisfying
 							</span>
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 							<span class="click-performance">
 								<i class="fas fa-star fa-2x" rel="3" id="rate-3{{ $b->id }}" data-no="{{ $b->id }}"></i><br>
 								Average
 							</span>
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 							<span class="click-performance">
 								<i class="fas fa-star fa-2x" rel="4" id="rate-4{{ $b->id }}" data-no="{{ $b->id }}"></i><br>
 								Good
 							</span>
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 							<span class="click-performance">
 								<i class="fas fa-star fa-2x" rel="5" id="rate-5{{ $b->id }}" data-no="{{ $b->id }}"></i><br>
 								Excellent
 							</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="leave-a-feedback feedback-ride-ridemate clearfix">
-                        <h4 class="modal-title" id="myModalLabel">Leave a Feedback</h4>
-                        <textarea name="" id="" cols="30" rows="6" placeholder="Leave your valuable feedback" class="form-control"></textarea>
-                        <input type="hidden" name="rating" id="rating{{ $b->id }}">
-                        <input type="hidden" name="from" value="{{ Auth::id() }}">
-                        <input type="hidden" name="to" value="{{ $b->user_id }}">
-                        <input type="hidden" name="ride_id" value="{{ $data->id }}">
-                        <button type="submit" class="btn btn-info btn-offer pull-right">Send</button>
-                    </div>
-                    <form>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="leave-a-feedback feedback-ride-ridemate clearfix">
+                            <h4 class="modal-title" id="myModalLabel">Leave a Feedback</h4>
+                            <textarea name="" id="" cols="30" rows="6" placeholder="Leave your valuable feedback" class="form-control"></textarea>
+                            <input type="hidden" name="rating" id="rating{{ $b->id }}">
+                            <input type="hidden" name="from" value="{{ Auth::id() }}">
+                            <input type="hidden" name="to" value="{{ $b->user_id }}">
+                            <input type="hidden" name="ride_id" value="{{ $data->id }}">
+                            <button type="submit" class="btn btn-info btn-offer pull-right">Send</button>
+                        </div>
+                    </form>
                 @endif
             </div>
         </div>
