@@ -11,6 +11,7 @@
                         <ul class="edit-profile-option">
                             <li><a href="{{ url('c/profile/edit') }}">Edit Profile</a></li>
                             <li data-toggle="modal" data-target="#myModalx">Change Password</li>
+                            <li data-toggle="modal" data-target="#myModalxDe">Deactivate</li>
                         </ul>
                     </div>
                 </div>
@@ -219,23 +220,27 @@
 </div>
 <!-- end change password popup -->
 
-<!-- cancel booking popup -->
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- deactivate account popup -->
+<div class="modal fade" id="myModalxDe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Cancel Booking</h4>
+                <h4 class="modal-title" id="myModalLabel">Deactivate Account</h4>
             </div>
             <div class="modal-body table-responsive">
-                <p>Are you sure you want to cancel your booking ?</p>
+                <p>Are you sure you want to Deactivate your account ?</p>
             </div>
-            <div class="modal-footer login-modal-footer">
-                <button type="submit" class="btn btn-info btn-offer">Confirm</button>
-                <button type="button" class="btn btn-info btn-offer" data-dismiss="modal" aria-label="Close">Cancel</button>
-            </div>
+            <form action="{{ url('/c/profile')}}" method="post">
+                @csrf
+                <input type="hidden" name="cus_id" value="{{ Auth::user()->id }}">
+                <div class="modal-footer login-modal-footer">
+                    <button type="submit" class="btn btn-info btn-offer">Confirm</button>
+                    <button type="button" class="btn btn-info btn-offer" data-dismiss="modal" aria-label="Close">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<!-- end cancel booking popup -->
+<!-- deactivate account popup -->
 @endsection

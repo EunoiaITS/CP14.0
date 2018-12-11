@@ -163,6 +163,14 @@
                         <span>{{ $b->ud->gender }}</span>
                     </div>
                 </div>
+                <div class="ridemate-name-area">
+                    <div class="ridemate-name">
+                        Contact <span class="ridemate-right">:</span>
+                    </div>
+                    <div class="ridemate-name-xs">
+                        <span>{{ $b->ud->contact }}</span>
+                    </div>
+                </div>
                 @if(Auth::id() == $b->user_id && $data->status == 'active')
                     <div class="ridemate-name-area">
                         <div class="ridemate-popup">

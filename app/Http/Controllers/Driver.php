@@ -32,7 +32,7 @@ class Driver extends Controller
     /**
      * ViewProfile - shows the driver profile info
      */
-    public function viewProfile(){
+    public function viewProfile(Request $request){
         if(Auth::user()){
             $id = Auth::id();
             $user = User::find($id);
@@ -48,6 +48,16 @@ class Driver extends Controller
             }
             if($user->role != 'driver'){
                 return redirect()->back();
+            }
+            if($request->isMethod('post')){
+                $usr = User::find($request->dr_id);
+                $usr->status = 'blocked';
+                if($usr->save()){
+                    return redirect()
+                        ->to('/login')
+                        ->with(Auth::logout())
+                        ->with('error','This account has been deactivated. To activate the account again please contact with the admin.');
+                }
             }
             return view('frontend.pages.driver-profile',[
                 'usd' => $usd,

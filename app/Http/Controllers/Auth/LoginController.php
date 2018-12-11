@@ -51,8 +51,7 @@ class LoginController extends Controller
         if($user->status == 'blocked'){
             Auth::logout();
             return redirect('/login')
-                ->with('error', 'This account has been
-            BLOCKED by the admin. Please contact to the admin.');
+                ->with('error', 'This account has been deactivated. To activate the account please contact with the admin.');
         }
         if($user->role != 'super-admin'){
             $request->session()->forget('area');

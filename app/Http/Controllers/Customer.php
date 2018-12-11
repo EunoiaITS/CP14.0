@@ -30,7 +30,7 @@ class Customer extends Controller
         $this->middleware('Customer');
     }
 
-    public function viewProfile(){
+    public function viewProfile(Request $request){
         $id = Auth::id();
         $user = User::find($id);
         if($user->role != 'customer'){
@@ -61,6 +61,16 @@ class Customer extends Controller
                 $vd = VehiclesData::find($ride_desc->value);
                 $book->vd = $vd;
                 $bookings->push($book);
+            }
+        }
+        if($request->isMethod('post')){
+            $usr = User::find($request->cus_id);
+            $usr->status = 'blocked';
+            if($usr->save()){
+                return redirect()
+                    ->to('/login')
+                    ->with(Auth::logout())
+                    ->with('error','This account has been deactivated. To activate the account again please contact with the admin.');
             }
         }
 

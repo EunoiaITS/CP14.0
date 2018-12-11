@@ -90,6 +90,7 @@ Route::prefix('admin')->group(function(){
  */
 Route::prefix('c')->group(function(){
     Route::get('/profile', 'Customer@viewProfile');
+    Route::post('/profile', 'Customer@viewProfile');
     Route::get('/profile/edit', 'Customer@editProfile');
     Route::post('/profile/edit', 'Customer@editProfile');
     Route::post('/profile/edit/password', 'Customer@editPassword');
@@ -114,6 +115,7 @@ Route::prefix('c')->group(function(){
  */
 Route::prefix('d')->group(function(){
     Route::get('/profile', 'Driver@viewProfile');
+    Route::post('/profile', 'Driver@viewProfile');
     Route::get('/profile/edit', 'Driver@editProfile');
     Route::post('/profile/edit', 'Driver@editProfile');
     Route::post('/profile/edit/password', 'Driver@editPassword');

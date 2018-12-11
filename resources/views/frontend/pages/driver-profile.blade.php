@@ -4,11 +4,15 @@
     <div class="get-offer-ride  get-ride-mate-profile">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-10 col-xs-12 col-xs-offset-0 padding-right-0">
-                    <div class="col-lg-12 col-sm-12">
-                        <a href="{{ url('d/profile/edit') }}"><button class="btn btn-info btn-offer edit-badge-area">Edit Profile <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button></a>
+                <div class="col-lg-12 col-sm-12">
+                    <button class="btn btn-info btn-offer edit-badge-area">Edit Info <img src="{{ url('/') }}/public/assets/frontend/img/file.png" alt=""></button>
+                    <!-- notification popupbar -->
+                    <div class="get-edit-profile">
+                        <ul class="edit-profile-option">
+                            <li><a href="{{ url('d/profile/edit') }}">Edit Profile</a></li>
+                            <li data-toggle="modal" data-target="#myModalxDe">Deactivate</li>
+                        </ul>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
                 <div class="highlight-get-popular clearfix">
                     <div class="col-sm-12 col-md-8 col-xs-12 padding-left-o">
@@ -198,4 +202,27 @@
             </div>
         </div>
     </div>
+    <!-- deactivate account popup -->
+    <div class="modal fade" id="myModalxDe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Deactivate Account</h4>
+                </div>
+                <div class="modal-body table-responsive">
+                    <p>Are you sure you want to Deactivate your account ?</p>
+                </div>
+                <form action="{{ url('/d/profile')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="dr_id" value="{{ Auth::user()->id }}">
+                    <div class="modal-footer login-modal-footer">
+                        <button type="submit" class="btn btn-info btn-offer">Confirm</button>
+                        <button type="button" class="btn btn-info btn-offer" data-dismiss="modal" aria-label="Close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- deactivate account popup -->
 @endsection
