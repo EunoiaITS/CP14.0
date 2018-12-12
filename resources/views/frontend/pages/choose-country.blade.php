@@ -33,21 +33,21 @@
                     <div class="get-single-text clearfix">
                         <div class="icon"><img class="icon-1" src="{{ asset('public/assets/frontend/img/icon-1.png') }}" alt="icon-1"></div>
                         <h3 class="get-single-title">Smart</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+                        <p>User friendly people powered online marketplace. A community built on trust, for the users, by the users.</p>
                     </div>
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="get-single-text clearfix">
                         <div class="icon"><img class="icon-2" src="{{ asset('public/assets/frontend/img/icon-2.png') }}" alt="icon-2"></div>
                         <h3 class="get-single-title">Simple</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                        <p>Just as you like, anywhere, anytime at the cost acceptable to you.</p>
                     </div>
                 </div>
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="get-single-text clearfix">
                         <div class="icon"><img class="icon-3" src="{{ asset('public/assets/frontend/img/icon-3.png') }}" alt="icon-3"></div>
                         <h3 class="get-single-title">Seamless</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                        <p>Search, book, communicate and enjoy the ride.</p>
                     </div>
                 </div>
             </div>
