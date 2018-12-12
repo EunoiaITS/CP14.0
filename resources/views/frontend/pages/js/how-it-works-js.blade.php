@@ -4,7 +4,7 @@
             '                        <br>\n' +
             '                        <h4 class="about-us-details-title text-center">Wanna get somewhere? NEED A RIDE? (for RIDERS)</h4>\n' +
             '                        <p><b>Step 1:</b> Find a ride</p>\n' +
-            '                        <p>Just say where you’re heading, where you’re leaving from and when. Then pick a ride that works for you! If you need more detail. You may also want to check out Ridemate' profiles. You’ll see what others say about their ride with them.</p>\n' +
+            '                        <p>Just say where you’re heading, where you’re leaving from and when. Then pick a ride that works for you! If you need more detail. You may also want to check out Ridemate\' profiles. You’ll see what others say about their ride with them.</p>\n' +
             '                        <p><b>Step 2:</b> Book and Ride once Confirmed</p>\n' +
             '                        <p>Tap book for your seat at the price set by Ridemate. Once your booking request is confirmed by Ridemate, you may view Ridemate’s contacts in detail. Just communicate directly.</p>\n' +
             '                        <p><b>Step 3:</b> Riding together and Pay</p>\n' +
@@ -34,7 +34,7 @@
             '                        <br>\n' +
             '                        <h4 class="about-us-details-title text-center">Wanna get somewhere? NEED A RIDE? (for RIDERS)</h4>\n' +
             '                        <p><b>Step 1:</b> Find a ride</p>\n' +
-            '                        <p>Just say where you’re heading, where you’re leaving from and when. Then pick a ride that works for you! If you need more detail. You may also want to check out Ridemate' profiles. You’ll see what others say about their ride with them.</p>\n' +
+            '                        <p>Just say where you’re heading, where you’re leaving from and when. Then pick a ride that works for you! If you need more detail. You may also want to check out Ridemate\' profiles. You’ll see what others say about their ride with them.</p>\n' +
             '                        <p><b>Step 2:</b> Book and Ride once Confirmed</p>\n' +
             '                        <p>Tap book for your seat at the price set by Ridemate. Once your booking request is confirmed by Ridemate, you may view Ridemate’s contacts in detail. Just communicate directly.</p>\n' +
             '                        <p><b>Step 3:</b> Riding together and Pay</p>\n' +
