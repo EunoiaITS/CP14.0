@@ -54,7 +54,7 @@
             '                        <p><i>Find out more about them:</i> Check out their preferences and mini bio in their details, so you know all about who you’ll be travelling with.</p>\n' +
             '                        <p><i>Profiles are moderated:</i> All profiles, photos, ratings, rides and ride comments are moderated to maintain trust and respect in the community.</p>\n' +
             '                        <p><i>Get in touch before you travel:</i> Contact each other directly. Get to know each other before the ride and easily organise where to meet.</p>';
-            $('#content').html(one);
+            $('#content').html(one); 
         });
         $('.two').on('click',function (e) {
             e.preventDefault();
