@@ -1,11 +1,11 @@
 <script>
     $(document).ready(function () {
-        $('#content').html('<p>Last Updated: 14 February,2018</p>\n' +
+        $('#content').html('<p>Last Updated: January, 2019</p>\n' +
             '                        <p>Thank you for using getWOBO, enjoy the Ride!</p>\n' +
             '                        <p>This Privacy Policy explains how we collect, use, process, and disclose your information across the getWOBO Platform.</p>\n' +
-            '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service.</a></p>\n' +
+            '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
             '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
-            '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued</p>\n' +
+            '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
             '                        <ol>\n' +
             '                            <li><b>Information We Collect</b>\n' +
             '                                <p>There are three general categories of information we collect.</p>\n' +
@@ -33,12 +33,12 @@
         $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            one = '<p>Last Updated: 14 February,2018</p>\n' +
+            one = '<p>Last Updated: January, 2019</p>\n' +
                 '                        <p>Thank you for using getWOBO, enjoy the Ride!</p>\n' +
                 '                        <p>This Privacy Policy explains how we collect, use, process, and disclose your information across the getWOBO Platform.</p>\n' +
-                '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service.</a></p>\n' +
+                '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
                 '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
-                '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued</p>\n' +
+                '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“Payments Terms”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
                 '                        <ol>\n' +
                 '                            <li><b>Information We Collect</b>\n' +
                 '                                <p>There are three general categories of information we collect.</p>\n' +
@@ -203,7 +203,7 @@
                 '                                    </li>\n' +
                 '                                </ol>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Aggregated Data..</b>\n' +
+                '                                    <li><b>Aggregated Data.</b>\n' +
                 '                                        <p>We may also share aggregated information (information about our users that we combine together so that it no longer identifies or references an individual user) and non-personally identifiable information for industry and market analysis, demographic profiling, marketing and advertising, and other business purposes.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
@@ -216,7 +216,7 @@
             five = '<ol><li><b>OTHER IMPORTANT INFORMATION</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>Analyzing your Communications.</b>\n' +
-                '                                        <p>We may review, scan, or analyze your communications on the getWOBO Platform for fraud prevention, risk assessment, regulatory compliance, investigation, product development, research, and customer support purposes. For example, as part of our fraud prevention efforts, we scan and analyze messages to mask contact information and references to other websites. In some cases, we may also scan, review, or analyze messages to debug, improve, and expand product offerings. We use automated methods where reasonably possible. However, occasionally we may need to manually review some communications, such as for fraud investigations and customer support, or to assess and improve the functionality of these automated tools. We will not review, scan, or analyze your communications to send third party marketing messages to you, and we will not sell reviews or analyses of these communications./p>\n' +
+                '                                        <p>We may review, scan, or analyze your communications on the getWOBO Platform for fraud prevention, risk assessment, regulatory compliance, investigation, product development, research, and customer support purposes. For example, as part of our fraud prevention efforts, we scan and analyze messages to mask contact information and references to other websites. In some cases, we may also scan, review, or analyze messages to debug, improve, and expand product offerings. We use automated methods where reasonably possible. However, occasionally we may need to manually review some communications, such as for fraud investigations and customer support, or to assess and improve the functionality of these automated tools. We will not review, scan, or analyze your communications to send third party marketing messages to you, and we will not sell reviews or analyses of these communications.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
@@ -240,7 +240,7 @@
                 '                            <li><b>YOUR CHOICES</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>Access and Update.</b>\n' +
-                '                                        <p>You may review, update, or delete the information in your getWOBO Account by logging into your getWOBO Account and reviewing your getWOBO settings and profile./p>\n' +
+                '                                        <p>You may review, update, or delete the information in your getWOBO Account by logging into your getWOBO Account and reviewing your getWOBO settings and profile.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
