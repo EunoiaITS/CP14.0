@@ -6,7 +6,7 @@
             '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
             '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
             '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-            '                        <ol>\n' +
+            '                        <ol style="list-style-type:disc;">\n' +
             '                            <li><b>Information We Collect</b>\n' +
             '                                <p>There are three general categories of information we collect.</p>\n' +
             '                                <ol style="list-style-type: square;">\n' +
@@ -39,7 +39,7 @@
                 '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
                 '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
                 '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“Payments Terms”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-                '                        <ol>\n' +
+                '                        <ol style="list-style-type:disc;">\n' +
                 '                            <li><b>Information We Collect</b>\n' +
                 '                                <p>There are three general categories of information we collect.</p>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
@@ -63,7 +63,7 @@
         $('.two').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            two = '<ol>\n' +
+            two = '<ol style="list-style-type:disc;">\n' +
                 '<li><b>Information We Collect</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>Information We Automatically Collect from Your Use of the getWOBO Platform.</b>\n' +
@@ -137,7 +137,7 @@
         $('.four').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            four = '<li><b>SHARING & DISCLOSURE</b>\n' +
+            four = '<li style="list-style-type:disc;"><b>SHARING & DISCLOSURE</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>With Your Consent.</b>\n' +
                 '                                        <p>We may share your information at your direction or as described at the time of sharing, such as when you authorize a third party application or website to access your getWOBO Account.</p>\n' +
@@ -213,7 +213,7 @@
         $('.five').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            five = '<ol><li><b>OTHER IMPORTANT INFORMATION</b>\n' +
+            five = '<ol style="list-style-type:disc;"><li><b>OTHER IMPORTANT INFORMATION</b>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
                 '                                    <li><b>Analyzing your Communications.</b>\n' +
                 '                                        <p>We may review, scan, or analyze your communications on the getWOBO Platform for fraud prevention, risk assessment, regulatory compliance, investigation, product development, research, and customer support purposes. For example, as part of our fraud prevention efforts, we scan and analyze messages to mask contact information and references to other websites. In some cases, we may also scan, review, or analyze messages to debug, improve, and expand product offerings. We use automated methods where reasonably possible. However, occasionally we may need to manually review some communications, such as for fraud investigations and customer support, or to assess and improve the functionality of these automated tools. We will not review, scan, or analyze your communications to send third party marketing messages to you, and we will not sell reviews or analyses of these communications.</p>\n' +
