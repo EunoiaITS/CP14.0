@@ -2079,7 +2079,11 @@
       font-family: 'Source Sans pro', sans-serif;
       text-align: justify;
     }
-    .about-us-details ol li{
+   .about-us-details-pricacy p{
+     text-align: justify;
+   }
+    .about-us-details ol li,
+    .about-us-details-pricacy ol li{
       text-align: justify; 
     }
     .about-us-details a{
