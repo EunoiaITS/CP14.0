@@ -1,12 +1,12 @@
 <script>
     $(document).ready(function () {
-        $('#content').html('<p>Last Updated: January, 2019</p>\n' +
-            '                        <p>Thank you for using getWOBO, enjoy the Ride!</p>\n' +
+        $('#content').html('<p style="margin-bottom:0px;">Last Updated: January, 2019</p>\n' +
+            '                        <p style="margin-bottom:40px;">Thank you for using getWOBO, enjoy the Ride!</p>\n' +
             '                        <p>This Privacy Policy explains how we collect, use, process, and disclose your information across the getWOBO Platform.</p>\n' +
             '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
             '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
             '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-            '                        <ol style="list-style-type:disc;">\n' +
+            '                        <ol style="list-style-type:disc; margin-top:40px;">\n' +
             '                            <li><b>Information We Collect</b>\n' +
             '                                <p>There are three general categories of information we collect.</p>\n' +
             '                                <ol style="list-style-type: square;">\n' +
@@ -33,13 +33,13 @@
         $('.one').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            one = '<p>Last Updated: January, 2019</p>\n' +
-                '                        <p>Thank you for using getWOBO, enjoy the Ride!</p>\n' +
+            one = '<p style="margin-bottom:0px;">Last Updated: January, 2019</p>\n' +
+                '                        <p style="margin-bottom:40px;">Thank you for using getWOBO, enjoy the Ride!</p>\n' +
                 '                        <p>This Privacy Policy explains how we collect, use, process, and disclose your information across the getWOBO Platform.</p>\n' +
                 '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
                 '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
                 '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“Payments Terms”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-                '                        <ol style="list-style-type:disc;">\n' +
+                '                        <ol style="list-style-type:disc; margin-top:40px;">\n' +
                 '                            <li><b>Information We Collect</b>\n' +
                 '                                <p>There are three general categories of information we collect.</p>\n' +
                 '                                <ol style="list-style-type: square;">\n' +
