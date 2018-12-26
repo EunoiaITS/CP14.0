@@ -2072,10 +2072,12 @@
       font-size: 25px;
       margin-bottom: 20px;
       font-weight: bold;
+      margin-top: 60px;
     }
     .about-us-details p{
       font-size: 17px;
       font-family: 'Source Sans pro', sans-serif;
+      text-align: justify;
     }
     .about-us-details a{
         width: 100%;
@@ -2151,6 +2153,7 @@
         font-family: 'Source Sans pro', sans-serif;
         font-size: 17px;
         color: #606060;
+        text-align: justify;
     }
 
     .modal-card-status .dropdown-toggle{
