@@ -92,7 +92,6 @@
                         @endif
                         <div class="get-landing-text">
                             <h2 class="get-section-header where-to-section-it">Where to?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc ididunt ut labore et dolore magna aliqua.</p>
                             <div class="get-a-ride">
                                 <form action="{{ url('/search') }}" method="post">
                                     {{ csrf_field() }}
