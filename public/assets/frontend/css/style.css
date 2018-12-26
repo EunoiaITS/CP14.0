@@ -2099,9 +2099,14 @@
     }
 
     /*searcharea*/
+     .select-con-sms{
+        text-align: center;
+        width: 100%;
+        font-size:17px;
+    }
     .country-search {
         display: table;
-        margin: 80px auto;
+        margin: 30px auto 80px;
         width: 250px;
         -webkit-box-shadow: 0px 0px 29px 1px rgba(0,0,0,0.1);
         -moz-box-shadow: 0px 0px 29px 1px rgba(0,0,0,0.1);
