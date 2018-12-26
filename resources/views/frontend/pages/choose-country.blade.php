@@ -8,8 +8,8 @@
                 <div class="search-get-ride">
                     <form method="post" action="{{ url('/choose-country') }}">
                         {{ csrf_field() }}
+                        <label for="country-select-ops" class="select-con-sms">Please select a country to proceed further.</label>
                         <div class="form-group country-search">
-                             <label for="country-select-ops">Please select a country to proceed further.</label>
                             <select name="country" id="country-select-ops" class="get-select-picker form-control" title="Country" required="">
                                 @foreach($countries as $cr)
                                     <option value="{{ $cr->code.','.$cr->lat.','.$cr->lng }}">{{ $cr->name }}</option>
