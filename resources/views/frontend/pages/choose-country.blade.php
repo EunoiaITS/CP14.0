@@ -9,7 +9,8 @@
                     <form method="post" action="{{ url('/choose-country') }}">
                         {{ csrf_field() }}
                         <div class="form-group country-search">
-                            <select name="country" id="" class="get-select-picker form-control" title="Country" required="">
+                             <label for="country-select-ops">Please select a country to proceed further.</label>
+                            <select name="country" id="country-select-ops" class="get-select-picker form-control" title="Country" required="">
                                 @foreach($countries as $cr)
                                     <option value="{{ $cr->code.','.$cr->lat.','.$cr->lng }}">{{ $cr->name }}</option>
                                     @endforeach
