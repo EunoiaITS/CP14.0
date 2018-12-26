@@ -12,7 +12,7 @@
                     @endif
                     <div class="ridemate-offer-button">
                         <a style="color: #ffffff;" href="{{ url('/d/offer-ride') }}"><button class="btn btn-info btn-offer">Offer a ride <i class="fas fa-car"></i></button></a>
-                        <a style="color: #ffffff;" href="{{ url('/d/ride-requests') }}"><button class="btn btn-info btn-offer">Requests For Ride</button></a>
+                        <a style="color: #ffffff;" href="{{ url('/d/ride-requests') }}"><button class="btn btn-info btn-offer">Requests of Rides</button></a>
                     </div>
                     <!-- Ride details -->
                     <div class="get-ridemate-single">
