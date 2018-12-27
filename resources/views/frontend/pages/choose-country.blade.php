@@ -1,4 +1,4 @@
-@extends('frontend.layout')
+@extends('frontend.country')
 @section('content')
 
     <!-- search area -->
