@@ -12,7 +12,7 @@
                     @endif
                     <div class="ridemate-offer-button">
                         <a style="color: #ffffff;" href="{{ url('/d/offer-ride') }}"><button class="btn btn-info btn-offer">Offer a ride <i class="fas fa-car"></i></button></a>
-                        <a style="color: #ffffff;" href="{{ url('/d/ride-requests') }}"><button class="btn btn-info btn-offer">Requests For Ride</button></a>
+                        <a style="color: #ffffff;" href="{{ url('/d/ride-requests') }}"><button class="btn btn-info btn-offer">Requests of Rides</button></a>
                     </div>
                     <!-- Ride details -->
                     <div class="get-ridemate-single">
@@ -92,7 +92,6 @@
                         @endif
                         <div class="get-landing-text">
                             <h2 class="get-section-header where-to-section-it">Where to?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc ididunt ut labore et dolore magna aliqua.</p>
                             <div class="get-a-ride">
                                 <form action="{{ url('/search') }}" method="post">
                                     {{ csrf_field() }}

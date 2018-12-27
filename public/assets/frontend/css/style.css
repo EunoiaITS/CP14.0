@@ -2072,10 +2072,19 @@
       font-size: 25px;
       margin-bottom: 20px;
       font-weight: bold;
+      margin-top: 60px;
     }
     .about-us-details p{
       font-size: 17px;
       font-family: 'Source Sans pro', sans-serif;
+      text-align: justify;
+    }
+   .about-us-details-pricacy p{
+     text-align: justify;
+   }
+    .about-us-details ol li,
+    .about-us-details-pricacy ol li{
+      text-align: justify; 
     }
     .about-us-details a{
         width: 100%;
@@ -2099,9 +2108,14 @@
     }
 
     /*searcharea*/
+     .select-con-sms{
+        text-align: center;
+        width: 100%;
+        font-size:17px;
+    }
     .country-search {
         display: table;
-        margin: 80px auto;
+        margin: 30px auto 80px;
         width: 250px;
         -webkit-box-shadow: 0px 0px 29px 1px rgba(0,0,0,0.1);
         -moz-box-shadow: 0px 0px 29px 1px rgba(0,0,0,0.1);
@@ -2146,6 +2160,7 @@
         font-family: 'Source Sans pro', sans-serif;
         font-size: 17px;
         color: #606060;
+        text-align: justify;
     }
 
     .modal-card-status .dropdown-toggle{
