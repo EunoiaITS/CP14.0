@@ -6,11 +6,11 @@
             '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
             '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
             '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“<b>Payments Terms</b>”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-            '                        <ol style="list-style-type:disc; margin-top:40px;">\n' +
-            '                            <li><b>Information We Collect</b>\n' +
+            '                        <ol style="list-style-type:none; margin-top:40px;">\n' +
+            '                            <li><b>1. Information We Collect</b>\n' +
             '                                <p>There are three general categories of information we collect.</p>\n' +
-            '                                <ol style="list-style-type: square;">\n' +
-            '                                    <li><b>Information You Give Us</b>\n' +
+            '                                <ol style="list-style-type: none;">\n' +
+            '                                    <li><b>1.1 Information You Give Us</b>\n' +
             '                                        <p>We collect information you share with us when you use the getWOBO Platform.</p>\n' +
             '                                        <ol style="list-style-type: circle;">\n' +
             '                                            <li><b>Account Information.</b> When you sign up for a getWOBO Account, we require certain information such as your name, email address, and date of birth and other details where applicable.</li>\n' +
@@ -39,11 +39,11 @@
                 '                        <p>If you see an undefined term in this Privacy Policy (such as “Rides” or “getWOBO Platform”), it has the same definition as outlined in our <a href="#">Terms of Service</a>.</p>\n' +
                 '                        <p>When this policy mentions “getWOBO,” “we,” “us,” or “our,” it refers to the getWOBO company that is responsible for your information under this Privacy Policy (the “<b>Data Controller</b>”).</p>\n' +
                 '                        <p>This Privacy Policy also applies to the Payment Services provided to you by getWOBO Payments (“Payments Terms”). One or more getWOBO Payments entities will be the Data Controller of your information related to the Payment Services depending on where your Payment Method or Payout Method is issued.</p>\n' +
-                '                        <ol style="list-style-type:disc; margin-top:40px;">\n' +
-                '                            <li><b>Information We Collect</b>\n' +
+                '                        <ol style="list-style-type:none; margin-top:40px;">\n' +
+                '                            <li><b>1. Information We Collect</b>\n' +
                 '                                <p>There are three general categories of information we collect.</p>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Information You Give Us</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>1.1 Information You Give Us</b>\n' +
                 '                                        <p>We collect information you share with us when you use the getWOBO Platform.</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li><b>Account Information.</b> When you sign up for a getWOBO Account, we require certain information such as your name, email address, and date of birth and other details where applicable.</li>\n' +
@@ -65,8 +65,8 @@
             $("html, body").animate({ scrollTop: 0 }, 500);
             two = '<ol style="list-style-type:disc;">\n' +
                 '<li><b>Information We Collect</b>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Information We Automatically Collect from Your Use of the getWOBO Platform.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>1.2 Information We Automatically Collect from Your Use of the getWOBO Platform.</b>\n' +
                 '                                        <p>When you use the getWOBO Platform, we collect information about the services you use and how you use them.</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li><b>Usage Information.</b> We collect information about your interactions with the getWOBO Platform, such as the pages or other content you view, your searches for Rides, Rides you have made, and other actions on the getWOBO Platform.</li>\n' +
@@ -77,8 +77,8 @@
                 '                                        </ol>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Information We Collect from Third Parties.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>1.3 Information We Collect from Third Parties.</b>\n' +
                 '                                        <p>We may collect information that others provide about you when they use the getWOBO Platform, or obtain information from other sources and combine that with information we collect through the getWOBO Platform.</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li><b>Third Party Services.</b> If you link, connect, or login to your getWOBO Account with a third party service (e.g., Facebook, WeChat), the third party service may send us information such as your registration and profile information from that service. This information varies and is controlled by that service or as authorized by you via your privacy settings at that service.</li>\n' +
@@ -94,10 +94,10 @@
         $('.three').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            three = '<li><b>HOW WE USE INFORMATION WE COLLECT</b>\n' +
+            three = '<li><b>2. HOW WE USE INFORMATION WE COLLECT</b>\n' +
                 '                                <p>We use, store, and process information about you to provide, understand, improve, and develop the getWOBO Platform, and to create and maintain a trusted and safer environment.</p>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Provide, Improve, and Develop the getWOBO Platform.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>2.1 Provide, Improve, and Develop the getWOBO Platform.</b>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>Enable you to access and use the getWOBO Platform.</li>\n' +
                 '                                            <li>Enable you to communicate with other Members.</li>\n' +
@@ -110,8 +110,8 @@
                 '                                        </ol>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Create and Maintain a Trusted and Safer Environment.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>2.2 Create and Maintain a Trusted and Safer Environment.</b>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>Detect and prevent fraud, spam, abuse, security incidents, and other harmful activity.</li>\n' +
                 '                                            <li>Conduct investigations and risk assessments.</li>\n' +
@@ -122,8 +122,8 @@
                 '                                        </ol>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Provide, Personalize, Measure, and Improve our Advertising and Marketing.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>2.3 Provide, Personalize, Measure, and Improve our Advertising and Marketing.</b>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>Send you promotional messages, marketing, advertising, and other information that may be of interest to you based on your communication preferences (including information about getWOBO or partner campaigns and services).</li>\n' +
                 '                                            <li>Personalize, measure, and improve advertising.</li>\n' +
@@ -137,14 +137,14 @@
         $('.four').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            four = '<li style="list-style-type:disc;"><b>SHARING & DISCLOSURE</b>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>With Your Consent.</b>\n' +
+            four = '<li style="list-style-type:disc;"><b>3. SHARING & DISCLOSURE</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.1 With Your Consent.</b>\n' +
                 '                                        <p>We may share your information at your direction or as described at the time of sharing, such as when you authorize a third party application or website to access your getWOBO Account.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Sharing between Hosts, Guests and Co-Hosts.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.2 Sharing between Hosts, Guests and Co-Hosts.</b>\n' +
                 '                                        <p>To help facilitate bookings, we may share your information with other Members as follows:</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>When you as a Rider submit a ride request, certain information about you is shared with the Ridemate (and Co-Ridemate, if applicable), including your full name, the full name of any additional Riders, your cancellation history, and other information you agree to share. When your ride is confirmed, we will disclose additional information to assist with coordinating the ride, like your phone number.</li>\n' +
@@ -154,8 +154,8 @@
                 '                                        <p>We don’t share your billing and payout information with other Members.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Profiles, Listings, and other Public Information.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.3 Profiles, Listings, and other Public Information.</b>\n' +
                 '                                        <p>The getWOBO Platform lets you publish information that is visible to the general public. For example:</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>Parts of your public profile page, such as your first name, your description, and city, are publicly visible to others.</li>\n' +
@@ -166,44 +166,44 @@
                 '                                        <p>Information you share publicly on the getWOBO Platform may be indexed through third party search engines. In some cases, you may opt-out of this feature in your Account settings. If you change your settings or your public-facing content, these search engines may not update their databases. We do not control the practices of third party search engines, and they may use caches containing your outdated information.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Service Providers.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.4 Service Providers.</b>\n' +
                 '                                        <p>We use a variety of third party service providers to help us provide services related to the getWOBO Platform. Service providers may be located anywhere in the world. For example, service providers may help us: (i) verify or authenticate your identification, (ii) check information against public databases, (iii) assist us with background checks, fraud prevention, and risk assessment, or (iv) provide customer service, advertising, or payments services. These providers have limited access to your information to perform these tasks on our behalf, and are contractually obligated to use it consistent with this Privacy Policy.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>getWOBO Payments.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.5 getWOBO Payments.</b>\n' +
                 '                                        <p>getWOBO Payments may share your personal information to: (i) provide the Payment Services, (ii) facilitate your use of the getWOBO Platform, and (iii) jointly market products or services to you with other financial third parties with whom getWOBO Payments has a formal agreement.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Safety and Compliance with Law.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.6 Safety and Compliance with Law.</b>\n' +
                 '                                        <p>getWOBO may disclose your information to courts, law enforcement or governmental authorities, or authorized third parties, if and to the extent we are required to do so by law or if such disclosure is reasonably necessary: (i) to comply with legal process and to respond to claims asserted against getWOBO, (ii) to respond to verified requests relating to a criminal investigation or alleged or suspected illegal activity or any other activity that may expose us, you, or any other of our users to legal liability, (iii) to enforce and administer our <a href="#">Terms of Service</a> or other agreements with Members, (iv) for fraud investigation and prevention, risk assessment, customer support, product development and debugging purposes, or (v) to protect the rights, property or personal safety of getWOBO, its employees, its Members, or members of the public.</p>\n' +
                 '                                        <p>We will attempt to notify Members about these requests unless: (i) providing notice is prohibited by the legal process itself, by court order we receive, or by applicable law, or (ii) we believe that providing notice would be futile, ineffective, create a risk of injury or bodily harm to an individual or group, or create or increase a risk of fraud upon getWOBO’s property, its Members and the Platform (collectively, “<b>Risk Scenarios</b>”). In instances where we comply with legal requests without notice for these reasons, we will attempt to notify that Member about the request after the fact if we determine in good faith that we are no longer legally prohibited from doing so and that no Risk Scenarios apply.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Corporate Affiliates.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.7 Corporate Affiliates.</b>\n' +
                 '                                        <p>To help us provide the getWOBO Platform, we may share your information within our corporate family of companies (both financial and non-financial entities) that are related by common ownership or control. These related entities are covered under this Privacy Policy, and when services have additional terms specific to them, we tell you through the getWOBO Platform.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Widgets.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.8 Widgets.</b>\n' +
                 '                                        <p>We may display parts of the getWOBO Platform (e.g., your Ride Service page) on sites operated by getWOBO’s business partners, using technologies such as widgets or APIs. If your Riders are displayed on a partner’s site, information from your public profile page may also be displayed.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Tax Authorities.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.9 Tax Authorities.</b>\n' +
                 '                                        <p>In jurisdictions where we facilitate the Collection and Remittance of Occupancy Taxes as described in the “Taxes” section of the <a href="#">Terms of Service</a>, Ridemates and Riders expressly grant us permission, without further notice, to disclose Ridemates’ and Riders’ data and other information relating to them or to their transactions, rides and bookings to the relevant tax authority, including, but not limited to, the Ridemate or Ride’s name, vehicle details, residential address, transaction dates and amounts, tax identification number(s), the amount of taxes received (or due) by Ridemates from Riders, and contact information.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Business Transfers.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.10 Business Transfers.</b>\n' +
                 '                                        <p>If getWOBO undertakes or is involved in any merger, acquisition, reorganization, sale of assets, bankruptcy, or insolvency event, then we may sell, transfer or share some or all of our assets, including your information. In this event, we will notify you before your personal information is transferred and becomes subject to a different privacy policy.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Aggregated Data.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>3.11 Aggregated Data.</b>\n' +
                 '                                        <p>We may also share aggregated information (information about our users that we combine together so that it no longer identifies or references an individual user) and non-personally identifiable information for industry and market analysis, demographic profiling, marketing and advertising, and other business purposes.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
@@ -213,14 +213,14 @@
         $('.five').on('click',function (e) {
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
-            five = '<ol style="list-style-type:disc;"><li><b>OTHER IMPORTANT INFORMATION</b>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Analyzing your Communications.</b>\n' +
+            five = '<ol style="list-style-type:none;"><li><b>4. OTHER IMPORTANT INFORMATION</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>4.1 Analyzing your Communications.</b>\n' +
                 '                                        <p>We may review, scan, or analyze your communications on the getWOBO Platform for fraud prevention, risk assessment, regulatory compliance, investigation, product development, research, and customer support purposes. For example, as part of our fraud prevention efforts, we scan and analyze messages to mask contact information and references to other websites. In some cases, we may also scan, review, or analyze messages to debug, improve, and expand product offerings. We use automated methods where reasonably possible. However, occasionally we may need to manually review some communications, such as for fraud investigations and customer support, or to assess and improve the functionality of these automated tools. We will not review, scan, or analyze your communications to send third party marketing messages to you, and we will not sell reviews or analyses of these communications.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Linking Third Party Accounts.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>4.2 Linking Third Party Accounts.</b>\n' +
                 '                                        <p>You may link your getWOBO Account with your account at a third party social networking service. Your contacts on these third party services are referred to as “Friends.” When you create this link:</p>\n' +
                 '                                        <ol style="list-style-type: circle;">\n' +
                 '                                            <li>some of the information you provide to us from the linking of your accounts may be published on your getWOBO Account profile;</li>\n' +
@@ -234,28 +234,28 @@
                 '                                    </li>\n' +
                 '                                </ol>\n' +
                 '                            </li>\n' +
-                '                            <li><b>THIRD PARTY PARTNERS & INTEGRATIONS</b>\n' +
+                '                            <li><b>5. THIRD PARTY PARTNERS & INTEGRATIONS</b>\n' +
                 '                                <p>The getWOBO Platform may contain links to third party websites or services, such as third party integrations, co-branded services, or third party-branded services (“<b>Third Party Partners</b>”). getWOBO doesn’t own or control these Third Party Partners and when you interact with them, you may be providing information directly to the Third Party Partner. These Third Party Partners will have their own rules about the collection, use, and disclosure of information. We encourage you to review the privacy policies of the other websites you visit.</p>\n' +
                 '                            </li>\n' +
-                '                            <li><b>YOUR CHOICES</b>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Access and Update.</b>\n' +
+                '                            <li><b>6. YOUR CHOICES</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>6.1 Access and Update.</b>\n' +
                 '                                        <p>You may review, update, or delete the information in your getWOBO Account by logging into your getWOBO Account and reviewing your getWOBO settings and profile.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
-                '                                <ol style="list-style-type: square;">\n' +
-                '                                    <li><b>Account Cancellation.</b>\n' +
+                '                                <ol style="list-style-type: none;">\n' +
+                '                                    <li><b>6.2 Account Cancellation.</b>\n' +
                 '                                        <p>Member may terminate / cancel their account at their choice.</p>\n' +
                 '                                    </li>\n' +
                 '                                </ol>\n' +
                 '                            </li>\n' +
-                '                            <li><b>OPERATING GLOBALLY</b>\n' +
+                '                            <li><b>7. OPERATING GLOBALLY</b>\n' +
                 '                                <p>As described in this Privacy Policy, we may sometimes share your information within our family of companies or with third parties. When you use the getWOBO Platform, you authorize us to transfer, store, and process your information possibly in other countries. Laws in these countries may differ from the laws applicable to the place where you live. By using the getWOBO Platform, you consent to transferring your data to any countries.</p>\n' +
                 '                            </li>\n' +
-                '                            <li><b>SECURITY</b>\n' +
+                '                            <li><b>8. SECURITY</b>\n' +
                 '                                <p>We are continuously implementing and updating administrative, technical, and physical security measures to help protect your information against unauthorized access, loss, destruction, or alteration. However, the Internet is not a 100% secure environment so we can’t guarantee the security of the transmission or storage of your information.</p>\n' +
                 '                            </li>\n' +
-                '                            <li><b>CHANGES TO THIS PRIVACY POLICY</b>\n' +
+                '                            <li><b>9. CHANGES TO THIS PRIVACY POLICY</b>\n' +
                 '                                <p>getWOBO reserves the right to modify this Privacy Policy at any time in accordance with this provision. If we make changes to this Privacy Policy, we will post the revised Privacy Policy on the getWOBO Platform and update the “Last Updated” date at the top of this Privacy Policy. If you disagree with the revised Privacy Policy, you may cancel your Account. If you do not cancel your Account before the date the revised Privacy Policy becomes effective, your continued access or use of the getWOBO Platform will constitute acceptance of the revised Privacy Policy.</p>\n' +
                 '                            </li>\n' +
                 '                        </ol>';
