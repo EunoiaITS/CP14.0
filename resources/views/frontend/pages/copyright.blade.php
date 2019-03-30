@@ -8,10 +8,10 @@
                     <h3 class="get-about-section-header section-about-us-top">Copyright Policy</h3>
                     <div class="about-us-details">
                         <h4 class="about-us-details-title">Notification of Copyright Infringement</h4>
-                        <p>getWOBO ("getWOBO") respects the intellectual property rights of others and expects its users to do the same.</p>
-                        <p>It is getWOBO’s policy, in appropriate circumstances and at its discretion, to disable and/or terminate the account or access of users who repeatedly infringe or are repeatedly charged with infringing the copyrights or other intellectual property rights of others.</p>
-                        <p>GetWOBO will respond expeditiously to claims of copyright infringement committed using the GetWOBO website and mobile application (the "Site and Application") that are reported to GetWOBO’s designated email <b>(info@getwobo.com)</b> address, identified in the sample notice below.</p>
-                        <p>If you are a copyright owner, or are authorized to act on behalf of one, or authorized to act under any exclusive right under copyright, please report alleged copyright infringements taking place on or through the Site and Application by completing the following Notice of Alleged Infringement and delivering it to GetWOBO’s designated email <b>(info@getwobo.com)</b> address. Upon receipt of the Notice as described below, GetWOBO will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged material from the Site and Application.</p>
+                        <p>carhailing ("carhailing") respects the intellectual property rights of others and expects its users to do the same.</p>
+                        <p>It is carhailing’s policy, in appropriate circumstances and at its discretion, to disable and/or terminate the account or access of users who repeatedly infringe or are repeatedly charged with infringing the copyrights or other intellectual property rights of others.</p>
+                        <p>carhailing will respond expeditiously to claims of copyright infringement committed using the carhailing website and mobile application (the "Site and Application") that are reported to carhailing’s designated email <b>(info@carhailing.com)</b> address, identified in the sample notice below.</p>
+                        <p>If you are a copyright owner, or are authorized to act on behalf of one, or authorized to act under any exclusive right under copyright, please report alleged copyright infringements taking place on or through the Site and Application by completing the following Notice of Alleged Infringement and delivering it to carhailing’s designated email <b>(info@carhailing.com)</b> address. Upon receipt of the Notice as described below, carhailing will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged material from the Site and Application.</p>
                     </div>
                     <div class="about-us-details">
                         <h4 class="about-us-details-title">Notice of Alleged Infringement ("Notice")</h4>
@@ -27,7 +27,7 @@
                             </li>
                             <li>Provide your full legal name and your electronic or physical signature.</li>
                         </ol>
-                        <p>Deliver this Notice, with all items completed, to GetWOBO’s designated email <b>(info@getwobo.com)</b> address please.</p>
+                        <p>Deliver this Notice, with all items completed, to carhailing’s designated email <b>(info@carhailing.com)</b> address please.</p>
 
                     </div>
                 </div>
