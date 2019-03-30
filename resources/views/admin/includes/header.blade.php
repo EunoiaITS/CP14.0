@@ -11,7 +11,7 @@
                         </svg>
 					</span>
             </button>
-            <a class="navbar-brand get-logo-text" href="{{ url('/admin') }}"><span>GetWobo</span></a>
+            <a class="navbar-brand get-logo-text" href="{{ url('/admin') }}"><span>carhailing</span></a>
             <ul class="nav navbar-top-links navbar-right">
                 <li><a style="color: #ffffff;" class="count-info" data-toggle="modal" data-target="#myModal" href="#"><span class="flaticon-logout"></span>Logout</a></li>
             </ul>
