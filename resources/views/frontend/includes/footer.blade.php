@@ -3,7 +3,7 @@
 <footer class="get-footer-area">
     <div class="container text-center">
         <div class="row get-footer-line">
-            <div class="get-footer"><a href="{{ url('/') }}"><h2 class="get-logo-text"><span>Get</span>Wobo.</h2></a></div>
+            <div class="get-footer"><a href="{{ url('/') }}"><h2 class="get-logo-text"><span>car</span>hailing</h2></a></div>
             <ul class="social-icon">
                 <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
