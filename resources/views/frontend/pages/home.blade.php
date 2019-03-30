@@ -122,7 +122,7 @@
 
                         <div class="are-you-driving">
                             <h2 class="get-bold-text">Are you driving <br> somewhere soon?</h2>
-                            <p>Take a ride through GetWobo and change the experience of the journey that you never feel before.</p>
+                            <p>Take a ride through carhailing and change the experience of the journey that you never feel before.</p>
                         </div>
                     </div>
                 </div>
