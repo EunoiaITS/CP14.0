@@ -45,7 +45,7 @@
                 <h4 class="modal-title" id="myModalLabel">Logging Out</h4>
             </div>
             <div class="modal-body">
-                <p class="text-center">Confirm the Logging Out form GETWOBO ?</p>
+                <p class="text-center">Confirm the Logging Out form carhailing ?</p>
             </div>
             <div class="modal-footer login-modal-footer">
                 <form method="post" action="{{ url('/logout') }}">
