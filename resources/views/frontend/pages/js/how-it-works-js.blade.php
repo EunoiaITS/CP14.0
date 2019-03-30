@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function () {
-        $('#content').html('<p>This is a people powered community built on trust, with user friendly platform suitable for anyone, anytime, anywhere. All you need to do is to enjoy the ride. Welcome to getWOBO.</p>\n' +
+        $('#content').html('<p>This is a people powered community built on trust, with user friendly platform suitable for anyone, anytime, anywhere. All you need to do is to enjoy the ride. Welcome to carhailing.</p>\n' +
             '                        <br>\n' +
             '                        <h4 class="about-us-details-title">Wanna get somewhere? NEED A RIDE? (for RIDERS)</h4>\n' +
             '                        <p><b>Step 1:</b> Find a ride</p>\n' +
@@ -30,7 +30,7 @@
             e.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content-bx').html('');
-            one = '<p>This is a people powered community built on trust, with user friendly platform suitable for anyone, anytime, anywhere. All you need to do is to enjoy the ride. Welcome to getWOBO.</p>\n' +
+            one = '<p>This is a people powered community built on trust, with user friendly platform suitable for anyone, anytime, anywhere. All you need to do is to enjoy the ride. Welcome to carhailing.</p>\n' +
             '                        <br>\n' +
             '                        <h4 class="about-us-details-title">Wanna get somewhere? NEED A RIDE? (for RIDERS)</h4>\n' +
             '                        <p><b>Step 1:</b> Find a ride</p>\n' +
@@ -61,7 +61,7 @@
             $("html, body").animate({ scrollTop: 0 }, 500);
             $('#content').html('');
             two = '<h4 class="about-us-details-title">Ratings</h4>\n' +
-                '                        <p>getWOBO’s rating system are merely visible recommendations as to foster decision making process prior to confirm any ride. This is important, the process helps to elevate trust within the community. So, please do not forget to rate to share your experience with the rest of the community after your ride.</p>';
+                '                        <p>carhailing’s rating system are merely visible recommendations as to foster decision making process prior to confirm any ride. This is important, the process helps to elevate trust within the community. So, please do not forget to rate to share your experience with the rest of the community after your ride.</p>';
             $('#content-bx').html(two);
         });
     });
