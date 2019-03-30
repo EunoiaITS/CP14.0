@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-sm-5 col-xs-6">
                     <div class="get-logo text-center">
-                        <a href="{{ url('/') }}"><h2 class="get-logo-text"><span>Get</span>Wobo.</h2></a>
+                        <a href="{{ url('/') }}"><h2 class="get-logo-text"><span>car</span>hailing</h2></a>
                     </div>
                 </div>
                 <div class="col-sm-5 col-xs-4 padding-right-0">
