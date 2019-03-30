@@ -1,7 +1,7 @@
 <!-- sidebar area -->
 <div class="sidebar">
     <div class="siderbar-logo">
-        <h3 class="sidebar-logo-class">GetWobo</h3>
+        <h3 class="sidebar-logo-class">carhailing</h3>
         <div class="toggle-remove-class">
             <a href="#" id="toggle-remove">
                 <i class="fas fa-times"></i>
